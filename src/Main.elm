@@ -1,6 +1,6 @@
 module Main exposing (..)
 
-import Html exposing (Html, text, div, h1, a)
+import Html exposing (Html, a, div, h1, text)
 import Html.Attributes exposing (href)
 
 
@@ -37,7 +37,9 @@ view : Model -> Html Msg
 view model =
     div []
         [ h1 [] [ text "Dan Cecile" ]
-        , a [ href "https://github.com/dcecile" ] [ text "GitHub" ]
+        , a
+            [ href "https://github.com/dcecile" ]
+            [ text "GitHub" ]
         ]
 
 
