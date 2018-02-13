@@ -1,8 +1,9 @@
 module Main exposing (..)
 
-import Css exposing (block, display, height, property, vh, width)
+import Css exposing (block, borderBox, boxSizing, column, display, displayFlex, flexDirection, height, inches, justifyContent, minHeight, none, padding2, property, spaceBetween, vh, width)
+import Css.Media exposing (only, print, screen, withMedia)
 import Html exposing (program)
-import Html.Styled exposing (Html, a, div, h1, text, toUnstyled)
+import Html.Styled exposing (Html, a, div, h1, h2, text, toUnstyled)
 import Html.Styled.Attributes exposing (href)
 import Svg.Styled exposing (Attribute, Svg, g, path, svg)
 import Svg.Styled.Attributes exposing (css, d, fill, stroke, transform, viewBox)
@@ -91,15 +92,72 @@ viewSvg =
         [ viewPath1, viewPath2 ]
 
 
-view : Model -> Html Msg
-view model =
+viewUi : Html Msg
+viewUi =
     div
-        []
+        [ css
+            [ display none
+            , withMedia
+                [ only screen [] ]
+                [ display block ]
+            ]
+        ]
         [ h1 [] [ text "Dan Cecile" ]
         , a
             [ href "https://github.com/dcecile" ]
             [ text "GitHub" ]
         , viewSvg
+        ]
+
+
+viewPrintHeader : Html Msg
+viewPrintHeader =
+    div
+        []
+        [ h1 [] [ text "Dan Cecile" ]
+        , h2 [] [ text "Software developer (10 years experience)" ]
+        , a
+            [ href "https://github.com/dcecile" ]
+            [ text "GitHub: https://github.com/dcecile" ]
+        ]
+
+
+viewPrintFooter : Html Msg
+viewPrintFooter =
+    div
+        []
+        [ a
+            [ href "https://github.com/dcecile" ]
+            [ text "Made with Elm (https://github.com/dcecile/dcecile-resume-portfolio)" ]
+        ]
+
+
+viewPrint : Html Msg
+viewPrint =
+    div
+        [ css
+            [ display none
+            , flexDirection column
+            , justifyContent spaceBetween
+            , minHeight (vh 100)
+            , padding2 (inches 1) (inches 1)
+            , boxSizing borderBox
+            , withMedia
+                [ only print [] ]
+                [ displayFlex ]
+            ]
+        ]
+        [ viewPrintHeader
+        , viewPrintFooter
+        ]
+
+
+view : Model -> Html Msg
+view model =
+    div
+        []
+        [ viewUi
+        , viewPrint
         ]
 
 

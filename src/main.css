@@ -19,3 +19,9 @@ img {
     transform: rotate(360deg);
   }
 }
+
+@media only print {
+  @page {
+    margin: 0;
+  }
+}
