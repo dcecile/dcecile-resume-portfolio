@@ -24,4 +24,8 @@ img {
   @page {
     margin: 0;
   }
+
+  .elm-mini-controls {
+    display: none;
+  }
 }
