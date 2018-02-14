@@ -8,6 +8,7 @@
 4. [Set up your editor](https://github.com/avh4/elm-format#detailed-instructions) to automatically run `elm-format` on save
 5. Run `elm-app start` to start the development server
 6. Change a source file, and the app will reload automatically
+7. Run `./check-warnings.sh` to check all source files for warnings
 
 For other operations, see the [Create Elm App README](https://github.com/halfzebra/create-elm-app/tree/master/template).
 
