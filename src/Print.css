@@ -1,0 +1,9 @@
+@media only print {
+  @page {
+    margin: 0;
+  }
+
+  .elm-mini-controls {
+    display: none;
+  }
+}

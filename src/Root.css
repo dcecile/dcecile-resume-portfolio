@@ -1,0 +1,19 @@
+html {
+  font-family:
+    'TeX Gyre Schola',
+    'TeXGyreSchola',
+    'New Century Schoolbook',
+    'Century Schoolbook',
+    'Century Schoolbook L',
+    Georgia,
+    serif;
+  text-rendering: optimizeLegibility;
+  font-variant-ligatures: common-ligatures;
+  font-kerning: normal;
+  font-feature-settings: 'liga', 'pnum', 'kern';
+  font-size: x-large;
+}
+
+body {
+  margin: 0;
+}
