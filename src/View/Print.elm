@@ -5,6 +5,7 @@ module View.Print
 
 import Css exposing (borderBox, boxSizing, column, display, displayFlex, flexDirection, height, inches, justifyContent, minHeight, none, padding2, spaceBetween, vh)
 import Css.Media exposing (only, print, screen, withMedia)
+import CssShorthand exposing (displayFlexColumn)
 import Html.Styled exposing (Html, a, div, h1, h2, text)
 import Html.Styled.Attributes exposing (css, href)
 import Msg exposing (Msg)
@@ -15,14 +16,13 @@ viewPrint =
     div
         [ css
             [ display none
-            , flexDirection column
             , justifyContent spaceBetween
             , minHeight (vh 100)
             , padding2 (inches 1) (inches 1)
             , boxSizing borderBox
             , withMedia
                 [ only print [] ]
-                [ displayFlex ]
+                [ displayFlexColumn ]
             ]
         ]
         [ viewHeader

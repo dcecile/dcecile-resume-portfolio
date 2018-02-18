@@ -3,7 +3,8 @@ module View.Intro
         ( viewIntro
         )
 
-import Css exposing (bold, center, displayFlex, em, flexBasis, fontSize, fontStyle, fontWeight, height, italic, justifyContent, margin2, normal, property, px, vh, zero)
+import Css exposing (bold, center, em, flexBasis, fontSize, fontStyle, fontWeight, height, italic, justifyContent, normal, px, vh, zero)
+import CssShorthand exposing (displayFlexColumn, displayFlexRow, marginRightLeft, marginTopBottom)
 import Html.Styled exposing (Html, a, div, h1, h2, p, span, styled, text)
 import Html.Styled.Attributes exposing (href, target)
 import Icon exposing (IconBackground, fiveHundredPxBackground, githubBackground, linkedinBackground, mailBackground, printerBackground, stackOverflowBackground, twitterBackground)
@@ -15,7 +16,9 @@ viewIntro : Model -> Html Msg
 viewIntro model =
     let
         style =
-            [ height (vh 100) ]
+            [ displayFlexColumn
+            , height (vh 100)
+            ]
     in
     styled div
         style
@@ -81,7 +84,7 @@ viewCallsToAction : Model -> Html Msg
 viewCallsToAction model =
     let
         style =
-            [ displayFlex
+            [ displayFlexRow
             , justifyContent center
             ]
     in
@@ -96,10 +99,10 @@ viewCallsToAction model =
 
 
 viewCallToActionIcon : Model -> IconBackground -> Html Msg
-viewCallToActionIcon model icon =
+viewCallToActionIcon model iconBackground =
     let
         style =
-            [ icon model.iconSource
+            [ iconBackground model.iconSource
             , flexBasis <| px 24
             ]
     in
@@ -113,7 +116,7 @@ viewCallToActionButton : String -> Html Msg
 viewCallToActionButton buttonText =
     let
         style =
-            [ margin2 zero (em 0.5)
+            [ marginRightLeft <| em 0.5
             ]
     in
     styled a
@@ -127,9 +130,9 @@ viewExternalLinks : Model -> Html Msg
 viewExternalLinks model =
     let
         style =
-            [ displayFlex
+            [ displayFlexRow
             , justifyContent center
-            , margin2 (em 1.0) zero
+            , marginTopBottom <| em 1.0
             ]
 
         icons =
@@ -147,13 +150,13 @@ viewExternalLinks model =
 
 
 viewExternalLink : Model -> IconBackground -> Html Msg
-viewExternalLink model icon =
+viewExternalLink model iconBackground =
     let
         style =
-            [ icon model.iconSource
+            [ iconBackground model.iconSource
             , flexBasis <| em 2
             , height <| em 2
-            , margin2 zero (em 0.2)
+            , marginRightLeft <| em 0.2
             ]
     in
     styled a

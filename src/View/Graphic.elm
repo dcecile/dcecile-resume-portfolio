@@ -3,7 +3,8 @@ module View.Graphic
         ( viewGraphic
         )
 
-import Css exposing (block, display, height, property, vh, width)
+import Css exposing (block, display, height, vh, width)
+import CssShorthand exposing (animation)
 import Msg exposing (Msg)
 import Svg.Styled exposing (Attribute, Svg, g, path, svg)
 import Svg.Styled.Attributes exposing (css, d, fill, stroke, transform, viewBox)
@@ -55,7 +56,7 @@ viewRotate tag ( originX, originY ) attributes children =
     g
         [ transform <| "translate(" ++ originX ++ " " ++ originY ++ ")" ]
         [ g
-            [ css [ property "animation" "rotate 1000ms linear infinite" ] ]
+            [ css [ animation "rotate 1000ms linear infinite" ] ]
             [ g
                 [ transform <| "translate(-" ++ originX ++ " -" ++ originY ++ ")" ]
                 [ tag attributes children ]
