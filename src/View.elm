@@ -18,6 +18,6 @@ view model =
             , color black
             ]
         ]
-        [ viewScreen
+        [ viewScreen model
         , viewPrint
         ]

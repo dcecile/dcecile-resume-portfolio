@@ -13,6 +13,12 @@
 
 For other operations, see the [Create Elm App README](https://github.com/halfzebra/create-elm-app/tree/master/template).
 
+## Credits
+
+Font: [TeX Gyre Schola](http://www.gust.org.pl/projects/e-foundry/tex-gyre/)
+
+Icons: [Feather](https://feathericons.com/), [Font Awesome](https://fontawesome.com/)
+
 ## License
 
 This project is released under the MIT License (see
