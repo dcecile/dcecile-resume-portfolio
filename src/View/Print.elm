@@ -1,4 +1,7 @@
-module View.Print exposing (viewPrint)
+module View.Print
+    exposing
+        ( viewPrint
+        )
 
 import Css exposing (borderBox, boxSizing, column, display, displayFlex, flexDirection, height, inches, justifyContent, minHeight, none, padding2, spaceBetween, vh)
 import Css.Media exposing (only, print, screen, withMedia)

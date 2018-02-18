@@ -1,4 +1,9 @@
-module Model exposing (Flags, Model, init)
+module Model
+    exposing
+        ( Flags
+        , Model
+        , init
+        )
 
 import Icon exposing (IconSource)
 import Msg exposing (Msg)

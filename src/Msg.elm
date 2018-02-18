@@ -1,4 +1,7 @@
-module Msg exposing (Msg)
+module Msg
+    exposing
+        ( Msg
+        )
 
 
 type Msg

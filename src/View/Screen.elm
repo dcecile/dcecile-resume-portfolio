@@ -1,4 +1,7 @@
-module View.Screen exposing (viewScreen)
+module View.Screen
+    exposing
+        ( viewScreen
+        )
 
 import Css exposing (block, display, none)
 import Css.Media exposing (only, screen, withMedia)

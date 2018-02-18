@@ -1,4 +1,7 @@
-module View exposing (view)
+module View
+    exposing
+        ( view
+        )
 
 import Css exposing (center, color, textAlign)
 import Css.Colors exposing (black)

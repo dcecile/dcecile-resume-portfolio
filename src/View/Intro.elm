@@ -1,4 +1,7 @@
-module View.Intro exposing (viewIntro)
+module View.Intro
+    exposing
+        ( viewIntro
+        )
 
 import Css exposing (bold, center, displayFlex, em, flexBasis, fontSize, fontStyle, fontWeight, height, italic, justifyContent, margin2, normal, property, px, vh, zero)
 import Html.Styled exposing (Html, a, div, h1, h2, p, span, styled, text)

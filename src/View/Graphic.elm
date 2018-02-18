@@ -1,4 +1,7 @@
-module View.Graphic exposing (viewGraphic)
+module View.Graphic
+    exposing
+        ( viewGraphic
+        )
 
 import Css exposing (block, display, height, property, vh, width)
 import Msg exposing (Msg)

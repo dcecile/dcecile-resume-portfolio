@@ -1,4 +1,7 @@
-module Update exposing (update)
+module Update
+    exposing
+        ( update
+        )
 
 import Model exposing (Model)
 import Msg exposing (Msg)

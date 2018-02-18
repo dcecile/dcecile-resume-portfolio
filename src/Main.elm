@@ -1,4 +1,7 @@
-module Main exposing (main)
+module Main
+    exposing
+        ( main
+        )
 
 import Html exposing (programWithFlags)
 import Html.Styled exposing (toUnstyled)
