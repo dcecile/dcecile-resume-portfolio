@@ -11,7 +11,7 @@ module Icon
         , twitterBackground
         )
 
-import Css exposing (Style, backgroundImage, backgroundPosition, backgroundRepeat, backgroundSize, batch, center, contain, noRepeat, url)
+import Css exposing (Style, backgroundImage, backgroundOrigin, backgroundPosition, backgroundRepeat, backgroundSize, batch, center, contain, contentBox, noRepeat, url)
 
 
 type alias IconSource =
@@ -36,6 +36,7 @@ iconBackground selector source =
         , backgroundRepeat noRepeat
         , backgroundPosition center
         , backgroundSize contain
+        , backgroundOrigin contentBox
         ]
 
 

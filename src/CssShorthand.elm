@@ -5,9 +5,10 @@ module CssShorthand
         , displayFlexRow
         , marginRightLeft
         , marginTopBottom
+        , paddingRightLeft
         )
 
-import Css exposing (LengthOrAuto, Style, batch, column, displayFlex, flexDirection, marginBottom, marginLeft, marginRight, marginTop, property, row)
+import Css exposing (Length, LengthOrAuto, Style, batch, column, displayFlex, flexDirection, marginBottom, marginLeft, marginRight, marginTop, paddingLeft, paddingRight, property, row)
 
 
 animation : String -> Style
@@ -31,17 +32,22 @@ displayFlexRow =
         ]
 
 
+paddingRightLeft : Length compatible units -> Style
+paddingRightLeft =
+    batchMap [ paddingRight, paddingLeft ]
+
+
 marginRightLeft : LengthOrAuto compatible -> Style
-marginRightLeft lengthOrAuto =
-    batch
-        [ marginRight lengthOrAuto
-        , marginLeft lengthOrAuto
-        ]
+marginRightLeft =
+    batchMap [ marginRight, marginLeft ]
 
 
 marginTopBottom : LengthOrAuto compatible -> Style
-marginTopBottom lengthOrAuto =
-    batch
-        [ marginTop lengthOrAuto
-        , marginBottom lengthOrAuto
-        ]
+marginTopBottom =
+    batchMap [ marginTop, marginBottom ]
+
+
+batchMap : List (a -> Style) -> a -> Style
+batchMap partialStyles styleParameter =
+    List.map ((|>) styleParameter) partialStyles
+        |> batch
