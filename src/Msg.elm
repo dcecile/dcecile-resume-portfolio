@@ -1,8 +1,8 @@
 module Msg
     exposing
-        ( Msg
+        ( Msg(Print)
         )
 
 
 type Msg
-    = NoOp
+    = Print

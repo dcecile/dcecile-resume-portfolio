@@ -6,12 +6,9 @@ module View.Graphic
 import Css exposing (block, display, height, vh, width)
 import CssShorthand exposing (animation)
 import Msg exposing (Msg)
-import Svg.Styled exposing (Attribute, Svg, g, path, svg)
+import Svg.Styled exposing (Svg, g, path, svg)
 import Svg.Styled.Attributes exposing (css, d, fill, stroke, transform, viewBox)
-
-
-type alias SvgTag msg =
-    List (Attribute msg) -> List (Svg msg) -> Svg msg
+import SvgShorthand exposing (SvgTag)
 
 
 viewGraphic : Svg Msg

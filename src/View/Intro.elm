@@ -7,9 +7,10 @@ import Css exposing (bold, center, em, flexBasis, fontSize, fontStyle, fontWeigh
 import CssShorthand exposing (displayFlexColumn, displayFlexRow, marginRightLeft, marginTopBottom)
 import Html.Styled exposing (Html, a, div, h1, h2, p, span, styled, text)
 import Html.Styled.Attributes exposing (href, target)
+import HtmlShorthand exposing (HtmlTag, hrefHash, onClickPreventDefault, targetBlank)
 import Icon exposing (IconBackground, fiveHundredPxBackground, githubBackground, linkedinBackground, mailBackground, printerBackground, stackOverflowBackground, twitterBackground)
 import Model exposing (Model)
-import Msg exposing (Msg)
+import Msg exposing (Msg(Print))
 
 
 viewIntro : Model -> Html Msg
@@ -92,8 +93,16 @@ viewCallsToAction model =
         style
         []
         [ viewCallToActionIcon model mailBackground
-        , viewCallToActionButton "Send me an email"
-        , viewCallToActionButton "Print my resume"
+        , viewCallToActionButton
+            [ href "mailto:dancecile@gmail.com?subject=Hi"
+            , targetBlank
+            ]
+            [ text "Send me an email" ]
+        , viewCallToActionButton
+            [ hrefHash
+            , onClickPreventDefault Print
+            ]
+            [ text "Print my resume" ]
         , viewCallToActionIcon model printerBackground
         ]
 
@@ -112,18 +121,14 @@ viewCallToActionIcon model iconBackground =
         []
 
 
-viewCallToActionButton : String -> Html Msg
-viewCallToActionButton buttonText =
+viewCallToActionButton : HtmlTag Msg
+viewCallToActionButton =
     let
         style =
             [ marginRightLeft <| em 0.5
             ]
     in
-    styled a
-        style
-        [ href "about:blank"
-        ]
-        [ text buttonText ]
+    styled a style
 
 
 viewExternalLinks : Model -> Html Msg
@@ -162,6 +167,6 @@ viewExternalLink model iconBackground =
     styled a
         style
         [ href "about:blank"
-        , target "_blank"
+        , targetBlank
         ]
         []
