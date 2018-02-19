@@ -141,21 +141,21 @@ viewExternalLinks model =
             ]
 
         icons =
-            [ githubBackground
-            , linkedinBackground
-            , stackOverflowBackground
-            , twitterBackground
-            , fiveHundredPxBackground
+            [ ( githubBackground, "https://github.com/dcecile" )
+            , ( linkedinBackground, "https://www.linkedin.com/in/dancecile" )
+            , ( stackOverflowBackground, "https://stackoverflow.com/users/207321/dan-cecile?tab=profile" )
+            , ( twitterBackground, "https://twitter.com/dancecile" )
+            , ( fiveHundredPxBackground, "https://500px.com/dancecile" )
             ]
     in
     styled div
         style
         []
-        (List.map (viewExternalLink model) icons)
+        (List.map (uncurry <| viewExternalLink model) icons)
 
 
-viewExternalLink : Model -> IconBackground -> Html Msg
-viewExternalLink model iconBackground =
+viewExternalLink : Model -> IconBackground -> String -> Html Msg
+viewExternalLink model iconBackground url =
     let
         style =
             [ iconBackground model.iconSource
@@ -166,7 +166,7 @@ viewExternalLink model iconBackground =
     in
     styled a
         style
-        [ href "about:blank"
+        [ href url
         , targetBlank
         ]
         []
