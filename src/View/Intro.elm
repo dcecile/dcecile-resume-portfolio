@@ -3,7 +3,7 @@ module View.Intro
         ( viewIntro
         )
 
-import Css exposing (alignItems, bold, center, em, flexBasis, fontSize, fontStyle, fontWeight, height, italic, justifyContent, lineHeight, normal, num, opacity, padding, px, vh)
+import Css exposing (alignItems, bold, center, color, em, flexBasis, fontSize, fontStyle, fontWeight, height, hex, italic, justifyContent, lineHeight, normal, num, opacity, padding, px, vh)
 import CssShorthand exposing (displayFlexColumn, displayFlexRow, marginRightLeft, marginTopBottom, paddingRightLeft)
 import Html.Styled exposing (Html, a, div, h1, h2, p, span, styled, text)
 import Html.Styled.Attributes exposing (href, target)
@@ -65,9 +65,29 @@ viewTitle =
 
 viewSellingPoint : Html Msg
 viewSellingPoint =
+    let
+        highlightStyle =
+            [ color <| hex "#00a934"
+            ]
+
+        normal =
+            text
+
+        highlight =
+            text
+                >> List.singleton
+                >> styled span highlightStyle []
+    in
     p
         []
-        [ text "10 years of experience learning new tech, writing code, and improving systems." ]
+        [ normal "10 years of experience learning new "
+        , highlight "tech"
+        , normal ", writing "
+        , highlight "code"
+        , normal ", and improving "
+        , highlight "systems"
+        , normal "."
+        ]
 
 
 viewPitch : Html Msg

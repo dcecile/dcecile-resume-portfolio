@@ -21,7 +21,7 @@ border =
             (px 5)
             zero
             (px -1)
-            (hex "#dedede")
+            (hex "#a5deb7")
         ]
 
 
