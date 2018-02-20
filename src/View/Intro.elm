@@ -3,12 +3,12 @@ module View.Intro
         ( viewIntro
         )
 
-import Css exposing (alignItems, bold, center, color, em, flexBasis, fontSize, fontStyle, fontWeight, height, hex, italic, justifyContent, lineHeight, normal, num, opacity, padding, px, vh)
-import CssShorthand exposing (displayFlexColumn, displayFlexRow, marginRightLeft, marginTopBottom, paddingRightLeft)
+import Css exposing (alignItems, bold, center, color, em, fontSize, fontStyle, fontWeight, height, hex, italic, justifyContent, lineHeight, normal, num, opacity, px, vh, width)
+import CssShorthand exposing (displayFlexColumn, displayFlexRow, marginRightLeft, paddingRightLeft)
 import Html.Styled exposing (Html, a, div, h1, h2, p, span, styled, text)
-import Html.Styled.Attributes exposing (href, target)
+import Html.Styled.Attributes exposing (href)
 import HtmlShorthand exposing (HtmlTag, hrefHash, onClickPreventDefault, targetBlank)
-import Icon exposing (IconBackground, fiveHundredPxBackground, githubBackground, linkedinBackground, mailBackground, printerBackground, stackOverflowBackground, twitterBackground)
+import Icon exposing (IconBackground, mailBackground, printerBackground)
 import Model exposing (Model)
 import Msg exposing (Msg(Print))
 import View.Button as Button
@@ -19,7 +19,7 @@ viewIntro model =
     let
         style =
             [ displayFlexColumn
-            , height (vh 100)
+            , height (vh 80)
             ]
     in
     styled div
@@ -30,7 +30,6 @@ viewIntro model =
         , viewSellingPoint
         , viewPitch
         , viewCallsToAction model
-        , viewExternalLinks model
         ]
 
 
@@ -137,7 +136,7 @@ viewCallToActionIcon model iconBackground =
 
         style =
             [ iconBackground model.iconSource
-            , flexBasis iconSize
+            , width iconSize
             , height iconSize
             , marginRightLeft <| px 2
             , opacity <| num 0.8
@@ -161,49 +160,3 @@ viewCallToActionButton =
             ]
     in
     styled a style
-
-
-viewExternalLinks : Model -> Html Msg
-viewExternalLinks model =
-    let
-        style =
-            [ displayFlexRow
-            , justifyContent center
-            , marginTopBottom <| em 1.0
-            ]
-
-        icons =
-            [ ( githubBackground, "https://github.com/dcecile" )
-            , ( linkedinBackground, "https://www.linkedin.com/in/dancecile" )
-            , ( stackOverflowBackground, "https://stackoverflow.com/users/207321/dan-cecile?tab=profile" )
-            , ( twitterBackground, "https://twitter.com/dancecile" )
-            , ( fiveHundredPxBackground, "https://500px.com/dancecile" )
-            ]
-    in
-    styled div
-        style
-        []
-        (List.map (uncurry <| viewExternalLink model) icons)
-
-
-viewExternalLink : Model -> IconBackground -> String -> Html Msg
-viewExternalLink model iconBackground url =
-    let
-        ( iconSize, paddingSize ) =
-            ( em 1.5, em 0.5 )
-
-        style =
-            [ iconBackground model.iconSource
-            , padding paddingSize
-            , flexBasis iconSize
-            , height iconSize
-            , marginRightLeft <| px 8
-            , Button.border
-            ]
-    in
-    styled a
-        style
-        [ href url
-        , targetBlank
-        ]
-        []

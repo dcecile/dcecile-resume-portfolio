@@ -15,7 +15,7 @@ border =
             (px 2)
             solid
             black
-        , borderRadius <| px 16
+        , borderRadius <| px 14
         , boxShadow5
             (px 5)
             (px 5)
