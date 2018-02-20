@@ -4,9 +4,9 @@ module View.Button
         , text
         )
 
-import Css exposing (Style, batch, border3, borderRadius, boxShadow5, color, hex, none, px, solid, textDecoration, zero)
-import Css.Colors exposing (black)
+import Css exposing (Style, batch, border3, borderRadius, boxShadow5, color, none, px, solid, textDecoration, zero)
 import View.Metrics exposing (standardBorderRadius, standardBorderWidth)
+import View.Colors exposing (black, green, paleGreen)
 
 
 border : Style
@@ -22,7 +22,7 @@ border =
             (px 5)
             zero
             (px -1)
-            (hex "#a5deb7")
+            paleGreen
         ]
 
 

@@ -3,7 +3,7 @@ module View.Intro
         ( viewIntro
         )
 
-import Css exposing (Style, alignItems, alignSelf, bold, calc, center, color, em, flexBasis, flexEnd, flexGrow, flexStart, fontSize, fontStyle, fontWeight, height, hex, italic, justifyContent, lineHeight, marginBottom, marginTop, maxWidth, minHeight, minus, normal, num, opacity, px, stretch, vh, width, zero)
+import Css exposing (Style, alignItems, alignSelf, bold, calc, center, color, em, flexBasis, flexEnd, flexGrow, flexStart, fontSize, fontStyle, fontWeight, height, italic, justifyContent, lineHeight, marginBottom, marginTop, maxWidth, minHeight, minus, normal, num, opacity, px, stretch, vh, width, zero)
 import CssShorthand exposing (displayFlexColumn, displayFlexRow, displayFlexRowReverse, marginRightLeft, paddingRightLeft)
 import Html.Styled exposing (Html, a, div, h1, h2, p, span, styled, text)
 import Html.Styled.Attributes exposing (href)
@@ -12,6 +12,7 @@ import Icon exposing (IconBackground, mailBackground, printerBackground)
 import Model exposing (Model)
 import Msg exposing (Msg(Print))
 import View.Button as Button
+import View.Colors exposing (blackLevel, green)
 import View.Links exposing (linksCutoff)
 
 
@@ -80,7 +81,7 @@ viewSellingPoint =
             ]
 
         highlightStyle =
-            [ color <| hex "#00a934"
+            [ color green
             ]
 
         normal =
@@ -178,7 +179,7 @@ viewCallToActionIcon model iconBackground =
             , width iconSize
             , height iconSize
             , marginRightLeft <| px 8
-            , opacity <| num 0.93
+            , opacity << num <| 1 - toFloat blackLevel / 255
             ]
     in
     styled span

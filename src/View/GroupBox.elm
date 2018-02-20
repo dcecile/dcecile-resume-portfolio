@@ -4,6 +4,7 @@ module View.GroupBox
         )
 
 import Css exposing (Style, batch, border3, borderRadius, hex, px, solid)
+import View.Colors exposing (paleGreen)
 import View.Metrics exposing (standardBorderRadius, standardBorderWidth)
 
 
@@ -13,6 +14,6 @@ border =
         [ border3
             standardBorderWidth
             solid
-            (hex "#a5deb7")
+            paleGreen
         , borderRadius standardBorderRadius
         ]
