@@ -14,6 +14,7 @@ import Model exposing (Model)
 import Msg exposing (Msg)
 import View.Button as Button
 import View.GroupBox as GroupBox
+import View.Metrics exposing (standardBorderWidth, standardLineHeight)
 
 
 type alias CalculatedLength =
@@ -42,11 +43,11 @@ linksCutoff =
         cutoffFactor =
             0.5
     in
-    px 2
+    standardBorderWidth
         |> add linksTopBottomPadding
-        |> add (em 1.6)
+        |> add (em standardLineHeight)
         |> add linksListTopPadding
-        |> add (px 2)
+        |> add standardBorderWidth
         |> add linkIconPadding
         |> add (em (cutoffFactor * linkIconSize.numericValue))
 

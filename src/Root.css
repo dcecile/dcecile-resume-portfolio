@@ -11,8 +11,6 @@ html {
   font-variant-ligatures: common-ligatures;
   font-kerning: normal;
   font-feature-settings: 'liga', 'pnum', 'kern';
-  font-size: 155%;
-  line-height: 1.6;
 }
 
 body {

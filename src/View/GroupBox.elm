@@ -4,14 +4,15 @@ module View.GroupBox
         )
 
 import Css exposing (Style, batch, border3, borderRadius, hex, px, solid)
+import View.Metrics exposing (standardBorderRadius, standardBorderWidth)
 
 
 border : Style
 border =
     batch
         [ border3
-            (px 2)
+            standardBorderWidth
             solid
             (hex "#a5deb7")
-        , borderRadius <| px 14
+        , borderRadius standardBorderRadius
         ]

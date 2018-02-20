@@ -6,16 +6,17 @@ module View.Button
 
 import Css exposing (Style, batch, border3, borderRadius, boxShadow5, color, hex, none, px, solid, textDecoration, zero)
 import Css.Colors exposing (black)
+import View.Metrics exposing (standardBorderRadius, standardBorderWidth)
 
 
 border : Style
 border =
     batch
         [ border3
-            (px 2)
+            standardBorderWidth
             solid
             black
-        , borderRadius <| px 14
+        , borderRadius standardBorderRadius
         , boxShadow5
             (px 5)
             (px 5)
