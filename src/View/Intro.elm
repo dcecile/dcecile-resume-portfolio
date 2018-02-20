@@ -3,7 +3,7 @@ module View.Intro
         ( viewIntro
         )
 
-import Css exposing (Style, alignItems, alignSelf, bold, center, color, em, flexBasis, flexEnd, flexGrow, flexStart, fontSize, fontStyle, fontWeight, height, hex, italic, justifyContent, lineHeight, marginBottom, marginTop, maxWidth, normal, num, opacity, px, stretch, vh, width, zero)
+import Css exposing (Style, alignItems, alignSelf, bold, calc, center, color, em, flexBasis, flexEnd, flexGrow, flexStart, fontSize, fontStyle, fontWeight, height, hex, italic, justifyContent, lineHeight, marginBottom, marginTop, maxWidth, minHeight, minus, normal, num, opacity, px, stretch, vh, width, zero)
 import CssShorthand exposing (displayFlexColumn, displayFlexRow, displayFlexRowReverse, marginRightLeft, paddingRightLeft)
 import Html.Styled exposing (Html, a, div, h1, h2, p, span, styled, text)
 import Html.Styled.Attributes exposing (href)
@@ -12,6 +12,7 @@ import Icon exposing (IconBackground, mailBackground, printerBackground)
 import Model exposing (Model)
 import Msg exposing (Msg(Print))
 import View.Button as Button
+import View.Links exposing (linksCutoff)
 
 
 viewIntro : Model -> Html Msg
@@ -21,7 +22,7 @@ viewIntro model =
             [ displayFlexColumn
             , justifyContent center
             , alignItems center
-            , height (vh 85)
+            , minHeight <| calc (vh 100) minus linksCutoff
             ]
     in
     styled div
