@@ -3,13 +3,24 @@ module View.Leaf
         ( viewLeaf
         )
 
-import Css exposing (em, height, num, opacity, width)
+import Css exposing (Em, em, height, num, opacity, width)
+import CssShorthand exposing (batchMap)
 import Msg exposing (Msg)
-import Svg.Styled exposing (Svg, path, styled, svg)
+import Svg.Styled exposing (Svg, g, path, styled, svg)
 import Svg.Styled.Attributes exposing (d)
-import SvgShorthand exposing (fill, rotate, scale, stroke, strokeWidthUnscaled, transform, translate, viewBoxSquare)
+import SvgShorthand exposing (fill, flipAxes, rotate, scale, stroke, strokeWidthUnscaled, transform, translate, viewBoxSquare)
 import View.Colors exposing (extraPaleGreen, green)
 import View.Metrics exposing (standardBorderWidth)
+
+
+leafSize : Em
+leafSize =
+    em 4.5
+
+
+leafOpacity : Float
+leafOpacity =
+    0.1
 
 
 leafViewBox : Float
@@ -22,31 +33,37 @@ leafCenter =
     leafViewBox / 2
 
 
-viewLeaf : Svg Msg
-viewLeaf =
+viewLeaf : Bool -> Bool -> Float -> Svg Msg
+viewLeaf flipX flipY size =
     let
-        size =
-            em 4
-
         style =
-            [ width size
-            , height size
+            [ batchMap [ width, height ] leafSize
             , fill extraPaleGreen
             , stroke green
+            , opacity <| num leafOpacity
             ]
     in
     styled svg
         style
         [ viewBoxSquare leafViewBox
         ]
-        [ viewLeafPath
-            0.5
-            -5
-            ( 30, 5 )
-        , viewLeafPath
-            0.4
-            20
-            ( 0, 30 )
+        [ g
+            [ transform
+                [ translate leafCenter leafCenter
+                , flipAxes flipX flipY
+                , translate -leafCenter -leafCenter
+                , scale size
+                ]
+            ]
+            [ viewLeafPath
+                0.5
+                -5
+                ( 30, 5 )
+            , viewLeafPath
+                0.4
+                20
+                ( 0, 30 )
+            ]
         ]
 
 
@@ -54,8 +71,7 @@ viewLeafPath : Float -> Float -> ( Float, Float ) -> Svg Msg
 viewLeafPath size degrees ( x, y ) =
     let
         style =
-            [ opacity <| num 0.15
-            , strokeWidthUnscaled standardBorderWidth size
+            [ strokeWidthUnscaled standardBorderWidth size
             ]
     in
     styled path
@@ -63,9 +79,7 @@ viewLeafPath size degrees ( x, y ) =
         [ transform
             [ translate x y
             , scale size
-            , translate leafCenter leafCenter
-            , rotate degrees
-            , translate -leafCenter -leafCenter
+            , rotate degrees ( leafCenter, leafCenter )
             ]
         , d "M 4,15 C 22,59 43,93 96,79 C 74,39 57,-9 4,15 Z"
         ]

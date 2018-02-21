@@ -1,6 +1,7 @@
 module CssShorthand
     exposing
         ( animation
+        , batchMap
         , displayFlexColumn
         , displayFlexRow
         , displayFlexRowReverse

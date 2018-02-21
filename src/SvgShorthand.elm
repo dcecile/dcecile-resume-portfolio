@@ -2,6 +2,7 @@ module SvgShorthand
     exposing
         ( SvgTag
         , fill
+        , flipAxes
         , rotate
         , scale
         , stroke
@@ -63,14 +64,28 @@ transform =
         >> attribute "transform"
 
 
-rotate : Float -> Transform
-rotate degrees =
-    Transform "rotate" [ degrees ]
+rotate : Float -> ( Float, Float ) -> Transform
+rotate degrees ( centerX, centerY ) =
+    Transform "rotate" [ degrees, centerX, centerY ]
 
 
 scale : Float -> Transform
 scale size =
     Transform "scale" [ size ]
+
+
+flipAxes : Bool -> Bool -> Transform
+flipAxes flipX flipY =
+    Transform "scale"
+        [ if flipX then
+            -1
+          else
+            1
+        , if flipY then
+            -1
+          else
+            1
+        ]
 
 
 translate : Float -> Float -> Transform
