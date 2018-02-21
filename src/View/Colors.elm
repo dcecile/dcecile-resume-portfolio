@@ -2,6 +2,7 @@ module View.Colors
     exposing
         ( black
         , blackLevel
+        , extraPaleGreen
         , green
         , paleGreen
         )
@@ -22,6 +23,11 @@ blackLevel =
 green : Color
 green =
     hex "#00a934"
+
+
+extraPaleGreen : Color
+extraPaleGreen =
+    hex "#ddfde6"
 
 
 paleGreen : Color

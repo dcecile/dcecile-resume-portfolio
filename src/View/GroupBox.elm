@@ -3,7 +3,7 @@ module View.GroupBox
         ( border
         )
 
-import Css exposing (Style, batch, border3, borderRadius, hex, px, solid)
+import Css exposing (Style, batch, border3, borderRadius, px, solid)
 import View.Colors exposing (paleGreen)
 import View.Metrics exposing (standardBorderRadius, standardBorderWidth)
 
