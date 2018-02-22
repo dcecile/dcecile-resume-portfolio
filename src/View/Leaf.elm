@@ -3,8 +3,8 @@ module View.Leaf
         ( viewLeaf
         )
 
-import Css exposing (Em, em, height, num, opacity, width)
-import CssShorthand exposing (batchMap)
+import Css exposing (Vw, height, num, opacity, vw, width)
+import CssShorthand exposing (animation, batchMap)
 import Msg exposing (Msg)
 import Svg.Styled exposing (Svg, g, path, styled, svg)
 import Svg.Styled.Attributes exposing (d)
@@ -13,9 +13,9 @@ import View.Colors exposing (extraPaleGreen, green)
 import View.Metrics exposing (standardBorderWidth)
 
 
-leafSize : Em
+leafSize : Vw
 leafSize =
-    em 4.5
+    vw 12
 
 
 leafOpacity : Float
@@ -33,6 +33,16 @@ leafCenter =
     leafViewBox / 2
 
 
+leafCycle : Float
+leafCycle =
+    2500
+
+
+leafDelayOffset : Float
+leafDelayOffset =
+    leafCycle * 0.08
+
+
 viewLeaf : Bool -> Bool -> Float -> Svg Msg
 viewLeaf flipX flipY size =
     let
@@ -42,6 +52,9 @@ viewLeaf flipX flipY size =
             , stroke green
             , opacity <| num leafOpacity
             ]
+
+        reverseAnimation =
+            xor flipX flipY
     in
     styled svg
         style
@@ -55,11 +68,23 @@ viewLeaf flipX flipY size =
                 , scale size
                 ]
             ]
-            [ viewLeafPath
+            [ viewLeafPath reverseAnimation
+                (if reverseAnimation then
+                    leafDelayOffset
+                 else
+                    0
+                )
+                size
                 0.5
                 -5
                 ( 30, 5 )
-            , viewLeafPath
+            , viewLeafPath reverseAnimation
+                (if not reverseAnimation then
+                    leafDelayOffset
+                 else
+                    0
+                )
+                size
                 0.4
                 20
                 ( 0, 30 )
@@ -67,20 +92,35 @@ viewLeaf flipX flipY size =
         ]
 
 
-viewLeafPath : Float -> Float -> ( Float, Float ) -> Svg Msg
-viewLeafPath size degrees ( x, y ) =
+viewLeafPath : Bool -> Float -> Float -> Float -> Float -> ( Float, Float ) -> Svg Msg
+viewLeafPath reverseAnimation delay parentSize size degrees ( x, y ) =
     let
         style =
-            [ strokeWidthUnscaled standardBorderWidth size
+            [ strokeWidthUnscaled standardBorderWidth (parentSize * size)
+            , animation <|
+                String.join " "
+                    [ "sway"
+                    , toString leafCycle ++ "ms"
+                    , toString delay ++ "ms"
+                    , "infinite"
+                    , if reverseAnimation then
+                        "alternate-reverse"
+                      else
+                        "alternate"
+                    , "both"
+                    ]
             ]
     in
-    styled path
-        style
+    g
         [ transform
             [ translate x y
             , scale size
             , rotate degrees ( leafCenter, leafCenter )
             ]
-        , d "M 4,15 C 22,59 43,93 96,79 C 74,39 57,-9 4,15 Z"
         ]
-        []
+        [ styled path
+            style
+            [ d "M 4,15 C 22,59 43,93 96,79 C 74,39 57,-9 4,15 Z"
+            ]
+            []
+        ]

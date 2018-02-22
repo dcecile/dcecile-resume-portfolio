@@ -53,7 +53,7 @@ viewRotate tag ( originX, originY ) attributes children =
     g
         [ transform <| "translate(" ++ originX ++ " " ++ originY ++ ")" ]
         [ g
-            [ css [ animation "rotate 1000ms linear infinite" ] ]
+            [ css [ animation "spin 1000ms linear infinite" ] ]
             [ g
                 [ transform <| "translate(-" ++ originX ++ " -" ++ originY ++ ")" ]
                 [ tag attributes children ]

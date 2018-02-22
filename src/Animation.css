@@ -1,5 +1,22 @@
-@keyframes rotate {
+@keyframes spin {
   100% {
     transform: rotate(360deg);
+  }
+}
+
+@keyframes sway {
+  0% {
+    transform: rotate(5deg);
+    animation-timing-function: ease-in;
+  }
+
+  50% {
+    transform: rotate(0deg);
+    animation-timing-function: ease-out;
+  }
+
+  100% {
+    transform: rotate(-5deg);
+    animation-timing-function: ease-in;
   }
 }
