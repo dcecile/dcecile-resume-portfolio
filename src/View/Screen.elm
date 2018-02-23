@@ -9,8 +9,8 @@ import CssShorthand exposing (displayFlexColumn)
 import Html.Styled exposing (Html, div, styled)
 import Model exposing (Model)
 import Msg exposing (Msg)
+import View.Contents exposing (viewContents)
 import View.Frame exposing (viewFrame)
-import View.Graphic exposing (viewGraphic)
 import View.Intro exposing (viewIntro)
 import View.Links exposing (viewLinks)
 import View.Metrics exposing (standardLineHeight, standardScreenFontSize)
@@ -35,5 +35,5 @@ viewScreen model =
         [ viewFrame
         , viewIntro model
         , viewLinks model
-        , viewGraphic
+        , viewContents model
         ]

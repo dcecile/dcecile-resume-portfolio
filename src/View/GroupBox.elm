@@ -3,7 +3,8 @@ module View.GroupBox
         ( border
         )
 
-import Css exposing (Style, batch, border3, borderRadius, px, solid)
+import Css exposing (Style, batch, borderRadius, borderWidth, px)
+import CssShorthand exposing (borderSolidColor)
 import View.Colors exposing (paleGreen)
 import View.Metrics exposing (standardBorderRadius, standardBorderWidth)
 
@@ -11,9 +12,7 @@ import View.Metrics exposing (standardBorderRadius, standardBorderWidth)
 border : Style
 border =
     batch
-        [ border3
-            standardBorderWidth
-            solid
-            paleGreen
+        [ borderSolidColor paleGreen
+        , borderWidth standardBorderWidth
         , borderRadius standardBorderRadius
         ]

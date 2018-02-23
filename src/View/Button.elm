@@ -4,18 +4,17 @@ module View.Button
         , text
         )
 
-import Css exposing (Style, batch, border3, borderRadius, boxShadow5, color, none, px, solid, textDecoration, zero)
-import View.Metrics exposing (standardBorderRadius, standardBorderWidth)
+import Css exposing (Style, batch, borderRadius, borderWidth, boxShadow5, color, none, px, textDecoration, zero)
+import CssShorthand exposing (borderSolidColor)
 import View.Colors exposing (black, green, paleGreen)
+import View.Metrics exposing (standardBorderRadius, standardBorderWidth)
 
 
 border : Style
 border =
     batch
-        [ border3
-            standardBorderWidth
-            solid
-            black
+        [ borderSolidColor black
+        , borderWidth standardBorderWidth
         , borderRadius standardBorderRadius
         , boxShadow5
             (px 5)

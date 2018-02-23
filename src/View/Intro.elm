@@ -5,10 +5,10 @@ module View.Intro
 
 import Css exposing (Style, alignItems, alignSelf, bold, calc, center, color, em, flexBasis, flexEnd, flexGrow, flexStart, fontSize, fontStyle, fontWeight, height, italic, justifyContent, lineHeight, marginBottom, marginTop, maxWidth, minHeight, minus, normal, num, opacity, px, stretch, vh, width, zero)
 import CssShorthand exposing (displayFlexColumn, displayFlexRow, displayFlexRowReverse, marginRightLeft, paddingRightLeft)
-import Html.Styled exposing (Html, a, div, h1, h2, p, span, styled, text)
+import Html.Styled exposing (Html, a, div, h1, header, main_, p, span, styled, text)
 import Html.Styled.Attributes exposing (href)
 import HtmlShorthand exposing (HtmlTag, hrefHash, onClickPreventDefault, targetBlank)
-import Icon exposing (IconBackground, mailBackground, printerBackground)
+import Icon exposing (IconBackground, iconSpan, mailBackground, printerBackground)
 import Model exposing (Model)
 import Msg exposing (Msg(Print))
 import View.Button as Button
@@ -22,18 +22,29 @@ viewIntro model =
         style =
             [ displayFlexColumn
             , justifyContent center
-            , alignItems center
             , minHeight <| calc (vh 100) minus linksCutoff
             ]
     in
     styled div
         style
         []
+        [ viewHeader
+        , viewMain model
+        ]
+
+
+viewHeader : Html Msg
+viewHeader =
+    let
+        style =
+            [ displayFlexColumn
+            ]
+    in
+    styled header
+        style
+        []
         [ viewName
         , viewTitle
-        , viewSellingPoint
-        , viewPitch
-        , viewCallsToAction model
         ]
 
 
@@ -60,22 +71,37 @@ viewTitle =
         style =
             [ marginTop zero
             , marginBottom <| em 1.4
-            , fontWeight normal
-            , fontSize <| em 1
             , fontStyle italic
             ]
     in
-    styled h2
+    styled p
         style
         []
         [ text "Software developer generalist" ]
+
+
+viewMain : Model -> Html Msg
+viewMain model =
+    let
+        style =
+            [ displayFlexColumn
+            ]
+    in
+    styled main_
+        style
+        []
+        [ viewSellingPoint
+        , viewPitch
+        , viewCallsToAction model
+        ]
 
 
 viewSellingPoint : Html Msg
 viewSellingPoint =
     let
         style =
-            [ marginTop zero
+            [ alignSelf center
+            , marginTop zero
             , marginBottom <| em 1.8
             , maxWidth <| em 22
             ]
@@ -126,7 +152,6 @@ viewCallsToAction model =
         style =
             [ displayFlexRow
             , justifyContent stretch
-            , alignSelf stretch
             ]
     in
     styled div
@@ -169,23 +194,8 @@ viewCallToAction model displayStyle iconBackground attributes elements =
 
 
 viewCallToActionIcon : Model -> IconBackground -> Html Msg
-viewCallToActionIcon model iconBackground =
-    let
-        iconSize =
-            px 24
-
-        style =
-            [ iconBackground model.iconSource
-            , width iconSize
-            , height iconSize
-            , marginRightLeft <| px 8
-            , opacity << num <| 1 - toFloat blackLevel / 255
-            ]
-    in
-    styled span
-        style
-        []
-        []
+viewCallToActionIcon =
+    .iconSource >> iconSpan (px 8)
 
 
 viewCallToActionButton : HtmlTag Msg

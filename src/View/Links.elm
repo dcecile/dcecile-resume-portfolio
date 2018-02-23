@@ -81,7 +81,7 @@ viewLinks model =
             , paddingTopBottom <| linksTopBottomPadding
             , paddingRightLeft <| em 1.0
             , marginRightLeft <| auto
-            , marginBottom <| em 4
+            , marginBottom <| em 2.0
             ]
     in
     styled div

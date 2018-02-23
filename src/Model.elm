@@ -7,6 +7,7 @@ module Model
 
 import Icon exposing (IconSource)
 import Msg exposing (Msg)
+import Scroll exposing (initScroll)
 
 
 type alias Flags =
@@ -21,4 +22,4 @@ type alias Model =
 
 init : Flags -> ( Model, Cmd Msg )
 init flags =
-    ( flags, Cmd.none )
+    ( flags, initScroll () )
