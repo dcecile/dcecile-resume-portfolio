@@ -4,11 +4,11 @@ module View.Links
         , viewLinks
         )
 
-import Css exposing (Compatible, Em, auto, calc, center, em, height, justifyContent, margin, marginBottom, marginTop, padding, plus, px, width, zero)
-import CssShorthand exposing (displayFlexColumn, displayFlexRow, marginRightLeft, paddingRightLeft, paddingTopBottom)
-import Html.Styled exposing (Html, a, div, p, styled, text)
-import Html.Styled.Attributes exposing (href)
-import HtmlShorthand exposing (targetBlank)
+import Css exposing (Compatible, Em, auto, calc, center, em, fontSize, fontWeight, height, justifyContent, marginBottom, marginTop, normal, padding, plus, px, width, zero)
+import CssShorthand exposing (displayFlexColumn, displayFlexRow, marginRightLeft, marginTopBottom, paddingRightLeft, paddingTopBottom)
+import Html.Styled exposing (Html, a, div, h2, nav, styled, text)
+import Html.Styled.Attributes exposing (href, title)
+import HtmlShorthand exposing (ariaLabel, targetBlank)
 import Icon exposing (IconBackground, fiveHundredPxBackground, githubBackground, linkedinBackground, stackOverflowBackground, twitterBackground)
 import Model exposing (Model)
 import Msg exposing (Msg)
@@ -80,11 +80,11 @@ viewLinks model =
             , GroupBox.border
             , paddingTopBottom <| linksTopBottomPadding
             , paddingRightLeft <| em 1.0
-            , marginRightLeft <| auto
+            , marginRightLeft auto
             , marginBottom <| em 2.0
             ]
     in
-    styled div
+    styled nav
         style
         []
         [ viewLinksDescription
@@ -96,10 +96,12 @@ viewLinksDescription : Html Msg
 viewLinksDescription =
     let
         style =
-            [ margin <| zero
+            [ marginTopBottom zero
+            , fontSize <| em 1
+            , fontWeight normal
             ]
     in
-    styled p
+    styled h2
         style
         []
         [ text "Find me online:" ]
@@ -114,23 +116,20 @@ viewLinkList model =
             , marginTop linksListTopPadding
             , marginBottom <| em 0.5
             ]
-
-        icons =
-            [ ( githubBackground, "https://github.com/dcecile" )
-            , ( linkedinBackground, "https://www.linkedin.com/in/dancecile" )
-            , ( stackOverflowBackground, "https://stackoverflow.com/users/207321/dan-cecile?tab=profile" )
-            , ( twitterBackground, "https://twitter.com/dancecile" )
-            , ( fiveHundredPxBackground, "https://500px.com/dancecile" )
-            ]
     in
     styled div
         style
         []
-        (List.map (uncurry <| viewLink model) icons)
+        [ viewLink model "GitHub" githubBackground "https://github.com/dcecile"
+        , viewLink model "LinkedIn" linkedinBackground "https://www.linkedin.com/in/dancecile"
+        , viewLink model "Stack Overflow" stackOverflowBackground "https://stackoverflow.com/users/207321/dan-cecile?tab=profile"
+        , viewLink model "Twitter" twitterBackground "https://twitter.com/dancecile"
+        , viewLink model "500px" fiveHundredPxBackground "https://500px.com/dancecile"
+        ]
 
 
-viewLink : Model -> IconBackground -> String -> Html Msg
-viewLink model iconBackground url =
+viewLink : Model -> String -> IconBackground -> String -> Html Msg
+viewLink model name iconBackground url =
     let
         style =
             [ iconBackground model.iconSource
@@ -143,7 +142,9 @@ viewLink model iconBackground url =
     in
     styled a
         style
-        [ href url
+        [ title name
+        , ariaLabel name
+        , href url
         , targetBlank
         ]
         []

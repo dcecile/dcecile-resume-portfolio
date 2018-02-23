@@ -1,19 +1,25 @@
 module HtmlShorthand
     exposing
         ( HtmlTag
+        , ariaLabel
         , hrefHash
         , onClickPreventDefault
         , targetBlank
         )
 
 import Html.Styled exposing (Attribute, Html)
-import Html.Styled.Attributes exposing (href, target)
+import Html.Styled.Attributes exposing (attribute, href, target)
 import Html.Styled.Events exposing (defaultOptions, onWithOptions)
 import Json.Decode as Json
 
 
 type alias HtmlTag msg =
     List (Attribute msg) -> List (Html msg) -> Html msg
+
+
+ariaLabel : String -> Attribute msg
+ariaLabel =
+    attribute "aria-label"
 
 
 hrefHash : Attribute msg
