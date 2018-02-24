@@ -11,6 +11,7 @@ import Model exposing (Model)
 import Msg exposing (Msg)
 import View.Contents exposing (viewContents)
 import View.Frame exposing (viewFrame)
+import View.Footer exposing (viewFooter)
 import View.Intro exposing (viewIntro)
 import View.Links exposing (viewLinks)
 import View.Metrics exposing (standardLineHeight, standardScreenFontSize)
@@ -36,4 +37,5 @@ viewScreen model =
         , viewIntro model
         , viewLinks model
         , viewContents model
+        , viewFooter
         ]

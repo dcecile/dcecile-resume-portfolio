@@ -3,8 +3,8 @@ module View.Contents
         ( viewContents
         )
 
-import Css exposing (alignItems, bold, boxShadow5, center, em, fontSize, fontWeight, justifyContent, lineHeight, marginBottom, marginTop, minWidth, num, px, zero)
-import CssShorthand exposing (borderRightLeftWidth, borderSolidColor, borderTopBottomWidth, displayFlexColumn, displayFlexRow, displayFlexRowReverse, marginRightLeft, marginTopBottom, paddingRightLeft, paddingTopBottom)
+import Css exposing (alignItems, bold, borderWidth, boxShadow5, center, em, fontSize, fontWeight, justifyContent, lineHeight, marginBottom, marginTop, minWidth, num, px, zero)
+import CssShorthand exposing (borderTopBottomSolidColor, displayFlexColumn, displayFlexRow, displayFlexRowReverse, marginRightLeft, marginTopBottom, paddingRightLeft, paddingTopBottom)
 import Html.Styled exposing (Html, a, div, h2, nav, span, styled, text)
 import Html.Styled.Attributes exposing (href, id)
 import Icon exposing (IconBackground, boxBackground, calendarBackground, eyeBackground, heartBackground, iconSpan)
@@ -20,9 +20,8 @@ viewContents model =
     let
         style =
             [ displayFlexColumn
-            , borderSolidColor black
-            , borderTopBottomWidth standardBorderWidth
-            , borderRightLeftWidth zero
+            , borderTopBottomSolidColor black
+            , borderWidth standardBorderWidth
             , boxShadow5
                 zero
                 zero
@@ -30,7 +29,6 @@ viewContents model =
                 (px 1)
                 paleGreen
             , paddingTopBottom <| em 2.0
-            , marginBottom <| em 3.0
             ]
     in
     styled nav
@@ -119,12 +117,11 @@ viewLinkButton fragmentID linkText =
     let
         style =
             [ Button.border
+            , Button.sizeMedium
             , Button.text
             , marginTopBottom <| px 10
             , marginRightLeft <| px 18
-            , paddingRightLeft <| em 0.8
             , minWidth <| em 6.2
-            , lineHeight <| num 2.1
             ]
     in
     styled a

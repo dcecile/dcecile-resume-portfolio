@@ -2,19 +2,20 @@ module CssShorthand
     exposing
         ( animation
         , batchMap
-        , borderRightLeftWidth
+        , borderBottomSolidColor
         , borderSolidColor
-        , borderTopBottomWidth
+        , borderTopBottomSolidColor
         , displayFlexColumn
         , displayFlexRow
         , displayFlexRowReverse
+        , filter
         , marginRightLeft
         , marginTopBottom
         , paddingRightLeft
         , paddingTopBottom
         )
 
-import Css exposing (Color, Length, LengthOrAuto, Style, batch, borderBottomWidth, borderColor, borderLeftWidth, borderRightWidth, borderStyle, borderTopWidth, column, displayFlex, flexDirection, marginBottom, marginLeft, marginRight, marginTop, paddingBottom, paddingLeft, paddingRight, paddingTop, property, row, rowReverse, solid)
+import Css exposing (Color, Length, LengthOrAuto, Style, batch, borderBottomStyle, borderColor, borderStyle, borderTopStyle, column, displayFlex, flexDirection, marginBottom, marginLeft, marginRight, marginTop, paddingBottom, paddingLeft, paddingRight, paddingTop, property, row, rowReverse, solid, visited)
 
 
 animation : String -> Style
@@ -22,9 +23,9 @@ animation =
     property "animation"
 
 
-borderRightLeftWidth : Length compatible units -> Style
-borderRightLeftWidth =
-    batchMap [ borderRightWidth, borderLeftWidth ]
+borderBottomSolidColor : Color -> Style
+borderBottomSolidColor color =
+    batch [ borderBottomStyle solid, borderColor color ]
 
 
 borderSolidColor : Color -> Style
@@ -32,9 +33,9 @@ borderSolidColor color =
     batch [ borderStyle solid, borderColor color ]
 
 
-borderTopBottomWidth : Length compatible units -> Style
-borderTopBottomWidth =
-    batchMap [ borderTopWidth, borderBottomWidth ]
+borderTopBottomSolidColor : Color -> Style
+borderTopBottomSolidColor color =
+    batch [ borderTopStyle solid, borderBottomStyle solid, borderColor color ]
 
 
 displayFlexColumn : Style
@@ -50,6 +51,11 @@ displayFlexRow =
 displayFlexRowReverse : Style
 displayFlexRowReverse =
     batch [ displayFlex, flexDirection rowReverse ]
+
+
+filter : String -> Style
+filter =
+    property "filter"
 
 
 paddingRightLeft : Length compatible units -> Style

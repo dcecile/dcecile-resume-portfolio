@@ -202,11 +202,10 @@ viewCallToActionButton : HtmlTag Msg
 viewCallToActionButton =
     let
         style =
-            [ marginRightLeft <| px 18
-            , paddingRightLeft <| em 1.1
-            , lineHeight <| num 2.4
-            , Button.border
+            [ Button.border
+            , Button.sizeLarge
             , Button.text
+            , marginRightLeft <| px 18
             ]
     in
     styled a style
