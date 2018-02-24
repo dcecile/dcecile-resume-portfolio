@@ -52,7 +52,7 @@ iconSpan marginLength iconSource iconBackground =
             , width iconSize
             , height iconSize
             , marginRightLeft marginLength
-            , opacity << num <| 1 - toFloat blackLevel / 255
+            , opacity <| num (1 - toFloat blackLevel / 255)
             ]
     in
     styled span

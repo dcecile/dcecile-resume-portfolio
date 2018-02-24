@@ -10,11 +10,12 @@ import Html.Styled exposing (Html, div, styled)
 import Model exposing (Model)
 import Msg exposing (Msg)
 import View.Contents exposing (viewContents)
-import View.Frame exposing (viewFrame)
 import View.Footer exposing (viewFooter)
+import View.Frame exposing (viewFrame)
 import View.Intro exposing (viewIntro)
 import View.Links exposing (viewLinks)
 import View.Metrics exposing (standardLineHeight, standardScreenFontSize)
+import View.Section exposing (viewSection)
 
 
 viewScreen : Model -> Html Msg
@@ -37,5 +38,9 @@ viewScreen model =
         , viewIntro model
         , viewLinks model
         , viewContents model
+        , viewSection model .mindsets
+        , viewSection model .tech
+        , viewSection model .projects
+        , viewSection model .work
         , viewFooter
         ]

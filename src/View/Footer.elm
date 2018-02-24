@@ -3,7 +3,7 @@ module View.Footer
         ( viewFooter
         )
 
-import Css exposing (alignSelf, bold, borderWidth, center, color, em, fontSize, fontStyle, fontWeight, italic, lineHeight, marginBottom, marginTop, num, px, zero)
+import Css exposing (alignSelf, bold, borderWidth, center, color, em, fontSize, fontStyle, fontWeight, italic, lineHeight, marginBottom, marginTop, num, px)
 import CssShorthand exposing (borderBottomSolidColor, displayFlexColumn, marginTopBottom, paddingRightLeft)
 import Html.Styled exposing (Html, a, br, footer, h2, p, styled, text)
 import Html.Styled.Attributes exposing (href, id)
@@ -61,10 +61,8 @@ viewButton =
     in
     styled a
         style
-        [ href <| "#top"
-        ]
-        [ text "Go back to the top"
-        ]
+        [ href <| "#top" ]
+        [ text "Go back to the top" ]
 
 
 viewInfo : Html Msg
@@ -90,8 +88,7 @@ viewInfo =
             [ href "http://elm-lang.org/"
             , targetBlank
             ]
-            [ text "Elm"
-            ]
+            [ text "Elm" ]
         , text " "
         , viewElmLogo
         , br [] []
@@ -100,6 +97,5 @@ viewInfo =
             [ href "https://github.com/dcecile/dcecile-resume-portfolio"
             , targetBlank
             ]
-            [ text "(view source)"
-            ]
+            [ text "(view source)" ]
         ]

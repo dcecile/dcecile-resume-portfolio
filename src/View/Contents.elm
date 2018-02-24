@@ -5,8 +5,7 @@ module View.Contents
 
 import Css exposing (alignItems, bold, borderWidth, boxShadow5, center, em, fontSize, fontWeight, justifyContent, lineHeight, marginBottom, marginTop, minWidth, num, px, zero)
 import CssShorthand exposing (borderTopBottomSolidColor, displayFlexColumn, displayFlexRow, displayFlexRowReverse, marginRightLeft, marginTopBottom, paddingRightLeft, paddingTopBottom)
-import Data exposing (Data)
-import Data.Section exposing (SectionData)
+import Data exposing (SectionDataSelector)
 import Html.Styled exposing (Html, a, div, h2, nav, span, styled, text)
 import Html.Styled.Attributes exposing (href, id)
 import Icon exposing (IconBackground, IconSource, iconSpan)
@@ -90,7 +89,7 @@ viewLinksColumn =
     styled div style []
 
 
-viewLink : Model -> Bool -> (Data -> SectionData) -> Html Msg
+viewLink : Model -> Bool -> SectionDataSelector -> Html Msg
 viewLink model reverse sectionDataSelector =
     let
         sectionData =
@@ -131,7 +130,5 @@ viewLinkButton fragmentID linkText =
     in
     styled a
         style
-        [ href <| "#" ++ fragmentID
-        ]
-        [ text linkText
-        ]
+        [ href <| "#" ++ fragmentID ]
+        [ text linkText ]
