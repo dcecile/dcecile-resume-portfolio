@@ -5,8 +5,8 @@ module View.Section
         , viewSectionParagraph
         )
 
-import Css exposing (backgroundPosition2, bold, borderWidth, em, fontSize, fontStyle, fontWeight, height, left, marginBottom, marginLeft, marginTop, num, opacity, textAlign, top, zero)
-import CssShorthand exposing (borderBottomSolidColor, displayFlexColumn, marginRightLeft)
+import Css exposing (backgroundPosition2, bold, borderWidth, center, em, flexBasis, fontSize, fontStyle, fontWeight, height, justifyContent, left, marginBottom, marginLeft, marginTop, num, opacity, textAlign, top, zero)
+import CssShorthand exposing (borderBottomSolidColor, displayFlexColumn, displayFlexRow, marginRightLeft)
 import Data.Section exposing (SectionData)
 import Html.Styled exposing (Html, div, h2, p, section, styled, text)
 import Html.Styled.Attributes exposing (id)
@@ -21,7 +21,8 @@ viewSection : Model -> SectionData a -> List (Html Msg) -> Html Msg
 viewSection model sectionData nodes =
     let
         style =
-            [ displayFlexColumn
+            [ displayFlexRow
+            , justifyContent center
             , borderBottomSolidColor black
             , borderWidth standardBorderWidth
             ]
@@ -34,7 +35,18 @@ viewSection model sectionData nodes =
     styled section
         style
         [ id sectionData.id ]
-        (requiredNodes ++ nodes)
+        [ viewContent <| requiredNodes ++ nodes ]
+
+
+viewContent : List (Html Msg) -> Html Msg
+viewContent =
+    let
+        style =
+            [ displayFlexColumn
+            , flexBasis <| em 33
+            ]
+    in
+    styled div style []
 
 
 viewBackgroundIcon : IconSource -> IconBackground -> Html Msg
