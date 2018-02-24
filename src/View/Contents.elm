@@ -5,7 +5,8 @@ module View.Contents
 
 import Css exposing (alignItems, bold, borderWidth, boxShadow5, center, em, fontSize, fontWeight, justifyContent, lineHeight, marginBottom, marginTop, minWidth, num, px, zero)
 import CssShorthand exposing (borderTopBottomSolidColor, displayFlexColumn, displayFlexRow, displayFlexRowReverse, marginRightLeft, marginTopBottom, paddingRightLeft, paddingTopBottom)
-import Data exposing (SectionDataSelector)
+import Data exposing (Data)
+import Data.Section exposing (SectionData)
 import Html.Styled exposing (Html, a, div, h2, nav, span, styled, text)
 import Html.Styled.Attributes exposing (href, id)
 import Icon exposing (IconBackground, IconSource, iconSpan)
@@ -89,7 +90,7 @@ viewLinksColumn =
     styled div style []
 
 
-viewLink : Model -> Bool -> SectionDataSelector -> Html Msg
+viewLink : Model -> Bool -> (Data -> SectionData a) -> Html Msg
 viewLink model reverse sectionDataSelector =
     let
         sectionData =

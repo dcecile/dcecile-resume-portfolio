@@ -9,7 +9,7 @@ import Icon exposing (calendarBackground)
 
 
 type alias WorkData =
-    SectionData
+    SectionData {}
 
 
 initWorkData : WorkData

@@ -10,6 +10,8 @@ import Icon exposing (eyeBackground)
 
 type alias MindsetsData =
     SectionData
+        { intro : String
+        }
 
 
 initMindsetsData : MindsetsData
@@ -17,4 +19,5 @@ initMindsetsData =
     { id = "mindsets"
     , name = "Mindsets"
     , iconBackground = eyeBackground
+    , intro = "From my toolbox of paradigms and perspectives, these are my most strongly-developed mindsets:"
     }

@@ -6,8 +6,9 @@ module Data.Section
 import Icon exposing (IconBackground)
 
 
-type alias SectionData =
-    { id : String
-    , name : String
-    , iconBackground : IconBackground
+type alias SectionData a =
+    { a
+        | id : String
+        , name : String
+        , iconBackground : IconBackground
     }

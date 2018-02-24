@@ -9,7 +9,7 @@ import Icon exposing (heartBackground)
 
 
 type alias ProjectsData =
-    SectionData
+    SectionData {}
 
 
 initProjectsData : ProjectsData

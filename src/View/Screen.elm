@@ -15,7 +15,8 @@ import View.Frame exposing (viewFrame)
 import View.Intro exposing (viewIntro)
 import View.Links exposing (viewLinks)
 import View.Metrics exposing (standardLineHeight, standardScreenFontSize)
-import View.Section exposing (viewSection)
+import View.Mindsets exposing (viewMindsets)
+import View.Section exposing (viewSection, viewSectionBlank)
 
 
 viewScreen : Model -> Html Msg
@@ -38,9 +39,9 @@ viewScreen model =
         , viewIntro model
         , viewLinks model
         , viewContents model
-        , viewSection model .mindsets
-        , viewSection model .tech
-        , viewSection model .projects
-        , viewSection model .work
+        , viewMindsets model
+        , viewSection model model.data.tech [ viewSectionBlank ]
+        , viewSection model model.data.projects [ viewSectionBlank ]
+        , viewSection model model.data.work [ viewSectionBlank ]
         , viewFooter
         ]

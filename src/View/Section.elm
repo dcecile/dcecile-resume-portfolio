@@ -1,11 +1,13 @@
 module View.Section
     exposing
         ( viewSection
+        , viewSectionBlank
+        , viewSectionParagraph
         )
 
 import Css exposing (backgroundPosition2, bold, borderWidth, em, fontSize, fontStyle, fontWeight, height, left, marginBottom, marginLeft, marginTop, num, opacity, textAlign, top, zero)
-import CssShorthand exposing (borderBottomSolidColor, displayFlexColumn)
-import Data exposing (SectionDataSelector)
+import CssShorthand exposing (borderBottomSolidColor, displayFlexColumn, marginRightLeft)
+import Data.Section exposing (SectionData)
 import Html.Styled exposing (Html, div, h2, p, section, styled, text)
 import Html.Styled.Attributes exposing (id)
 import Icon exposing (IconBackground, IconSource)
@@ -15,24 +17,24 @@ import View.Colors exposing (black)
 import View.Metrics exposing (standardBorderWidth)
 
 
-viewSection : Model -> SectionDataSelector -> Html Msg
-viewSection model sectionDataSelector =
+viewSection : Model -> SectionData a -> List (Html Msg) -> Html Msg
+viewSection model sectionData nodes =
     let
-        sectionData =
-            sectionDataSelector model.data
-
         style =
             [ displayFlexColumn
             , borderBottomSolidColor black
             , borderWidth standardBorderWidth
             ]
+
+        requiredNodes =
+            [ viewBackgroundIcon model.iconSource sectionData.iconBackground
+            , viewHeader sectionData.name
+            ]
     in
     styled section
         style
         [ id sectionData.id ]
-        [ viewBackgroundIcon model.iconSource sectionData.iconBackground
-        , viewHeader sectionData.name
-        ]
+        (requiredNodes ++ nodes)
 
 
 viewBackgroundIcon : IconSource -> IconBackground -> Html Msg
@@ -62,8 +64,8 @@ viewHeader headerText =
     let
         style =
             [ marginTop <| em 1.2
-            , marginBottom <| em 8.0
-            , marginLeft <| em 1.3
+            , marginRightLeft <| em 1.3
+            , marginBottom <| em 0.5
             , textAlign left
             , fontWeight bold
             , fontSize <| em 1.4
@@ -73,3 +75,32 @@ viewHeader headerText =
         style
         []
         [ text headerText ]
+
+
+viewSectionParagraph : String -> Html Msg
+viewSectionParagraph paragraphText =
+    let
+        style =
+            [ marginTop <| em 0.5
+            , marginRightLeft <| em 3.5
+            , marginBottom <| em 2.5
+            , textAlign left
+            ]
+    in
+    styled p
+        style
+        []
+        [ text paragraphText ]
+
+
+viewSectionBlank : Html Msg
+viewSectionBlank =
+    let
+        style =
+            [ marginBottom <| em 8.0
+            ]
+    in
+    styled div
+        style
+        []
+        []

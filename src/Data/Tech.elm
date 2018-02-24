@@ -9,7 +9,7 @@ import Icon exposing (boxBackground)
 
 
 type alias TechData =
-    SectionData
+    SectionData {}
 
 
 initTechData : TechData
