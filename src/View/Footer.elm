@@ -25,7 +25,7 @@ viewFooter =
     in
     styled footer
         style
-        [ id "footer" ]
+        [ id "fin" ]
         [ viewHeader
         , viewButton
         , viewInfo

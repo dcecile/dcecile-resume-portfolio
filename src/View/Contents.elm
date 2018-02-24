@@ -5,9 +5,11 @@ module View.Contents
 
 import Css exposing (alignItems, bold, borderWidth, boxShadow5, center, em, fontSize, fontWeight, justifyContent, lineHeight, marginBottom, marginTop, minWidth, num, px, zero)
 import CssShorthand exposing (borderTopBottomSolidColor, displayFlexColumn, displayFlexRow, displayFlexRowReverse, marginRightLeft, marginTopBottom, paddingRightLeft, paddingTopBottom)
+import Data exposing (Data)
+import Data.Section exposing (SectionData)
 import Html.Styled exposing (Html, a, div, h2, nav, span, styled, text)
 import Html.Styled.Attributes exposing (href, id)
-import Icon exposing (IconBackground, boxBackground, calendarBackground, eyeBackground, heartBackground, iconSpan)
+import Icon exposing (IconBackground, IconSource, iconSpan)
 import Model exposing (Model)
 import Msg exposing (Msg)
 import View.Button as Button
@@ -68,12 +70,12 @@ viewLinks model =
         style
         []
         [ viewLinksColumn
-            [ viewLink model False "mindsets" "Mindsets" eyeBackground
-            , viewLink model False "tech-fluency" "Tech fluency" boxBackground
+            [ viewLink model False .mindsets
+            , viewLink model False .tech
             ]
         , viewLinksColumn
-            [ viewLink model True "side-projects" "Side projects" heartBackground
-            , viewLink model True "work-history" "Work history" calendarBackground
+            [ viewLink model True .projects
+            , viewLink model True .work
             ]
         ]
 
@@ -88,9 +90,12 @@ viewLinksColumn =
     styled div style []
 
 
-viewLink : Model -> Bool -> String -> String -> IconBackground -> Html Msg
-viewLink model reverse fragmentID linkText iconBackground =
+viewLink : Model -> Bool -> (Data -> SectionData) -> Html Msg
+viewLink model reverse sectionDataSelector =
     let
+        sectionData =
+            sectionDataSelector model.data
+
         style =
             [ if reverse then
                 displayFlexRowReverse
@@ -102,14 +107,14 @@ viewLink model reverse fragmentID linkText iconBackground =
     styled span
         style
         []
-        [ viewLinkIcon model iconBackground
-        , viewLinkButton fragmentID linkText
+        [ viewLinkIcon model.iconSource sectionData.iconBackground
+        , viewLinkButton sectionData.id sectionData.name
         ]
 
 
-viewLinkIcon : Model -> IconBackground -> Html Msg
+viewLinkIcon : IconSource -> IconBackground -> Html Msg
 viewLinkIcon =
-    .iconSource >> iconSpan zero
+    iconSpan zero
 
 
 viewLinkButton : String -> String -> Html Msg
