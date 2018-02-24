@@ -9,8 +9,8 @@ import Html.Styled.Attributes exposing (css)
 import Model exposing (Model)
 import Msg exposing (Msg)
 import View.Colors exposing (black)
-import View.Print exposing (viewPrint)
-import View.Screen exposing (viewScreen)
+import View.Portfolio exposing (viewPortfolio)
+import View.Resume exposing (viewResume)
 
 
 view : Model -> Html Msg
@@ -21,6 +21,6 @@ view model =
             , color black
             ]
         ]
-        [ viewScreen model
-        , viewPrint
+        [ viewPortfolio model
+        , viewResume
         ]

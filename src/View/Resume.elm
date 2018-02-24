@@ -1,6 +1,6 @@
-module View.Print
+module View.Resume
     exposing
-        ( viewPrint
+        ( viewResume
         )
 
 import Css exposing (borderBox, boxSizing, column, display, displayFlex, flexDirection, height, inches, justifyContent, minHeight, none, padding2, spaceBetween, vh)
@@ -11,8 +11,8 @@ import Html.Styled.Attributes exposing (css, href)
 import Msg exposing (Msg)
 
 
-viewPrint : Html Msg
-viewPrint =
+viewResume : Html Msg
+viewResume =
     div
         [ css
             [ display none

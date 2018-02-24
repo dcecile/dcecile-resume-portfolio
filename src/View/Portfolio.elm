@@ -1,10 +1,10 @@
-module View.Screen
+module View.Portfolio
     exposing
-        ( viewScreen
+        ( viewPortfolio
         )
 
 import Css exposing (alignItems, display, fontSize, lineHeight, none, num, stretch)
-import Css.Media exposing (only, screen, withMedia)
+import Css.Media exposing (print, withMedia)
 import CssShorthand exposing (displayFlexColumn)
 import Html.Styled exposing (Html, div, styled)
 import Model exposing (Model)
@@ -19,8 +19,8 @@ import View.Mindsets exposing (viewMindsets)
 import View.Section exposing (viewSection, viewSectionBlank)
 
 
-viewScreen : Model -> Html Msg
-viewScreen model =
+viewPortfolio : Model -> Html Msg
+viewPortfolio model =
     let
         style =
             [ display none
@@ -28,7 +28,7 @@ viewScreen model =
             , lineHeight <| num standardLineHeight
             , alignItems stretch
             , withMedia
-                [ only screen [] ]
+                [ Css.Media.not print [] ]
                 [ displayFlexColumn ]
             ]
     in
