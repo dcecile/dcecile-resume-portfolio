@@ -40,8 +40,8 @@ viewPortfolio model =
         , viewLinks model
         , viewContents model
         , viewMindsets model
-        , viewSection model model.data.tech [ viewSectionBlank ]
-        , viewSection model model.data.projects [ viewSectionBlank ]
-        , viewSection model model.data.work [ viewSectionBlank ]
+        , viewSection model.iconSource model.data.tech [ viewSectionBlank ]
+        , viewSection model.iconSource model.data.projects [ viewSectionBlank ]
+        , viewSection model.iconSource model.data.work [ viewSectionBlank ]
         , viewFooter
         ]

@@ -3,14 +3,13 @@ module View.Leaf
         ( viewLeaf
         )
 
-import Css exposing (Vw, height, num, opacity, vw, width)
+import Css exposing (Vw, height, num, opacity, px, vw, width)
 import CssShorthand exposing (animation, batchMap)
 import Msg exposing (Msg)
 import Svg.Styled exposing (Svg, g, path, styled, svg)
 import Svg.Styled.Attributes exposing (d)
 import SvgShorthand exposing (fill, flipAxes, rotate, scale, stroke, strokeWidthUnscaled, transform, translate, viewBoxSquare)
 import View.Colors exposing (extraPaleGreen, green)
-import View.Metrics exposing (standardBorderWidth)
 
 
 leafSize : Vw
@@ -96,7 +95,7 @@ viewLeafPath : Bool -> Float -> Float -> Float -> Float -> ( Float, Float ) -> S
 viewLeafPath reverseAnimation delay parentSize size degrees ( x, y ) =
     let
         style =
-            [ strokeWidthUnscaled standardBorderWidth (parentSize * size)
+            [ strokeWidthUnscaled (px 2) (parentSize * size)
             , animation <|
                 String.join " "
                     [ "sway"

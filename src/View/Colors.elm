@@ -5,6 +5,7 @@ module View.Colors
         , extraPaleGreen
         , green
         , paleGreen
+        , white
         )
 
 import Css exposing (Color, hex, rgb)
@@ -33,3 +34,8 @@ extraPaleGreen =
 paleGreen : Color
 paleGreen =
     hex "#a5deb7"
+
+
+white : Color
+white =
+    hex "#ffffff"

@@ -6,13 +6,14 @@ module SvgShorthand
         , rotate
         , scale
         , stroke
+        , strokeWidth
         , strokeWidthUnscaled
         , transform
         , translate
         , viewBoxSquare
         )
 
-import Css exposing (Color, ExplicitLength, Style, Value, property)
+import Css exposing (ColorValue, ExplicitLength, Style, Value, property)
 import Html.Styled.Attributes exposing (attribute)
 import Svg.Styled exposing (Attribute, Svg)
 
@@ -26,12 +27,12 @@ valueProperty name =
     property name << .value
 
 
-fill : Color -> Style
+fill : ColorValue compatible -> Style
 fill =
     valueProperty "fill"
 
 
-stroke : Color -> Style
+stroke : ColorValue compatible -> Style
 stroke =
     valueProperty "stroke"
 

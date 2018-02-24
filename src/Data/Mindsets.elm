@@ -11,6 +11,7 @@ import Icon exposing (eyeBackground)
 type alias MindsetsData =
     SectionData
         { intro : String
+        , items : List (String)
         }
 
 
@@ -19,5 +20,13 @@ initMindsetsData =
     { id = "mindsets"
     , name = "Mindsets"
     , iconBackground = eyeBackground
-    , intro = "From my toolbox of paradigms and perspectives, these are my most strongly-developed mindsets:"
+    , intro =
+        "From my toolbox of paradigms and perspectives, these are my most strongly-developed mindsets:"
+    , items =
+        [ "Learning"
+        , "Teaching"
+        , "Analyzing"
+        , "Coordinating"
+        , "Improving"
+        ]
     }

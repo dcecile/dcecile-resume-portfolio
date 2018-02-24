@@ -11,14 +11,13 @@ import Data.Section exposing (SectionData)
 import Html.Styled exposing (Html, div, h2, p, section, styled, text)
 import Html.Styled.Attributes exposing (id)
 import Icon exposing (IconBackground, IconSource)
-import Model exposing (Model)
 import Msg exposing (Msg)
 import View.Colors exposing (black)
 import View.Metrics exposing (standardBorderWidth)
 
 
-viewSection : Model -> SectionData a -> List (Html Msg) -> Html Msg
-viewSection model sectionData nodes =
+viewSection : IconSource -> SectionData a -> List (Html Msg) -> Html Msg
+viewSection iconSource sectionData nodes =
     let
         style =
             [ displayFlexRow
@@ -28,7 +27,7 @@ viewSection model sectionData nodes =
             ]
 
         requiredNodes =
-            [ viewBackgroundIcon model.iconSource sectionData.iconBackground
+            [ viewBackgroundIcon iconSource sectionData.iconBackground
             , viewHeader sectionData.name
             ]
     in
@@ -77,7 +76,7 @@ viewHeader headerText =
         style =
             [ marginTop <| em 1.2
             , marginRightLeft <| em 1.3
-            , marginBottom <| em 0.5
+            , marginBottom <| em 0.8
             , textAlign left
             , fontWeight bold
             , fontSize <| em 1.4
@@ -93,9 +92,9 @@ viewSectionParagraph : String -> Html Msg
 viewSectionParagraph paragraphText =
     let
         style =
-            [ marginTop <| em 0.5
+            [ marginTop zero
             , marginRightLeft <| em 3.5
-            , marginBottom <| em 2.5
+            , marginBottom <| em 1.5
             , textAlign left
             ]
     in

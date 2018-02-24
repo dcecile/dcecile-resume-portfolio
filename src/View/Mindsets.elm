@@ -3,10 +3,31 @@ module View.Mindsets
         ( viewMindsets
         )
 
-import Html.Styled exposing (Html)
+import Css exposing (Em, alignItems, backgroundColor, center, em, flexWrap, height, justifyContent, marginBottom, minWidth, width, wrap)
+import CssShorthand exposing (batchMap, displayFlexColumn, displayFlexRow, marginRightLeft, marginTopBottom)
+import Html.Styled exposing (Html, a, div, span, styled, text)
+import Html.Styled.Attributes exposing (href)
 import Model exposing (Model)
 import Msg exposing (Msg)
+import View.Button as Button
+import View.Colors exposing (white)
+import View.MindsetsCircle exposing (viewMindsetsCircle)
 import View.Section exposing (viewSection, viewSectionParagraph)
+
+
+itemSize : Em
+itemSize =
+    em 9.0
+
+
+itemButtonOffset : Em
+itemButtonOffset =
+    em -3.4
+
+
+itemButtonWidth : Em
+itemButtonWidth =
+    em 5.3
 
 
 viewMindsets : Model -> Html Msg
@@ -15,7 +36,72 @@ viewMindsets model =
         sectionData =
             model.data.mindsets
     in
-    viewSection model
+    viewSection
+        model.iconSource
         sectionData
         [ viewSectionParagraph sectionData.intro
+        , viewItems sectionData.items
         ]
+
+
+viewItems : List String -> Html Msg
+viewItems items =
+    let
+        style =
+            [ displayFlexRow
+            , flexWrap wrap
+            , justifyContent center
+            , marginBottom <| em 2.0
+            ]
+    in
+    styled div
+        style
+        []
+        (List.map viewItem items)
+
+
+viewItem : String -> Html Msg
+viewItem item =
+    let
+        style =
+            [ Button.text
+            , displayFlexColumn
+            , alignItems center
+            , batchMap [ width, height ] itemSize
+            , marginTopBottom <| em 0.4
+            , marginRightLeft <| em 0.8
+            ]
+    in
+    styled a
+        style
+        [ href "#" ]
+        [ viewItemBackground
+        , viewItemLink item
+        ]
+
+
+viewItemBackground : Html Msg
+viewItemBackground =
+    let
+        style =
+            [ batchMap [ width, height ] itemSize
+            , marginBottom itemButtonOffset
+            ]
+    in
+    viewMindsetsCircle style
+
+
+viewItemLink : String -> Html Msg
+viewItemLink item =
+    let
+        style =
+            [ Button.border
+            , Button.sizeMedium
+            , minWidth itemButtonWidth
+            , backgroundColor white
+            ]
+    in
+    styled span
+        style
+        []
+        [ text item ]
