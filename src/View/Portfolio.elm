@@ -16,6 +16,7 @@ import View.Intro exposing (viewIntro)
 import View.Links exposing (viewLinks)
 import View.Metrics exposing (standardLineHeight, standardScreenFontSize)
 import View.Mindsets exposing (viewMindsets)
+import View.Projects exposing (viewProjects)
 import View.Section exposing (viewSection, viewSectionBlank)
 import View.Tech exposing (viewTech)
 
@@ -42,7 +43,7 @@ viewPortfolio model =
         , viewContents model
         , viewMindsets model
         , viewTech model
-        , viewSection model.iconSource model.data.projects [ viewSectionBlank ]
+        , viewProjects model
         , viewSection model.iconSource model.data.work [ viewSectionBlank ]
         , viewFooter
         ]
