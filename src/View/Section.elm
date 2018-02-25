@@ -5,14 +5,14 @@ module View.Section
         , viewSectionParagraph
         )
 
-import Css exposing (backgroundPosition2, bold, borderWidth, center, em, flexBasis, fontSize, fontStyle, fontWeight, height, justifyContent, left, marginBottom, marginLeft, marginTop, num, opacity, textAlign, top, zero)
-import CssShorthand exposing (borderBottomSolidColor, displayFlexColumn, displayFlexRow, marginRightLeft)
+import Css exposing (backgroundPosition2, bold, borderWidth, boxShadow5, center, em, flexBasis, fontSize, fontStyle, fontWeight, height, justifyContent, left, marginBottom, marginLeft, marginTop, num, opacity, paddingBottom, px, textAlign, top, zero)
+import CssShorthand exposing (borderBottomSolidColor, displayFlexColumn, displayFlexRow, marginRightLeft, zIndexBackground)
 import Data.Section exposing (SectionData)
 import Html.Styled exposing (Html, div, h2, p, section, styled, text)
 import Html.Styled.Attributes exposing (id)
 import Icon exposing (IconBackground, IconSource)
 import Msg exposing (Msg)
-import View.Colors exposing (black)
+import View.Colors exposing (black, paleGreen)
 import View.Metrics exposing (standardBorderWidth)
 
 
@@ -24,6 +24,13 @@ viewSection iconSource sectionData nodes =
             , justifyContent center
             , borderBottomSolidColor black
             , borderWidth standardBorderWidth
+            , boxShadow5
+                zero
+                (px 1)
+                zero
+                zero
+                paleGreen
+            , paddingBottom <| em 1.5
             ]
 
         requiredNodes =
@@ -55,7 +62,8 @@ viewBackgroundIcon iconSource iconBackground =
             em 10
 
         style =
-            [ iconBackground iconSource
+            [ zIndexBackground
+            , iconBackground iconSource
             , backgroundPosition2 zero zero
             , height iconSize
             , marginTop <| em 0.8

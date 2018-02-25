@@ -4,7 +4,7 @@ module View.Frame
         )
 
 import Css exposing (height, justifyContent, marginBottom, spaceBetween, vh)
-import CssShorthand exposing (displayFlexColumn, displayFlexRow)
+import CssShorthand exposing (displayFlexColumn, displayFlexRow, zIndexBackground)
 import Html.Styled exposing (Html, div, styled)
 import Msg exposing (Msg)
 import View.Leaf exposing (viewLeaf)
@@ -14,7 +14,8 @@ viewFrame : Html Msg
 viewFrame =
     let
         style =
-            [ displayFlexColumn
+            [ zIndexBackground
+            , displayFlexColumn
             , justifyContent spaceBetween
             , marginBottom <| vh -100
             , height <| vh 100

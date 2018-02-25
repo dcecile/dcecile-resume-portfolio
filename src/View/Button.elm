@@ -3,6 +3,7 @@ module View.Button
         ( border
         , sizeLarge
         , sizeMedium
+        , sizeSmall
         , text
         )
 
@@ -24,6 +25,14 @@ border =
             zero
             (px -1)
             paleGreen
+        ]
+
+
+sizeSmall : Style
+sizeSmall =
+    batch
+        [ paddingRightLeft <| em 0.4
+        , lineHeight <| num 1.7
         ]
 
 

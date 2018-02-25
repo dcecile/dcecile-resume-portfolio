@@ -13,9 +13,10 @@ module CssShorthand
         , marginTopBottom
         , paddingRightLeft
         , paddingTopBottom
+        , zIndexBackground
         )
 
-import Css exposing (Color, Length, LengthOrAuto, Style, batch, borderBottomStyle, borderColor, borderStyle, borderTopStyle, column, displayFlex, flexDirection, marginBottom, marginLeft, marginRight, marginTop, paddingBottom, paddingLeft, paddingRight, paddingTop, property, row, rowReverse, solid, visited)
+import Css exposing (Color, Length, LengthOrAuto, Style, batch, borderBottomStyle, borderColor, borderStyle, borderTopStyle, column, displayFlex, flexDirection, int, marginBottom, marginLeft, marginRight, marginTop, paddingBottom, paddingLeft, paddingRight, paddingTop, property, row, rowReverse, solid, visited, zIndex)
 
 
 animation : String -> Style
@@ -82,3 +83,8 @@ batchMap : List (a -> Style) -> a -> Style
 batchMap partialStyles styleParameter =
     List.map ((|>) styleParameter) partialStyles
         |> batch
+
+
+zIndexBackground : Style
+zIndexBackground =
+    zIndex <| int -1

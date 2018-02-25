@@ -51,13 +51,12 @@ viewItems items =
             [ displayFlexRow
             , flexWrap wrap
             , justifyContent center
-            , marginBottom <| em 2.0
+            , marginBottom <| em 0.5
             ]
     in
-    styled div
-        style
-        []
-        (List.map viewItem items)
+    items
+        |> List.map viewItem
+        |> styled div style []
 
 
 viewItem : String -> Html Msg
