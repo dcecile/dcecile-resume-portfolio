@@ -1,7 +1,6 @@
 export default {
-  subscribe(app) {
+  subscribe(app, hashId) {
     app.ports.initScroll.subscribe(function() {
-      const hashId = window.location.hash.substr(1)
       const hashElement = document.getElementById(hashId)
       if (hashElement) {
         const alignToTop = true

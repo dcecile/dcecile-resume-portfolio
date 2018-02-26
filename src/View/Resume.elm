@@ -3,28 +3,28 @@ module View.Resume
         ( viewResume
         )
 
-import Css exposing (borderBox, boxSizing, column, display, displayFlex, flexDirection, height, inches, justifyContent, minHeight, none, padding2, spaceBetween, vh)
-import Css.Media exposing (only, print, screen, withMedia)
+import Css exposing (color, em, flexGrow, justifyContent, num, padding2, spaceBetween)
 import CssShorthand exposing (displayFlexColumn)
-import Html.Styled exposing (Html, a, div, h1, h2, text)
-import Html.Styled.Attributes exposing (css, href)
+import Html.Styled exposing (Html, a, div, h1, h2, styled, text)
+import Html.Styled.Attributes exposing (href)
 import Msg exposing (Msg)
+import View.Colors exposing (printBlack)
 
 
 viewResume : Html Msg
 viewResume =
-    div
-        [ css
-            [ display none
+    let
+        style =
+            [ displayFlexColumn
             , justifyContent spaceBetween
-            , minHeight (vh 100)
-            , padding2 (inches 1) (inches 1)
-            , boxSizing borderBox
-            , withMedia
-                [ only print [] ]
-                [ displayFlexColumn ]
+            , padding2 (em 3) (em 3)
+            , flexGrow <| num 1
+            , color printBlack
             ]
-        ]
+    in
+    styled div
+        style
+        []
         [ viewHeader
         , viewFooter
         ]

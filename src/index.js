@@ -10,12 +10,14 @@ import print from './Print'
 import registerServiceWorker from './registerServiceWorker'
 import scroll from './Scroll'
 
+const hashId = window.location.hash.substr(1)
 const node = document.getElementById('root')
 const app = Main.embed(node, {
-  iconSource: icon
+  iconSource: icon,
+  resumeDisplay: hashId === "resume"
 })
 
 print.subscribe(app)
-scroll.subscribe(app)
+scroll.subscribe(app, hashId)
 
 registerServiceWorker()

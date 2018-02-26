@@ -11,6 +11,8 @@
 7. Change a source file, and the app will reload automatically
 8. Run `./check-warnings.sh` to check all source files for warnings
 
+_Hint: to view the resume directly as a webpage (without printing), use the special `#resume` hash URL._
+
 For other operations, see the [Create Elm App README](https://github.com/halfzebra/create-elm-app/tree/master/template).
 
 ## Credits

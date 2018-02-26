@@ -13,12 +13,14 @@ import Scroll exposing (initScroll)
 
 type alias Flags =
     { iconSource : IconSource
+    , resumeDisplay : Bool
     }
 
 
 type alias Model =
     { data : Data
     , iconSource : IconSource
+    , resumeDisplay : Bool
     }
 
 
@@ -31,6 +33,7 @@ initModel : Flags -> Model
 initModel flags =
     { data = initData
     , iconSource = flags.iconSource
+    , resumeDisplay = flags.resumeDisplay
     }
 
 

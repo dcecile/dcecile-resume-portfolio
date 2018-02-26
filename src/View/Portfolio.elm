@@ -3,12 +3,13 @@ module View.Portfolio
         ( viewPortfolio
         )
 
-import Css exposing (alignItems, display, fontSize, lineHeight, none, num, stretch)
+import Css exposing (textAlign, center, alignItems, color, display, fontSize, lineHeight, none, num, stretch)
 import Css.Media exposing (print, withMedia)
 import CssShorthand exposing (displayFlexColumn)
 import Html.Styled exposing (Html, div, styled)
 import Model exposing (Model)
 import Msg exposing (Msg)
+import View.Colors exposing (black)
 import View.Contents exposing (viewContents)
 import View.Footer exposing (viewFooter)
 import View.Frame exposing (viewFrame)
@@ -29,6 +30,8 @@ viewPortfolio model =
             , fontSize standardScreenFontSize
             , lineHeight <| num standardLineHeight
             , alignItems stretch
+            , textAlign center
+            , color black
             , withMedia
                 [ Css.Media.not print [] ]
                 [ displayFlexColumn ]

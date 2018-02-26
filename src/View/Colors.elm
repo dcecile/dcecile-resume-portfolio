@@ -5,6 +5,7 @@ module View.Colors
         , extraPaleGreen
         , green
         , paleGreen
+        , printBlack
         , white
         )
 
@@ -34,6 +35,11 @@ extraPaleGreen =
 paleGreen : Color
 paleGreen =
     hex "#a5deb7"
+
+
+printBlack : Color
+printBlack =
+    hex "#000000"
 
 
 white : Color

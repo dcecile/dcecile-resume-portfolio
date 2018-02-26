@@ -14,6 +14,7 @@ module CssShorthand
         , noStyle
         , paddingRightLeft
         , paddingTopBottom
+        , willChangeTransform
         , zIndexBackground
         )
 
@@ -89,6 +90,11 @@ batchMap : List (a -> Style) -> a -> Style
 batchMap partialStyles styleParameter =
     List.map ((|>) styleParameter) partialStyles
         |> batch
+
+
+willChangeTransform : Style
+willChangeTransform =
+    property "will-change" "transform"
 
 
 zIndexBackground : Style
