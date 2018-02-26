@@ -11,6 +11,7 @@ module CssShorthand
         , filter
         , marginRightLeft
         , marginTopBottom
+        , noStyle
         , paddingRightLeft
         , paddingTopBottom
         , zIndexBackground
@@ -77,6 +78,11 @@ marginRightLeft =
 marginTopBottom : LengthOrAuto compatible -> Style
 marginTopBottom =
     batchMap [ marginTop, marginBottom ]
+
+
+noStyle : Style
+noStyle =
+    batch []
 
 
 batchMap : List (a -> Style) -> a -> Style

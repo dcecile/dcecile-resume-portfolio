@@ -12,7 +12,7 @@ import Msg exposing (Msg)
 import View.Button as Button
 import View.Colors exposing (white)
 import View.MindsetsCircle exposing (viewMindsetsCircle)
-import View.Section exposing (viewSection, viewSectionParagraph)
+import View.Section exposing (viewSection)
 
 
 itemSize : Em
@@ -39,8 +39,7 @@ viewMindsets model =
     viewSection
         model.iconSource
         sectionData
-        [ viewSectionParagraph sectionData.intro
-        , viewItems sectionData.items
+        [ viewItems sectionData.items
         ]
 
 

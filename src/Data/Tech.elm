@@ -10,9 +10,7 @@ import Icon exposing (boxBackground)
 
 type alias TechData =
     SectionData
-        { intro : String
-        , items : List String
-        , outro : String
+        { items : List String
         }
 
 
@@ -57,5 +55,5 @@ initTechData =
         , "WinForms"
         ]
     , outro =
-        "Part of your tech stack not listed? Great! I’m confident in my ability to pick new things up quickly."
+        Just "Part of your tech stack not listed? Great! I’m confident in my ability to pick new things up quickly."
     }

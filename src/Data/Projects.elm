@@ -11,8 +11,7 @@ import Icon exposing (heartBackground)
 
 type alias ProjectsData =
     SectionData
-        { intro : String
-        , items : List ProjectsItemData
+        { items : List ProjectsItemData
         }
 
 
@@ -88,4 +87,5 @@ initProjectsData =
             "My portfolio and resume"
             "https://github.com/dcecile/dcecile-resume-portfolio"
         ]
+    , outro = Nothing
     }

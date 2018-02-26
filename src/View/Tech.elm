@@ -12,7 +12,7 @@ import Model exposing (Model)
 import Msg exposing (Msg)
 import View.Button as Button
 import View.Colors exposing (paleGreen)
-import View.Section exposing (viewSection, viewSectionParagraph)
+import View.Section exposing (viewSection)
 
 
 viewTech : Model -> Html Msg
@@ -24,9 +24,7 @@ viewTech model =
     viewSection
         model.iconSource
         sectionData
-        [ viewSectionParagraph sectionData.intro
-        , viewItems sectionData.items
-        , viewSectionParagraph sectionData.outro
+        [ viewItems sectionData.items
         ]
 
 

@@ -10,8 +10,7 @@ import Icon exposing (eyeBackground)
 
 type alias MindsetsData =
     SectionData
-        { intro : String
-        , items : List (String)
+        { items : List String
         }
 
 
@@ -29,4 +28,5 @@ initMindsetsData =
         , "Coordinating"
         , "Improving"
         ]
+    , outro = Nothing
     }

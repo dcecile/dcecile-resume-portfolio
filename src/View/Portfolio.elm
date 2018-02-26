@@ -17,8 +17,8 @@ import View.Links exposing (viewLinks)
 import View.Metrics exposing (standardLineHeight, standardScreenFontSize)
 import View.Mindsets exposing (viewMindsets)
 import View.Projects exposing (viewProjects)
-import View.Section exposing (viewSection, viewSectionBlank)
 import View.Tech exposing (viewTech)
+import View.Work exposing (viewWork)
 
 
 viewPortfolio : Model -> Html Msg
@@ -44,6 +44,6 @@ viewPortfolio model =
         , viewMindsets model
         , viewTech model
         , viewProjects model
-        , viewSection model.iconSource model.data.work [ viewSectionBlank ]
+        , viewWork model
         , viewFooter
         ]

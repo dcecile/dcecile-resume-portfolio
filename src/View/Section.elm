@@ -1,8 +1,6 @@
 module View.Section
     exposing
         ( viewSection
-        , viewSectionBlank
-        , viewSectionParagraph
         )
 
 import Css exposing (backgroundPosition2, bold, borderWidth, boxShadow5, center, em, flexBasis, fontSize, fontStyle, fontWeight, height, justifyContent, left, marginBottom, marginLeft, marginTop, num, opacity, paddingBottom, px, textAlign, top, zero)
@@ -33,15 +31,22 @@ viewSection iconSource sectionData nodes =
             , paddingBottom <| em 1.5
             ]
 
-        requiredNodes =
+        requiredNodesBefore =
             [ viewBackgroundIcon iconSource sectionData.iconBackground
             , viewHeader sectionData.name
+            , viewParagraph sectionData.intro
             ]
+
+        requiredNodesAfter =
+            sectionData.outro
+                |> Maybe.map viewParagraph
+                |> Maybe.map List.singleton
+                |> Maybe.withDefault []
     in
     styled section
         style
         [ id sectionData.id ]
-        [ viewContent <| requiredNodes ++ nodes ]
+        [ viewContent <| requiredNodesBefore ++ nodes ++ requiredNodesAfter ]
 
 
 viewContent : List (Html Msg) -> Html Msg
@@ -96,8 +101,8 @@ viewHeader headerText =
         [ text headerText ]
 
 
-viewSectionParagraph : String -> Html Msg
-viewSectionParagraph paragraphText =
+viewParagraph : String -> Html Msg
+viewParagraph paragraphText =
     let
         style =
             [ marginTop zero
@@ -110,16 +115,3 @@ viewSectionParagraph paragraphText =
         style
         []
         [ text paragraphText ]
-
-
-viewSectionBlank : Html Msg
-viewSectionBlank =
-    let
-        style =
-            [ marginBottom <| em 8.0
-            ]
-    in
-    styled div
-        style
-        []
-        []
