@@ -29,7 +29,7 @@ initProjectsData =
     , name = "Side projects"
     , iconBackground = heartBackground
     , intro =
-        "I believe software is an amazing medium, and curiosity drives me to learn and create more of it:"
+        "I see software as a medium with amazing potential, and curiosity drives me to learn and create more of it:"
     , items =
         [ ProjectsItemData
             "Forks"
