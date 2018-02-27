@@ -6,7 +6,6 @@ module Data.Projects
         )
 
 import Data.Section exposing (SectionData)
-import Icon exposing (heartBackground)
 
 
 type alias ProjectsData =
@@ -27,7 +26,7 @@ initProjectsData : ProjectsData
 initProjectsData =
     { id = "projects"
     , name = "Side projects"
-    , iconBackground = heartBackground
+    , iconBackground = .heart
     , intro =
         "I see software as a medium with amazing potential, and curiosity drives me to learn and create more of it:"
     , items =

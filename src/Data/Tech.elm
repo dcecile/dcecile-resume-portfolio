@@ -5,7 +5,6 @@ module Data.Tech
         )
 
 import Data.Section exposing (SectionData)
-import Icon exposing (boxBackground)
 
 
 type alias TechData =
@@ -18,7 +17,7 @@ initTechData : TechData
 initTechData =
     { id = "tech"
     , name = "Tech fluency"
-    , iconBackground = boxBackground
+    , iconBackground = .box
     , intro =
         "I’m always looking for new opportunities to learn, so my list of productive-use technologies keeps growing:"
     , items =

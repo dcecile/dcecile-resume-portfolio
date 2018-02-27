@@ -5,7 +5,6 @@ module Data.Mindsets
         )
 
 import Data.Section exposing (SectionData)
-import Icon exposing (eyeBackground)
 
 
 type alias MindsetsData =
@@ -18,7 +17,7 @@ initMindsetsData : MindsetsData
 initMindsetsData =
     { id = "mindsets"
     , name = "Mindsets"
-    , iconBackground = eyeBackground
+    , iconBackground = .eye
     , intro =
         "From my toolbox of paradigms and perspectives, these are my most strongly-developed mindsets:"
     , items =

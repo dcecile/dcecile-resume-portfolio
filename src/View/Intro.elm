@@ -8,7 +8,7 @@ import CssShorthand exposing (displayFlexColumn, displayFlexRow, displayFlexRowR
 import Html.Styled exposing (Html, a, div, h1, header, main_, p, span, styled, text)
 import Html.Styled.Attributes exposing (href)
 import HtmlShorthand exposing (HtmlTag, hrefHash, onClickPreventDefault, targetBlank)
-import Icon exposing (IconBackground, IconSource, iconSpan, mailBackground, printerBackground)
+import Icon exposing (IconBackground, IconSource, iconSpan)
 import Model exposing (Model)
 import Msg exposing (Msg(Print))
 import View.Button as Button
@@ -165,14 +165,14 @@ viewCallsToAction iconSource emailAddress =
         []
         [ viewCallToAction iconSource
             displayFlexRow
-            mailBackground
+            .mail
             [ href <| "mailto:" ++ emailAddress ++ "?subject=Hi"
             , targetBlank
             ]
             [ text "Send me an email" ]
         , viewCallToAction iconSource
             displayFlexRowReverse
-            printerBackground
+            .printer
             [ hrefHash
             , onClickPreventDefault Print
             ]

@@ -6,7 +6,6 @@ module Data.Work
         )
 
 import Data.Section exposing (SectionData)
-import Icon exposing (calendarBackground)
 
 
 type alias WorkData =
@@ -28,7 +27,7 @@ initWorkData : WorkData
 initWorkData =
     { id = "work"
     , name = "Work history"
-    , iconBackground = calendarBackground
+    , iconBackground = .calendar
     , intro =
         "I’ve got 10 years of experience writing software, and I’m looking to add the name of a new team to this list:"
     , largeItems =

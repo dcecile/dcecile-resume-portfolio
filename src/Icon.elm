@@ -2,18 +2,8 @@ module Icon
     exposing
         ( IconBackground
         , IconSource
-        , boxBackground
-        , calendarBackground
-        , eyeBackground
-        , fiveHundredPxBackground
-        , githubBackground
-        , heartBackground
         , iconSpan
-        , linkedinBackground
-        , mailBackground
-        , printerBackground
-        , stackOverflowBackground
-        , twitterBackground
+        , iconStyle
         )
 
 import Css exposing (LengthOrAuto, Style, backgroundImage, backgroundOrigin, backgroundPosition, backgroundRepeat, backgroundSize, batch, center, contain, contentBox, height, noRepeat, num, opacity, px, url, width)
@@ -38,7 +28,7 @@ type alias IconSource =
 
 
 type alias IconBackground =
-    IconSource -> Style
+    IconSource -> String
 
 
 iconSpan : LengthOrAuto compatible -> IconSource -> IconBackground -> Html msg
@@ -48,7 +38,7 @@ iconSpan marginLength iconSource iconBackground =
             px 24
 
         style =
-            [ iconBackground iconSource
+            [ iconStyle iconSource iconBackground
             , width iconSize
             , height iconSize
             , marginRightLeft marginLength
@@ -61,67 +51,12 @@ iconSpan marginLength iconSource iconBackground =
         []
 
 
-iconBackground : (IconSource -> String) -> IconBackground
-iconBackground iconSelector iconSource =
+iconStyle : IconSource -> IconBackground -> Style
+iconStyle iconSource iconBackground =
     batch
-        [ backgroundImage <| url (iconSelector iconSource)
+        [ backgroundImage <| url (iconBackground iconSource)
         , backgroundRepeat noRepeat
         , backgroundPosition center
         , backgroundSize contain
         , backgroundOrigin contentBox
         ]
-
-
-boxBackground : IconBackground
-boxBackground =
-    iconBackground .box
-
-
-calendarBackground : IconBackground
-calendarBackground =
-    iconBackground .calendar
-
-
-eyeBackground : IconBackground
-eyeBackground =
-    iconBackground .eye
-
-
-fiveHundredPxBackground : IconBackground
-fiveHundredPxBackground =
-    iconBackground .fiveHundredPx
-
-
-githubBackground : IconBackground
-githubBackground =
-    iconBackground .github
-
-
-heartBackground : IconBackground
-heartBackground =
-    iconBackground .heart
-
-
-linkedinBackground : IconBackground
-linkedinBackground =
-    iconBackground .linkedin
-
-
-mailBackground : IconBackground
-mailBackground =
-    iconBackground .mail
-
-
-printerBackground : IconBackground
-printerBackground =
-    iconBackground .printer
-
-
-stackOverflowBackground : IconBackground
-stackOverflowBackground =
-    iconBackground .stackOverflow
-
-
-twitterBackground : IconBackground
-twitterBackground =
-    iconBackground .twitter

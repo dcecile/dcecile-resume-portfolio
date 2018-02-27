@@ -9,7 +9,7 @@ import CssShorthand exposing (displayFlexColumn, displayFlexRow, marginRightLeft
 import Html.Styled exposing (Html, a, div, h2, nav, styled, text)
 import Html.Styled.Attributes exposing (href, title)
 import HtmlShorthand exposing (ariaLabel, targetBlank)
-import Icon exposing (IconBackground, fiveHundredPxBackground, githubBackground, linkedinBackground, stackOverflowBackground, twitterBackground)
+import Icon exposing (IconBackground, iconStyle)
 import Model exposing (Model)
 import Msg exposing (Msg)
 import View.Button as Button
@@ -120,11 +120,11 @@ viewLinkList model =
     styled div
         style
         []
-        [ viewLink model "GitHub" githubBackground "https://github.com/dcecile"
-        , viewLink model "LinkedIn" linkedinBackground "https://www.linkedin.com/in/dancecile"
-        , viewLink model "Stack Overflow" stackOverflowBackground "https://stackoverflow.com/users/207321/dan-cecile?tab=profile"
-        , viewLink model "Twitter" twitterBackground "https://twitter.com/dancecile"
-        , viewLink model "500px" fiveHundredPxBackground "https://500px.com/dancecile"
+        [ viewLink model "GitHub" .github "https://github.com/dcecile"
+        , viewLink model "LinkedIn" .linkedin "https://www.linkedin.com/in/dancecile"
+        , viewLink model "Stack Overflow" .stackOverflow "https://stackoverflow.com/users/207321/dan-cecile?tab=profile"
+        , viewLink model "Twitter" .twitter "https://twitter.com/dancecile"
+        , viewLink model "500px" .fiveHundredPx "https://500px.com/dancecile"
         ]
 
 
@@ -132,7 +132,7 @@ viewLink : Model -> String -> IconBackground -> String -> Html Msg
 viewLink model name iconBackground url =
     let
         style =
-            [ iconBackground model.iconSource
+            [ iconStyle model.iconSource iconBackground
             , padding linkIconPadding
             , width linkIconSize
             , height linkIconSize
