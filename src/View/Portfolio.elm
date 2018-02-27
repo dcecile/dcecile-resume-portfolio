@@ -3,7 +3,7 @@ module View.Portfolio
         ( viewPortfolio
         )
 
-import Css exposing (textAlign, center, alignItems, color, display, fontSize, lineHeight, none, num, stretch)
+import Css exposing (alignItems, center, color, display, fontSize, lineHeight, none, num, stretch, textAlign)
 import Css.Media exposing (print, withMedia)
 import CssShorthand exposing (displayFlexColumn)
 import Html.Styled exposing (Html, div, styled)
@@ -48,5 +48,5 @@ viewPortfolio model =
         , viewTech model
         , viewProjects model
         , viewWork model
-        , viewFooter
+        , viewFooter model
         ]

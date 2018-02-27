@@ -7,13 +7,17 @@ import Css exposing (color, em, flexGrow, justifyContent, num, padding2, spaceBe
 import CssShorthand exposing (displayFlexColumn)
 import Html.Styled exposing (Html, a, div, h1, h2, styled, text)
 import Html.Styled.Attributes exposing (href)
+import Model exposing (Model)
 import Msg exposing (Msg)
 import View.Colors exposing (printBlack)
 
 
-viewResume : Html Msg
-viewResume =
+viewResume : Model -> Html Msg
+viewResume model =
     let
+        basicData =
+            model.data.basic
+
         style =
             [ displayFlexColumn
             , justifyContent spaceBetween
@@ -25,16 +29,16 @@ viewResume =
     styled div
         style
         []
-        [ viewHeader
-        , viewFooter
+        [ viewHeader basicData.name
+        , viewFooter basicData.sourceURL
         ]
 
 
-viewHeader : Html Msg
-viewHeader =
+viewHeader : String -> Html Msg
+viewHeader name =
     div
         []
-        [ h1 [] [ text "Dan Cecile" ]
+        [ h1 [] [ text name ]
         , h2 [] [ text "Software developer (10 years experience)" ]
         , a
             [ href "https://github.com/dcecile" ]
@@ -42,11 +46,11 @@ viewHeader =
         ]
 
 
-viewFooter : Html Msg
-viewFooter =
+viewFooter : String -> Html Msg
+viewFooter sourceURL =
     div
         []
         [ a
-            [ href "https://github.com/dcecile" ]
-            [ text "Made with Elm (https://github.com/dcecile/dcecile-resume-portfolio)" ]
+            [ href sourceURL ]
+            [ text <| "Made with Elm (" ++ sourceURL ++ ")" ]
         ]

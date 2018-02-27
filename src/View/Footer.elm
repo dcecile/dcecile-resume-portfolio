@@ -8,15 +8,19 @@ import CssShorthand exposing (borderBottomSolidColor, displayFlexColumn, marginT
 import Html.Styled exposing (Html, a, br, footer, h2, p, styled, text)
 import Html.Styled.Attributes exposing (href, id)
 import HtmlShorthand exposing (targetBlank)
+import Model exposing (Model)
 import Msg exposing (Msg)
 import View.Button as Button
 import View.Colors exposing (black, green, paleGreen)
 import View.ElmLogo exposing (viewElmLogo)
 
 
-viewFooter : Html Msg
-viewFooter =
+viewFooter : Model -> Html Msg
+viewFooter model =
     let
+        basicData =
+            model.data.basic
+
         style =
             [ displayFlexColumn
             , borderBottomSolidColor paleGreen
@@ -28,7 +32,7 @@ viewFooter =
         [ id "fin" ]
         [ viewHeader
         , viewButton
-        , viewInfo
+        , viewInfo basicData.sourceURL
         ]
 
 
@@ -65,8 +69,8 @@ viewButton =
         [ text "Go back to the top" ]
 
 
-viewInfo : Html Msg
-viewInfo =
+viewInfo : String -> Html Msg
+viewInfo sourceURL =
     let
         style =
             [ marginTop <| em 2.5
@@ -94,7 +98,7 @@ viewInfo =
         , br [] []
         , styled a
             linkStyle
-            [ href "https://github.com/dcecile/dcecile-resume-portfolio"
+            [ href sourceURL
             , targetBlank
             ]
             [ text "(view source)" ]

@@ -8,7 +8,7 @@ import CssShorthand exposing (displayFlexColumn, displayFlexRow, displayFlexRowR
 import Html.Styled exposing (Html, a, div, h1, header, main_, p, span, styled, text)
 import Html.Styled.Attributes exposing (href)
 import HtmlShorthand exposing (HtmlTag, hrefHash, onClickPreventDefault, targetBlank)
-import Icon exposing (IconBackground, iconSpan, mailBackground, printerBackground)
+import Icon exposing (IconBackground, IconSource, iconSpan, mailBackground, printerBackground)
 import Model exposing (Model)
 import Msg exposing (Msg(Print))
 import View.Button as Button
@@ -19,6 +19,9 @@ import View.Links exposing (linksCutoff)
 viewIntro : Model -> Html Msg
 viewIntro model =
     let
+        basicData =
+            model.data.basic
+
         style =
             [ displayFlexColumn
             , justifyContent center
@@ -28,13 +31,13 @@ viewIntro model =
     styled div
         style
         []
-        [ viewHeader
+        [ viewHeader basicData.name
         , viewMain model
         ]
 
 
-viewHeader : Html Msg
-viewHeader =
+viewHeader : String -> Html Msg
+viewHeader name =
     let
         style =
             [ displayFlexColumn
@@ -43,13 +46,13 @@ viewHeader =
     styled header
         style
         []
-        [ viewName
+        [ viewName name
         , viewTitle
         ]
 
 
-viewName : Html Msg
-viewName =
+viewName : String -> Html Msg
+viewName name =
     let
         style =
             [ marginTop zero
@@ -62,7 +65,7 @@ viewName =
     styled h1
         style
         []
-        [ text "Dan Cecile" ]
+        [ text name ]
 
 
 viewTitle : Html Msg
@@ -83,6 +86,9 @@ viewTitle =
 viewMain : Model -> Html Msg
 viewMain model =
     let
+        basicData =
+            model.data.basic
+
         style =
             [ displayFlexColumn
             ]
@@ -92,7 +98,7 @@ viewMain model =
         []
         [ viewSellingPoint
         , viewPitch
-        , viewCallsToAction model
+        , viewCallsToAction model.iconSource basicData.emailAddress
         ]
 
 
@@ -146,8 +152,8 @@ viewPitch =
         [ text "How can I help your team grow?" ]
 
 
-viewCallsToAction : Model -> Html Msg
-viewCallsToAction model =
+viewCallsToAction : IconSource -> String -> Html Msg
+viewCallsToAction iconSource emailAddress =
     let
         style =
             [ displayFlexRow
@@ -157,14 +163,14 @@ viewCallsToAction model =
     styled div
         style
         []
-        [ viewCallToAction model
+        [ viewCallToAction iconSource
             displayFlexRow
             mailBackground
-            [ href "mailto:dancecile@gmail.com?subject=Hi"
+            [ href <| "mailto:" ++ emailAddress ++ "?subject=Hi"
             , targetBlank
             ]
             [ text "Send me an email" ]
-        , viewCallToAction model
+        , viewCallToAction iconSource
             displayFlexRowReverse
             printerBackground
             [ hrefHash
@@ -174,8 +180,8 @@ viewCallsToAction model =
         ]
 
 
-viewCallToAction : Model -> Style -> IconBackground -> HtmlTag Msg
-viewCallToAction model displayStyle iconBackground attributes elements =
+viewCallToAction : IconSource -> Style -> IconBackground -> HtmlTag Msg
+viewCallToAction iconSource displayStyle iconBackground attributes elements =
     let
         style =
             [ displayStyle
@@ -188,14 +194,14 @@ viewCallToAction model displayStyle iconBackground attributes elements =
     styled div
         style
         []
-        [ viewCallToActionIcon model iconBackground
+        [ viewCallToActionIcon iconSource iconBackground
         , viewCallToActionButton attributes elements
         ]
 
 
-viewCallToActionIcon : Model -> IconBackground -> Html Msg
+viewCallToActionIcon : IconSource -> IconBackground -> Html Msg
 viewCallToActionIcon =
-    .iconSource >> iconSpan (px 8)
+    iconSpan (px 8)
 
 
 viewCallToActionButton : HtmlTag Msg

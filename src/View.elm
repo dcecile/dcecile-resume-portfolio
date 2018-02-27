@@ -16,8 +16,8 @@ view model =
     div
         []
         [ if model.resumeDisplay then
-            viewResumeDisplay
+            viewResumeDisplay model
           else
             viewPortfolio model
-        , viewResumePrint
+        , viewResumePrint model
         ]

@@ -4,6 +4,7 @@ module Data
         , initData
         )
 
+import Data.Basic exposing (BasicData, initBasicData)
 import Data.Mindsets exposing (MindsetsData, initMindsetsData)
 import Data.Projects exposing (ProjectsData, initProjectsData)
 import Data.Tech exposing (TechData, initTechData)
@@ -11,7 +12,8 @@ import Data.Work exposing (WorkData, initWorkData)
 
 
 type alias Data =
-    { mindsets : MindsetsData
+    { basic : BasicData
+    , mindsets : MindsetsData
     , tech : TechData
     , projects : ProjectsData
     , work : WorkData
@@ -20,7 +22,8 @@ type alias Data =
 
 initData : Data
 initData =
-    { mindsets = initMindsetsData
+    { basic = initBasicData
+    , mindsets = initMindsetsData
     , tech = initTechData
     , projects = initProjectsData
     , work = initWorkData

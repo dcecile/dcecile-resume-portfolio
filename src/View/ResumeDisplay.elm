@@ -7,6 +7,7 @@ import Css exposing (Vw, backgroundColor, boxShadow5, display, flexGrow, fontSiz
 import Css.Media exposing (print, withMedia)
 import CssShorthand exposing (displayFlexColumn, marginRightLeft, marginTopBottom, willChangeTransform)
 import Html.Styled exposing (Html, div, styled)
+import Model exposing (Model)
 import Msg exposing (Msg)
 import View.Metrics exposing (standardPrintFontSize)
 import View.Resume exposing (viewResume)
@@ -47,8 +48,8 @@ ptToVw length =
     vw <| length / fullWidthPt * 100
 
 
-viewResumeDisplay : Html Msg
-viewResumeDisplay =
+viewResumeDisplay : Model -> Html Msg
+viewResumeDisplay model =
     let
         style =
             [ willChangeTransform
@@ -64,11 +65,11 @@ viewResumeDisplay =
     styled div
         style
         []
-        [ viewPage ]
+        [ viewPage model ]
 
 
-viewPage : Html Msg
-viewPage =
+viewPage : Model -> Html Msg
+viewPage model =
     let
         style =
             [ displayFlexColumn
@@ -87,4 +88,4 @@ viewPage =
     styled div
         style
         []
-        [ viewResume ]
+        [ viewResume model ]
