@@ -6,6 +6,7 @@ module View.Colors
         , green
         , paleGreen
         , printBlack
+        , printGray
         , white
         )
 
@@ -37,11 +38,16 @@ paleGreen =
     hex "#a5deb7"
 
 
+white : Color
+white =
+    hex "#ffffff"
+
+
 printBlack : Color
 printBlack =
     hex "#000000"
 
 
-white : Color
-white =
-    hex "#ffffff"
+printGray : Color
+printGray =
+    hex "#e4e4e4"

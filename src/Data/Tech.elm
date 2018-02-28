@@ -1,6 +1,8 @@
 module Data.Tech
     exposing
         ( TechData
+        , TechItemData
+        , TechItemVisibility(PortfolioAndResume, PortfolioOnly)
         , initTechData
         )
 
@@ -9,8 +11,19 @@ import Data.Section exposing (SectionData)
 
 type alias TechData =
     SectionData
-        { items : List String
+        { items : List TechItemData
         }
+
+
+type alias TechItemData =
+    { name : String
+    , visibility : TechItemVisibility
+    }
+
+
+type TechItemVisibility
+    = PortfolioOnly
+    | PortfolioAndResume
 
 
 initTechData : TechData
@@ -21,37 +34,37 @@ initTechData =
     , intro =
         "I’m always looking for new opportunities to learn, so my list of productive-use technologies keeps growing:"
     , items =
-        [ "Bootstrap"
-        , "C"
-        , "C++"
-        , "C#"
-        , "CSS3"
-        , "Elm"
-        , "ES6"
-        , "Excel"
-        , "FP"
-        , "functional animation"
-        , "GAE"
-        , "Go"
-        , "Heroku"
-        , "HTML5"
-        , "Java"
-        , "JavaScript"
-        , "Lua"
-        , "Python"
-        , "Qt"
-        , "React"
-        , "responsive design"
-        , "Ruby"
-        , "Rails"
-        , "Sass"
-        , "SQL"
-        , "SVG"
-        , "Scala"
-        , "Scheme"
-        , "Unicode"
-        , "Vue.js"
-        , "WinForms"
+        [ TechItemData "Bootstrap" PortfolioAndResume
+        , TechItemData "C" PortfolioOnly
+        , TechItemData "C++" PortfolioOnly
+        , TechItemData "C#" PortfolioAndResume
+        , TechItemData "CSS3" PortfolioOnly
+        , TechItemData "Elm" PortfolioOnly
+        , TechItemData "ES6" PortfolioOnly
+        , TechItemData "Excel" PortfolioOnly
+        , TechItemData "FP" PortfolioOnly
+        , TechItemData "functional animation" PortfolioOnly
+        , TechItemData "GAE" PortfolioOnly
+        , TechItemData "Go" PortfolioOnly
+        , TechItemData "Heroku" PortfolioOnly
+        , TechItemData "HTML5" PortfolioOnly
+        , TechItemData "Java" PortfolioOnly
+        , TechItemData "JavaScript" PortfolioAndResume
+        , TechItemData "Lua" PortfolioOnly
+        , TechItemData "Python" PortfolioAndResume
+        , TechItemData "Qt" PortfolioOnly
+        , TechItemData "React" PortfolioAndResume
+        , TechItemData "responsive design" PortfolioOnly
+        , TechItemData "Ruby" PortfolioAndResume
+        , TechItemData "Rails" PortfolioAndResume
+        , TechItemData "Sass" PortfolioOnly
+        , TechItemData "SQL" PortfolioAndResume
+        , TechItemData "SVG" PortfolioAndResume
+        , TechItemData "Scala" PortfolioAndResume
+        , TechItemData "Scheme" PortfolioOnly
+        , TechItemData "Unicode" PortfolioOnly
+        , TechItemData "Vue.js" PortfolioAndResume
+        , TechItemData "WinForms" PortfolioOnly
         ]
     , outro =
         Just "Part of your tech stack not listed? Great! I’m confident in my ability to pick new things up quickly."

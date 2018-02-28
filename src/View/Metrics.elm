@@ -1,13 +1,14 @@
 module View.Metrics
     exposing
-        ( standardBorderRadius
+        ( printBorderWidth
+        , standardBorderRadius
         , standardBorderWidth
         , standardLineHeight
         , standardPrintFontSize
         , standardScreenFontSize
         )
 
-import Css exposing (Pct, Pt, Px, num, pct, pt, px)
+import Css exposing (Em, Pct, Pt, Px, em, num, pct, pt, px)
 
 
 standardBorderRadius : Px
@@ -32,4 +33,9 @@ standardScreenFontSize =
 
 standardPrintFontSize : Pt
 standardPrintFontSize =
-    pt 14
+    pt 12
+
+
+printBorderWidth : Em
+printBorderWidth =
+    em 0.06

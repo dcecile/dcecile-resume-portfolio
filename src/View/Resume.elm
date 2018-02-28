@@ -3,17 +3,18 @@ module View.Resume
         ( viewResume
         )
 
-import Css exposing (Style, batch, bold, borderWidth, center, color, em, flexBasis, flexGrow, fontSize, fontWeight, height, hex, lineHeight, marginBottom, marginTop, none, normal, num, paddingBottom, paddingTop, right, textAlign, textDecoration, width, zero)
-import CssShorthand exposing (batchMap, borderBottomSolidColor, displayFlexColumn, displayFlexRow, marginRightLeft, marginTopBottom, paddingRightLeft, paddingTopBottom, textDecorationSkipInk)
+import Css exposing (Style, batch, bold, borderRadius, borderWidth, center, color, em, flexBasis, flexGrow, flexWrap, fontSize, fontWeight, height, lineHeight, marginBottom, marginLeft, marginRight, marginTop, none, normal, num, paddingBottom, paddingLeft, paddingTop, right, textAlign, textDecoration, width, wrap, zero)
+import CssShorthand exposing (batchMap, borderBottomSolidColor, borderLeftSolidColor, borderSolidColor, displayFlexColumn, displayFlexRow, marginRightLeft, marginTopBottom, paddingRightLeft, paddingTopBottom, textDecorationSkipInk)
 import Data.Links exposing (LinksItemData)
+import Data.Tech exposing (TechItemVisibility(PortfolioAndResume))
 import Html.Styled exposing (Html, a, div, footer, h1, h2, header, img, main_, nav, p, section, span, styled, text)
 import Html.Styled.Attributes exposing (href)
 import Icon exposing (IconBackground, IconSource, iconImage)
 import Model exposing (Model)
 import Msg exposing (Msg)
 import Regex exposing (HowMany(All), regex, replace)
-import View.Colors exposing (printBlack)
-import View.Metrics exposing (standardLineHeight)
+import View.Colors exposing (printBlack, printGray)
+import View.Metrics exposing (printBorderWidth, standardLineHeight)
 
 
 viewResume : Model -> Html Msg
@@ -21,8 +22,8 @@ viewResume model =
     let
         style =
             [ displayFlexColumn
-            , paddingTopBottom <| em 2.2
-            , paddingRightLeft <| em 2.5
+            , paddingTopBottom <| em 3.2
+            , paddingRightLeft <| em 3.5
             , flexGrow <| num 1
             , lineHeight <| num standardLineHeight
             , color printBlack
@@ -33,7 +34,7 @@ viewResume model =
         []
         [ viewHeader model
         , viewHorizontalRule
-        , viewMain
+        , viewMain model
         , viewHorizontalRule
         , viewFooter model
         ]
@@ -108,7 +109,7 @@ viewHomepage : IconSource -> String -> Html Msg
 viewHomepage iconSource homepageURL =
     let
         style =
-            [ marginTop <| em 0.4
+            [ marginTop <| em 0.5
             , marginBottom <| em 0.3
             , fontSize <| em 1.5
             , fontWeight bold
@@ -129,7 +130,7 @@ viewTagline tagline =
     let
         style =
             [ marginTopBottom zero
-            , fontSize <| em 1.3
+            , fontSize <| em 1.5
             ]
     in
     styled p
@@ -165,8 +166,8 @@ viewContactLink iconSource link =
     viewLink [] iconSource link.url link.shortURL link.iconBackground
 
 
-viewMain : Html Msg
-viewMain =
+viewMain : Model -> Html Msg
+viewMain model =
     let
         style =
             [ displayFlexRow
@@ -176,26 +177,28 @@ viewMain =
     styled main_
         style
         []
-        [ viewInfo
+        [ viewInfo model
         , viewHistory
         ]
 
 
-viewInfo : Html Msg
-viewInfo =
+viewInfo : Model -> Html Msg
+viewInfo model =
     let
         style =
             [ displayFlexColumn
             , flexBasis <| em 0
             , flexGrow <| num 1
+            , marginRight <| em 1.0
             ]
     in
     styled section
         style
         []
         [ viewSubheading "Proficiencies"
-        , p [] []
+        , viewTech model
         , viewSubheading "Side projects"
+        , p [] []
         , p [] []
         , p [] []
         , p [] []
@@ -205,6 +208,46 @@ viewInfo =
         , p [] []
         , viewSubheading "Education"
         ]
+
+
+viewTech : Model -> Html Msg
+viewTech model =
+    let
+        sectionData =
+            model.data.tech
+
+        items =
+            sectionData.items
+                |> List.filter (.visibility >> (==) PortfolioAndResume)
+                |> List.map .name
+
+        style =
+            [ viewVerticalRule
+            , marginBottom <| em 1.2
+            , lineHeight <| num 2.0
+            ]
+    in
+    items
+        |> List.map viewTechItem
+        |> List.intersperse (text " ")
+        |> styled div style []
+
+
+viewTechItem : String -> Html Msg
+viewTechItem item =
+    let
+        style =
+            [ borderSolidColor printBlack
+            , borderWidth printBorderWidth
+            , borderRadius <| em 0.3
+            , paddingTopBottom <| em 0.0
+            , paddingRightLeft <| em 0.3
+            ]
+    in
+    styled span
+        style
+        []
+        [ text item ]
 
 
 viewHistory : Html Msg
@@ -220,6 +263,7 @@ viewHistory =
         style
         []
         [ viewSubheading "Work history"
+        , p [] []
         , p [] []
         , p [] []
         , p [] []
@@ -279,9 +323,9 @@ viewSubheading subheading =
     let
         style =
             [ marginTop <| em 0.2
-            , marginBottom <| em 1.6
+            , marginBottom <| em 0.4
             , fontSize <| em 1.8
-            , fontWeight normal
+            , fontWeight bold
             ]
     in
     styled h2
@@ -336,8 +380,17 @@ viewHorizontalRule =
         style =
             [ marginRightLeft <| em 2
             , batchMap [ marginBottom, paddingBottom ] <| em 1.0
-            , borderBottomSolidColor <| hex "#e4e4e4"
-            , borderWidth <| em 0.02
+            , borderBottomSolidColor printGray
+            , borderWidth printBorderWidth
             ]
     in
     styled div style [] []
+
+
+viewVerticalRule : Style
+viewVerticalRule =
+    batch
+        [ batchMap [ marginLeft, paddingLeft ] <| em 1.0
+        , borderLeftSolidColor printGray
+        , borderWidth printBorderWidth
+        ]

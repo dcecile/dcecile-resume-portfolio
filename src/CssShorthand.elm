@@ -3,6 +3,7 @@ module CssShorthand
         ( animation
         , batchMap
         , borderBottomSolidColor
+        , borderLeftSolidColor
         , borderSolidColor
         , borderTopBottomSolidColor
         , displayFlexColumn
@@ -19,7 +20,7 @@ module CssShorthand
         , zIndexBackground
         )
 
-import Css exposing (Color, Length, LengthOrAuto, Style, batch, borderBottomStyle, borderColor, borderStyle, borderTopStyle, column, displayFlex, flexDirection, int, marginBottom, marginLeft, marginRight, marginTop, paddingBottom, paddingLeft, paddingRight, paddingTop, property, row, rowReverse, solid, visited, zIndex)
+import Css exposing (BorderStyle, Color, Length, LengthOrAuto, Style, TextDecorationStyle, batch, borderBottomStyle, borderColor, borderLeftStyle, borderStyle, borderTopStyle, column, displayFlex, flexDirection, int, marginBottom, marginLeft, marginRight, marginTop, paddingBottom, paddingLeft, paddingRight, paddingTop, property, row, rowReverse, solid, visited, zIndex)
 
 
 animation : String -> Style
@@ -34,18 +35,28 @@ batchMap partialStyles styleParameter =
 
 
 borderBottomSolidColor : Color -> Style
-borderBottomSolidColor color =
-    batch [ borderBottomStyle solid, borderColor color ]
+borderBottomSolidColor =
+    borderSidesSolidColor [ borderBottomStyle ]
+
+
+borderLeftSolidColor : Color -> Style
+borderLeftSolidColor =
+    borderSidesSolidColor [ borderLeftStyle ]
 
 
 borderSolidColor : Color -> Style
-borderSolidColor color =
-    batch [ borderStyle solid, borderColor color ]
+borderSolidColor =
+    borderSidesSolidColor [ borderStyle ]
 
 
 borderTopBottomSolidColor : Color -> Style
-borderTopBottomSolidColor color =
-    batch [ borderTopStyle solid, borderBottomStyle solid, borderColor color ]
+borderTopBottomSolidColor =
+    borderSidesSolidColor [ borderTopStyle, borderBottomStyle ]
+
+
+borderSidesSolidColor : List (BorderStyle (TextDecorationStyle {}) -> Style) -> Color -> Style
+borderSidesSolidColor sides color =
+    batch [ batchMap sides solid, borderColor color ]
 
 
 displayFlexColumn : Style

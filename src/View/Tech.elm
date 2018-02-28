@@ -24,7 +24,7 @@ viewTech model =
     viewSection
         model.iconSource
         sectionData
-        [ viewItems sectionData.items
+        [ viewItems <| List.map .name sectionData.items
         ]
 
 
