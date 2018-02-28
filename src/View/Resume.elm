@@ -3,8 +3,8 @@ module View.Resume
         ( viewResume
         )
 
-import Css exposing (Style, batch, center, color, em, flexBasis, flexGrow, fontSize, height, lineHeight, marginBottom, num, padding2, right, textAlign, width)
-import CssShorthand exposing (batchMap, displayFlexColumn, displayFlexRow, marginRightLeft, textDecorationSkipInk)
+import Css exposing (Style, batch, bold, borderWidth, center, color, em, flexBasis, flexGrow, fontSize, fontWeight, height, hex, lineHeight, marginBottom, marginTop, none, normal, num, paddingBottom, paddingTop, right, textAlign, textDecoration, width, zero)
+import CssShorthand exposing (batchMap, borderBottomSolidColor, displayFlexColumn, displayFlexRow, marginRightLeft, marginTopBottom, paddingRightLeft, paddingTopBottom, textDecorationSkipInk)
 import Data.Links exposing (LinksItemData)
 import Html.Styled exposing (Html, a, div, footer, h1, h2, header, img, main_, nav, p, section, span, styled, text)
 import Html.Styled.Attributes exposing (href)
@@ -19,29 +19,23 @@ import View.Metrics exposing (standardLineHeight)
 viewResume : Model -> Html Msg
 viewResume model =
     let
-        basicData =
-            model.data.basic
-
-        resumeData =
-            model.data.resume
-
         style =
             [ displayFlexColumn
-            , padding2 (em 3) (em 3)
+            , paddingTopBottom <| em 2.2
+            , paddingRightLeft <| em 2.5
             , flexGrow <| num 1
             , lineHeight <| num standardLineHeight
             , color printBlack
             ]
     in
-    styled header
+    styled div
         style
         []
         [ viewHeader model
+        , viewHorizontalRule
         , viewMain
-        , viewFooter
-            model.iconSource
-            basicData.sourceURL
-            resumeData.sourceShortURL
+        , viewHorizontalRule
+        , viewFooter model
         ]
 
 
@@ -59,6 +53,7 @@ viewHeader model =
 
         style =
             [ displayFlexRow
+            , marginBottom <| em 0.8
             ]
     in
     styled header
@@ -84,13 +79,63 @@ viewPrimary iconSource name homepageURL tagline =
             , flexGrow <| num 1
             ]
     in
-    styled header
+    styled div
         style
         []
-        [ h1 [] [ text name ]
-        , p [] [ viewLink iconSource homepageURL Nothing .externalLink ]
-        , p [] [ text tagline ]
+        [ viewName name
+        , viewHomepage iconSource homepageURL
+        , viewTagline tagline
         ]
+
+
+viewName : String -> Html Msg
+viewName name =
+    let
+        style =
+            [ marginTopBottom zero
+            , lineHeight <| num 1.0
+            , fontSize <| em 3.7
+            , fontWeight bold
+            ]
+    in
+    styled h1
+        style
+        []
+        [ text name ]
+
+
+viewHomepage : IconSource -> String -> Html Msg
+viewHomepage iconSource homepageURL =
+    let
+        style =
+            [ marginTop <| em 0.4
+            , marginBottom <| em 0.3
+            , fontSize <| em 1.5
+            , fontWeight bold
+            ]
+
+        linkStyle =
+            [ textDecoration none
+            ]
+    in
+    styled p
+        style
+        []
+        [ viewLink linkStyle iconSource homepageURL Nothing .externalLink ]
+
+
+viewTagline : String -> Html Msg
+viewTagline tagline =
+    let
+        style =
+            [ marginTopBottom zero
+            , fontSize <| em 1.3
+            ]
+    in
+    styled p
+        style
+        []
+        [ text tagline ]
 
 
 viewContact : IconSource -> String -> List LinksItemData -> Html Msg
@@ -98,6 +143,7 @@ viewContact iconSource emailAddress links =
     let
         style =
             [ displayFlexColumn
+            , marginTop <| em 0.3
             , textAlign right
             , lineHeight <| num 1.9
             ]
@@ -111,12 +157,12 @@ viewContact iconSource emailAddress links =
 
 viewContactEmail : IconSource -> String -> Html Msg
 viewContactEmail iconSource emailAddress =
-    viewLink iconSource emailAddress Nothing .mail
+    viewLink [] iconSource ("mailto:" ++ emailAddress) Nothing .mail
 
 
 viewContactLink : IconSource -> LinksItemData -> Html Msg
 viewContactLink iconSource link =
-    viewLink iconSource link.url link.shortURL link.iconBackground
+    viewLink [] iconSource link.url link.shortURL link.iconBackground
 
 
 viewMain : Html Msg
@@ -147,17 +193,17 @@ viewInfo =
     styled section
         style
         []
-        [ h2 [] [ text "Proficiencies" ]
+        [ viewSubheading "Proficiencies"
         , p [] []
-        , h2 [] [ text "Side projects" ]
-        , p [] []
-        , p [] []
+        , viewSubheading "Side projects"
         , p [] []
         , p [] []
         , p [] []
         , p [] []
         , p [] []
-        , h2 [] [ text "Education" ]
+        , p [] []
+        , p [] []
+        , viewSubheading "Education"
         ]
 
 
@@ -173,7 +219,7 @@ viewHistory =
     styled section
         style
         []
-        [ h2 [] [ text "Work history" ]
+        [ viewSubheading "Work history"
         , p [] []
         , p [] []
         , p [] []
@@ -183,32 +229,74 @@ viewHistory =
         , p [] []
         , p [] []
         , p [] []
-        , h2 [] [ text "Volunteering" ]
+        , viewSubheading "Volunteering"
         ]
 
 
-viewFooter : IconSource -> String -> Maybe String -> Html Msg
-viewFooter iconSource sourceURL sourceShortURL =
+viewFooter : Model -> Html Msg
+viewFooter model =
     let
+        basicData =
+            model.data.basic
+
+        resumeData =
+            model.data.resume
+
         style =
-            [ textAlign center
-            , fontSize <| em 0.8
+            [ displayFlexColumn
+            , marginTop <| em 0.2
             ]
     in
     styled footer
         style
         []
-        [ text "This resume was made with Elm, view source at "
-        , viewLink iconSource sourceURL sourceShortURL .externalLink
+        [ viewSource
+            model.iconSource
+            basicData.sourceURL
+            resumeData.sourceShortURL
         ]
 
 
-viewLink : IconSource -> String -> Maybe String -> IconBackground -> Html Msg
-viewLink iconSource url shortUrl iconBackground =
+viewSource : IconSource -> String -> Maybe String -> Html Msg
+viewSource iconSource sourceURL sourceShortURL =
+    let
+        style =
+            [ marginTopBottom zero
+            , textAlign center
+            , fontSize <| em 0.8
+            ]
+    in
+    styled p
+        style
+        []
+        [ text "This resume was made with Elm, view source at "
+        , viewLink [] iconSource sourceURL sourceShortURL .externalLink
+        ]
+
+
+viewSubheading : String -> Html Msg
+viewSubheading subheading =
+    let
+        style =
+            [ marginTop <| em 0.2
+            , marginBottom <| em 1.6
+            , fontSize <| em 1.8
+            , fontWeight normal
+            ]
+    in
+    styled h2
+        style
+        []
+        [ text subheading ]
+
+
+viewLink : List Style -> IconSource -> String -> Maybe String -> IconBackground -> Html Msg
+viewLink customStyle iconSource url shortUrl iconBackground =
     let
         style =
             [ color printBlack
             , textDecorationSkipInk
+            , batch customStyle
             ]
 
         urlText =
@@ -240,3 +328,16 @@ viewIcon iconSource iconBackground =
         style
         [ iconImage iconSource iconBackground ]
         []
+
+
+viewHorizontalRule : Html msg
+viewHorizontalRule =
+    let
+        style =
+            [ marginRightLeft <| em 2
+            , batchMap [ marginBottom, paddingBottom ] <| em 1.0
+            , borderBottomSolidColor <| hex "#e4e4e4"
+            , borderWidth <| em 0.02
+            ]
+    in
+    styled div style [] []
