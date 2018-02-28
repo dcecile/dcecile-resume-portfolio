@@ -12,18 +12,16 @@ import View.Colors exposing (paleGreen)
 
 
 viewMindsetsCircle : List Style -> Svg Msg
-viewMindsetsCircle outerStyle =
+viewMindsetsCircle customStyle =
     let
         style =
-            [ batch outerStyle
-            , stroke paleGreen
+            [ stroke paleGreen
             , fill transparent
             , strokeWidth <| px 1
+            , batch customStyle
             ]
     in
     styled svg
         style
-        [ viewBoxSquare 100
-        ]
-        [ circle [ cx "50", cy "50", r "45" ] []
-        ]
+        [ viewBoxSquare 100 ]
+        [ circle [ cx "50", cy "50", r "45" ] [] ]

@@ -1,5 +1,6 @@
 import box from './Icon/box.svg'
 import calendar from './Icon/calendar.svg'
+import externalLink from './Icon/external-link.svg'
 import eye from './Icon/eye.svg'
 import fiveHundredPx from './Icon/500px.svg'
 import github from './Icon/github.svg'
@@ -13,6 +14,7 @@ import twitter from './Icon/twitter.svg'
 export default {
   box,
   calendar,
+  externalLink,
   eye,
   fiveHundredPx,
   github,

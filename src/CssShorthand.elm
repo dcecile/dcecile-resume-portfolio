@@ -14,6 +14,7 @@ module CssShorthand
         , noStyle
         , paddingRightLeft
         , paddingTopBottom
+        , textDecorationSkipInk
         , willChangeTransform
         , zIndexBackground
         )
@@ -24,6 +25,12 @@ import Css exposing (Color, Length, LengthOrAuto, Style, batch, borderBottomStyl
 animation : String -> Style
 animation =
     property "animation"
+
+
+batchMap : List (a -> Style) -> a -> Style
+batchMap partialStyles styleParameter =
+    List.map ((|>) styleParameter) partialStyles
+        |> batch
 
 
 borderBottomSolidColor : Color -> Style
@@ -86,10 +93,9 @@ noStyle =
     batch []
 
 
-batchMap : List (a -> Style) -> a -> Style
-batchMap partialStyles styleParameter =
-    List.map ((|>) styleParameter) partialStyles
-        |> batch
+textDecorationSkipInk : Style
+textDecorationSkipInk =
+    property "text-decoration-skip" "ink"
 
 
 willChangeTransform : Style
