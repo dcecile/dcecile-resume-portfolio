@@ -6,10 +6,11 @@ module View.Links
 
 import Css exposing (Compatible, Em, auto, calc, center, em, fontSize, fontWeight, height, justifyContent, marginBottom, marginTop, normal, padding, plus, px, width, zero)
 import CssShorthand exposing (displayFlexColumn, displayFlexRow, marginRightLeft, marginTopBottom, paddingRightLeft, paddingTopBottom)
+import Data.Links exposing (LinksItemData)
 import Html.Styled exposing (Html, a, div, h2, nav, styled, text)
 import Html.Styled.Attributes exposing (href, title)
 import HtmlShorthand exposing (ariaLabel, targetBlank)
-import Icon exposing (IconBackground, iconStyle)
+import Icon exposing (IconBackground, IconSource, iconStyle)
 import Model exposing (Model)
 import Msg exposing (Msg)
 import View.Button as Button
@@ -117,22 +118,16 @@ viewLinkList model =
             , marginBottom <| em 0.5
             ]
     in
-    styled div
-        style
-        []
-        [ viewLink model "GitHub" .github "https://github.com/dcecile"
-        , viewLink model "LinkedIn" .linkedin "https://www.linkedin.com/in/dancecile"
-        , viewLink model "Stack Overflow" .stackOverflow "https://stackoverflow.com/users/207321/dan-cecile?tab=profile"
-        , viewLink model "Twitter" .twitter "https://twitter.com/dancecile"
-        , viewLink model "500px" .fiveHundredPx "https://500px.com/dancecile"
-        ]
+    model.data.links.portfolioItems
+        |> List.map (viewLink model.iconSource)
+        |> styled div style []
 
 
-viewLink : Model -> String -> IconBackground -> String -> Html Msg
-viewLink model name iconBackground url =
+viewLink : IconSource -> LinksItemData -> Html Msg
+viewLink iconSource linksItem =
     let
         style =
-            [ iconStyle model.iconSource iconBackground
+            [ iconStyle iconSource linksItem.iconBackground
             , padding linkIconPadding
             , width linkIconSize
             , height linkIconSize
@@ -142,9 +137,9 @@ viewLink model name iconBackground url =
     in
     styled a
         style
-        [ title name
-        , ariaLabel name
-        , href url
+        [ title linksItem.name
+        , ariaLabel linksItem.name
+        , href linksItem.url
         , targetBlank
         ]
         []
