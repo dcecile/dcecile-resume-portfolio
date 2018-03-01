@@ -3,10 +3,11 @@ module View.Resume
         ( viewResume
         )
 
-import Css exposing (Style, batch, bold, borderRadius, borderWidth, center, color, em, flexBasis, flexGrow, flexWrap, fontSize, fontWeight, height, lineHeight, marginBottom, marginLeft, marginRight, marginTop, none, normal, num, paddingBottom, paddingLeft, paddingTop, right, textAlign, textDecoration, width, wrap, zero)
+import Css exposing (Style, batch, bold, borderRadius, borderWidth, center, color, em, flexBasis, flexGrow, flexWrap, fontSize, fontStyle, fontWeight, height, italic, lineHeight, marginBottom, marginLeft, marginRight, marginTop, none, normal, num, paddingBottom, paddingLeft, paddingTop, right, textAlign, textDecoration, width, wrap, zero)
 import CssShorthand exposing (batchMap, borderBottomSolidColor, borderLeftSolidColor, borderSolidColor, displayFlexColumn, displayFlexRow, marginRightLeft, marginTopBottom, paddingRightLeft, paddingTopBottom, textDecorationSkipInk)
 import Data.Links exposing (LinksItemData)
 import Data.Tech exposing (TechItemVisibility(PortfolioAndResume))
+import Data.Work exposing (WorkData, WorkItemData)
 import Html.Styled exposing (Html, a, div, footer, h1, h2, header, img, main_, nav, p, section, span, styled, text)
 import Html.Styled.Attributes exposing (href)
 import Icon exposing (IconBackground, IconSource, iconImage)
@@ -178,7 +179,7 @@ viewMain model =
         style
         []
         [ viewInfo model
-        , viewHistory
+        , viewHistory model
         ]
 
 
@@ -204,8 +205,8 @@ viewInfo model =
         , p [] []
         , p [] []
         , p [] []
-        , p [] []
-        , p [] []
+        , viewSubheading "Volunteering"
+        , viewWork model .resumeVolunteerItems
         , viewSubheading "Education"
         ]
 
@@ -250,31 +251,136 @@ viewTechItem item =
         [ text item ]
 
 
-viewHistory : Html Msg
-viewHistory =
+viewHistory : Model -> Html Msg
+viewHistory model =
     let
         style =
             [ displayFlexColumn
             , flexBasis <| em 0
-            , flexGrow <| num 1.4
+            , flexGrow <| num 1.2
             ]
     in
     styled section
         style
         []
         [ viewSubheading "Work history"
-        , p [] []
-        , p [] []
-        , p [] []
-        , p [] []
-        , p [] []
-        , p [] []
-        , p [] []
-        , p [] []
-        , p [] []
-        , p [] []
-        , viewSubheading "Volunteering"
+        , viewWork model .resumeItems
         ]
+
+
+viewWork : Model -> (WorkData -> List WorkItemData) -> Html Msg
+viewWork model itemsSelector =
+    let
+        sectionData =
+            model.data.work
+
+        style =
+            [ displayFlexColumn
+            ]
+    in
+    itemsSelector sectionData
+        |> List.map viewWorkItem
+        |> styled div style []
+
+
+viewWorkItem : WorkItemData -> Html Msg
+viewWorkItem item =
+    let
+        style =
+            [ viewVerticalRule
+            , displayFlexColumn
+            , marginTop zero
+            , marginBottom <| em 1.2
+            ]
+    in
+    [ ( item.name, item.resumeLocation ) |> uncurry viewWorkItemNameLocation |> List.singleton
+    , item.resumeTitlePeriods |> List.map (uncurry viewWorkItemTitlePeriod)
+    , item.resumePoints |> List.map viewWorkItemPoint
+    ]
+        |> List.concat
+        |> styled p style []
+
+
+viewWorkItemNameLocation : String -> String -> Html Msg
+viewWorkItemNameLocation name location =
+    let
+        style =
+            [ fontStyle italic
+            ]
+    in
+    styled span
+        style
+        []
+        [ text name
+        , viewWorkItemLocation location
+        ]
+
+
+viewWorkItemLocation : String -> Html Msg
+viewWorkItemLocation location =
+    let
+        style =
+            [ marginLeft <| em 0.6
+            ]
+    in
+    styled span
+        style
+        []
+        [ text location ]
+
+
+viewWorkItemTitlePeriod : String -> String -> Html Msg
+viewWorkItemTitlePeriod title period =
+    let
+        style =
+            [ marginLeft <| em 0.5
+            ]
+    in
+    styled span
+        style
+        []
+        [ viewWorkItemTitle title
+        , viewWorkItemPeriod period
+        ]
+
+
+viewWorkItemTitle : String -> Html Msg
+viewWorkItemTitle title =
+    let
+        style =
+            [ fontWeight bold
+            ]
+    in
+    styled span
+        style
+        []
+        [ text title ]
+
+
+viewWorkItemPeriod : String -> Html Msg
+viewWorkItemPeriod period =
+    let
+        style =
+            [ marginLeft <| em 0.6
+            ]
+    in
+    styled span
+        style
+        []
+        [ text period ]
+
+
+viewWorkItemPoint : String -> Html Msg
+viewWorkItemPoint point =
+    let
+        style =
+            [ marginLeft <| em 1.0
+            ]
+    in
+    styled span
+        style
+        []
+        [ text point ]
 
 
 viewFooter : Model -> Html Msg

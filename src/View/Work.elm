@@ -25,8 +25,8 @@ viewWork model =
     viewSection
         model.iconSource
         sectionData
-        [ viewItems True sectionData.largeItems
-        , viewItems False sectionData.smallItems
+        [ viewItems True sectionData.portfolioLargeItems
+        , viewItems False sectionData.portfolioSmallItems
         ]
 
 
@@ -81,17 +81,17 @@ viewItem isLarge item =
         if isLarge then
             [ viewItemColumn True <|
                 List.concat
-                    [ [ viewName item.name ]
-                    , [ viewDurationTitles item.duration ]
-                    , List.map (\title -> viewDurationTitles <| "(" ++ title ++ ")") item.titles
+                    [ item.name |> viewName |> List.singleton
+                    , item.portfolioDuration |> viewDurationTitles |> List.singleton
+                    , item.portfolioTitles |> List.map (\title -> "(" ++ title ++ ")" |> viewDurationTitles)
                     ]
             , viewItemColumn False <|
-                List.map viewSkills item.skills
+                (item.portfolioSkills |> List.map viewSkills)
             ]
         else
-            [ viewName item.name
-            , viewDurationTitles <| combineDurationAndTitles item.duration item.titles
-            , viewSkills <| String.join " " item.skills
+            [ item.name |> viewName
+            , ( item.portfolioDuration, item.portfolioTitles ) |> uncurry combineDurationAndTitles |> viewDurationTitles
+            , item.portfolioSkills |> String.join " " |> viewSkills
             ]
 
 
