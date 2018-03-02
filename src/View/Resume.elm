@@ -10,6 +10,7 @@ import Data.Tech exposing (TechItemVisibility(PortfolioAndResume))
 import Data.Work exposing (WorkData, WorkItemData)
 import Html.Styled exposing (Html, a, div, footer, h1, h2, h3, header, img, main_, nav, p, section, span, styled, text)
 import Html.Styled.Attributes exposing (href)
+import HtmlShorthand exposing (styledSpanText)
 import Icon exposing (IconBackground, IconSource, iconImage)
 import MarkedString exposing (MarkedString)
 import Model exposing (Model)
@@ -398,23 +399,13 @@ viewWorkItemPoint narrow point =
                         2.0
                     )
             ]
+
+        highlight =
+            styledSpanText [ fontWeight bold ]
     in
     point
-        |> MarkedString.transform text viewWorkItemPointSpecial
+        |> MarkedString.transform text highlight
         |> styled span style []
-
-
-viewWorkItemPointSpecial : String -> Html Msg
-viewWorkItemPointSpecial substring =
-    let
-        style =
-            [ fontWeight bold
-            ]
-    in
-    styled span
-        style
-        []
-        [ text substring ]
 
 
 viewFooter : Model -> Html Msg

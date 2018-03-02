@@ -7,8 +7,9 @@ import Css exposing (Style, alignItems, alignSelf, bold, calc, center, color, em
 import CssShorthand exposing (displayFlexColumn, displayFlexRow, displayFlexRowReverse, marginRightLeft, paddingRightLeft)
 import Html.Styled exposing (Html, a, div, h1, header, main_, p, span, styled, text)
 import Html.Styled.Attributes exposing (href)
-import HtmlShorthand exposing (HtmlTag, hrefHash, onClickPreventDefault, targetBlank)
+import HtmlShorthand exposing (HtmlTag, hrefHash, onClickPreventDefault, styledSpanText, targetBlank)
 import Icon exposing (IconBackground, IconSource, iconSpan)
+import MarkedString exposing (MarkedString)
 import Model exposing (Model)
 import Msg exposing (Msg(Print))
 import View.Button as Button
@@ -31,13 +32,15 @@ viewIntro model =
     styled div
         style
         []
-        [ viewHeader basicData.name
+        [ viewHeader
+            basicData.name
+            basicData.portfolioTitle
         , viewMain model
         ]
 
 
-viewHeader : String -> Html Msg
-viewHeader name =
+viewHeader : String -> String -> Html Msg
+viewHeader name title =
     let
         style =
             [ displayFlexColumn
@@ -47,7 +50,7 @@ viewHeader name =
         style
         []
         [ viewName name
-        , viewTitle
+        , viewTitle title
         ]
 
 
@@ -68,8 +71,8 @@ viewName name =
         [ text name ]
 
 
-viewTitle : Html Msg
-viewTitle =
+viewTitle : String -> Html Msg
+viewTitle title =
     let
         style =
             [ marginTop zero
@@ -80,7 +83,7 @@ viewTitle =
     styled p
         style
         []
-        [ text "Software developer generalist" ]
+        [ text title ]
 
 
 viewMain : Model -> Html Msg
@@ -97,13 +100,17 @@ viewMain model =
         style
         []
         [ viewSellingPoint
+            basicData.portfolioSellingPoint
         , viewPitch
-        , viewCallsToAction model.iconSource basicData.emailAddress
+            basicData.portfolioPitch
+        , viewCallsToAction
+            model.iconSource
+            basicData.emailAddress
         ]
 
 
-viewSellingPoint : Html Msg
-viewSellingPoint =
+viewSellingPoint : MarkedString -> Html Msg
+viewSellingPoint sellingPoint =
     let
         style =
             [ alignSelf center
@@ -112,33 +119,16 @@ viewSellingPoint =
             , maxWidth <| em 22
             ]
 
-        highlightStyle =
-            [ color green
-            ]
-
-        normal =
-            text
-
         highlight =
-            text
-                >> List.singleton
-                >> styled span highlightStyle []
+            styledSpanText [ color green ]
     in
-    styled p
-        style
-        []
-        [ normal "10 years of experience learning new "
-        , highlight "tech"
-        , normal ", writing "
-        , highlight "code"
-        , normal ", and improving "
-        , highlight "systems"
-        , normal "."
-        ]
+    sellingPoint
+        |> MarkedString.transform text highlight
+        |> styled p style []
 
 
-viewPitch : Html Msg
-viewPitch =
+viewPitch : String -> Html Msg
+viewPitch pitch =
     let
         style =
             [ marginTop zero
@@ -149,7 +139,7 @@ viewPitch =
     styled p
         style
         []
-        [ text "How can I help your team grow?" ]
+        [ text pitch ]
 
 
 viewCallsToAction : IconSource -> String -> Html Msg

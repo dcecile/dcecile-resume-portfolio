@@ -4,10 +4,12 @@ module HtmlShorthand
         , ariaLabel
         , hrefHash
         , onClickPreventDefault
+        , styledSpanText
         , targetBlank
         )
 
-import Html.Styled exposing (Attribute, Html)
+import Css exposing (Style)
+import Html.Styled exposing (Attribute, Html, span, styled, text)
 import Html.Styled.Attributes exposing (attribute, href, target)
 import Html.Styled.Events exposing (defaultOptions, onWithOptions)
 import Json.Decode as Json
@@ -33,6 +35,11 @@ onClickPreventDefault msg =
         "click"
         { defaultOptions | preventDefault = True }
         (Json.succeed msg)
+
+
+styledSpanText : List Style -> String -> Html msg
+styledSpanText styles string =
+    styled span styles [] [ text string ]
 
 
 targetBlank : Attribute msg
