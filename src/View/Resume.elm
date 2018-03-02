@@ -8,9 +8,10 @@ import CssShorthand exposing (batchMap, borderBottomSolidColor, borderLeftSolidC
 import Data.Links exposing (LinksItemData)
 import Data.Tech exposing (TechItemVisibility(PortfolioAndResume))
 import Data.Work exposing (WorkData, WorkItemData)
-import Html.Styled exposing (Html, a, div, footer, h1, h2, header, img, main_, nav, p, section, span, styled, text)
+import Html.Styled exposing (Html, a, div, footer, h1, h2, h3, header, img, main_, nav, p, section, span, styled, text)
 import Html.Styled.Attributes exposing (href)
 import Icon exposing (IconBackground, IconSource, iconImage)
+import MarkedString exposing (MarkedString)
 import Model exposing (Model)
 import Msg exposing (Msg)
 import Regex exposing (HowMany(All), regex, replace)
@@ -238,7 +239,8 @@ viewTechItem : String -> Html Msg
 viewTechItem item =
     let
         style =
-            [ borderSolidColor printBlack
+            [ marginRight <| em 0.1
+            , borderSolidColor printBlack
             , borderWidth printBorderWidth
             , borderRadius <| em 0.3
             , paddingTopBottom <| em 0.0
@@ -305,10 +307,13 @@ viewWorkItemNameLocation : IconSource -> String -> String -> Html Msg
 viewWorkItemNameLocation iconSource name location =
     let
         style =
-            [ fontStyle italic
+            [ marginTopBottom zero
+            , fontSize <| em 1
+            , fontWeight normal
+            , fontStyle italic
             ]
     in
-    styled span
+    styled h3
         style
         []
         [ text name
@@ -384,7 +389,7 @@ viewWorkItemPeriod narrow period =
         [ text period ]
 
 
-viewWorkItemPoint : Bool -> String -> Html Msg
+viewWorkItemPoint : Bool -> MarkedString -> Html Msg
 viewWorkItemPoint narrow point =
     let
         style =
@@ -397,10 +402,22 @@ viewWorkItemPoint narrow point =
                     )
             ]
     in
+    point
+        |> MarkedString.transform text viewWorkItemPointSpecial
+        |> styled span style []
+
+
+viewWorkItemPointSpecial : String -> Html Msg
+viewWorkItemPointSpecial substring =
+    let
+        style =
+            [ fontWeight bold
+            ]
+    in
     styled span
         style
         []
-        [ text point ]
+        [ text substring ]
 
 
 viewFooter : Model -> Html Msg

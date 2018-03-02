@@ -6,6 +6,7 @@ module Data.Work
         )
 
 import Data.Section exposing (SectionData)
+import MarkedString exposing (MarkedString, markedString)
 
 
 type alias WorkData =
@@ -24,7 +25,7 @@ type alias WorkItemData =
     , portfolioTitles : List String
     , resumeTitlePeriods : List ( String, String )
     , portfolioSkills : List String
-    , resumePoints : List String
+    , resumePoints : List MarkedString
     }
 
 
@@ -47,12 +48,12 @@ initWorkData =
                 , "requirements gathering /"
                 , "mentoring"
                 ]
-                [ "Coded manufacturing subsystems in C#"
-                , "Investigated bugs using SQL and Excel"
-                , "Gathered and negotiated requirements"
-                , "Coordinated team’s development cycles"
-                , "Led improvements in team processes"
-                , "Mentored team members"
+                [ markedString "Coded manufacturing subsystems in `C#`"
+                , markedString "Investigated bugs using `SQL` and `Excel`"
+                , markedString "Gathered and negotiated requirements"
+                , markedString "Coordinated team’s development cycles"
+                , markedString "Led improvements in team processes"
+                , markedString "Mentored team members"
                 ]
 
         nexj =
@@ -67,8 +68,8 @@ initWorkData =
                 ]
                 [ "Java / Scheme"
                 ]
-                [ "Simplified WiX installer using Java"
-                , "Wrote tests, fixed CRM bugs in Scheme"
+                [ markedString "Simplified WiX installer using `Java`"
+                , markedString "Wrote tests, fixed CRM bugs in `Scheme`"
                 ]
 
         coreworx =
@@ -82,8 +83,8 @@ initWorkData =
                 ]
                 [ "C# / SQL"
                 ]
-                [ "Developed DMS personalization in C#"
-                , "Automated database migration via SQL"
+                [ markedString "Developed DMS personalization in `C#`"
+                , markedString "Automated database migration via `SQL`"
                 ]
 
         lsi =
@@ -97,8 +98,8 @@ initWorkData =
                 ]
                 [ "C / C++"
                 ]
-                [ "Fixed H.264 video decoder bugs in C"
-                , "Created pipeline analysis tool in C++"
+                [ markedString "Fixed H.264 video decoder bugs in `C`"
+                , markedString "Created pipeline analysis tool in `C++`"
                 ]
 
         themusuem =
@@ -110,8 +111,8 @@ initWorkData =
                 [ ( "Makerspace Assistant", "2017–now" )
                 ]
                 []
-                [ "Helping lead maker workshops"
-                , "Teaching kids STEAM mindsets"
+                [ markedString "Helping lead maker workshops"
+                , markedString "Teaching kids STEAM mindsets"
                 ]
     in
     { id = "work"
