@@ -34,15 +34,15 @@ initTechData =
     , intro =
         "I’m always looking for new opportunities to learn, so my list of productive-use technologies keeps growing:"
     , items =
-        [ TechItemData "Bootstrap" PortfolioAndResume
+        [ TechItemData "Bootstrap" PortfolioOnly
         , TechItemData "C" PortfolioOnly
         , TechItemData "C++" PortfolioOnly
         , TechItemData "C#" PortfolioAndResume
-        , TechItemData "CSS3" PortfolioOnly
+        , TechItemData "CSS3" PortfolioAndResume
         , TechItemData "Elm" PortfolioOnly
         , TechItemData "ES6" PortfolioOnly
         , TechItemData "Excel" PortfolioOnly
-        , TechItemData "FP" PortfolioOnly
+        , TechItemData "FP" PortfolioAndResume
         , TechItemData "functional animation" PortfolioOnly
         , TechItemData "GAE" PortfolioOnly
         , TechItemData "Go" PortfolioOnly

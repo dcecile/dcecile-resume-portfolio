@@ -206,7 +206,7 @@ viewInfo model =
         , p [] []
         , p [] []
         , viewSubheading "Volunteering"
-        , viewWork model .resumeVolunteerItems
+        , viewWork model .resumeVolunteerItems True
         , viewSubheading "Education"
         ]
 
@@ -264,12 +264,12 @@ viewHistory model =
         style
         []
         [ viewSubheading "Work history"
-        , viewWork model .resumeItems
+        , viewWork model .resumeItems False
         ]
 
 
-viewWork : Model -> (WorkData -> List WorkItemData) -> Html Msg
-viewWork model itemsSelector =
+viewWork : Model -> (WorkData -> List WorkItemData) -> Bool -> Html Msg
+viewWork model itemsSelector narrow =
     let
         sectionData =
             model.data.work
@@ -279,12 +279,12 @@ viewWork model itemsSelector =
             ]
     in
     itemsSelector sectionData
-        |> List.map viewWorkItem
+        |> List.map (viewWorkItem model.iconSource narrow)
         |> styled div style []
 
 
-viewWorkItem : WorkItemData -> Html Msg
-viewWorkItem item =
+viewWorkItem : IconSource -> Bool -> WorkItemData -> Html Msg
+viewWorkItem iconSource narrow item =
     let
         style =
             [ viewVerticalRule
@@ -293,16 +293,16 @@ viewWorkItem item =
             , marginBottom <| em 1.2
             ]
     in
-    [ ( item.name, item.resumeLocation ) |> uncurry viewWorkItemNameLocation |> List.singleton
-    , item.resumeTitlePeriods |> List.map (uncurry viewWorkItemTitlePeriod)
-    , item.resumePoints |> List.map viewWorkItemPoint
+    [ viewWorkItemNameLocation iconSource item.name item.resumeLocation |> List.singleton
+    , item.resumeTitlePeriods |> List.map (uncurry (viewWorkItemTitlePeriod narrow))
+    , item.resumePoints |> List.map (viewWorkItemPoint narrow)
     ]
         |> List.concat
         |> styled p style []
 
 
-viewWorkItemNameLocation : String -> String -> Html Msg
-viewWorkItemNameLocation name location =
+viewWorkItemNameLocation : IconSource -> String -> String -> Html Msg
+viewWorkItemNameLocation iconSource name location =
     let
         style =
             [ fontStyle italic
@@ -312,12 +312,12 @@ viewWorkItemNameLocation name location =
         style
         []
         [ text name
-        , viewWorkItemLocation location
+        , viewWorkItemLocation iconSource location
         ]
 
 
-viewWorkItemLocation : String -> Html Msg
-viewWorkItemLocation location =
+viewWorkItemLocation : IconSource -> String -> Html Msg
+viewWorkItemLocation iconSource location =
     let
         style =
             [ marginLeft <| em 0.6
@@ -326,21 +326,29 @@ viewWorkItemLocation location =
     styled span
         style
         []
-        [ text location ]
+        [ viewIcon iconSource .mapPin
+        , text location
+        ]
 
 
-viewWorkItemTitlePeriod : String -> String -> Html Msg
-viewWorkItemTitlePeriod title period =
+viewWorkItemTitlePeriod : Bool -> String -> String -> Html Msg
+viewWorkItemTitlePeriod narrow title period =
     let
         style =
-            [ marginLeft <| em 0.5
+            [ marginLeft <|
+                em
+                    (if narrow then
+                        0.5
+                     else
+                        1.0
+                    )
             ]
     in
     styled span
         style
         []
         [ viewWorkItemTitle title
-        , viewWorkItemPeriod period
+        , viewWorkItemPeriod narrow period
         ]
 
 
@@ -357,11 +365,17 @@ viewWorkItemTitle title =
         [ text title ]
 
 
-viewWorkItemPeriod : String -> Html Msg
-viewWorkItemPeriod period =
+viewWorkItemPeriod : Bool -> String -> Html Msg
+viewWorkItemPeriod narrow period =
     let
         style =
-            [ marginLeft <| em 0.6
+            [ marginLeft <|
+                em
+                    (if narrow then
+                        0.6
+                     else
+                        0.8
+                    )
             ]
     in
     styled span
@@ -370,11 +384,17 @@ viewWorkItemPeriod period =
         [ text period ]
 
 
-viewWorkItemPoint : String -> Html Msg
-viewWorkItemPoint point =
+viewWorkItemPoint : Bool -> String -> Html Msg
+viewWorkItemPoint narrow point =
     let
         style =
-            [ marginLeft <| em 1.0
+            [ marginLeft <|
+                em
+                    (if narrow then
+                        1.0
+                     else
+                        2.0
+                    )
             ]
     in
     styled span
@@ -413,7 +433,6 @@ viewSource iconSource sourceURL sourceShortURL =
         style =
             [ marginTopBottom zero
             , textAlign center
-            , fontSize <| em 0.8
             ]
     in
     styled p

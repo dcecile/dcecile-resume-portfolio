@@ -47,10 +47,11 @@ initWorkData =
                 , "requirements gathering /"
                 , "mentoring"
                 ]
-                [ "Implemented manufacturing tests in C#"
+                [ "Coded manufacturing subsystems in C#"
                 , "Investigated bugs using SQL and Excel"
-                , "Led improvements in team processes"
                 , "Gathered and negotiated requirements"
+                , "Coordinated team’s development cycles"
+                , "Led improvements in team processes"
                 , "Mentored team members"
                 ]
 
@@ -66,7 +67,7 @@ initWorkData =
                 ]
                 [ "Java / Scheme"
                 ]
-                [ "Integrated Ant/WiX installer using Java"
+                [ "Simplified WiX installer using Java"
                 , "Wrote tests, fixed CRM bugs in Scheme"
                 ]
 
@@ -81,8 +82,8 @@ initWorkData =
                 ]
                 [ "C# / SQL"
                 ]
-                [ "Implemented DMS personalization in C#"
-                , "Automated Oracle DB migration in SQL"
+                [ "Developed DMS personalization in C#"
+                , "Automated database migration via SQL"
                 ]
 
         lsi =
@@ -97,7 +98,7 @@ initWorkData =
                 [ "C / C++"
                 ]
                 [ "Fixed H.264 video decoder bugs in C"
-                , "Created performance analyis tool in C++"
+                , "Created pipeline analysis tool in C++"
                 ]
 
         themusuem =
