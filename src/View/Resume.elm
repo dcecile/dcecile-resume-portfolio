@@ -48,9 +48,6 @@ viewHeader model =
         basicData =
             model.data.basic
 
-        resumeData =
-            model.data.resume
-
         linksData =
             model.data.links
 
@@ -65,8 +62,8 @@ viewHeader model =
         [ viewPrimary
             model.iconSource
             basicData.name
-            resumeData.homepageURL
-            resumeData.tagline
+            basicData.homepageURL
+            basicData.resumeTagline
         , viewContact
             model.iconSource
             basicData.emailAddress
@@ -426,9 +423,6 @@ viewFooter model =
         basicData =
             model.data.basic
 
-        resumeData =
-            model.data.resume
-
         style =
             [ displayFlexColumn
             , marginTop <| em 0.2
@@ -440,7 +434,7 @@ viewFooter model =
         [ viewSource
             model.iconSource
             basicData.sourceURL
-            resumeData.sourceShortURL
+            basicData.sourceShortURL
         ]
 
 
