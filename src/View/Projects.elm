@@ -66,7 +66,7 @@ viewItem item =
         [ href item.url
         , targetBlank
         ]
-        [ viewName item.name
+        [ viewName <| Maybe.withDefault item.name item.shortName
         , viewTech item.tech
         , viewDescription item.description
         ]

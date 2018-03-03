@@ -2,11 +2,11 @@ module Data.Tech
     exposing
         ( TechData
         , TechItemData
-        , TechItemVisibility(PortfolioAndResume, PortfolioOnly)
         , initTechData
         )
 
 import Data.Section exposing (SectionData)
+import Data.Visibility exposing (Visibility(PortfolioAndResume, PortfolioOnly))
 
 
 type alias TechData =
@@ -17,13 +17,8 @@ type alias TechData =
 
 type alias TechItemData =
     { name : String
-    , visibility : TechItemVisibility
+    , visibility : Visibility
     }
-
-
-type TechItemVisibility
-    = PortfolioOnly
-    | PortfolioAndResume
 
 
 initTechData : TechData

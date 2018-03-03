@@ -6,7 +6,8 @@ module View.Resume
 import Css exposing (Style, batch, bold, borderRadius, borderWidth, center, color, em, flexBasis, flexGrow, flexWrap, fontSize, fontStyle, fontWeight, height, italic, lineHeight, marginBottom, marginLeft, marginRight, marginTop, none, normal, num, paddingBottom, paddingLeft, paddingTop, right, textAlign, textDecoration, width, wrap, zero)
 import CssShorthand exposing (batchMap, borderBottomSolidColor, borderLeftSolidColor, borderSolidColor, displayFlexColumn, displayFlexRow, marginRightLeft, marginTopBottom, paddingRightLeft, paddingTopBottom, textDecorationSkipInk)
 import Data.Links exposing (LinksItemData)
-import Data.Tech exposing (TechItemVisibility(PortfolioAndResume))
+import Data.Projects exposing (ProjectsItemData)
+import Data.Visibility exposing (Visibility(PortfolioAndResume), filterVisible)
 import Data.Work exposing (WorkData, WorkItemData)
 import Html.Styled exposing (Html, a, div, footer, h1, h2, h3, header, img, main_, nav, p, section, span, styled, text)
 import Html.Styled.Attributes exposing (href)
@@ -198,12 +199,7 @@ viewInfo model =
         [ viewSubheading "Proficiencies"
         , viewTech model
         , viewSubheading "Side projects"
-        , p [] []
-        , p [] []
-        , p [] []
-        , p [] []
-        , p [] []
-        , p [] []
+        , viewProjects model
         , viewSubheading "Volunteering"
         , viewWork model .resumeVolunteerItems True
         , viewSubheading "Education"
@@ -216,18 +212,17 @@ viewTech model =
         sectionData =
             model.data.tech
 
-        items =
-            sectionData.items
-                |> List.filter (.visibility >> (==) PortfolioAndResume)
-                |> List.map .name
-
         style =
             [ viewVerticalRule
-            , marginBottom <| em 1.2
+            , marginTop <| em 0.2
+            , marginRight <| em 0.2
+            , marginBottom <| em 0.8
             , lineHeight <| num 2.0
             ]
     in
-    items
+    sectionData.items
+        |> filterVisible PortfolioAndResume .visibility
+        |> List.map .name
         |> List.map viewTechItem
         |> List.intersperse (text " ")
         |> styled div style []
@@ -249,6 +244,111 @@ viewTechItem item =
         style
         []
         [ text item ]
+
+
+viewProjects : Model -> Html Msg
+viewProjects model =
+    let
+        basicData =
+            model.data.basic
+
+        sectionData =
+            model.data.projects
+
+        style =
+            [ displayFlexColumn
+            ]
+    in
+    [ sectionData.items
+        |> filterVisible PortfolioAndResume .visibility
+        |> List.map viewProjectsItem
+    , basicData.homepageURL
+        |> viewProjectsMore model.iconSource
+        |> List.singleton
+    ]
+        |> List.concat
+        |> styled div style []
+
+
+viewProjectsItem : ProjectsItemData -> Html Msg
+viewProjectsItem item =
+    let
+        style =
+            [ viewVerticalRule
+            , displayFlexColumn
+            , marginTop zero
+            , marginBottom <| em 0.8
+            ]
+    in
+    styled p
+        style
+        []
+        [ viewProjectsItemNamePeriod item.name item.period
+        , viewProjectsItemTechDescription item.tech item.description
+        ]
+
+
+viewProjectsItemNamePeriod : String -> String -> Html Msg
+viewProjectsItemNamePeriod name period =
+    let
+        style =
+            [ marginTopBottom zero
+            , fontSize <| em 1
+            , fontWeight normal
+            ]
+
+        nameStyle =
+            [ fontStyle italic
+            ]
+
+        periodStyle =
+            [ marginLeft <| em 0.6
+            ]
+    in
+    styled h3
+        style
+        []
+        [ styledSpanText nameStyle name
+        , styledSpanText periodStyle period
+        ]
+
+
+viewProjectsItemTechDescription : String -> String -> Html Msg
+viewProjectsItemTechDescription tech description =
+    let
+        style =
+            [ marginLeft <| em 0.5
+            ]
+
+        techStyle =
+            [ fontWeight bold
+            ]
+    in
+    styled span
+        style
+        []
+        [ styledSpanText techStyle tech
+        , text <| " " ++ description
+        ]
+
+
+viewProjectsMore : IconSource -> String -> Html Msg
+viewProjectsMore iconSource homepageURL =
+    let
+        style =
+            [ marginTop zero
+            , marginBottom <| em 0.8
+            , marginLeft <| em 0.8
+            , fontSize <| em 1.0
+            , fontStyle italic
+            ]
+    in
+    styled p
+        style
+        []
+        [ text "…more at "
+        , viewLink [] iconSource homepageURL Nothing .externalLink
+        ]
 
 
 viewHistory : Model -> Html Msg
@@ -290,7 +390,13 @@ viewWorkItem iconSource narrow item =
             [ viewVerticalRule
             , displayFlexColumn
             , marginTop zero
-            , marginBottom <| em 1.2
+            , marginBottom <|
+                em
+                    (if narrow then
+                        0.8
+                     else
+                        1.2
+                    )
             ]
     in
     [ viewWorkItemNameLocation iconSource item.name item.resumeLocation |> List.singleton
@@ -449,8 +555,8 @@ viewSubheading : String -> Html Msg
 viewSubheading subheading =
     let
         style =
-            [ marginTop <| em 0.2
-            , marginBottom <| em 0.4
+            [ marginTop zero
+            , marginBottom <| em 0.1
             , fontSize <| em 1.8
             , fontWeight bold
             ]
@@ -517,7 +623,7 @@ viewHorizontalRule =
 viewVerticalRule : Style
 viewVerticalRule =
     batch
-        [ batchMap [ marginLeft, paddingLeft ] <| em 1.0
+        [ batchMap [ marginLeft, paddingLeft ] <| em 0.7
         , borderLeftSolidColor printGray
         , borderWidth printBorderWidth
         ]
