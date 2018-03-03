@@ -58,7 +58,7 @@ initWorkData =
 
         nexj =
             WorkItemData
-                "NexJ"
+                "NexJ Systems"
                 "Toronto, Ontario"
                 "8 months"
                 [ "co-op"

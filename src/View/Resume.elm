@@ -55,7 +55,7 @@ viewHeader model =
 
         style =
             [ displayFlexRow
-            , marginBottom <| em 0.8
+            , marginBottom <| em 0.4
             ]
     in
     styled header
@@ -173,6 +173,7 @@ viewMain model =
         style =
             [ displayFlexRow
             , flexGrow <| num 1
+            , marginTop <| em 0.1
             ]
     in
     styled main_
@@ -203,6 +204,7 @@ viewInfo model =
         , viewSubheading "Volunteering"
         , viewWork model .resumeVolunteerItems True
         , viewSubheading "Education"
+        , viewEducation model
         ]
 
 
@@ -216,7 +218,7 @@ viewTech model =
             [ viewVerticalRule
             , marginTop <| em 0.2
             , marginRight <| em 0.2
-            , marginBottom <| em 0.8
+            , marginBottom <| em 0.6
             , lineHeight <| num 2.0
             ]
     in
@@ -225,7 +227,7 @@ viewTech model =
         |> List.map .name
         |> List.map viewTechItem
         |> List.intersperse (text " ")
-        |> styled div style []
+        |> styled p style []
 
 
 viewTechItem : String -> Html Msg
@@ -277,7 +279,7 @@ viewProjectsItem item =
             [ viewVerticalRule
             , displayFlexColumn
             , marginTop zero
-            , marginBottom <| em 0.8
+            , marginBottom <| em 0.6
             ]
     in
     styled p
@@ -337,7 +339,7 @@ viewProjectsMore iconSource homepageURL =
     let
         style =
             [ marginTop zero
-            , marginBottom <| em 0.8
+            , marginBottom <| em 0.6
             , marginLeft <| em 0.8
             , fontSize <| em 1.0
             , fontStyle italic
@@ -348,6 +350,63 @@ viewProjectsMore iconSource homepageURL =
         []
         [ text "…more at "
         , viewLink [] iconSource homepageURL Nothing .externalLink
+        ]
+
+
+viewEducation : Model -> Html Msg
+viewEducation model =
+    let
+        sectionData =
+            model.data.education
+
+        style =
+            [ viewVerticalRule
+            , displayFlexColumn
+            , marginTop zero
+            , marginBottom <| em 0.6
+            ]
+    in
+    styled p
+        style
+        []
+        [ viewEducationLocationPeriod
+            sectionData.location
+            sectionData.period
+        , viewEducationName
+            sectionData.name
+        ]
+
+
+viewEducationLocationPeriod : String -> String -> Html Msg
+viewEducationLocationPeriod location period =
+    let
+        style =
+            [ marginTopBottom zero
+            , fontSize <| em 1
+            , fontWeight normal
+            ]
+
+        locationStyle =
+            [ fontStyle italic
+            ]
+
+        periodStyle =
+            [ marginLeft <| em 0.6
+            ]
+    in
+    styled span
+        style
+        []
+        [ styledSpanText locationStyle location
+        , styledSpanText periodStyle period
+        ]
+
+
+viewEducationName : String -> Html Msg
+viewEducationName =
+    styledSpanText
+        [ marginLeft <| em 0.5
+        , fontWeight bold
         ]
 
 
@@ -393,9 +452,9 @@ viewWorkItem iconSource narrow item =
             , marginBottom <|
                 em
                     (if narrow then
-                        0.8
+                        0.6
                      else
-                        1.2
+                        1.0
                     )
             ]
     in
@@ -522,7 +581,6 @@ viewFooter model =
 
         style =
             [ displayFlexColumn
-            , marginTop <| em 0.2
             ]
     in
     styled footer

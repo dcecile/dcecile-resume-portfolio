@@ -5,6 +5,7 @@ module Data
         )
 
 import Data.Basic exposing (BasicData, initBasicData)
+import Data.Education exposing (EducationData, initEducationData)
 import Data.Links exposing (LinksData, initLinksData)
 import Data.Mindsets exposing (MindsetsData, initMindsetsData)
 import Data.Projects exposing (ProjectsData, initProjectsData)
@@ -19,6 +20,7 @@ type alias Data =
     , tech : TechData
     , projects : ProjectsData
     , work : WorkData
+    , education : EducationData
     }
 
 
@@ -30,4 +32,5 @@ initData =
     , tech = initTechData
     , projects = initProjectsData
     , work = initWorkData
+    , education = initEducationData
     }
