@@ -1,5 +1,6 @@
 @media only print {
   @page {
+    size: letter;
     margin: 0;
   }
 }
