@@ -9,7 +9,7 @@ import Msg exposing (Msg)
 import Svg.Styled exposing (Svg, g, path, styled, svg)
 import Svg.Styled.Attributes exposing (d)
 import SvgShorthand exposing (fill, flipAxes, rotate, scale, stroke, strokeWidthUnscaled, transform, translate, viewBoxSquare)
-import View.Colors exposing (extraPaleGreen, green)
+import View.Colors exposing (extraPaleGreen, paleGreen)
 
 
 leafSize : Vw
@@ -19,7 +19,7 @@ leafSize =
 
 leafOpacity : Float
 leafOpacity =
-    0.1
+    0.4
 
 
 leafViewBox : Float
@@ -48,7 +48,7 @@ viewLeaf flipX flipY size =
         style =
             [ batchMap [ width, height ] leafSize
             , fill extraPaleGreen
-            , stroke green
+            , stroke paleGreen
             , opacity <| num leafOpacity
             ]
 

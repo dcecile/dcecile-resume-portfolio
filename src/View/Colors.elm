@@ -10,12 +10,7 @@ module View.Colors
         , white
         )
 
-import Css exposing (Color, hex, rgb)
-
-
-black : Color
-black =
-    rgb blackLevel blackLevel blackLevel
+import Css exposing (Color, hex, hsl, rgb)
 
 
 blackLevel : Int
@@ -23,19 +18,29 @@ blackLevel =
     0x11
 
 
+black : Color
+black =
+    rgb blackLevel blackLevel blackLevel
+
+
+greenHue : Float
+greenHue =
+    151
+
+
 green : Color
 green =
-    hex "#00a934"
+    hsl greenHue 1.0 0.37
 
 
 extraPaleGreen : Color
 extraPaleGreen =
-    hex "#ddfde6"
+    hsl greenHue 0.89 0.99
 
 
 paleGreen : Color
 paleGreen =
-    hex "#a5deb7"
+    hsl greenHue 0.62 0.79
 
 
 white : Color
