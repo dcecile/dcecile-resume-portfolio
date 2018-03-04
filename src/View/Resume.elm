@@ -17,7 +17,7 @@ import MarkedString exposing (MarkedString)
 import Model exposing (Model)
 import Msg exposing (Msg)
 import Regex exposing (HowMany(All), regex, replace)
-import View.Colors exposing (printBlack, printGray)
+import View.Colors exposing (printBlack, printPaleGreen, printGreen)
 import View.Metrics exposing (printBorderWidth, standardLineHeight)
 
 
@@ -132,6 +132,7 @@ viewTagline tagline =
         style =
             [ marginTopBottom zero
             , fontSize <| em 1.5
+            , color printGreen
             ]
     in
     styled p
@@ -220,6 +221,7 @@ viewTech model =
             , marginRight <| em 0.2
             , marginBottom <| em 0.6
             , lineHeight <| num 2.0
+            , color printGreen
             ]
     in
     sectionData.items
@@ -235,7 +237,7 @@ viewTechItem item =
     let
         style =
             [ marginRight <| em 0.1
-            , borderSolidColor printBlack
+            , borderSolidColor printPaleGreen
             , borderWidth printBorderWidth
             , borderRadius <| em 0.3
             , paddingTopBottom <| em 0.0
@@ -324,6 +326,7 @@ viewProjectsItemTechDescription tech description =
 
         techStyle =
             [ fontWeight bold
+            , color printGreen
             ]
     in
     styled span
@@ -566,7 +569,10 @@ viewWorkItemPoint narrow point =
             ]
 
         highlight =
-            styledSpanText [ fontWeight bold ]
+            styledSpanText
+                [ fontWeight bold
+                , color printGreen
+                ]
     in
     point
         |> MarkedString.transform text highlight
@@ -600,11 +606,18 @@ viewSource iconSource sourceURL sourceShortURL =
             [ marginTopBottom zero
             , textAlign center
             ]
+
+        techStyle =
+            [ fontWeight bold
+            , color printGreen
+            ]
     in
     styled p
         style
         []
-        [ text "This resume was made with Elm, view source at "
+        [ text "This resume was made with "
+        , styledSpanText techStyle "Elm"
+        , text ", view source at "
         , viewLink [] iconSource sourceURL sourceShortURL .externalLink
         ]
 
@@ -671,7 +684,7 @@ viewHorizontalRule =
         style =
             [ marginRightLeft <| em 2
             , batchMap [ marginBottom, paddingBottom ] <| em 1.0
-            , borderBottomSolidColor printGray
+            , borderBottomSolidColor printPaleGreen
             , borderWidth printBorderWidth
             ]
     in
@@ -682,6 +695,6 @@ viewVerticalRule : Style
 viewVerticalRule =
     batch
         [ batchMap [ marginLeft, paddingLeft ] <| em 0.7
-        , borderLeftSolidColor printGray
+        , borderLeftSolidColor printPaleGreen
         , borderWidth printBorderWidth
         ]

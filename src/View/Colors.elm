@@ -6,7 +6,8 @@ module View.Colors
         , green
         , paleGreen
         , printBlack
-        , printGray
+        , printPaleGreen
+        , printGreen
         , white
         )
 
@@ -53,6 +54,11 @@ printBlack =
     hex "#000000"
 
 
-printGray : Color
-printGray =
-    hex "#e4e4e4"
+printPaleGreen : Color
+printPaleGreen =
+    hsl greenHue 0.5 0.82
+
+
+printGreen : Color
+printGreen =
+    hsl greenHue 0.86 0.34
