@@ -195,24 +195,22 @@ viewInfo model =
             , marginRight <| em 1.0
             ]
     in
-    styled section
+    styled div
         style
         []
-        [ viewSubheading "Proficiencies"
-        , viewTech model
-        , viewSubheading "Side projects"
+        [ viewTech model
         , viewProjects model
-        , viewSubheading "Volunteering"
-        , viewWork model .resumeVolunteerItems True
-        , viewSubheading "Education"
+        , viewWork model "Volunteering" .resumeVolunteerItems True
         , viewEducation model
         ]
 
 
 viewTech : Model -> Html Msg
 viewTech model =
-    viewItem True
-        [ viewTechLine model
+    viewSection "Proficiencies"
+        [ viewItem True
+            [ viewTechLine model
+            ]
         ]
 
 
@@ -263,12 +261,8 @@ viewProjects model =
 
         sectionData =
             model.data.projects
-
-        style =
-            [ displayFlexColumn
-            ]
     in
-    (styled div style [] << List.concat)
+    (viewSection "Side projects" << List.concat)
         [ sectionData.items
             |> filterVisible PortfolioAndResume .visibility
             |> List.map viewProjectsItem
@@ -317,13 +311,15 @@ viewEducation model =
         sectionData =
             model.data.education
     in
-    viewItem True
-        [ viewItemLine0
-            [ viewItemName sectionData.name
-            , viewItemPeriod True sectionData.period
-            ]
-        , viewItemLine1 True
-            [ viewItemTitle sectionData.specialization
+    viewSection "Education"
+        [ viewItem True
+            [ viewItemLine0
+                [ viewItemName sectionData.name
+                , viewItemPeriod True sectionData.period
+                ]
+            , viewItemLine1 True
+                [ viewItemTitle sectionData.specialization
+                ]
             ]
         ]
 
@@ -337,27 +333,22 @@ viewHistory model =
             , flexGrow <| num 1.2
             ]
     in
-    styled section
+    styled div
         style
         []
-        [ viewSubheading "Work history"
-        , viewWork model .resumeItems False
+        [ viewWork model "Work history" .resumeItems False
         ]
 
 
-viewWork : Model -> (WorkData -> List WorkItemData) -> Bool -> Html Msg
-viewWork model itemsSelector narrow =
+viewWork : Model -> String -> (WorkData -> List WorkItemData) -> Bool -> Html Msg
+viewWork model subheading itemsSelector narrow =
     let
         sectionData =
             model.data.work
-
-        style =
-            [ displayFlexColumn
-            ]
     in
     itemsSelector sectionData
         |> List.map (viewWorkItem model.iconSource narrow)
-        |> styled div style []
+        |> viewSection subheading
 
 
 viewWorkItem : IconSource -> Bool -> WorkItemData -> Html Msg
@@ -448,6 +439,19 @@ viewSubheading subheading =
         style
         []
         [ text subheading ]
+
+
+viewSection : String -> List (Html Msg) -> Html Msg
+viewSection subheading nodes =
+    let
+        style =
+            [ displayFlexColumn
+            ]
+    in
+    (styled section style [] << List.concat)
+        [ viewSubheading subheading |> List.singleton
+        , nodes
+        ]
 
 
 viewLink : List Style -> IconSource -> String -> Maybe String -> IconBackground -> Html Msg
