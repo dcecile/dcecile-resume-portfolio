@@ -6,15 +6,15 @@ module Data.Education
 
 
 type alias EducationData =
-    { location : String
+    { name : String
     , period : String
-    , name : String
+    , specialization : String
     }
 
 
 initEducationData : EducationData
 initEducationData =
-    { location = "University of Waterloo"
+    { name = "University of Waterloo"
     , period = "2004–2009"
-    , name = "Bachelor of Computer Science"
+    , specialization = "Bachelor of Computer Science"
     }

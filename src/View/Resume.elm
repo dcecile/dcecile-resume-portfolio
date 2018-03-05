@@ -13,11 +13,11 @@ import Html.Styled exposing (Html, a, div, footer, h1, h2, h3, header, img, main
 import Html.Styled.Attributes exposing (href)
 import HtmlShorthand exposing (styledSpanText)
 import Icon exposing (IconBackground, IconSource, iconImage)
-import MarkedString exposing (MarkedString)
+import MarkedString exposing (MarkedString, MarkedSubstring(NormalSubstring, SpecialSubstring), markedString)
 import Model exposing (Model)
 import Msg exposing (Msg)
 import Regex exposing (HowMany(All), regex, replace)
-import View.Colors exposing (printBlack, printPaleGreen, printGreen)
+import View.Colors exposing (printBlack, printGreen, printPaleGreen)
 import View.Metrics exposing (printBorderWidth, standardLineHeight)
 
 
@@ -211,15 +211,20 @@ viewInfo model =
 
 viewTech : Model -> Html Msg
 viewTech model =
+    viewItem True
+        [ viewTechLine model
+        ]
+
+
+viewTechLine : Model -> Html Msg
+viewTechLine model =
     let
         sectionData =
             model.data.tech
 
         style =
-            [ viewVerticalRule
-            , marginTop <| em 0.2
+            [ marginTopBottom zero
             , marginRight <| em 0.2
-            , marginBottom <| em 0.6
             , lineHeight <| num 2.0
             , color printGreen
             ]
@@ -227,13 +232,13 @@ viewTech model =
     sectionData.items
         |> filterVisible PortfolioAndResume .visibility
         |> List.map .name
-        |> List.map viewTechItem
+        |> List.map viewTechLineItem
         |> List.intersperse (text " ")
         |> styled p style []
 
 
-viewTechItem : String -> Html Msg
-viewTechItem item =
+viewTechLineItem : String -> Html Msg
+viewTechLineItem item =
     let
         style =
             [ marginRight <| em 0.1
@@ -263,77 +268,28 @@ viewProjects model =
             [ displayFlexColumn
             ]
     in
-    [ sectionData.items
-        |> filterVisible PortfolioAndResume .visibility
-        |> List.map viewProjectsItem
-    , basicData.homepageURL
-        |> viewProjectsMore model.iconSource
-        |> List.singleton
-    ]
-        |> List.concat
-        |> styled div style []
+    (styled div style [] << List.concat)
+        [ sectionData.items
+            |> filterVisible PortfolioAndResume .visibility
+            |> List.map viewProjectsItem
+        , basicData.homepageURL
+            |> viewProjectsMore model.iconSource
+            |> List.singleton
+        ]
 
 
 viewProjectsItem : ProjectsItemData -> Html Msg
 viewProjectsItem item =
-    let
-        style =
-            [ viewVerticalRule
-            , displayFlexColumn
-            , marginTop zero
-            , marginBottom <| em 0.6
+    viewItem True
+        [ viewItemLine0
+            [ viewItemName item.name
+            , viewItemPeriod True item.period
             ]
-    in
-    styled p
-        style
-        []
-        [ viewProjectsItemNamePeriod item.name item.period
-        , viewProjectsItemTechDescription item.tech item.description
-        ]
-
-
-viewProjectsItemNamePeriod : String -> String -> Html Msg
-viewProjectsItemNamePeriod name period =
-    let
-        style =
-            [ marginTopBottom zero
-            , fontSize <| em 1
-            , fontWeight normal
-            ]
-
-        nameStyle =
-            [ fontStyle italic
-            ]
-
-        periodStyle =
-            [ marginLeft <| em 0.6
-            ]
-    in
-    styled h3
-        style
-        []
-        [ styledSpanText nameStyle name
-        , styledSpanText periodStyle period
-        ]
-
-
-viewProjectsItemTechDescription : String -> String -> Html Msg
-viewProjectsItemTechDescription tech description =
-    let
-        style =
-            [ marginLeft <| em 0.5
-            ]
-
-        techStyle =
-            [ fontWeight bold
-            , color printGreen
-            ]
-    in
-    styled span
-        style
-        []
-        [ styledSpanText techStyle tech
-        , text <| " " ++ description
+        , viewItemLine1 True <|
+            viewMarkedString
+                [ SpecialSubstring item.tech
+                , NormalSubstring <| " " ++ item.description
+                ]
         ]
 
 
@@ -344,7 +300,6 @@ viewProjectsMore iconSource homepageURL =
             [ marginTop zero
             , marginBottom <| em 0.6
             , marginLeft <| em 0.8
-            , fontSize <| em 1.0
             , fontStyle italic
             ]
     in
@@ -361,55 +316,15 @@ viewEducation model =
     let
         sectionData =
             model.data.education
-
-        style =
-            [ viewVerticalRule
-            , displayFlexColumn
-            , marginTop zero
-            , marginBottom <| em 0.6
-            ]
     in
-    styled p
-        style
-        []
-        [ viewEducationLocationPeriod
-            sectionData.location
-            sectionData.period
-        , viewEducationName
-            sectionData.name
-        ]
-
-
-viewEducationLocationPeriod : String -> String -> Html Msg
-viewEducationLocationPeriod location period =
-    let
-        style =
-            [ marginTopBottom zero
-            , fontSize <| em 1
-            , fontWeight normal
+    viewItem True
+        [ viewItemLine0
+            [ viewItemName sectionData.name
+            , viewItemPeriod True sectionData.period
             ]
-
-        locationStyle =
-            [ fontStyle italic
+        , viewItemLine1 True
+            [ viewItemTitle sectionData.specialization
             ]
-
-        periodStyle =
-            [ marginLeft <| em 0.6
-            ]
-    in
-    styled span
-        style
-        []
-        [ styledSpanText locationStyle location
-        , styledSpanText periodStyle period
-        ]
-
-
-viewEducationName : String -> Html Msg
-viewEducationName =
-    styledSpanText
-        [ marginLeft <| em 0.5
-        , fontWeight bold
         ]
 
 
@@ -447,136 +362,33 @@ viewWork model itemsSelector narrow =
 
 viewWorkItem : IconSource -> Bool -> WorkItemData -> Html Msg
 viewWorkItem iconSource narrow item =
-    let
-        style =
-            [ viewVerticalRule
-            , displayFlexColumn
-            , marginTop zero
-            , marginBottom <|
-                em
-                    (if narrow then
-                        0.6
-                     else
-                        1.0
-                    )
-            ]
-    in
-    [ viewWorkItemNameLocation iconSource item.name item.resumeLocation |> List.singleton
-    , item.resumeTitlePeriods |> List.map (uncurry (viewWorkItemTitlePeriod narrow))
-    , item.resumePoints |> List.map (viewWorkItemPoint narrow)
-    ]
-        |> List.concat
-        |> styled p style []
+    (viewItem narrow << List.concat)
+        [ viewWorkItemNameLocation iconSource item.name item.resumeLocation |> List.singleton
+        , item.resumeTitlePeriods |> List.map (uncurry (viewWorkItemTitlePeriod narrow))
+        , item.resumePoints |> List.map (viewWorkItemPoint narrow)
+        ]
 
 
 viewWorkItemNameLocation : IconSource -> String -> String -> Html Msg
 viewWorkItemNameLocation iconSource name location =
-    let
-        style =
-            [ marginTopBottom zero
-            , fontSize <| em 1
-            , fontWeight normal
-            , fontStyle italic
-            ]
-    in
-    styled h3
-        style
-        []
-        [ text name
-        , viewWorkItemLocation iconSource location
-        ]
-
-
-viewWorkItemLocation : IconSource -> String -> Html Msg
-viewWorkItemLocation iconSource location =
-    let
-        style =
-            [ marginLeft <| em 0.6
-            ]
-    in
-    styled span
-        style
-        []
-        [ viewIcon iconSource .mapPin
-        , text location
+    viewItemLine0
+        [ viewItemName name
+        , viewItemLocation iconSource location
         ]
 
 
 viewWorkItemTitlePeriod : Bool -> String -> String -> Html Msg
 viewWorkItemTitlePeriod narrow title period =
-    let
-        style =
-            [ marginLeft <|
-                em
-                    (if narrow then
-                        0.5
-                     else
-                        1.0
-                    )
-            ]
-    in
-    styled span
-        style
-        []
-        [ viewWorkItemTitle title
-        , viewWorkItemPeriod narrow period
+    viewItemLine1 narrow
+        [ viewItemTitle title
+        , viewItemPeriod narrow period
         ]
-
-
-viewWorkItemTitle : String -> Html Msg
-viewWorkItemTitle title =
-    let
-        style =
-            [ fontWeight bold
-            ]
-    in
-    styled span
-        style
-        []
-        [ text title ]
-
-
-viewWorkItemPeriod : Bool -> String -> Html Msg
-viewWorkItemPeriod narrow period =
-    let
-        style =
-            [ marginLeft <|
-                em
-                    (if narrow then
-                        0.6
-                     else
-                        0.8
-                    )
-            ]
-    in
-    styled span
-        style
-        []
-        [ text period ]
 
 
 viewWorkItemPoint : Bool -> MarkedString -> Html Msg
 viewWorkItemPoint narrow point =
-    let
-        style =
-            [ marginLeft <|
-                em
-                    (if narrow then
-                        1.0
-                     else
-                        2.0
-                    )
-            ]
-
-        highlight =
-            styledSpanText
-                [ fontWeight bold
-                , color printGreen
-                ]
-    in
-    point
-        |> MarkedString.transform text highlight
-        |> styled span style []
+    viewItemLine2 narrow <|
+        viewMarkedString point
 
 
 viewFooter : Model -> Html Msg
@@ -612,14 +424,14 @@ viewSource iconSource sourceURL sourceShortURL =
             , color printGreen
             ]
     in
-    styled p
-        style
-        []
-        [ text "This resume was made with "
-        , styledSpanText techStyle "Elm"
-        , text ", view source at "
-        , viewLink [] iconSource sourceURL sourceShortURL .externalLink
+    (styled p style [] << List.concat)
+        [ viewMarkedString <| markedString "This resume was made with `Elm`, view source at "
+        , viewLink [] iconSource sourceURL sourceShortURL .externalLink |> List.singleton
         ]
+
+
+
+-- Elements
 
 
 viewSubheading : String -> Html Msg
@@ -647,6 +459,9 @@ viewLink customStyle iconSource url shortUrl iconBackground =
             , batch customStyle
             ]
 
+        trimProtocol =
+            replace All (regex "^(?:https://|mailto:)") (always "")
+
         urlText =
             trimProtocol <| Maybe.withDefault url shortUrl
     in
@@ -656,11 +471,6 @@ viewLink customStyle iconSource url shortUrl iconBackground =
         [ text urlText
         , viewIcon iconSource iconBackground
         ]
-
-
-trimProtocol : String -> String
-trimProtocol =
-    replace All (regex "^(?:https://|mailto:)") (always "")
 
 
 viewIcon : IconSource -> IconBackground -> Html msg
@@ -698,3 +508,123 @@ viewVerticalRule =
         , borderLeftSolidColor printPaleGreen
         , borderWidth printBorderWidth
         ]
+
+
+viewItem : Bool -> List (Html Msg) -> Html Msg
+viewItem narrow =
+    let
+        style =
+            [ viewVerticalRule
+            , displayFlexColumn
+            , marginTop zero
+            , marginBottom <|
+                em
+                    (if narrow then
+                        0.6
+                     else
+                        1.0
+                    )
+            ]
+    in
+    styled div style []
+
+
+viewItemLine0 : List (Html Msg) -> Html Msg
+viewItemLine0 =
+    let
+        style =
+            [ marginTopBottom zero
+            , fontSize <| em 1
+            , fontWeight normal
+            ]
+    in
+    styled h3 style []
+
+
+viewItemLine1 : Bool -> List (Html Msg) -> Html Msg
+viewItemLine1 narrow =
+    let
+        style =
+            [ marginTopBottom zero
+            , marginLeft <|
+                em
+                    (if narrow then
+                        0.5
+                     else
+                        1.0
+                    )
+            ]
+    in
+    styled p style []
+
+
+viewItemLine2 : Bool -> List (Html Msg) -> Html Msg
+viewItemLine2 narrow =
+    let
+        style =
+            [ marginTopBottom zero
+            , marginLeft <|
+                em
+                    (if narrow then
+                        1.0
+                     else
+                        2.0
+                    )
+            ]
+    in
+    styled p style []
+
+
+viewItemName : String -> Html Msg
+viewItemName =
+    styledSpanText
+        [ fontStyle italic
+        ]
+
+
+viewItemLocation : IconSource -> String -> Html Msg
+viewItemLocation iconSource location =
+    let
+        style =
+            [ marginLeft <| em 0.6
+            , fontStyle italic
+            ]
+    in
+    styled span
+        style
+        []
+        [ viewIcon iconSource .mapPin
+        , text location
+        ]
+
+
+viewItemPeriod : Bool -> String -> Html Msg
+viewItemPeriod narrow =
+    styledSpanText
+        [ marginLeft <|
+            em
+                (if narrow then
+                    0.6
+                 else
+                    0.8
+                )
+        ]
+
+
+viewItemTitle : String -> Html Msg
+viewItemTitle =
+    styledSpanText
+        [ fontWeight bold
+        ]
+
+
+viewMarkedString : MarkedString -> List (Html Msg)
+viewMarkedString =
+    let
+        highlight =
+            styledSpanText
+                [ fontWeight bold
+                , color printGreen
+                ]
+    in
+    MarkedString.transform text highlight

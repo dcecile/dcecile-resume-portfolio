@@ -1,6 +1,7 @@
 module MarkedString
     exposing
         ( MarkedString
+        , MarkedSubstring(NormalSubstring, SpecialSubstring)
         , markedString
         , transform
         )
