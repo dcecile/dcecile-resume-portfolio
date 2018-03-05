@@ -111,7 +111,7 @@ viewHomepage iconSource homepageURL =
     let
         style =
             [ marginTop <| em 0.5
-            , marginBottom <| em 0.3
+            , marginBottom <| em 0.2
             , fontSize <| em 1.5
             , fontWeight bold
             ]
@@ -174,7 +174,6 @@ viewMain model =
         style =
             [ displayFlexRow
             , flexGrow <| num 1
-            , marginTop <| em 0.1
             ]
     in
     styled main_
