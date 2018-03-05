@@ -505,21 +505,11 @@ viewHorizontalRule =
     styled div style [] []
 
 
-viewVerticalRule : Style
-viewVerticalRule =
-    batch
-        [ batchMap [ marginLeft, paddingLeft ] <| em 0.7
-        , borderLeftSolidColor printPaleGreen
-        , borderWidth printBorderWidth
-        ]
-
-
 viewItem : Bool -> List (Html Msg) -> Html Msg
-viewItem narrow =
+viewItem narrow nodes =
     let
         style =
-            [ viewVerticalRule
-            , displayFlexColumn
+            [ displayFlexRow
             , marginTop zero
             , marginBottom <|
                 em
@@ -529,8 +519,24 @@ viewItem narrow =
                         1.0
                     )
             ]
+
+        innerStyle =
+            [ displayFlexColumn
+            ]
+
+        verticalRuleStyle =
+            [ marginTopBottom <| em 0.25
+            , batchMap [ marginLeft, paddingLeft ] <| em 0.7
+            , borderLeftSolidColor printPaleGreen
+            , borderWidth printBorderWidth
+            ]
     in
-    styled div style []
+    styled div
+        style
+        []
+        [ styled div verticalRuleStyle [] []
+        , styled div innerStyle [] nodes
+        ]
 
 
 viewItemLine0 : List (Html Msg) -> Html Msg
