@@ -9,6 +9,7 @@ import Data.Section exposing (SectionData)
 import Html.Styled exposing (Html, div, h2, p, section, styled, text)
 import Html.Styled.Attributes exposing (id)
 import Icon exposing (IconBackground, IconSource, iconStyle)
+import MaybeEx
 import Msg exposing (Msg)
 import View.Colors exposing (black, paleGreen)
 import View.Metrics exposing (standardBorderWidth)
@@ -40,8 +41,7 @@ viewSection iconSource sectionData nodes =
         requiredNodesAfter =
             sectionData.outro
                 |> Maybe.map viewParagraph
-                |> Maybe.map List.singleton
-                |> Maybe.withDefault []
+                |> MaybeEx.toList
     in
     styled section
         style

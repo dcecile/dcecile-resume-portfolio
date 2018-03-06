@@ -14,3 +14,51 @@
     animation-timing-function: ease-in;
   }
 }
+
+@keyframes fadeOut {
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+}
+
+@keyframes fadePartialOut {
+  100% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes fadePartialIn {
+  0% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes zoomIn {
+  100% {
+    transform: scale(3);
+  }
+}
+
+@keyframes zoomOut {
+  0% {
+    transform: scale(3);
+  }
+}
+
+@keyframes growIn {
+  0% {
+    transform: scale(0);
+  }
+}
+
+@keyframes growOut {
+  100% {
+    transform: scale(0);
+  }
+}

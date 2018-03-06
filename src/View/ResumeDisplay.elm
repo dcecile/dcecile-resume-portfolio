@@ -4,8 +4,7 @@ module View.ResumeDisplay
         )
 
 import Css exposing (Vw, backgroundColor, boxShadow5, display, flexGrow, fontSize, height, hex, none, num, px, vw, zero)
-import Css.Media exposing (print, withMedia)
-import CssShorthand exposing (displayFlexColumn, marginRightLeft, marginTopBottom, willChangeTransform)
+import CssShorthand exposing (displayFlexColumn, marginRightLeft, marginTopBottom, mediaNotPrint, willChangeTransform)
 import Html.Styled exposing (Html, div, styled)
 import Model exposing (Model)
 import Msg exposing (Msg)
@@ -57,9 +56,7 @@ viewResumeDisplay model =
             , height <| ptToVw fullHeightPt
             , backgroundColor <| hex "#dadada"
             , fontSize <| ptToVw standardPrintFontSize.numericValue
-            , withMedia
-                [ Css.Media.not print [] ]
-                [ displayFlexColumn ]
+            , mediaNotPrint [ displayFlexColumn ]
             ]
     in
     styled div

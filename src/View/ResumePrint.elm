@@ -4,8 +4,7 @@ module View.ResumePrint
         )
 
 import Css exposing (display, fontSize, minHeight, none, vh)
-import Css.Media exposing (only, print, withMedia)
-import CssShorthand exposing (displayFlexColumn)
+import CssShorthand exposing (displayFlexColumn, mediaPrint)
 import Html.Styled exposing (Html, div, styled)
 import Model exposing (Model)
 import Msg exposing (Msg)
@@ -20,9 +19,7 @@ viewResumePrint model =
             [ display none
             , minHeight (vh 100)
             , fontSize standardPrintFontSize
-            , withMedia
-                [ only print [] ]
-                [ displayFlexColumn ]
+            , mediaPrint [ displayFlexColumn ]
             ]
     in
     styled div

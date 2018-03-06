@@ -164,7 +164,7 @@ viewCallsToAction iconSource emailAddress =
             displayFlexRowReverse
             .printer
             [ hrefHash
-            , onClickPreventDefault Print
+            , onClickPreventDefault (always Print)
             ]
             [ text "Print my resume" ]
         ]

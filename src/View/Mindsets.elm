@@ -7,8 +7,9 @@ import Css exposing (Em, alignItems, backgroundColor, center, em, flexWrap, heig
 import CssShorthand exposing (batchMap, displayFlexColumn, displayFlexRow, marginRightLeft, marginTopBottom)
 import Html.Styled exposing (Html, a, div, span, styled, text)
 import Html.Styled.Attributes exposing (href)
+import HtmlShorthand exposing (onClickPreventDefault)
 import Model exposing (Model)
-import Msg exposing (Msg)
+import Msg exposing (Msg, clickDetailsOpen)
 import View.Button as Button
 import View.Colors exposing (white)
 import View.MindsetsCircle exposing (viewMindsetsCircle)
@@ -72,7 +73,9 @@ viewItem item =
     in
     styled a
         style
-        [ href "#" ]
+        [ href "#"
+        , onClickPreventDefault clickDetailsOpen
+        ]
         [ viewItemBackground
         , viewItemLink item
         ]

@@ -4,13 +4,13 @@ module View.Portfolio
         )
 
 import Css exposing (alignItems, center, color, display, fontSize, lineHeight, none, num, stretch, textAlign)
-import Css.Media exposing (print, withMedia)
-import CssShorthand exposing (displayFlexColumn)
+import CssShorthand exposing (displayFlexColumn, mediaNotPrint, willChangeTransform)
 import Html.Styled exposing (Html, div, styled)
 import Model exposing (Model)
 import Msg exposing (Msg)
 import View.Colors exposing (black)
 import View.Contents exposing (viewContents)
+import View.DetailsAnimation exposing (animatePortfolio)
 import View.Footer exposing (viewFooter)
 import View.Frame exposing (viewFrame)
 import View.Intro exposing (viewIntro)
@@ -32,9 +32,9 @@ viewPortfolio model =
             , alignItems stretch
             , textAlign center
             , color black
-            , withMedia
-                [ Css.Media.not print [] ]
-                [ displayFlexColumn ]
+            , willChangeTransform
+            , mediaNotPrint [ displayFlexColumn ]
+            , animatePortfolio model
             ]
     in
     styled div

@@ -1,10 +1,12 @@
 module Model
     exposing
-        ( Flags
+        ( Animation(AnimationClose, AnimationOpen)
+        , Flags
         , Model
         , init
         )
 
+import ClickInfo exposing (ClickInfo)
 import Data exposing (Data, initData)
 import Icon exposing (IconSource)
 import Msg exposing (Msg)
@@ -21,7 +23,13 @@ type alias Model =
     { data : Data
     , iconSource : IconSource
     , resumeDisplay : Bool
+    , details : Maybe { animation : Animation, clickInfo : ClickInfo }
     }
+
+
+type Animation
+    = AnimationOpen
+    | AnimationClose
 
 
 init : Flags -> ( Model, Cmd Msg )
@@ -34,6 +42,7 @@ initModel flags =
     { data = initData
     , iconSource = flags.iconSource
     , resumeDisplay = flags.resumeDisplay
+    , details = Nothing
     }
 
 

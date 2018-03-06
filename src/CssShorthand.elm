@@ -12,15 +12,19 @@ module CssShorthand
         , filter
         , marginRightLeft
         , marginTopBottom
+        , mediaNotPrint
+        , mediaPrint
         , noStyle
         , paddingRightLeft
         , paddingTopBottom
         , textDecorationSkipInk
+        , transformOrigin
         , willChangeTransform
         , zIndexBackground
         )
 
 import Css exposing (BorderStyle, Color, Length, LengthOrAuto, Style, TextDecorationStyle, batch, borderBottomStyle, borderColor, borderLeftStyle, borderStyle, borderTopStyle, column, displayFlex, flexDirection, int, marginBottom, marginLeft, marginRight, marginTop, paddingBottom, paddingLeft, paddingRight, paddingTop, property, row, rowReverse, solid, visited, zIndex)
+import Css.Media exposing (print, withMedia)
 
 
 animation : String -> Style
@@ -99,6 +103,16 @@ marginTopBottom =
     batchMap [ marginTop, marginBottom ]
 
 
+mediaNotPrint : List Style -> Style
+mediaNotPrint =
+    withMedia [ Css.Media.not print [] ]
+
+
+mediaPrint : List Style -> Style
+mediaPrint =
+    withMedia [ Css.Media.only print [] ]
+
+
 noStyle : Style
 noStyle =
     batch []
@@ -107,6 +121,11 @@ noStyle =
 textDecorationSkipInk : Style
 textDecorationSkipInk =
     property "text-decoration-skip" "ink"
+
+
+transformOrigin : String -> Style
+transformOrigin =
+    property "transform-origin"
 
 
 willChangeTransform : Style
