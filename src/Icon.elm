@@ -28,6 +28,7 @@ type alias IconSource =
     , printer : String
     , stackOverflow : String
     , twitter : String
+    , xSquare : String
     }
 
 

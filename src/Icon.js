@@ -11,6 +11,7 @@ import mapPin from './Icon/map-pin.svg'
 import printer from './Icon/printer.svg'
 import stackOverflow from './Icon/stack-overflow.svg'
 import twitter from './Icon/twitter.svg'
+import xSquare from './Icon/x-square.svg'
 
 export default {
   box,
@@ -25,5 +26,6 @@ export default {
   mapPin,
   printer,
   stackOverflow,
-  twitter
+  twitter,
+  xSquare
 }
