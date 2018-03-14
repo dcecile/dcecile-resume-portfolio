@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "create-elm-app": "^1.10.3",
+    "elm-format": "^0.7.0-exp"
+  }
+}

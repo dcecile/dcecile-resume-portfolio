@@ -6,8 +6,8 @@ module View.Colors
         , green
         , paleGreen
         , printBlack
-        , printPaleGreen
         , printGreen
+        , printPaleGreen
         , white
         )
 
