@@ -1,6 +1,7 @@
 module Model
     exposing
         ( Animation(AnimationClose, AnimationOpen)
+        , Details
         , Flags
         , Model
         , init
@@ -23,8 +24,12 @@ type alias Model =
     { data : Data
     , iconSource : IconSource
     , resumeDisplay : Bool
-    , details : Maybe { animation : Animation, clickInfo : ClickInfo }
+    , details : Maybe Details
     }
+
+
+type alias Details =
+    { name : String, animation : Animation, clickInfo : ClickInfo }
 
 
 type Animation

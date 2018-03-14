@@ -74,7 +74,7 @@ viewItem item =
     styled a
         style
         [ href "#"
-        , onClickPreventDefault clickDetailsOpen
+        , onClickPreventDefault (clickDetailsOpen item)
         ]
         [ viewItemBackground
         , viewItemLink item

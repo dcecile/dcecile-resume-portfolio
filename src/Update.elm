@@ -19,19 +19,20 @@ update msg model =
         Print ->
             ( model, print () )
 
-        DetailsOpen clickInfo ->
-            change (open clickInfo)
+        DetailsOpen name clickInfo ->
+            change (open name clickInfo)
 
         DetailsClose ->
             change close
 
 
-open : ClickInfo -> Model -> Model
-open clickInfo model =
+open : String -> ClickInfo -> Model -> Model
+open name clickInfo model =
     { model
         | details =
             Just
-                { animation = AnimationOpen
+                { name = name
+                , animation = AnimationOpen
                 , clickInfo = clickInfo
                 }
     }

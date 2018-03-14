@@ -9,7 +9,7 @@ import Html.Styled exposing (Html, div, h1, li, p, styled, text, ul)
 import HtmlShorthand exposing (onClickPreventDefault, styledSpanText)
 import Icon exposing (IconSource, iconSpan)
 import MarkedString exposing (MarkedString, markedString)
-import Model exposing (Model)
+import Model exposing (Details, Model)
 import Msg exposing (Msg(DetailsClose))
 import View.Button as Button
 import View.Colors exposing (black, extraPaleGreen, white)
@@ -20,11 +20,11 @@ import View.Metrics exposing (standardLineHeight, standardScreenFontSize)
 maybeViewDetails : Model -> Maybe (Html Msg)
 maybeViewDetails model =
     model.details
-        |> Maybe.map (always (viewDetails model))
+        |> Maybe.map (viewDetails model)
 
 
-viewDetails : Model -> Html Msg
-viewDetails model =
+viewDetails : Model -> Details -> Html Msg
+viewDetails model details =
     let
         style =
             [ display none
@@ -45,11 +45,11 @@ viewDetails model =
     styled div
         style
         [ onClickPreventDefault (always <| DetailsClose) ]
-        [ viewContent model ]
+        [ viewContent model details ]
 
 
-viewContent : Model -> Html Msg
-viewContent model =
+viewContent : Model -> Details -> Html Msg
+viewContent model details =
     let
         style =
             [ Button.border
@@ -66,7 +66,7 @@ viewContent model =
     styled div
         style
         []
-        [ viewHeader model.iconSource "Learning"
+        [ viewHeader model.iconSource details.name
         , viewIntro
             "There’s always something new to learn, some deeper understanding to be gained, some path to grow my skills."
         , viewPoints

@@ -10,13 +10,14 @@ import Mouse exposing (Event)
 
 type Msg
     = Print
-    | DetailsOpen ClickInfo
+    | DetailsOpen String ClickInfo
     | DetailsClose
 
 
-clickDetailsOpen : Event -> Msg
-clickDetailsOpen event =
+clickDetailsOpen : String -> Event -> Msg
+clickDetailsOpen name event =
     DetailsOpen
+        name
         { pagePos = event.pagePos
         , clientPos = event.clientPos
         }
