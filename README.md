@@ -1,4 +1,7 @@
 # Dan Cecile's resume + portfolio site
+_An interactive and printable webpage made with Elm_
+
+[![Build Status](https://semaphoreci.com/api/v1/dcecile/dcecile-resume-portfolio/branches/master/badge.svg)](https://semaphoreci.com/dcecile/dcecile-resume-portfolio)
 
 ## Developing
 
