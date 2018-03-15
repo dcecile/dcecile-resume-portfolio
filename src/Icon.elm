@@ -22,6 +22,7 @@ type alias IconSource =
     , fiveHundredPx : String
     , github : String
     , heart : String
+    , home : String
     , linkedin : String
     , mail : String
     , mapPin : String

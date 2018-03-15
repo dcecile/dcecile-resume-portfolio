@@ -5,6 +5,7 @@ import eye from './Icon/eye.svg'
 import fiveHundredPx from './Icon/500px.svg'
 import github from './Icon/github.svg'
 import heart from './Icon/heart.svg'
+import home from './Icon/home.svg'
 import linkedin from './Icon/linkedin.svg'
 import mail from './Icon/mail.svg'
 import mapPin from './Icon/map-pin.svg'
@@ -21,6 +22,7 @@ export default {
   fiveHundredPx,
   github,
   heart,
+  home,
   linkedin,
   mail,
   mapPin,
