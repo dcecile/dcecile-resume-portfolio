@@ -3,8 +3,8 @@ module View.Details
         ( maybeViewDetails
         )
 
-import Css exposing (alignItems, backgroundColor, borderRadius, borderWidth, bottom, center, color, display, em, fixed, fontSize, height, justifyContent, lastChild, left, lineHeight, marginBottom, marginRight, marginTop, maxWidth, none, num, opacity, position, px, right, spaceBetween, textDecoration, top, underline, width, zero)
-import CssShorthand exposing (batchMap, borderSolidColor, displayFlexColumn, displayFlexRow, marginRightLeft, marginTopBottom, paddingRightLeft, paddingTopBottom, willChangeTransform)
+import Css exposing (Style, alignItems, backgroundColor, borderRadius, borderWidth, bottom, center, color, display, em, fixed, fontSize, height, justifyContent, lastChild, left, lineHeight, marginBottom, marginRight, marginTop, maxWidth, none, num, opacity, position, px, right, spaceBetween, textDecoration, top, underline, vh, vw, width, zero)
+import CssShorthand exposing (batchMap, borderSolidColor, displayFlexColumn, displayFlexRow, marginRightLeft, marginTopBottom, paddingRightLeft, paddingTopBottom, willChangeTransform, zIndexBackground)
 import Html.Styled exposing (Html, a, div, h1, li, p, span, styled, text, ul)
 import Html.Styled.Attributes exposing (href, title)
 import HtmlShorthand exposing (ariaLabel, onClickPreventDefault, styledSpanText, targetBlank)
@@ -45,7 +45,30 @@ viewDetails model details =
     styled div
         style
         []
-        [ viewContent model details ]
+        [ viewCloseBackground
+        , viewContent model details
+        ]
+
+
+viewCloseBackground : Html Msg
+viewCloseBackground =
+    viewCloseLink
+        [ zIndexBackground
+        , position fixed
+        , batchMap [ top, right, bottom, left ] zero
+        ]
+
+
+viewCloseLink : List Style -> Html Msg
+viewCloseLink style =
+    styled a
+        style
+        [ title "Close"
+        , ariaLabel "Close"
+        , href "#"
+        , onClickPreventDefault (always <| DetailsClose)
+        ]
+        []
 
 
 viewContent : Model -> Details -> Html Msg
@@ -100,22 +123,12 @@ viewHeader iconSource headerText =
 
 viewCloseButton : IconSource -> Html Msg
 viewCloseButton iconSource =
-    let
-        style =
-            [ iconStyle iconSource .xSquare
-            , marginTop <| em 0.3
-            , batchMap [ width, height ] <| px 24
-            , opacity <| num (1 - toFloat blackLevel / 255)
-            ]
-    in
-    styled a
-        style
-        [ title "Close"
-        , ariaLabel "Close"
-        , href "#"
-        , onClickPreventDefault (always <| DetailsClose)
+    viewCloseLink
+        [ iconStyle iconSource .xSquare
+        , marginTop <| em 0.3
+        , batchMap [ width, height ] <| px 24
+        , opacity <| num (1 - toFloat blackLevel / 255)
         ]
-        []
 
 
 viewLinks : IconSource -> Html Msg
