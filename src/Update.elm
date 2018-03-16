@@ -5,7 +5,7 @@ module Update
 
 import ClickInfo exposing (ClickInfo)
 import Model exposing (Animation(AnimationClose, AnimationOpen), Model)
-import Msg exposing (Msg(DetailsClose, DetailsOpen, Print))
+import Msg exposing (Msg(DetailsClose, DetailsOpen, NoMsg, Print))
 import Print exposing (print)
 
 
@@ -24,6 +24,9 @@ update msg model =
 
         DetailsClose ->
             change close
+
+        NoMsg ->
+            ( model, Cmd.none )
 
 
 open : String -> ClickInfo -> Model -> Model

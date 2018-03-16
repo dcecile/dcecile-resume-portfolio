@@ -1,6 +1,7 @@
 module View
     exposing
-        ( view
+        ( subscribe
+        , view
         )
 
 import Css exposing (hidden, overflow)
@@ -8,7 +9,7 @@ import Html.Styled exposing (Html, div, styled)
 import MaybeEx
 import Model exposing (Model)
 import Msg exposing (Msg)
-import View.Details exposing (maybeViewDetails)
+import View.Details exposing (maybeViewDetails, subscribeDetails)
 import View.Portfolio exposing (viewPortfolio)
 import View.ResumeDisplay exposing (viewResumeDisplay)
 import View.ResumePrint exposing (viewResumePrint)
@@ -32,3 +33,8 @@ view model =
                 ]
         , viewResumePrint model |> List.singleton
         ]
+
+
+subscribe : Model -> Sub Msg
+subscribe =
+    subscribeDetails

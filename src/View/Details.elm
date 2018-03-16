@@ -1,6 +1,7 @@
 module View.Details
     exposing
         ( maybeViewDetails
+        , subscribeDetails
         )
 
 import Css exposing (Style, alignItems, backgroundColor, borderRadius, borderWidth, bottom, center, color, display, em, fixed, fontSize, height, justifyContent, lastChild, left, lineHeight, marginBottom, marginRight, marginTop, maxWidth, none, num, opacity, position, px, right, spaceBetween, textDecoration, top, underline, vh, vw, width, zero)
@@ -9,9 +10,10 @@ import Html.Styled exposing (Html, a, div, h1, li, p, span, styled, text, ul)
 import Html.Styled.Attributes exposing (href, title)
 import HtmlShorthand exposing (ariaLabel, onClickPreventDefault, styledSpanText, targetBlank)
 import Icon exposing (IconBackground, IconSource, iconStyle)
+import Keyboard
 import MarkedString exposing (MarkedString, markedString)
 import Model exposing (Details, Model)
-import Msg exposing (Msg(DetailsClose))
+import Msg exposing (Msg(DetailsClose, NoMsg))
 import View.Button as Button
 import View.Colors exposing (black, blackLevel, extraPaleGreen, paleGreen, white)
 import View.DetailsAnimation exposing (animateDetails)
@@ -66,7 +68,7 @@ viewCloseLink style =
         [ title "Close"
         , ariaLabel "Close"
         , href "#"
-        , onClickPreventDefault (always <| DetailsClose)
+        , onClickPreventDefault (always DetailsClose)
         ]
         []
 
@@ -226,3 +228,23 @@ viewPoint =
     in
     MarkedString.transform text (styledSpanText [ textDecoration underline ])
         >> styled li style []
+
+
+subscribeDetails : Model -> Sub Msg
+subscribeDetails model =
+    let
+        escapeKeyCode =
+            27
+
+        handleKeyDown keyCode =
+            if keyCode == escapeKeyCode then
+                DetailsClose
+            else
+                NoMsg
+    in
+    case model.details of
+        Just _ ->
+            Keyboard.downs handleKeyDown
+
+        Nothing ->
+            Sub.none

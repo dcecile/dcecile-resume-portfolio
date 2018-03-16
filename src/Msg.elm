@@ -1,6 +1,6 @@
 module Msg
     exposing
-        ( Msg(DetailsClose, DetailsOpen, Print)
+        ( Msg(DetailsClose, DetailsOpen, NoMsg, Print)
         , clickDetailsOpen
         )
 
@@ -12,6 +12,7 @@ type Msg
     = Print
     | DetailsOpen String ClickInfo
     | DetailsClose
+    | NoMsg
 
 
 clickDetailsOpen : String -> Event -> Msg
