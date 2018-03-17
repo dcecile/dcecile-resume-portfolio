@@ -5,7 +5,7 @@ module View.Details
         )
 
 import Css exposing (Style, alignItems, backgroundColor, borderRadius, borderWidth, bottom, center, color, display, em, fixed, fontSize, height, justifyContent, lastChild, left, lineHeight, marginBottom, marginRight, marginTop, maxWidth, none, num, opacity, position, px, right, spaceBetween, textDecoration, top, underline, vh, vw, width, zero)
-import CssShorthand exposing (batchMap, borderSolidColor, displayFlexColumn, displayFlexRow, marginRightLeft, marginTopBottom, paddingRightLeft, paddingTopBottom, willChangeTransform, zIndexBackground)
+import CssShorthand exposing (batchMap, borderSolidColor, displayFlexColumn, displayFlexRow, marginRightLeft, marginTopBottom, mediaNotPrint, paddingRightLeft, paddingTopBottom, willChangeTransform, zIndexBackground)
 import Html.Styled exposing (Html, a, div, h1, li, p, span, styled, text, ul)
 import Html.Styled.Attributes exposing (href, title)
 import HtmlShorthand exposing (ariaLabel, onClickPreventDefault, styledSpanText, targetBlank)
@@ -31,7 +31,7 @@ viewDetails model details =
     let
         style =
             [ display none
-            , displayFlexColumn
+            , mediaNotPrint [ displayFlexColumn ]
             , justifyContent center
             , alignItems center
             , position fixed
