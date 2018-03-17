@@ -4,12 +4,12 @@ module View.Details
         , subscribeDetails
         )
 
-import Css exposing (Style, alignItems, backgroundColor, borderRadius, borderWidth, bottom, center, color, display, em, fixed, fontSize, height, justifyContent, lastChild, left, lineHeight, marginBottom, marginRight, marginTop, maxWidth, none, num, opacity, position, px, right, spaceBetween, textDecoration, top, underline, vh, vw, width, zero)
+import Css exposing (Style, alignItems, backgroundColor, borderRadius, borderWidth, bottom, center, color, display, em, fixed, fontSize, justifyContent, lastChild, left, lineHeight, marginBottom, marginRight, marginTop, maxWidth, none, num, padding, position, px, right, spaceBetween, textDecoration, top, underline, vh, vw, zero)
 import CssShorthand exposing (batchMap, borderSolidColor, displayFlexColumn, displayFlexRow, marginRightLeft, marginTopBottom, mediaNotPrint, paddingRightLeft, paddingTopBottom, willChangeTransform, zIndexBackground)
 import Html.Styled exposing (Html, a, div, h1, li, p, span, styled, text, ul)
 import Html.Styled.Attributes exposing (href, title)
 import HtmlShorthand exposing (ariaLabel, onClickPreventDefault, styledSpanText, targetBlank)
-import Icon exposing (IconBackground, IconSource, iconStyle)
+import Icon exposing (IconBackground, IconSource, iconSpan)
 import Keyboard
 import MarkedString exposing (MarkedString, markedString)
 import Model exposing (Details, Model)
@@ -31,7 +31,7 @@ viewDetails model details =
     let
         style =
             [ display none
-            , mediaNotPrint [ displayFlexColumn ]
+            , mediaNotPrint [ displayFlexRow ]
             , justifyContent center
             , alignItems center
             , position fixed
@@ -48,29 +48,63 @@ viewDetails model details =
         style
         []
         [ viewCloseBackground
+        , viewNavPrevious model.iconSource
         , viewContent model details
+        , viewNavNext model.iconSource
         ]
 
 
 viewCloseBackground : Html Msg
 viewCloseBackground =
     viewCloseLink
+        ""
         [ zIndexBackground
         , position fixed
         , batchMap [ top, right, bottom, left ] zero
         ]
+        []
 
 
-viewCloseLink : List Style -> Html Msg
-viewCloseLink style =
+viewCloseLink : String -> List Style -> List (Html Msg) -> Html Msg
+viewCloseLink caption style =
     styled a
         style
-        [ title "Close"
-        , ariaLabel "Close"
+        [ title caption
+        , ariaLabel caption
         , href "#"
         , onClickPreventDefault (always DetailsClose)
         ]
-        []
+
+
+viewNavPrevious : IconSource -> Html Msg
+viewNavPrevious iconSource =
+    viewNavButton iconSource "Previous" .arrowLeft
+
+
+viewNavNext : IconSource -> Html Msg
+viewNavNext iconSource =
+    viewNavButton iconSource "Next" .arrowRight
+
+
+viewNavButton : IconSource -> String -> IconBackground -> Html Msg
+viewNavButton iconSource caption iconBackground =
+    let
+        style =
+            [ Button.border
+            , displayFlexRow
+            , marginRightLeft <| em 1.4
+            , backgroundColor white
+            , padding <| em 0.7
+            ]
+    in
+    styled a
+        style
+        [ title caption
+        , ariaLabel caption
+        , href "#"
+        , onClickPreventDefault (always NoMsg)
+        ]
+        [ iconSpan [] iconSource iconBackground ]
 
 
 viewContent : Model -> Details -> Html Msg
@@ -80,7 +114,6 @@ viewContent model details =
             [ Button.border
             , displayFlexColumn
             , marginTopBottom <| em 1
-            , marginRightLeft <| em 3
             , backgroundColor white
             , paddingTopBottom <| em 0.9
             , paddingRightLeft <| em 1.5
@@ -126,11 +159,10 @@ viewHeader iconSource headerText =
 viewCloseButton : IconSource -> Html Msg
 viewCloseButton iconSource =
     viewCloseLink
-        [ iconStyle iconSource .xSquare
-        , marginTop <| em 0.3
-        , batchMap [ width, height ] <| px 24
-        , opacity <| num (1 - toFloat blackLevel / 255)
+        "Close"
+        [ marginTop <| em -0.1
         ]
+        [ iconSpan [] iconSource .xSquare ]
 
 
 viewLinks : IconSource -> Html Msg
@@ -179,16 +211,8 @@ viewLink iconSource linkText iconBackground =
 
 
 viewLinkIcon : IconSource -> IconBackground -> Html Msg
-viewLinkIcon iconSource iconBackground =
-    let
-        style =
-            [ iconStyle iconSource iconBackground
-            , marginRight <| em 0.3
-            , batchMap [ width, height ] <| px 24
-            , opacity <| num (1 - toFloat blackLevel / 255)
-            ]
-    in
-    styled span style [] []
+viewLinkIcon =
+    iconSpan [ marginRight <| em 0.3 ]
 
 
 viewIntro : String -> Html Msg

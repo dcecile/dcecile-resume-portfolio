@@ -5,12 +5,12 @@ module View.Links
         )
 
 import Css exposing (Compatible, Em, auto, calc, center, em, fontSize, fontWeight, height, justifyContent, marginBottom, marginTop, normal, padding, plus, px, width, zero)
-import CssShorthand exposing (displayFlexColumn, displayFlexRow, marginRightLeft, marginTopBottom, paddingRightLeft, paddingTopBottom)
+import CssShorthand exposing (batchMap, displayFlexColumn, displayFlexRow, marginRightLeft, marginTopBottom, paddingRightLeft, paddingTopBottom)
 import Data.Links exposing (LinksItemData)
 import Html.Styled exposing (Html, a, div, h2, nav, styled, text)
 import Html.Styled.Attributes exposing (href, title)
 import HtmlShorthand exposing (ariaLabel, targetBlank)
-import Icon exposing (IconBackground, IconSource, iconStyle)
+import Icon exposing (IconBackground, IconSource, iconSpan)
 import Model exposing (Model)
 import Msg exposing (Msg)
 import View.Button as Button
@@ -127,12 +127,14 @@ viewLink : IconSource -> LinksItemData -> Html Msg
 viewLink iconSource linksItem =
     let
         style =
-            [ iconStyle iconSource linksItem.iconBackground
-            , padding linkIconPadding
-            , width linkIconSize
-            , height linkIconSize
+            [ Button.border
+            , displayFlexRow
             , marginRightLeft <| px 11
-            , Button.border
+            , padding linkIconPadding
+            ]
+
+        iconStyle =
+            [ batchMap [ width, height ] linkIconSize
             ]
     in
     styled a
@@ -142,4 +144,4 @@ viewLink iconSource linksItem =
         , href linksItem.url
         , targetBlank
         ]
-        []
+        [ iconSpan iconStyle iconSource linksItem.iconBackground ]

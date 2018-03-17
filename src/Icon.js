@@ -1,3 +1,5 @@
+import arrowLeft from './Icon/arrow-left.svg'
+import arrowRight from './Icon/arrow-right.svg'
 import box from './Icon/box.svg'
 import calendar from './Icon/calendar.svg'
 import externalLink from './Icon/external-link.svg'
@@ -15,6 +17,8 @@ import twitter from './Icon/twitter.svg'
 import xSquare from './Icon/x-square.svg'
 
 export default {
+  arrowLeft,
+  arrowRight,
   box,
   calendar,
   externalLink,

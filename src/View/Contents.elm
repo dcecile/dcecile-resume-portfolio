@@ -114,7 +114,7 @@ viewLink model reverse sectionDataSelector =
 
 viewLinkIcon : IconSource -> IconBackground -> Html Msg
 viewLinkIcon =
-    iconSpan zero
+    iconSpan []
 
 
 viewLinkButton : String -> String -> Html Msg

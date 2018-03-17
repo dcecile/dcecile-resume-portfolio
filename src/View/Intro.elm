@@ -191,7 +191,7 @@ viewCallToAction iconSource displayStyle iconBackground attributes elements =
 
 viewCallToActionIcon : IconSource -> IconBackground -> Html Msg
 viewCallToActionIcon =
-    iconSpan (px 8)
+    iconSpan [ marginRightLeft <| px 8 ]
 
 
 viewCallToActionButton : HtmlTag Msg

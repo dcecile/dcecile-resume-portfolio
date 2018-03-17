@@ -8,7 +8,7 @@ import CssShorthand exposing (borderBottomSolidColor, displayFlexColumn, display
 import Data.Section exposing (SectionData)
 import Html.Styled exposing (Html, div, h2, p, section, styled, text)
 import Html.Styled.Attributes exposing (id)
-import Icon exposing (IconBackground, IconSource, iconStyle)
+import Icon exposing (IconBackground, IconSource, iconBackgroundImage)
 import MaybeEx
 import Msg exposing (Msg)
 import View.Colors exposing (black, paleGreen)
@@ -68,7 +68,7 @@ viewBackgroundIcon iconSource iconBackground =
 
         style =
             [ zIndexBackground
-            , iconStyle iconSource iconBackground
+            , iconBackgroundImage iconSource iconBackground
             , backgroundPosition2 zero zero
             , height iconSize
             , marginTop <| em 0.8
