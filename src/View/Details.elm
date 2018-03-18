@@ -6,13 +6,15 @@ module View.Details
 
 import Css exposing (Style, alignItems, backgroundColor, borderRadius, borderWidth, bottom, center, color, display, em, fixed, fontSize, justifyContent, lastChild, left, lineHeight, marginBottom, marginRight, marginTop, maxWidth, none, num, padding, position, px, right, spaceBetween, textDecoration, top, underline, vh, vw, zero)
 import CssShorthand exposing (batchMap, borderSolidColor, displayFlexColumn, displayFlexRow, marginRightLeft, marginTopBottom, mediaNotPrint, paddingRightLeft, paddingTopBottom, willChangeTransform, zIndexBackground)
+import Data.Details exposing (DetailsItemData)
+import Display.Details exposing (DetailsDisplay)
 import Html.Styled exposing (Html, a, div, h1, li, p, span, styled, text, ul)
 import Html.Styled.Attributes exposing (href, title)
 import HtmlShorthand exposing (ariaLabel, onClickPreventDefault, styledSpanText, targetBlank)
 import Icon exposing (IconBackground, IconSource, iconSpan)
 import Keyboard
 import MarkedString exposing (MarkedString, markedString)
-import Model exposing (Details, Model)
+import Model exposing (Model)
 import Msg exposing (Msg(DetailsClose, NoMsg))
 import View.Button as Button
 import View.Colors exposing (black, blackLevel, extraPaleGreen, paleGreen, white)
@@ -26,7 +28,7 @@ maybeViewDetails model =
         |> Maybe.map (viewDetails model)
 
 
-viewDetails : Model -> Details -> Html Msg
+viewDetails : Model -> DetailsDisplay -> Html Msg
 viewDetails model details =
     let
         style =
@@ -49,7 +51,7 @@ viewDetails model details =
         []
         [ viewCloseBackground
         , viewNavPrevious model.iconSource
-        , viewContent model details
+        , viewContent model details.itemData
         , viewNavNext model.iconSource
         ]
 
@@ -107,8 +109,8 @@ viewNavButton iconSource caption iconBackground =
         [ iconSpan [] iconSource iconBackground ]
 
 
-viewContent : Model -> Details -> Html Msg
-viewContent model details =
+viewContent : Model -> DetailsItemData -> Html Msg
+viewContent model item =
     let
         style =
             [ Button.border
@@ -124,15 +126,10 @@ viewContent model details =
     styled div
         style
         []
-        [ viewHeader model.iconSource details.name
+        [ viewHeader model.iconSource item.name
         , viewLinks model.iconSource
-        , viewIntro
-            "There’s always something new to learn, some deeper understanding to be gained, some path to grow my skills."
-        , viewPoints
-            [ markedString "At `Unitron`, I learned the ins and outs of numerous internal business and software systems, helping me make my team’s solutions more robust"
-            , markedString "In `Forks in the Road`, I learned how to use JWT authentication for a API-only `Rails` app"
-            , markedString "In `Off-Grid Orcs`, I learned how to apply a `functional programming` architecture to a highly-interactive application"
-            ]
+        , viewIntro item.intro
+        , viewPoints item.points
         ]
 
 

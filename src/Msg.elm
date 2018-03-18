@@ -5,20 +5,21 @@ module Msg
         )
 
 import ClickInfo exposing (ClickInfo)
+import Data.Details exposing (DetailsItemData, DetailsItemDataInput, detailsItemData)
 import Mouse exposing (Event)
 
 
 type Msg
     = Print
-    | DetailsOpen String ClickInfo
+    | DetailsOpen DetailsItemData ClickInfo
     | DetailsClose
     | NoMsg
 
 
-clickDetailsOpen : String -> Event -> Msg
-clickDetailsOpen name event =
+clickDetailsOpen : DetailsItemDataInput a -> Event -> Msg
+clickDetailsOpen item event =
     DetailsOpen
-        name
+        (detailsItemData item)
         { pagePos = event.pagePos
         , clientPos = event.clientPos
         }

@@ -4,7 +4,9 @@ module Update
         )
 
 import ClickInfo exposing (ClickInfo)
-import Model exposing (Animation(AnimationClose, AnimationOpen), Model)
+import Data.Details exposing (DetailsItemData)
+import Display.Details exposing (DetailsAnimation(DetailsAnimationClose, DetailsAnimationOpen))
+import Model exposing (Model)
 import Msg exposing (Msg(DetailsClose, DetailsOpen, NoMsg, Print))
 import Print exposing (print)
 
@@ -19,8 +21,8 @@ update msg model =
         Print ->
             ( model, print () )
 
-        DetailsOpen name clickInfo ->
-            change (open name clickInfo)
+        DetailsOpen item clickInfo ->
+            change (open item clickInfo)
 
         DetailsClose ->
             change close
@@ -29,14 +31,14 @@ update msg model =
             ( model, Cmd.none )
 
 
-open : String -> ClickInfo -> Model -> Model
-open name clickInfo model =
+open : DetailsItemData -> ClickInfo -> Model -> Model
+open item clickInfo model =
     { model
         | details =
             Just
-                { name = name
-                , animation = AnimationOpen
-                , clickInfo = clickInfo
+                { itemData = item
+                , animation = DetailsAnimationOpen
+                , openClickInfo = clickInfo
                 }
     }
 
@@ -46,5 +48,5 @@ close model =
     { model
         | details =
             model.details
-                |> Maybe.map (\details -> { details | animation = AnimationClose })
+                |> Maybe.map (\details -> { details | animation = DetailsAnimationClose })
     }

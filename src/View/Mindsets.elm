@@ -5,6 +5,7 @@ module View.Mindsets
 
 import Css exposing (Em, alignItems, backgroundColor, center, em, flexWrap, height, justifyContent, marginBottom, minWidth, width, wrap)
 import CssShorthand exposing (batchMap, displayFlexColumn, displayFlexRow, marginRightLeft, marginTopBottom)
+import Data.Mindsets exposing (MindsetsItemData)
 import Html.Styled exposing (Html, a, div, span, styled, text)
 import Html.Styled.Attributes exposing (href)
 import HtmlShorthand exposing (onClickPreventDefault)
@@ -44,7 +45,7 @@ viewMindsets model =
         ]
 
 
-viewItems : List String -> Html Msg
+viewItems : List MindsetsItemData -> Html Msg
 viewItems items =
     let
         style =
@@ -59,7 +60,7 @@ viewItems items =
         |> styled div style []
 
 
-viewItem : String -> Html Msg
+viewItem : MindsetsItemData -> Html Msg
 viewItem item =
     let
         style =
@@ -77,7 +78,7 @@ viewItem item =
         , onClickPreventDefault (clickDetailsOpen item)
         ]
         [ viewItemBackground
-        , viewItemLink item
+        , viewItemLink item.name
         ]
 
 

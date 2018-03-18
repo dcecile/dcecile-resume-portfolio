@@ -1,14 +1,12 @@
 module Model
     exposing
-        ( Animation(AnimationClose, AnimationOpen)
-        , Details
-        , Flags
+        ( Flags
         , Model
         , init
         )
 
-import ClickInfo exposing (ClickInfo)
 import Data exposing (Data, initData)
+import Display.Details exposing (DetailsDisplay)
 import Icon exposing (IconSource)
 import Msg exposing (Msg)
 import Scroll exposing (initScroll)
@@ -24,17 +22,8 @@ type alias Model =
     { data : Data
     , iconSource : IconSource
     , resumeDisplay : Bool
-    , details : Maybe Details
+    , details : Maybe DetailsDisplay
     }
-
-
-type alias Details =
-    { name : String, animation : Animation, clickInfo : ClickInfo }
-
-
-type Animation
-    = AnimationOpen
-    | AnimationClose
 
 
 init : Flags -> ( Model, Cmd Msg )

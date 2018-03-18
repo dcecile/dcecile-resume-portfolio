@@ -7,7 +7,8 @@ module View.DetailsAnimation
 import ClickInfo exposing (ClickInfo)
 import Css exposing (Style, batch)
 import CssShorthand exposing (animation, mediaNotPrint, noStyle, transformOrigin, willChangeTransform)
-import Model exposing (Animation(AnimationClose, AnimationOpen), Model)
+import Display.Details exposing (DetailsAnimation(DetailsAnimationClose, DetailsAnimationOpen))
+import Model exposing (Model)
 
 
 animatePortfolio : Model -> Style
@@ -15,10 +16,10 @@ animatePortfolio model =
     animate model .pagePos <|
         \animation ->
             case animation of
-                AnimationOpen ->
+                DetailsAnimationOpen ->
                     combine [ "fadeOut", "zoomIn" ] True
 
-                AnimationClose ->
+                DetailsAnimationClose ->
                     combine [ "fadeIn", "zoomOut" ] False
 
 
@@ -27,14 +28,14 @@ animateDetails model =
     animate model .clientPos <|
         \animation ->
             case animation of
-                AnimationOpen ->
+                DetailsAnimationOpen ->
                     combine [ "fadePartialIn", "growIn" ] False
 
-                AnimationClose ->
+                DetailsAnimationClose ->
                     combine [ "fadePartialOut", "growOut" ] True
 
 
-animate : Model -> (ClickInfo -> ( Float, Float )) -> (Animation -> String) -> Style
+animate : Model -> (ClickInfo -> ( Float, Float )) -> (DetailsAnimation -> String) -> Style
 animate model originSelector animationValue =
     let
         originStyle ( x, y ) =
@@ -51,7 +52,7 @@ animate model originSelector animationValue =
         Just details ->
             batch
                 [ animation (animationValue details.animation)
-                , originStyle (originSelector details.clickInfo)
+                , originStyle (originSelector details.openClickInfo)
                 ]
 
 
