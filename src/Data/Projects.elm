@@ -7,6 +7,7 @@ module Data.Projects
 
 import Data.Section exposing (SectionData)
 import Data.Visibility exposing (Visibility(PortfolioAndResume, PortfolioOnly))
+import MarkedString exposing (MarkedString, markedString)
 
 
 type alias ProjectsData =
@@ -21,7 +22,10 @@ type alias ProjectsItemData =
     , period : String
     , tech : String
     , description : String
-    , url : String
+    , homepageUrl : Maybe String
+    , sourceUrl : Maybe String
+    , detailsIntro : String
+    , detailsPoints : List MarkedString
     , visibility : Visibility
     }
 
@@ -40,7 +44,12 @@ initProjectsData =
             "2018"
             "React / Rails"
             "Probabalistic ranking"
-            "https://github.com/dcecile/forks-in-the-road"
+            (Just "https://forks-in-the-road.herokuapp.com/")
+            (Just "https://github.com/dcecile/forks-in-the-road")
+            "An intro"
+            [ markedString "A point"
+            , markedString "A point"
+            ]
             PortfolioAndResume
         , ProjectsItemData
             "Tacit"
@@ -48,7 +57,12 @@ initProjectsData =
             "2017–2018"
             "Scala / CSS3"
             "A programming language"
-            "https://github.com/tacit-lang/tacit"
+            Nothing
+            (Just "https://github.com/tacit-lang/tacit")
+            "An intro"
+            [ markedString "A point"
+            , markedString "A point"
+            ]
             PortfolioOnly
         , ProjectsItemData
             "Off-Grid Orcs"
@@ -56,7 +70,12 @@ initProjectsData =
             "2017"
             "Scala.js / FP"
             "64x64 pixel RTS game"
-            "https://github.com/dcecile/off-grid-orcs"
+            Nothing
+            (Just "https://github.com/dcecile/off-grid-orcs")
+            "An intro"
+            [ markedString "A point"
+            , markedString "A point"
+            ]
             PortfolioAndResume
         , ProjectsItemData
             "bitfontmake"
@@ -64,7 +83,12 @@ initProjectsData =
             "2017"
             "Python / UFO"
             "Vectorized bitmap fonts"
-            "https://github.com/dcecile/bitfontmake"
+            Nothing
+            (Just "https://github.com/dcecile/bitfontmake")
+            "An intro"
+            [ markedString "A point"
+            , markedString "A point"
+            ]
             PortfolioOnly
         , ProjectsItemData
             "PR Quest"
@@ -72,7 +96,12 @@ initProjectsData =
             "2017"
             "Vue.js / Airtable"
             "SPA static data viewer"
-            "https://github.com/dcecile/pr-quest"
+            Nothing
+            (Just "https://github.com/dcecile/pr-quest")
+            "An intro"
+            [ markedString "A point"
+            , markedString "A point"
+            ]
             PortfolioOnly
         , ProjectsItemData
             "/tmp/blog"
@@ -80,7 +109,12 @@ initProjectsData =
             "2017"
             "Rails / Bootstrap"
             "First deployed Rails app"
-            "https://github.com/dcecile/tmp-blog"
+            Nothing
+            (Just "https://github.com/dcecile/tmp-blog")
+            "An intro"
+            [ markedString "A point"
+            , markedString "A point"
+            ]
             PortfolioOnly
         , ProjectsItemData
             "Reactic-Tac-Toe"
@@ -88,7 +122,12 @@ initProjectsData =
             "2017"
             "React / CSS3"
             "Animations & transitions"
-            "https://github.com/dcecile/reactic-tac-toe"
+            Nothing
+            (Just "https://github.com/dcecile/reactic-tac-toe")
+            "An intro"
+            [ markedString "A point"
+            , markedString "A point"
+            ]
             PortfolioOnly
         , ProjectsItemData
             "Yomikata"
@@ -96,7 +135,12 @@ initProjectsData =
             "2007–2009"
             "C++ / Qt"
             "Snappy desktop manga reader"
-            "https://github.com/dcecile/yomikata-qt"
+            Nothing
+            (Just "https://github.com/dcecile/yomikata-qt")
+            "An intro"
+            [ markedString "A point"
+            , markedString "A point"
+            ]
             PortfolioOnly
         , ProjectsItemData
             "Ultra Rainbow Bake Sale"
@@ -104,7 +148,12 @@ initProjectsData =
             "2016"
             "Lua / LÖVE"
             "Deck building + baking game"
-            "https://github.com/dcecile/ultra-rainbow-bake-sale"
+            Nothing
+            (Just "https://github.com/dcecile/ultra-rainbow-bake-sale")
+            "An intro"
+            [ markedString "A point"
+            , markedString "A point"
+            ]
             PortfolioOnly
         , ProjectsItemData
             "Tiny Worker Bee"
@@ -112,7 +161,12 @@ initProjectsData =
             "2017"
             "Vue.js / Go"
             "Twitter content library"
-            "https://tinyworkerbee.social/"
+            (Just "https://tinyworkerbee.social/")
+            Nothing
+            "An intro"
+            [ markedString "A point"
+            , markedString "A point"
+            ]
             PortfolioAndResume
         , ProjectsItemData
             "My portfolio and resume"
@@ -120,7 +174,12 @@ initProjectsData =
             "2018"
             "Elm / CSS3"
             "My portfolio and resume"
-            "https://github.com/dcecile/dcecile-resume-portfolio"
+            Nothing
+            (Just "https://github.com/dcecile/dcecile-resume-portfolio")
+            "An intro"
+            [ markedString "A point"
+            , markedString "A point"
+            ]
             PortfolioOnly
         ]
     , outro = Nothing

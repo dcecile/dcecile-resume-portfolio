@@ -4,7 +4,7 @@ module View.Details
         , subscribeDetails
         )
 
-import Css exposing (Style, alignItems, backgroundColor, borderRadius, borderWidth, bottom, center, color, display, em, fixed, fontSize, justifyContent, lastChild, left, lineHeight, marginBottom, marginRight, marginTop, maxWidth, none, num, padding, position, px, right, spaceBetween, textDecoration, top, underline, vh, vw, zero)
+import Css exposing (Style, alignItems, backgroundColor, borderRadius, borderWidth, bottom, center, color, display, em, empty, fixed, fontSize, justifyContent, lastChild, left, lineHeight, marginBottom, marginLeft, marginRight, marginTop, maxWidth, minWidth, none, num, padding, position, px, right, spaceBetween, textDecoration, top, underline, vh, vw, zero)
 import CssShorthand exposing (batchMap, borderSolidColor, displayFlexColumn, displayFlexRow, marginRightLeft, marginTopBottom, mediaNotPrint, paddingRightLeft, paddingTopBottom, willChangeTransform, zIndexBackground)
 import Data.Details exposing (DetailsItemData)
 import Display.Details exposing (DetailsDisplay)
@@ -14,6 +14,7 @@ import HtmlShorthand exposing (ariaLabel, onClickPreventDefault, styledSpanText,
 import Icon exposing (IconBackground, IconSource, iconSpan)
 import Keyboard
 import MarkedString exposing (MarkedString, markedString)
+import MaybeEx
 import Model exposing (Model)
 import Msg exposing (Msg(DetailsClose, NoMsg))
 import View.Button as Button
@@ -119,6 +120,7 @@ viewContent model item =
             , backgroundColor white
             , paddingTopBottom <| em 0.9
             , paddingRightLeft <| em 1.5
+            , minWidth <| em 20
             , maxWidth <| em 30
             , fontSize <| em 0.8
             ]
@@ -127,7 +129,7 @@ viewContent model item =
         style
         []
         [ viewHeader model.iconSource item.name
-        , viewLinks model.iconSource
+        , viewLinks model.iconSource item
         , viewIntro item.intro
         , viewPoints item.points
         ]
@@ -142,7 +144,7 @@ viewHeader iconSource headerText =
             , alignItems top
             , fontSize <| em 1.6
             , marginTop zero
-            , marginBottom <| em 0.2
+            , marginBottom <| em 0.4
             ]
     in
     styled h1
@@ -158,30 +160,31 @@ viewCloseButton iconSource =
     viewCloseLink
         "Close"
         [ marginTop <| em -0.1
+        , marginLeft <| em 1.0
         ]
         [ iconSpan [] iconSource .xSquare ]
 
 
-viewLinks : IconSource -> Html Msg
-viewLinks iconSource =
+viewLinks : IconSource -> DetailsItemData -> Html Msg
+viewLinks iconSource item =
     let
         style =
             [ displayFlexRow
-            , marginTop zero
+            , empty [ display none ]
+            , marginTop <| em -0.3
             , marginBottom <| em 0.6
             , marginRightLeft <| em 0.2
             ]
     in
-    styled p
-        style
-        []
-        [ viewLink iconSource "Homepage" .home
-        , viewLink iconSource "Source code" .github
-        ]
+    [ item.homepageUrl |> Maybe.map (viewLink iconSource "Homepage" .home)
+    , item.sourceUrl |> Maybe.map (viewLink iconSource "Source code" .github)
+    ]
+        |> List.concatMap MaybeEx.toList
+        |> styled p style []
 
 
-viewLink : IconSource -> String -> IconBackground -> Html Msg
-viewLink iconSource linkText iconBackground =
+viewLink : IconSource -> String -> IconBackground -> String -> Html Msg
+viewLink iconSource linkText iconBackground url =
     let
         style =
             [ displayFlexRow
@@ -199,7 +202,7 @@ viewLink iconSource linkText iconBackground =
     in
     styled a
         style
-        [ href "about:blank"
+        [ href url
         , targetBlank
         ]
         [ viewLinkIcon iconSource iconBackground

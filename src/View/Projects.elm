@@ -8,9 +8,9 @@ import CssShorthand exposing (displayFlexColumn, displayFlexRow, marginRightLeft
 import Data.Projects exposing (ProjectsItemData)
 import Html.Styled exposing (Html, a, div, styled, text)
 import Html.Styled.Attributes exposing (href)
-import HtmlShorthand exposing (targetBlank)
+import HtmlShorthand exposing (onClickPreventDefault)
 import Model exposing (Model)
-import Msg exposing (Msg)
+import Msg exposing (Msg, clickDetailsOpenWithUrl)
 import View.Button as Button
 import View.Colors exposing (green)
 import View.Section exposing (viewSection)
@@ -63,8 +63,8 @@ viewItem item =
     in
     styled a
         style
-        [ href item.url
-        , targetBlank
+        [ href "#"
+        , onClickPreventDefault (clickDetailsOpenWithUrl item)
         ]
         [ viewName <| Maybe.withDefault item.name item.shortName
         , viewTech item.tech
