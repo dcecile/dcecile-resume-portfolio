@@ -8,9 +8,9 @@ import CssShorthand exposing (displayFlexColumn, displayFlexRow, marginRightLeft
 import Data.Work exposing (WorkItemData)
 import Html.Styled exposing (Html, a, div, styled, text)
 import Html.Styled.Attributes exposing (href)
-import HtmlShorthand exposing (targetBlank)
+import HtmlShorthand exposing (onClickPreventDefault)
 import Model exposing (Model)
-import Msg exposing (Msg)
+import Msg exposing (Msg, clickDetailsOpen)
 import View.Button as Button
 import View.Colors exposing (green)
 import View.Section exposing (viewSection)
@@ -75,7 +75,7 @@ viewItem isLarge item =
     styled a
         style
         [ href "#"
-        , targetBlank
+        , onClickPreventDefault (clickDetailsOpen item)
         ]
     <|
         if isLarge then

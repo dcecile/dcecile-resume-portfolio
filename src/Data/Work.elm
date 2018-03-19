@@ -26,6 +26,8 @@ type alias WorkItemData =
     , resumeTitlePeriods : List ( String, String )
     , portfolioSkills : List String
     , resumePoints : List MarkedString
+    , detailsIntro : String
+    , detailsPoints : List MarkedString
     }
 
 
@@ -55,6 +57,10 @@ initWorkData =
                 , markedString "Led improvements in team processes"
                 , markedString "Mentored team members"
                 ]
+                "An intro"
+                [ markedString "A point"
+                , markedString "A point"
+                ]
 
         nexj =
             WorkItemData
@@ -71,6 +77,10 @@ initWorkData =
                 [ markedString "Simplified WiX installer using `Java`"
                 , markedString "Wrote tests, fixed CRM bugs in `Scheme`"
                 ]
+                "An intro"
+                [ markedString "A point"
+                , markedString "A point"
+                ]
 
         coreworx =
             WorkItemData
@@ -85,6 +95,10 @@ initWorkData =
                 ]
                 [ markedString "Developed DMS personalization in `C#`"
                 , markedString "Automated database migration via `SQL`"
+                ]
+                "An intro"
+                [ markedString "A point"
+                , markedString "A point"
                 ]
 
         lsi =
@@ -101,6 +115,10 @@ initWorkData =
                 [ markedString "Fixed H.264 video decoder bugs in `C`"
                 , markedString "Created pipeline analysis tool in `C++`"
                 ]
+                "An intro"
+                [ markedString "A point"
+                , markedString "A point"
+                ]
 
         themusuem =
             WorkItemData
@@ -114,6 +132,8 @@ initWorkData =
                 [ markedString "Helping lead maker workshops"
                 , markedString "Teaching kids STEAM mindsets"
                 ]
+                ""
+                []
     in
     { id = "work"
     , name = "Work history"

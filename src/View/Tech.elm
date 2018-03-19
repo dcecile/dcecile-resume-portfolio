@@ -5,11 +5,13 @@ module View.Tech
 
 import Css exposing (alignItems, baseline, center, color, em, flexWrap, fontStyle, italic, justifyContent, marginBottom, px, wrap)
 import CssShorthand exposing (displayFlexRow, marginRightLeft, marginTopBottom)
+import Data.Tech exposing (TechItemData)
 import Dict
 import Html.Styled exposing (Html, a, div, span, styled, text)
 import Html.Styled.Attributes exposing (href)
+import HtmlShorthand exposing (onClickPreventDefault)
 import Model exposing (Model)
-import Msg exposing (Msg)
+import Msg exposing (Msg, clickDetailsOpen)
 import View.Button as Button
 import View.Colors exposing (paleGreen)
 import View.Section exposing (viewSection)
@@ -24,11 +26,11 @@ viewTech model =
     viewSection
         model.iconSource
         sectionData
-        [ viewItems <| List.map .name sectionData.items
+        [ viewItems sectionData.items
         ]
 
 
-viewItems : List String -> Html Msg
+viewItems : List TechItemData -> Html Msg
 viewItems items =
     let
         style =
@@ -45,7 +47,7 @@ viewItems items =
         |> styled div style []
 
 
-toGroup : List String -> List ( String, List String )
+toGroup : List TechItemData -> List ( String, List TechItemData )
 toGroup items =
     let
         loop item =
@@ -54,7 +56,7 @@ toGroup items =
                 (update item)
 
         key =
-            String.left 1 >> String.toUpper
+            .name >> String.left 1 >> String.toUpper
 
         update item maybeGroup =
             Just <| item :: Maybe.withDefault [] maybeGroup
@@ -64,7 +66,7 @@ toGroup items =
         |> Dict.toList
 
 
-viewGroup : String -> List String -> Html Msg
+viewGroup : String -> List TechItemData -> Html Msg
 viewGroup key items =
     let
         style =
@@ -96,7 +98,7 @@ viewKey key =
         [ text key ]
 
 
-viewItem : String -> Html Msg
+viewItem : TechItemData -> Html Msg
 viewItem item =
     let
         style =
@@ -108,5 +110,7 @@ viewItem item =
     in
     styled a
         style
-        [ href "#" ]
-        [ text item ]
+        [ href "#"
+        , onClickPreventDefault (clickDetailsOpen item)
+        ]
+        [ text item.name ]
