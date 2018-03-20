@@ -16,7 +16,7 @@ import Keyboard
 import MarkedString exposing (MarkedString, markedString)
 import MaybeEx
 import Model exposing (Model)
-import Msg exposing (Msg(DetailsClose, NoMsg))
+import Msg exposing (Msg(DetailsClose, DetailsNavLink, NoMsg))
 import View.Button as Button
 import View.Colors exposing (black, blackLevel, extraPaleGreen, paleGreen, white)
 import View.DetailsAnimation exposing (animateDetails)
@@ -250,8 +250,23 @@ viewPoint =
             , lastChild [ marginBottom zero ]
             ]
     in
-    MarkedString.transform text (styledSpanText [ textDecoration underline ])
+    MarkedString.transform text viewPointLink
         >> styled li style []
+
+
+viewPointLink : String -> Html Msg
+viewPointLink name =
+    let
+        style =
+            [ color black
+            ]
+    in
+    styled a
+        style
+        [ href "#"
+        , onClickPreventDefault (always (DetailsNavLink name))
+        ]
+        [ text name ]
 
 
 subscribeDetails : Model -> Sub Msg

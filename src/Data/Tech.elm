@@ -42,8 +42,7 @@ initTechData =
         , TechItemData
             "C"
             "An intro"
-            [ markedString "A point"
-            , markedString "A point"
+            [ markedString "A visual H.264 video debugger GUI at `LSI Logic`"
             ]
             PortfolioOnly
         , TechItemData

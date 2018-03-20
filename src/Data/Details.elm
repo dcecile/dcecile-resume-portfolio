@@ -4,6 +4,7 @@ module Data.Details
         , DetailsItemDataInput
         , DetailsItemDataInputUrl
         , detailsItemData
+        , detailsItemDataWithUrl
         )
 
 import MarkedString exposing (MarkedString)
@@ -33,11 +34,25 @@ type alias DetailsItemDataInputUrl a =
     }
 
 
-detailsItemData : DetailsItemDataInput a -> Maybe (DetailsItemDataInputUrl b) -> DetailsItemData
-detailsItemData item itemUrl =
+detailsItemData : DetailsItemDataInput a -> DetailsItemData
+detailsItemData =
+    detailsItemDataMaybeWithUrl (always Nothing)
+
+
+detailsItemDataWithUrl : DetailsItemDataInput (DetailsItemDataInputUrl a) -> DetailsItemData
+detailsItemDataWithUrl =
+    detailsItemDataMaybeWithUrl Just
+
+
+detailsItemDataMaybeWithUrl : (DetailsItemDataInput a -> Maybe (DetailsItemDataInputUrl b)) -> DetailsItemDataInput a -> DetailsItemData
+detailsItemDataMaybeWithUrl itemUrlSelector item =
+    let
+        itemUrlPart part =
+            Maybe.andThen part (itemUrlSelector item)
+    in
     { name = item.name
-    , homepageUrl = Maybe.andThen .homepageUrl itemUrl
-    , sourceUrl = Maybe.andThen .sourceUrl itemUrl
+    , homepageUrl = itemUrlPart .homepageUrl
+    , sourceUrl = itemUrlPart .sourceUrl
     , intro = item.detailsIntro
     , points = item.detailsPoints
     }

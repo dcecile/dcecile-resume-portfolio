@@ -1,36 +1,37 @@
 module Msg
     exposing
-        ( Msg(DetailsClose, DetailsOpen, NoMsg, Print)
+        ( Msg(DetailsClose, DetailsNavLink, DetailsOpen, NoMsg, Print)
         , clickDetailsOpen
         , clickDetailsOpenWithUrl
         )
 
 import ClickInfo exposing (ClickInfo)
-import Data.Details exposing (DetailsItemData, DetailsItemDataInput, DetailsItemDataInputUrl, detailsItemData)
+import Data.Details exposing (DetailsItemData, DetailsItemDataInput, DetailsItemDataInputUrl, detailsItemData, detailsItemDataWithUrl)
 import Mouse exposing (Event)
 
 
 type Msg
     = Print
     | DetailsOpen DetailsItemData ClickInfo
+    | DetailsNavLink String
     | DetailsClose
     | NoMsg
 
 
 clickDetailsOpen : DetailsItemDataInput a -> Event -> Msg
 clickDetailsOpen =
-    clickDetailsOpenMaybeWithUrl (always Nothing)
+    clickDetailsOpenMaybeWithUrl detailsItemData
 
 
 clickDetailsOpenWithUrl : DetailsItemDataInput (DetailsItemDataInputUrl a) -> Event -> Msg
 clickDetailsOpenWithUrl =
-    clickDetailsOpenMaybeWithUrl Just
+    clickDetailsOpenMaybeWithUrl detailsItemDataWithUrl
 
 
-clickDetailsOpenMaybeWithUrl : (DetailsItemDataInput a -> Maybe (DetailsItemDataInputUrl b)) -> DetailsItemDataInput a -> Event -> Msg
-clickDetailsOpenMaybeWithUrl itemUrlSelector item event =
+clickDetailsOpenMaybeWithUrl : (a -> DetailsItemData) -> a -> Event -> Msg
+clickDetailsOpenMaybeWithUrl detailsConverter item event =
     DetailsOpen
-        (detailsItemData item (itemUrlSelector item))
+        (detailsConverter item)
         { pagePos = event.pagePos
         , clientPos = event.clientPos
         }
