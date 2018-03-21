@@ -12,7 +12,8 @@ _An interactive and printable webpage made with Elm_
 5. [Set up your editor](https://github.com/avh4/elm-format#detailed-instructions) to automatically run `elm-format` on save
 6. Run `elm-app start` to start the development server
 7. Change a source file, and the app will reload automatically
-8. Run `./check-warnings.sh` to check all source files for warnings
+8. Run `elm-app test` to run all unit tests
+9. Run `./check-warnings.sh` to check all source files for warnings
 
 _Hint: to view the resume directly as a webpage (without printing), use the special `#resume` hash URL._
 
