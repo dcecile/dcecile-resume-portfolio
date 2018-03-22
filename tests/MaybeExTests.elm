@@ -1,13 +1,13 @@
-module MaybeExTests exposing (testMaybeEx)
+module MaybeExTests exposing (all)
 
 import Expect
 import MaybeEx
-import Test exposing (Test, describe, test)
+import Test exposing (Test, concat, describe, test)
 
 
-testMaybeEx : Test
-testMaybeEx =
-    describe "MaybeEx"
+all : Test
+all =
+    concat
         [ describe "toList"
             [ test "Just" <|
                 \_ ->

@@ -2,5 +2,15 @@
   "dependencies": {
     "create-elm-app": "^1.10.3",
     "elm-format": "^0.7.0-exp"
+  },
+  "devDependencies": {
+    "chokidar-cli": "^1.2.0"
+  },
+  "scripts": {
+    "clean": "rm -rf elm-stuff/build-artifacts/0.18.0/dcecile/dcecile-resume-portfolio && rm -rf tests/elm-stuff/build-artifacts/0.18.0/user/project",
+    "make-src": "elm-package install --yes && elm-make src/Main.elm --warn --output /dev/null",
+    "make-tests": "cd ./tests && elm-package install --yes && elm-make *.elm --warn --output /dev/null",
+    "test": "elm-app test",
+    "validate-format": "elm-format --validate src/ tests/"
   }
 }
