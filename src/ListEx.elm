@@ -1,33 +1,31 @@
 module ListEx
     exposing
         ( find
-        , mapFirst
+        , findMap
         )
 
 
 find : (a -> Bool) -> List a -> Maybe a
-find condition list =
-    case list of
-        head :: rest ->
-            if condition head then
-                Just head
+find condition =
+    findMap
+        (\item ->
+            if condition item then
+                Just item
             else
-                find condition rest
-
-        [] ->
-            Nothing
+                Nothing
+        )
 
 
-mapFirst : (a -> Maybe b) -> List a -> Maybe b
-mapFirst transform list =
+findMap : (a -> Maybe b) -> List a -> Maybe b
+findMap conditionTransform list =
     case list of
         head :: rest ->
-            case transform head of
+            case conditionTransform head of
                 Just result ->
                     Just result
 
                 Nothing ->
-                    mapFirst transform rest
+                    findMap conditionTransform rest
 
         [] ->
             Nothing

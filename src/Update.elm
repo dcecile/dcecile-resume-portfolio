@@ -80,7 +80,7 @@ findDetailsItem name model =
             , findDetailsItemIn data.work.portfolioSmallItems detailsItemData
             ]
     in
-    ListEx.mapFirst (\location -> location name) locations
+    ListEx.findMap (\location -> location name) locations
 
 
 findDetailsItemIn : List (DetailsItemDataInput a) -> (DetailsItemDataInput a -> DetailsItemData) -> String -> Maybe DetailsItemData
