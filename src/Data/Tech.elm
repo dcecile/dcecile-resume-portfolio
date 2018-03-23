@@ -18,6 +18,7 @@ type alias TechData =
 
 type alias TechItemData =
     { name : String
+    , shortName : Maybe String
     , detailsIntro : String
     , detailsPoints : List MarkedString
     , visibility : Visibility
@@ -34,6 +35,7 @@ initTechData =
     , items =
         [ TechItemData
             "Bootstrap"
+            Nothing
             "An intro"
             [ markedString "A point"
             , markedString "A point"
@@ -41,12 +43,14 @@ initTechData =
             PortfolioOnly
         , TechItemData
             "C"
+            Nothing
             "An intro"
             [ markedString "A visual H.264 video debugger GUI at `LSI Logic`"
             ]
             PortfolioOnly
         , TechItemData
             "C++"
+            Nothing
             "An intro"
             [ markedString "A point"
             , markedString "A point"
@@ -54,6 +58,7 @@ initTechData =
             PortfolioOnly
         , TechItemData
             "C#"
+            Nothing
             "An intro"
             [ markedString "A point"
             , markedString "A point"
@@ -61,6 +66,7 @@ initTechData =
             PortfolioAndResume
         , TechItemData
             "CSS3"
+            Nothing
             "An intro"
             [ markedString "A point"
             , markedString "A point"
@@ -68,6 +74,7 @@ initTechData =
             PortfolioAndResume
         , TechItemData
             "DSLs"
+            Nothing
             "An intro"
             [ markedString "A point"
             , markedString "A point"
@@ -75,13 +82,15 @@ initTechData =
             PortfolioOnly
         , TechItemData
             "Elm"
+            Nothing
             "An intro"
             [ markedString "A point"
             , markedString "A point"
             ]
             PortfolioOnly
         , TechItemData
-            "ES6"
+            "JavaScript (ES6)"
+            (Just "ES6")
             "An intro"
             [ markedString "A point"
             , markedString "A point"
@@ -89,13 +98,15 @@ initTechData =
             PortfolioOnly
         , TechItemData
             "Excel"
+            Nothing
             "An intro"
             [ markedString "A point"
             , markedString "A point"
             ]
             PortfolioOnly
         , TechItemData
-            "FP"
+            "functional programming"
+            (Just "FP")
             "An intro"
             [ markedString "A point"
             , markedString "A point"
@@ -103,13 +114,15 @@ initTechData =
             PortfolioAndResume
         , TechItemData
             "functional animation"
+            Nothing
             "An intro"
             [ markedString "A point"
             , markedString "A point"
             ]
             PortfolioOnly
         , TechItemData
-            "GAE"
+            "Google App Engine"
+            (Just "GAE")
             "An intro"
             [ markedString "A point"
             , markedString "A point"
@@ -117,6 +130,7 @@ initTechData =
             PortfolioOnly
         , TechItemData
             "Go"
+            Nothing
             "An intro"
             [ markedString "A point"
             , markedString "A point"
@@ -124,6 +138,7 @@ initTechData =
             PortfolioOnly
         , TechItemData
             "Heroku"
+            Nothing
             "An intro"
             [ markedString "A point"
             , markedString "A point"
@@ -131,13 +146,15 @@ initTechData =
             PortfolioOnly
         , TechItemData
             "HTML5"
+            Nothing
             "An intro"
             [ markedString "A point"
             , markedString "A point"
             ]
             PortfolioOnly
         , TechItemData
-            "i18n & l10n"
+            "internationalization & localization"
+            (Just "i18n & l10n")
             "An intro"
             [ markedString "A point"
             , markedString "A point"
@@ -145,6 +162,7 @@ initTechData =
             PortfolioOnly
         , TechItemData
             "JavaScript"
+            Nothing
             "An intro"
             [ markedString "A point"
             , markedString "A point"
@@ -152,6 +170,7 @@ initTechData =
             PortfolioAndResume
         , TechItemData
             "Lua"
+            Nothing
             "An intro"
             [ markedString "A point"
             , markedString "A point"
@@ -159,6 +178,7 @@ initTechData =
             PortfolioOnly
         , TechItemData
             "Python"
+            Nothing
             "An intro"
             [ markedString "A point"
             , markedString "A point"
@@ -166,6 +186,7 @@ initTechData =
             PortfolioAndResume
         , TechItemData
             "Qt"
+            Nothing
             "An intro"
             [ markedString "A point"
             , markedString "A point"
@@ -173,6 +194,7 @@ initTechData =
             PortfolioOnly
         , TechItemData
             "React"
+            Nothing
             "An intro"
             [ markedString "A point"
             , markedString "A point"
@@ -180,6 +202,7 @@ initTechData =
             PortfolioAndResume
         , TechItemData
             "responsive design"
+            Nothing
             "An intro"
             [ markedString "A point"
             , markedString "A point"
@@ -187,6 +210,7 @@ initTechData =
             PortfolioOnly
         , TechItemData
             "Ruby"
+            Nothing
             "An intro"
             [ markedString "A point"
             , markedString "A point"
@@ -194,6 +218,7 @@ initTechData =
             PortfolioAndResume
         , TechItemData
             "Rails"
+            Nothing
             "An intro"
             [ markedString "A point"
             , markedString "A point"
@@ -201,6 +226,7 @@ initTechData =
             PortfolioAndResume
         , TechItemData
             "Sass"
+            Nothing
             "An intro"
             [ markedString "A point"
             , markedString "A point"
@@ -208,6 +234,7 @@ initTechData =
             PortfolioOnly
         , TechItemData
             "SQL"
+            Nothing
             "An intro"
             [ markedString "A point"
             , markedString "A point"
@@ -215,6 +242,7 @@ initTechData =
             PortfolioAndResume
         , TechItemData
             "SVG"
+            Nothing
             "An intro"
             [ markedString "A point"
             , markedString "A point"
@@ -222,6 +250,7 @@ initTechData =
             PortfolioAndResume
         , TechItemData
             "Scala"
+            Nothing
             "An intro"
             [ markedString "A point"
             , markedString "A point"
@@ -229,6 +258,7 @@ initTechData =
             PortfolioAndResume
         , TechItemData
             "Scheme"
+            Nothing
             "An intro"
             [ markedString "A point"
             , markedString "A point"
@@ -236,6 +266,7 @@ initTechData =
             PortfolioOnly
         , TechItemData
             "TDD"
+            Nothing
             "An intro"
             [ markedString "A point"
             , markedString "A point"
@@ -243,6 +274,7 @@ initTechData =
             PortfolioOnly
         , TechItemData
             "Unicode"
+            Nothing
             "An intro"
             [ markedString "A point"
             , markedString "A point"
@@ -250,6 +282,7 @@ initTechData =
             PortfolioOnly
         , TechItemData
             "Vue.js"
+            Nothing
             "An intro"
             [ markedString "A point"
             , markedString "A point"
@@ -257,6 +290,7 @@ initTechData =
             PortfolioAndResume
         , TechItemData
             "WinForms"
+            Nothing
             "An intro"
             [ markedString "A point"
             , markedString "A point"

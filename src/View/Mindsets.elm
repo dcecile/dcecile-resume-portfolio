@@ -3,7 +3,7 @@ module View.Mindsets
         ( viewMindsets
         )
 
-import Css exposing (Em, alignItems, backgroundColor, center, em, flexWrap, height, justifyContent, marginBottom, minWidth, width, wrap)
+import Css exposing (Em, alignItems, backgroundColor, capitalize, center, em, flexWrap, height, justifyContent, marginBottom, minWidth, textTransform, width, wrap)
 import CssShorthand exposing (batchMap, displayFlexColumn, displayFlexRow, marginRightLeft, marginTopBottom)
 import Data.Mindsets exposing (MindsetsItemData)
 import Html.Styled exposing (Html, a, div, span, styled, text)
@@ -94,16 +94,17 @@ viewItemBackground =
 
 
 viewItemLink : String -> Html Msg
-viewItemLink item =
+viewItemLink name =
     let
         style =
             [ Button.border
             , Button.sizeMedium
             , minWidth itemButtonWidth
             , backgroundColor white
+            , textTransform capitalize
             ]
     in
     styled span
         style
         []
-        [ text item ]
+        [ text name ]

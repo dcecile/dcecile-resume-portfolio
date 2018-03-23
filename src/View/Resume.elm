@@ -228,7 +228,7 @@ viewTechLine model =
     in
     sectionData.items
         |> filterVisible PortfolioAndResume .visibility
-        |> List.map .name
+        |> List.map (\item -> Maybe.withDefault item.name item.shortName)
         |> List.map viewTechLineItem
         |> List.intersperse (text " ")
         |> styled p style []

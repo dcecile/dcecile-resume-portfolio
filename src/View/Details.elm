@@ -4,8 +4,8 @@ module View.Details
         , subscribeDetails
         )
 
-import Css exposing (Style, alignItems, backgroundColor, borderRadius, borderWidth, bottom, center, color, display, em, empty, fixed, fontSize, justifyContent, lastChild, left, lineHeight, marginBottom, marginLeft, marginRight, marginTop, maxWidth, minWidth, none, num, padding, position, px, right, spaceBetween, textDecoration, top, underline, vh, vw, zero)
-import CssShorthand exposing (batchMap, borderSolidColor, displayFlexColumn, displayFlexRow, marginRightLeft, marginTopBottom, mediaNotPrint, paddingRightLeft, paddingTopBottom, willChangeTransform, zIndexBackground)
+import Css exposing (Style, alignItems, backgroundColor, borderRadius, borderWidth, bottom, capitalize, center, color, display, em, empty, fixed, fontSize, justifyContent, lastChild, left, lineHeight, marginBottom, marginLeft, marginRight, marginTop, maxWidth, minWidth, none, num, padding, position, px, right, spaceBetween, textDecoration, textTransform, top, underline, vh, vw, zero)
+import CssShorthand exposing (batchMap, borderSolidColor, displayFlexColumn, displayFlexRow, marginRightLeft, marginTopBottom, mediaNotPrint, noStyle, paddingRightLeft, paddingTopBottom, willChangeTransform, zIndexBackground)
 import Data.Details exposing (DetailsItemData)
 import Display.Details exposing (DetailsDisplay)
 import Html.Styled exposing (Html, a, div, h1, li, p, span, styled, text, ul)
@@ -128,21 +128,25 @@ viewContent model item =
     styled div
         style
         []
-        [ viewHeader model.iconSource item.name
+        [ viewHeader model.iconSource item.name item.capitalizeName
         , viewLinks model.iconSource item
         , viewIntro item.intro
         , viewPoints item.points
         ]
 
 
-viewHeader : IconSource -> String -> Html Msg
-viewHeader iconSource headerText =
+viewHeader : IconSource -> String -> Bool -> Html Msg
+viewHeader iconSource headerText capitalizeName =
     let
         style =
             [ displayFlexRow
             , justifyContent spaceBetween
             , alignItems top
             , fontSize <| em 1.6
+            , if capitalizeName then
+                textTransform capitalize
+              else
+                noStyle
             , marginTop zero
             , marginBottom <| em 0.4
             ]

@@ -56,7 +56,7 @@ toGroup items =
                 (update item)
 
         key =
-            .name >> String.left 1 >> String.toUpper
+            getShortName >> String.left 1 >> String.toUpper
 
         update item maybeGroup =
             Just <| item :: Maybe.withDefault [] maybeGroup
@@ -64,6 +64,11 @@ toGroup items =
     items
         |> List.foldr loop Dict.empty
         |> Dict.toList
+
+
+getShortName : TechItemData -> String
+getShortName item =
+    Maybe.withDefault item.name item.shortName
 
 
 viewGroup : String -> List TechItemData -> Html Msg
@@ -113,4 +118,4 @@ viewItem item =
         [ href "#"
         , onClickPreventDefault (clickDetailsOpen item)
         ]
-        [ text item.name ]
+        [ text <| getShortName item ]

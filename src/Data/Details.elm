@@ -10,6 +10,7 @@ import MarkedString exposing (MarkedString)
 
 type alias DetailsItemData =
     { name : String
+    , capitalizeName : Bool
     , homepageUrl : Maybe String
     , sourceUrl : Maybe String
     , intro : String
@@ -35,34 +36,35 @@ type alias DetailsItemDataInputUrl a =
 allDetailsItems : Data -> List DetailsItemData
 allDetailsItems data =
     let
-        convert =
-            flip List.map
+        convert items details capitalizeName =
+            List.map (details capitalizeName) items
     in
     List.concat
-        [ convert data.mindsets.items detailsItemData
-        , convert data.tech.items detailsItemData
-        , convert data.projects.items detailsItemDataWithUrl
-        , convert data.work.portfolioItems detailsItemData
+        [ convert data.mindsets.items detailsItemData True
+        , convert data.tech.items detailsItemData True
+        , convert data.projects.items detailsItemDataWithUrl False
+        , convert data.work.portfolioItems detailsItemData False
         ]
 
 
-detailsItemData : DetailsItemDataInput a -> DetailsItemData
+detailsItemData : Bool -> DetailsItemDataInput a -> DetailsItemData
 detailsItemData =
     detailsItemDataMaybeWithUrl (always Nothing)
 
 
-detailsItemDataWithUrl : DetailsItemDataInput (DetailsItemDataInputUrl a) -> DetailsItemData
+detailsItemDataWithUrl : Bool -> DetailsItemDataInput (DetailsItemDataInputUrl a) -> DetailsItemData
 detailsItemDataWithUrl =
     detailsItemDataMaybeWithUrl Just
 
 
-detailsItemDataMaybeWithUrl : (DetailsItemDataInput a -> Maybe (DetailsItemDataInputUrl b)) -> DetailsItemDataInput a -> DetailsItemData
-detailsItemDataMaybeWithUrl itemUrlSelector item =
+detailsItemDataMaybeWithUrl : (DetailsItemDataInput a -> Maybe (DetailsItemDataInputUrl b)) -> Bool -> DetailsItemDataInput a -> DetailsItemData
+detailsItemDataMaybeWithUrl itemUrlSelector capitalizeName item =
     let
         itemUrlPart part =
             Maybe.andThen part (itemUrlSelector item)
     in
     { name = item.name
+    , capitalizeName = capitalizeName
     , homepageUrl = itemUrlPart .homepageUrl
     , sourceUrl = itemUrlPart .sourceUrl
     , intro = item.detailsIntro
