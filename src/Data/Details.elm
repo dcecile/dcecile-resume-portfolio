@@ -1,12 +1,10 @@
 module Data.Details
     exposing
         ( DetailsItemData
-        , DetailsItemDataInput
-        , DetailsItemDataInputUrl
-        , detailsItemData
-        , detailsItemDataWithUrl
+        , allDetailsItems
         )
 
+import Data exposing (Data)
 import MarkedString exposing (MarkedString)
 
 
@@ -32,6 +30,20 @@ type alias DetailsItemDataInputUrl a =
         | homepageUrl : Maybe String
         , sourceUrl : Maybe String
     }
+
+
+allDetailsItems : Data -> List DetailsItemData
+allDetailsItems data =
+    let
+        convert =
+            flip List.map
+    in
+    List.concat
+        [ convert data.mindsets.items detailsItemData
+        , convert data.tech.items detailsItemData
+        , convert data.projects.items detailsItemDataWithUrl
+        , convert data.work.portfolioItems detailsItemData
+        ]
 
 
 detailsItemData : DetailsItemDataInput a -> DetailsItemData

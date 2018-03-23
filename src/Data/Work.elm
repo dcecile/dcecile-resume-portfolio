@@ -11,7 +11,8 @@ import MarkedString exposing (MarkedString, markedString)
 
 type alias WorkData =
     SectionData
-        { portfolioLargeItems : List WorkItemData
+        { portfolioItems : List WorkItemData
+        , portfolioLargeItems : List WorkItemData
         , portfolioSmallItems : List WorkItemData
         , resumeItems : List WorkItemData
         , resumeVolunteerItems : List WorkItemData
@@ -134,20 +135,25 @@ initWorkData =
                 ]
                 ""
                 []
+
+        portfolioLargeItems =
+            [ unitron
+            ]
+
+        portfolioSmallItems =
+            [ nexj
+            , coreworx
+            , lsi
+            ]
     in
     { id = "work"
     , name = "Work history"
     , iconBackground = .calendar
     , intro =
         "I’ve got 10 years of experience writing software, and I’m looking to add the name of a new team to this list:"
-    , portfolioLargeItems =
-        [ unitron
-        ]
-    , portfolioSmallItems =
-        [ nexj
-        , coreworx
-        , lsi
-        ]
+    , portfolioItems = portfolioLargeItems ++ portfolioSmallItems
+    , portfolioLargeItems = portfolioLargeItems
+    , portfolioSmallItems = portfolioSmallItems
     , resumeItems =
         [ unitron
         , nexj

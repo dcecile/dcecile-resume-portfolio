@@ -35,7 +35,7 @@ initMindsetsData =
             "There’s always something new to learn, some deeper understanding to be gained, some path to grow my skills."
             [ markedString "At `Unitron`, I learned the ins and outs of numerous internal business and software systems, helping me make my team’s solutions more robust"
             , markedString "In `Forks in the Road`, I learned how to use JWT authentication for a API-only `Rails` app"
-            , markedString "In `Off-Grid Orcs`, I learned how to apply a `functional programming` architecture to a highly-interactive application"
+            , markedString "In `Off-Grid Orcs`, I learned how to apply a `FP` architecture to a highly-interactive application"
             ]
         , MindsetsItemData
             "Teaching"

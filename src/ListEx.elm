@@ -1,7 +1,6 @@
 module ListEx
     exposing
         ( find
-        , findMap
         )
 
 

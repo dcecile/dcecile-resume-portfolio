@@ -10,32 +10,11 @@ all : Test
 all =
     concat
         [ describe "find" findTests
-        , describe "findMap" findMapTests
         ]
 
 
 findTests : List Test
 findTests =
-    findGenericTests
-        ListEx.find
-        (Maybe.map (always True) >> Maybe.withDefault False)
-        identity
-
-
-findMapTests : List Test
-findMapTests =
-    let
-        transform =
-            (*) 2
-    in
-    findGenericTests
-        ListEx.findMap
-        (Maybe.map transform)
-        transform
-
-
-findGenericTests : ((Int -> a) -> List Int -> Maybe b) -> (Maybe Int -> a) -> (Int -> b) -> List Test
-findGenericTests findGeneric modifyCondition modifyResult =
     let
         one =
             4 + 1
@@ -47,7 +26,7 @@ findGenericTests findGeneric modifyCondition modifyResult =
             4 + 3
 
         run input =
-            findGeneric
+            ListEx.find
                 (condition input)
                 [ one
                 , two
@@ -58,16 +37,12 @@ findGenericTests findGeneric modifyCondition modifyResult =
                 ]
 
         condition input item =
-            modifyCondition <|
-                if item % 4 == input then
-                    Just item
-                else
-                    Nothing
+            item % 4 == input
     in
     [ testAll "positive"
-        [ ( 1, modifyResult one )
-        , ( 2, modifyResult two )
-        , ( 3, modifyResult three )
+        [ ( 1, one )
+        , ( 2, two )
+        , ( 3, three )
         ]
         (\( input, output ) ->
             Expect.equal

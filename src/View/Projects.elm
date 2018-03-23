@@ -10,7 +10,7 @@ import Html.Styled exposing (Html, a, div, styled, text)
 import Html.Styled.Attributes exposing (href)
 import HtmlShorthand exposing (onClickPreventDefault)
 import Model exposing (Model)
-import Msg exposing (Msg, clickDetailsOpenWithUrl)
+import Msg exposing (Msg, clickDetailsOpen)
 import View.Button as Button
 import View.Colors exposing (green)
 import View.Section exposing (viewSection)
@@ -64,7 +64,7 @@ viewItem item =
     styled a
         style
         [ href "#"
-        , onClickPreventDefault (clickDetailsOpenWithUrl item)
+        , onClickPreventDefault (clickDetailsOpen item)
         ]
         [ viewName <| Maybe.withDefault item.name item.shortName
         , viewTech item.tech

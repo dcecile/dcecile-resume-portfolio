@@ -1,10 +1,11 @@
 module Update
     exposing
-        ( update
+        ( findDetailsItem
+        , update
         )
 
 import ClickInfo exposing (ClickInfo)
-import Data.Details exposing (DetailsItemData, DetailsItemDataInput, detailsItemData, detailsItemDataWithUrl)
+import Data.Details exposing (DetailsItemData)
 import Display.Details exposing (DetailsAnimation(DetailsAnimationClose, DetailsAnimationOpen), DetailsDisplay)
 import ListEx
 import Model exposing (Model)
@@ -12,84 +13,100 @@ import Msg exposing (Msg(DetailsClose, DetailsNavLink, DetailsOpen, NoMsg, Print
 import Print exposing (print)
 
 
-update : Msg -> Model -> ( Model, Cmd Msg )
-update msg model =
-    let
-        change : (Model -> Model) -> ( Model, Cmd Msg )
-        change transform =
-            ( transform model, Cmd.none )
+type alias Update =
+    ( Model, Cmd Msg )
 
-        maybeChange : (Model -> Maybe Model) -> ( Model, Cmd Msg )
-        maybeChange transform =
-            change (transform >> Maybe.withDefault model)
 
-        maybeChangeDetails : (Model -> DetailsDisplay -> Maybe DetailsDisplay) -> ( Model, Cmd Msg )
-        maybeChangeDetails transform =
-            maybeChange
-                (\model ->
-                    model.details
-                        |> Maybe.andThen (transform model)
-                        |> Maybe.map (\details -> { model | details = Just details })
-                )
-    in
+update : Msg -> Model -> Update
+update msg =
     case msg of
         Print ->
-            ( model, print () )
+            sendCommand <|
+                print ()
 
-        DetailsOpen item clickInfo ->
-            change (open item clickInfo)
+        DetailsOpen name clickInfo ->
+            updateModel <|
+                maybeModel <|
+                    maybeSetDetails <|
+                        maybeWithDetailsItem name <|
+                            open clickInfo
 
         DetailsNavLink name ->
-            maybeChangeDetails (navLink name)
+            updateModel <|
+                maybeModel <|
+                    maybeUpdateDetails <|
+                        \details ->
+                            maybeWithDetailsItem name <|
+                                navLink details
 
         DetailsClose ->
-            maybeChangeDetails close
+            updateModel <|
+                maybeModel <|
+                    maybeUpdateDetails <|
+                        close
 
         NoMsg ->
-            ( model, Cmd.none )
+            updateModel <|
+                identity
 
 
-open : DetailsItemData -> ClickInfo -> Model -> Model
-open item clickInfo model =
-    { model
-        | details =
-            Just
-                { itemData = item
-                , animation = DetailsAnimationOpen
-                , openClickInfo = clickInfo
-                }
+sendCommand : Cmd Msg -> Model -> Update
+sendCommand command model =
+    ( model, command )
+
+
+updateModel : (Model -> Model) -> Model -> Update
+updateModel transform model =
+    ( transform model, Cmd.none )
+
+
+maybeModel : (Model -> Maybe Model) -> Model -> Model
+maybeModel transform model =
+    transform model
+        |> Maybe.withDefault model
+
+
+maybeSetDetails : (Model -> Maybe DetailsDisplay) -> Model -> Maybe Model
+maybeSetDetails transform model =
+    transform model
+        |> Maybe.map (\details -> { model | details = Just details })
+
+
+maybeUpdateDetails : (DetailsDisplay -> Model -> Maybe DetailsDisplay) -> Model -> Maybe Model
+maybeUpdateDetails transform =
+    maybeSetDetails
+        (\model -> model.details |> Maybe.andThen (\details -> transform details model))
+
+
+maybeWithDetailsItem : String -> (DetailsItemData -> a) -> Model -> Maybe a
+maybeWithDetailsItem name transform model =
+    findDetailsItem name model.allDetailsItems
+        |> Maybe.map transform
+
+
+findDetailsItem : String -> List DetailsItemData -> Maybe DetailsItemData
+findDetailsItem name =
+    ListEx.find (\item -> item.name == name)
+
+
+open : ClickInfo -> DetailsItemData -> DetailsDisplay
+open clickInfo item =
+    { itemData = item
+    , animation = DetailsAnimationOpen
+    , openClickInfo = clickInfo
     }
 
 
-navLink : String -> Model -> DetailsDisplay -> Maybe DetailsDisplay
-navLink name model details =
-    findDetailsItem name model
-        |> Maybe.map (\item -> { details | itemData = item })
+navLink : DetailsDisplay -> DetailsItemData -> DetailsDisplay
+navLink details item =
+    { details
+        | itemData = item
+    }
 
 
-findDetailsItem : String -> Model -> Maybe DetailsItemData
-findDetailsItem name model =
-    let
-        data =
-            model.data
-
-        locations =
-            [ findDetailsItemIn data.tech.items detailsItemData
-            , findDetailsItemIn data.projects.items detailsItemDataWithUrl
-            , findDetailsItemIn data.work.portfolioLargeItems detailsItemData
-            , findDetailsItemIn data.work.portfolioSmallItems detailsItemData
-            ]
-    in
-    ListEx.findMap (\location -> location name) locations
-
-
-findDetailsItemIn : List (DetailsItemDataInput a) -> (DetailsItemDataInput a -> DetailsItemData) -> String -> Maybe DetailsItemData
-findDetailsItemIn items detailsConverter name =
-    items
-        |> ListEx.find (\item -> item.name == name)
-        |> Maybe.map detailsConverter
-
-
-close : Model -> DetailsDisplay -> Maybe DetailsDisplay
-close model details =
-    Just { details | animation = DetailsAnimationClose }
+close : DetailsDisplay -> Model -> Maybe DetailsDisplay
+close details _ =
+    Just
+        { details
+            | animation = DetailsAnimationClose
+        }
