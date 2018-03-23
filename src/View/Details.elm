@@ -4,7 +4,7 @@ module View.Details
         , subscribeDetails
         )
 
-import Css exposing (Style, alignItems, backgroundColor, borderRadius, borderWidth, bottom, capitalize, center, color, display, em, empty, fixed, fontSize, justifyContent, lastChild, left, lineHeight, marginBottom, marginLeft, marginRight, marginTop, maxWidth, minWidth, none, num, padding, position, px, right, spaceBetween, textDecoration, textTransform, top, underline, vh, vw, zero)
+import Css exposing (Style, alignItems, backgroundColor, batch, borderRadius, borderWidth, bottom, capitalize, center, color, display, em, empty, fixed, fontSize, hidden, justifyContent, lastChild, left, lineHeight, marginBottom, marginLeft, marginRight, marginTop, maxWidth, minWidth, none, num, padding, position, px, right, spaceBetween, textDecoration, textTransform, top, underline, vh, visibility, vw, zero)
 import CssShorthand exposing (batchMap, borderSolidColor, displayFlexColumn, displayFlexRow, marginRightLeft, marginTopBottom, mediaNotPrint, noStyle, paddingRightLeft, paddingTopBottom, willChangeTransform, zIndexBackground)
 import Data.Details exposing (DetailsItemData)
 import Display.Details exposing (DetailsDisplay)
@@ -32,6 +32,9 @@ maybeViewDetails model =
 viewDetails : Model -> DetailsDisplay -> Html Msg
 viewDetails model details =
     let
+        item =
+            details.itemData
+
         style =
             [ display none
             , mediaNotPrint [ displayFlexRow ]
@@ -51,9 +54,9 @@ viewDetails model details =
         style
         []
         [ viewCloseBackground
-        , viewNavPrevious model.iconSource
-        , viewContent model details.itemData
-        , viewNavNext model.iconSource
+        , viewNavPrevious model.iconSource item.previousName
+        , viewContent model item
+        , viewNavNext model.iconSource item.nextName
         ]
 
 
@@ -79,18 +82,18 @@ viewCloseLink caption style =
         ]
 
 
-viewNavPrevious : IconSource -> Html Msg
+viewNavPrevious : IconSource -> Maybe String -> Html Msg
 viewNavPrevious iconSource =
-    viewNavButton iconSource "Previous" .arrowLeft
+    viewNavButton iconSource .arrowLeft
 
 
-viewNavNext : IconSource -> Html Msg
+viewNavNext : IconSource -> Maybe String -> Html Msg
 viewNavNext iconSource =
-    viewNavButton iconSource "Next" .arrowRight
+    viewNavButton iconSource .arrowRight
 
 
-viewNavButton : IconSource -> String -> IconBackground -> Html Msg
-viewNavButton iconSource caption iconBackground =
+viewNavButton : IconSource -> IconBackground -> Maybe String -> Html Msg
+viewNavButton iconSource iconBackground maybeLinkName =
     let
         style =
             [ Button.border
@@ -99,15 +102,28 @@ viewNavButton iconSource caption iconBackground =
             , backgroundColor white
             , padding <| em 0.7
             ]
+
+        hiddenStyle =
+            [ batch style
+            , visibility hidden
+            ]
     in
-    styled a
-        style
-        [ title caption
-        , ariaLabel caption
-        , href "#"
-        , onClickPreventDefault (always NoMsg)
-        ]
-        [ iconSpan [] iconSource iconBackground ]
+    case maybeLinkName of
+        Just linkName ->
+            styled a
+                style
+                [ title linkName
+                , ariaLabel linkName
+                , href "#"
+                , onClickPreventDefault (always (DetailsNavLink linkName))
+                ]
+                [ iconSpan [] iconSource iconBackground ]
+
+        Nothing ->
+            styled a
+                hiddenStyle
+                []
+                [ iconSpan [] iconSource iconBackground ]
 
 
 viewContent : Model -> DetailsItemData -> Html Msg

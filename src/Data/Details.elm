@@ -15,6 +15,8 @@ type alias DetailsItemData =
     , sourceUrl : Maybe String
     , intro : String
     , points : List MarkedString
+    , previousName : Maybe String
+    , nextName : Maybe String
     }
 
 
@@ -36,29 +38,43 @@ type alias DetailsItemDataInputUrl a =
 allDetailsItems : Data -> List DetailsItemData
 allDetailsItems data =
     let
-        convert items details capitalizeName =
-            List.map (details capitalizeName) items
+        convert items transform =
+            List.map3
+                transform
+                items
+                ([ Nothing ] ++ List.map Just items)
+                (List.drop 1 (List.map Just items) ++ [ Nothing ])
     in
     List.concat
-        [ convert data.mindsets.items detailsItemData True
-        , convert data.tech.items detailsItemData True
-        , convert data.projects.items detailsItemDataWithUrl False
-        , convert data.work.portfolioItems detailsItemData False
+        [ convert data.mindsets.items <|
+            getDetails
+                (always Nothing)
+                True
+        , convert data.tech.items <|
+            getDetails
+                (always Nothing)
+                True
+        , convert data.projects.items <|
+            getDetails
+                Just
+                False
+        , convert data.work.portfolioItems <|
+            getDetails
+                (always Nothing)
+                False
         ]
 
 
-detailsItemData : Bool -> DetailsItemDataInput a -> DetailsItemData
-detailsItemData =
-    detailsItemDataMaybeWithUrl (always Nothing)
-
-
-detailsItemDataWithUrl : Bool -> DetailsItemDataInput (DetailsItemDataInputUrl a) -> DetailsItemData
-detailsItemDataWithUrl =
-    detailsItemDataMaybeWithUrl Just
-
-
-detailsItemDataMaybeWithUrl : (DetailsItemDataInput a -> Maybe (DetailsItemDataInputUrl b)) -> Bool -> DetailsItemDataInput a -> DetailsItemData
-detailsItemDataMaybeWithUrl itemUrlSelector capitalizeName item =
+getDetails :
+    (DetailsItemDataInput a
+     -> Maybe (DetailsItemDataInputUrl b)
+    )
+    -> Bool
+    -> DetailsItemDataInput a
+    -> Maybe (DetailsItemDataInput a)
+    -> Maybe (DetailsItemDataInput a)
+    -> DetailsItemData
+getDetails itemUrlSelector capitalizeName item previousItem nextItem =
     let
         itemUrlPart part =
             Maybe.andThen part (itemUrlSelector item)
@@ -69,4 +85,6 @@ detailsItemDataMaybeWithUrl itemUrlSelector capitalizeName item =
     , sourceUrl = itemUrlPart .sourceUrl
     , intro = item.detailsIntro
     , points = item.detailsPoints
+    , previousName = Maybe.map .name previousItem
+    , nextName = Maybe.map .name nextItem
     }
