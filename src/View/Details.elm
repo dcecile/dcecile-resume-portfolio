@@ -16,7 +16,7 @@ import Keyboard
 import MarkedString exposing (MarkedString, markedString)
 import MaybeEx
 import Model exposing (Model)
-import Msg exposing (Msg(DetailsClose, DetailsNavLink, NoMsg))
+import Msg exposing (Msg(DetailsClose, DetailsNavigate, NoMsg))
 import View.Button as Button
 import View.Colors exposing (black, blackLevel, extraPaleGreen, paleGreen, white)
 import View.DetailsAnimation exposing (animateDetails)
@@ -54,9 +54,9 @@ viewDetails model details =
         style
         []
         [ viewCloseBackground
-        , viewNavPrevious model.iconSource item.previousName
+        , viewPrevious model.iconSource item.previousName
         , viewContent model item
-        , viewNavNext model.iconSource item.nextName
+        , viewNext model.iconSource item.nextName
         ]
 
 
@@ -82,18 +82,18 @@ viewCloseLink caption style =
         ]
 
 
-viewNavPrevious : IconSource -> Maybe String -> Html Msg
-viewNavPrevious iconSource =
-    viewNavButton iconSource .arrowLeft
+viewPrevious : IconSource -> Maybe String -> Html Msg
+viewPrevious iconSource =
+    viewNavigateButton iconSource .arrowLeft
 
 
-viewNavNext : IconSource -> Maybe String -> Html Msg
-viewNavNext iconSource =
-    viewNavButton iconSource .arrowRight
+viewNext : IconSource -> Maybe String -> Html Msg
+viewNext iconSource =
+    viewNavigateButton iconSource .arrowRight
 
 
-viewNavButton : IconSource -> IconBackground -> Maybe String -> Html Msg
-viewNavButton iconSource iconBackground maybeLinkName =
+viewNavigateButton : IconSource -> IconBackground -> Maybe String -> Html Msg
+viewNavigateButton iconSource iconBackground maybeLinkName =
     let
         style =
             [ Button.border
@@ -115,7 +115,7 @@ viewNavButton iconSource iconBackground maybeLinkName =
                 [ title linkName
                 , ariaLabel linkName
                 , href "#"
-                , onClickPreventDefault (always (DetailsNavLink linkName))
+                , onClickPreventDefault (always (DetailsNavigate linkName))
                 ]
                 [ iconSpan [] iconSource iconBackground ]
 
@@ -284,7 +284,7 @@ viewPointLink name =
     styled a
         style
         [ href "#"
-        , onClickPreventDefault (always (DetailsNavLink name))
+        , onClickPreventDefault (always (DetailsNavigate name))
         ]
         [ text name ]
 
@@ -299,9 +299,9 @@ subscribeDetails model =
             if keyCode == escapeKeyCode then
                 Just DetailsClose
             else if keyCode == leftKeyCode then
-                Maybe.map DetailsNavLink item.previousName
+                Maybe.map DetailsNavigate item.previousName
             else if keyCode == rightKeyCode then
-                Maybe.map DetailsNavLink item.nextName
+                Maybe.map DetailsNavigate item.nextName
             else
                 Nothing
     in

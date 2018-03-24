@@ -9,7 +9,7 @@ import Data.Details exposing (DetailsItemData)
 import Display.Details exposing (DetailsAnimation(DetailsAnimationClose, DetailsAnimationOpen), DetailsDisplay)
 import ListEx
 import Model exposing (Model)
-import Msg exposing (Msg(DetailsClose, DetailsNavLink, DetailsOpen, NoMsg, Print))
+import Msg exposing (Msg(DetailsClose, DetailsNavigate, DetailsOpen, NoMsg, Print))
 import Print exposing (print)
 
 
@@ -31,13 +31,13 @@ update msg =
                         maybeWithDetailsItem name <|
                             open clickInfo
 
-        DetailsNavLink name ->
+        DetailsNavigate name ->
             updateModel <|
                 maybeModel <|
                     maybeUpdateDetails <|
                         \details ->
                             maybeWithDetailsItem name <|
-                                navLink details
+                                navigate details
 
         DetailsClose ->
             updateModel <|
@@ -97,8 +97,8 @@ open clickInfo item =
     }
 
 
-navLink : DetailsDisplay -> DetailsItemData -> DetailsDisplay
-navLink details item =
+navigate : DetailsDisplay -> DetailsItemData -> DetailsDisplay
+navigate details item =
     { details
         | itemData = item
     }
