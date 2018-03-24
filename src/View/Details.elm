@@ -292,18 +292,23 @@ viewPointLink name =
 subscribeDetails : Model -> Sub Msg
 subscribeDetails model =
     let
-        escapeKeyCode =
-            27
+        ( escapeKeyCode, leftKeyCode, rightKeyCode ) =
+            ( 27, 37, 39 )
 
-        handleKeyDown keyCode =
+        handleKey item keyCode =
             if keyCode == escapeKeyCode then
-                DetailsClose
+                Just DetailsClose
+            else if keyCode == leftKeyCode then
+                Maybe.map DetailsNavLink item.previousName
+            else if keyCode == rightKeyCode then
+                Maybe.map DetailsNavLink item.nextName
             else
-                NoMsg
+                Nothing
     in
     case model.details of
-        Just _ ->
-            Keyboard.downs handleKeyDown
+        Just details ->
+            Keyboard.downs
+                (handleKey details.itemData >> Maybe.withDefault NoMsg)
 
         Nothing ->
             Sub.none
