@@ -13,7 +13,7 @@ type alias DetailsItemData =
     , capitalizeName : Bool
     , homepageUrl : Maybe String
     , sourceUrl : Maybe String
-    , intro : String
+    , intro : MarkedString
     , points : List MarkedString
     , previousName : Maybe String
     , nextName : Maybe String
@@ -23,7 +23,7 @@ type alias DetailsItemData =
 type alias DetailsItemDataInput a =
     { a
         | name : String
-        , detailsIntro : String
+        , detailsIntro : MarkedString
         , detailsPoints : List MarkedString
     }
 

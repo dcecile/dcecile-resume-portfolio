@@ -27,7 +27,7 @@ type alias WorkItemData =
     , resumeTitlePeriods : List ( String, String )
     , portfolioSkills : List String
     , resumePoints : List MarkedString
-    , detailsIntro : String
+    , detailsIntro : MarkedString
     , detailsPoints : List MarkedString
     }
 
@@ -58,7 +58,7 @@ initWorkData =
                 , markedString "Led improvements in team processes"
                 , markedString "Mentored team members"
                 ]
-                "An intro"
+                (markedString "An intro")
                 [ markedString "A point"
                 , markedString "A point"
                 ]
@@ -78,7 +78,7 @@ initWorkData =
                 [ markedString "Simplified WiX installer using `Java`"
                 , markedString "Wrote tests, fixed CRM bugs in `Scheme`"
                 ]
-                "An intro"
+                (markedString "An intro")
                 [ markedString "A point"
                 , markedString "A point"
                 ]
@@ -97,7 +97,7 @@ initWorkData =
                 [ markedString "Developed DMS personalization in `C#`"
                 , markedString "Automated database migration via `SQL`"
                 ]
-                "An intro"
+                (markedString "An intro")
                 [ markedString "A point"
                 , markedString "A point"
                 ]
@@ -116,7 +116,7 @@ initWorkData =
                 [ markedString "Fixed H.264 video decoder bugs in `C`"
                 , markedString "Created pipeline analysis tool in `C++`"
                 ]
-                "An intro"
+                (markedString "An intro")
                 [ markedString "A point"
                 , markedString "A point"
                 ]
@@ -133,7 +133,7 @@ initWorkData =
                 [ markedString "Helping lead maker workshops"
                 , markedString "Teaching kids STEAM mindsets"
                 ]
-                ""
+                []
                 []
 
         portfolioLargeItems =

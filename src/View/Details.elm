@@ -4,8 +4,8 @@ module View.Details
         , subscribeDetails
         )
 
-import Css exposing (Style, alignItems, backgroundColor, batch, borderRadius, borderWidth, bottom, capitalize, center, color, display, em, empty, fixed, fontSize, hidden, justifyContent, lastChild, left, lineHeight, marginBottom, marginLeft, marginRight, marginTop, maxWidth, minWidth, none, num, padding, position, px, right, spaceBetween, textDecoration, textTransform, top, underline, vh, visibility, vw, zero)
-import CssShorthand exposing (batchMap, borderSolidColor, displayFlexColumn, displayFlexRow, marginRightLeft, marginTopBottom, mediaNotPrint, noStyle, paddingRightLeft, paddingTopBottom, willChangeTransform, zIndexBackground)
+import Css exposing (Style, alignItems, backgroundColor, batch, bold, borderRadius, borderWidth, bottom, capitalize, center, color, display, em, empty, fixed, fontSize, fontWeight, hidden, justifyContent, lastChild, left, lineHeight, marginBottom, marginLeft, marginRight, marginTop, maxWidth, minWidth, none, num, padding, position, px, right, spaceBetween, textDecoration, textTransform, top, underline, vh, visibility, vw, zero)
+import CssShorthand exposing (batchMap, borderSolidColor, displayFlexColumn, displayFlexRow, marginRightLeft, marginTopBottom, mediaNotPrint, noStyle, paddingRightLeft, paddingTopBottom, textDecorationSkipInk, willChangeTransform, zIndexBackground)
 import Data.Details exposing (DetailsItemData)
 import Display.Details exposing (DetailsDisplay)
 import Html.Styled exposing (Html, a, div, h1, li, p, span, styled, text, ul)
@@ -18,7 +18,7 @@ import MaybeEx
 import Model exposing (Model)
 import Msg exposing (Msg(DetailsClose, DetailsNavigate, NoMsg))
 import View.Button as Button
-import View.Colors exposing (black, blackLevel, extraPaleGreen, paleGreen, white)
+import View.Colors exposing (black, blackLevel, extraPaleGreen, green, paleGreen, white)
 import View.DetailsAnimation exposing (animateDetails)
 import View.Metrics exposing (standardBorderRadius, standardLineHeight, standardScreenFontSize)
 
@@ -235,17 +235,14 @@ viewLinkIcon =
     iconSpan [ marginRight <| em 0.3 ]
 
 
-viewIntro : String -> Html Msg
-viewIntro introText =
+viewIntro : MarkedString -> Html Msg
+viewIntro =
     let
         style =
             [ marginTopBottom zero
             ]
     in
-    styled p
-        style
-        []
-        [ text introText ]
+    viewMarkedString >> styled p style []
 
 
 viewPoints : List MarkedString -> Html Msg
@@ -270,15 +267,21 @@ viewPoint =
             , lastChild [ marginBottom zero ]
             ]
     in
-    MarkedString.transform text viewPointLink
-        >> styled li style []
+    viewMarkedString >> styled li style []
 
 
-viewPointLink : String -> Html Msg
-viewPointLink name =
+viewMarkedString : MarkedString -> List (Html Msg)
+viewMarkedString =
+    MarkedString.transform text viewNavigateLink
+
+
+viewNavigateLink : String -> Html Msg
+viewNavigateLink name =
     let
         style =
-            [ color black
+            [ color green
+            , fontWeight bold
+            , textDecorationSkipInk
             ]
     in
     styled a

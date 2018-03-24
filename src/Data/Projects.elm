@@ -24,7 +24,7 @@ type alias ProjectsItemData =
     , description : String
     , homepageUrl : Maybe String
     , sourceUrl : Maybe String
-    , detailsIntro : String
+    , detailsIntro : MarkedString
     , detailsPoints : List MarkedString
     , visibility : Visibility
     }
@@ -46,9 +46,11 @@ initProjectsData =
             "Probabalistic ranking"
             (Just "https://forks-in-the-road.herokuapp.com/")
             (Just "https://github.com/dcecile/forks-in-the-road")
-            "An intro"
-            [ markedString "A point"
-            , markedString "A point"
+            (markedString "This is the result of my job search outgrowing its spreadsheet:")
+            [ markedString "`Ruby` and `Rails` for the back-end, using GitHub-based JWT authentication"
+            , markedString "`React` and ES6 `JavaScript` an emphasis on `functional programming` for the front-end"
+            , markedString "`Sass` to simplify `CSS3` syntax, and `Bootstrap` for basic UI elements"
+            , markedString "All continuously deployed to `Heroku` with each commit"
             ]
             PortfolioAndResume
         , ProjectsItemData
@@ -59,7 +61,7 @@ initProjectsData =
             "A programming language"
             Nothing
             (Just "https://github.com/tacit-lang/tacit")
-            "An intro"
+            (markedString "An intro")
             [ markedString "A point"
             , markedString "A point"
             ]
@@ -72,7 +74,7 @@ initProjectsData =
             "64x64 pixel RTS game"
             Nothing
             (Just "https://github.com/dcecile/off-grid-orcs")
-            "An intro"
+            (markedString "An intro")
             [ markedString "A point"
             , markedString "A point"
             ]
@@ -85,7 +87,7 @@ initProjectsData =
             "Vectorized bitmap fonts"
             Nothing
             (Just "https://github.com/dcecile/bitfontmake")
-            "An intro"
+            (markedString "An intro")
             [ markedString "A point"
             , markedString "A point"
             ]
@@ -98,7 +100,7 @@ initProjectsData =
             "SPA static data viewer"
             Nothing
             (Just "https://github.com/dcecile/pr-quest")
-            "An intro"
+            (markedString "An intro")
             [ markedString "A point"
             , markedString "A point"
             ]
@@ -111,7 +113,7 @@ initProjectsData =
             "First deployed Rails app"
             Nothing
             (Just "https://github.com/dcecile/tmp-blog")
-            "An intro"
+            (markedString "An intro")
             [ markedString "A point"
             , markedString "A point"
             ]
@@ -124,7 +126,7 @@ initProjectsData =
             "Animations & transitions"
             Nothing
             (Just "https://github.com/dcecile/reactic-tac-toe")
-            "An intro"
+            (markedString "An intro")
             [ markedString "A point"
             , markedString "A point"
             ]
@@ -137,7 +139,7 @@ initProjectsData =
             "Snappy desktop manga reader"
             Nothing
             (Just "https://github.com/dcecile/yomikata-qt")
-            "An intro"
+            (markedString "An intro")
             [ markedString "A point"
             , markedString "A point"
             ]
@@ -150,7 +152,7 @@ initProjectsData =
             "Deck building + baking game"
             Nothing
             (Just "https://github.com/dcecile/ultra-rainbow-bake-sale")
-            "An intro"
+            (markedString "An intro")
             [ markedString "A point"
             , markedString "A point"
             ]
@@ -163,20 +165,20 @@ initProjectsData =
             "Twitter content library"
             (Just "https://tinyworkerbee.social/")
             Nothing
-            "An intro"
+            (markedString "An intro")
             [ markedString "A point"
             , markedString "A point"
             ]
             PortfolioAndResume
         , ProjectsItemData
-            "My portfolio and resume"
+            "My Portfolio and Resume"
             (Just "(This website)")
             "2018"
             "Elm / CSS3"
             "My portfolio and resume"
             Nothing
             (Just "https://github.com/dcecile/dcecile-resume-portfolio")
-            "An intro"
+            (markedString "An intro")
             [ markedString "A point"
             , markedString "A point"
             ]

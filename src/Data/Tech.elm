@@ -19,7 +19,7 @@ type alias TechData =
 type alias TechItemData =
     { name : String
     , shortName : Maybe String
-    , detailsIntro : String
+    , detailsIntro : MarkedString
     , detailsPoints : List MarkedString
     , visibility : Visibility
     }
@@ -36,7 +36,7 @@ initTechData =
         [ TechItemData
             "Bootstrap"
             Nothing
-            "An intro"
+            (markedString "An intro")
             [ markedString "A point"
             , markedString "A point"
             ]
@@ -44,14 +44,14 @@ initTechData =
         , TechItemData
             "C"
             Nothing
-            "An intro"
+            (markedString "An intro")
             [ markedString "A visual H.264 video debugger GUI at `LSI Logic`"
             ]
             PortfolioOnly
         , TechItemData
             "C++"
             Nothing
-            "An intro"
+            (markedString "An intro")
             [ markedString "A point"
             , markedString "A point"
             ]
@@ -59,7 +59,7 @@ initTechData =
         , TechItemData
             "C#"
             Nothing
-            "An intro"
+            (markedString "An intro")
             [ markedString "A point"
             , markedString "A point"
             ]
@@ -67,7 +67,7 @@ initTechData =
         , TechItemData
             "CSS3"
             Nothing
-            "An intro"
+            (markedString "An intro")
             [ markedString "A point"
             , markedString "A point"
             ]
@@ -75,7 +75,7 @@ initTechData =
         , TechItemData
             "DSLs"
             Nothing
-            "An intro"
+            (markedString "An intro")
             [ markedString "A point"
             , markedString "A point"
             ]
@@ -83,15 +83,7 @@ initTechData =
         , TechItemData
             "Elm"
             Nothing
-            "An intro"
-            [ markedString "A point"
-            , markedString "A point"
-            ]
-            PortfolioOnly
-        , TechItemData
-            "JavaScript (ES6)"
-            (Just "ES6")
-            "An intro"
+            (markedString "An intro")
             [ markedString "A point"
             , markedString "A point"
             ]
@@ -99,7 +91,7 @@ initTechData =
         , TechItemData
             "Excel"
             Nothing
-            "An intro"
+            (markedString "An intro")
             [ markedString "A point"
             , markedString "A point"
             ]
@@ -107,15 +99,15 @@ initTechData =
         , TechItemData
             "functional programming"
             (Just "FP")
-            "An intro"
-            [ markedString "A point"
-            , markedString "A point"
+            (markedString "After intially `learning` Haskell, this programming style has captured my imagination with the way it helps cleanly extracting sub-problems.")
+            [ markedString "At `Unitron`, functional programming made `TDD` easier to apply for a numeric comparison `C#` GUI app"
+            , markedString "In `My Portfolio and Resume`, functional programming helps keep my `Elm` code well-organized, and makes refactoring a breeze"
             ]
             PortfolioAndResume
         , TechItemData
             "functional animation"
             Nothing
-            "An intro"
+            (markedString "An intro")
             [ markedString "A point"
             , markedString "A point"
             ]
@@ -123,7 +115,7 @@ initTechData =
         , TechItemData
             "Google App Engine"
             (Just "GAE")
-            "An intro"
+            (markedString "An intro")
             [ markedString "A point"
             , markedString "A point"
             ]
@@ -131,7 +123,7 @@ initTechData =
         , TechItemData
             "Go"
             Nothing
-            "An intro"
+            (markedString "An intro")
             [ markedString "A point"
             , markedString "A point"
             ]
@@ -139,7 +131,7 @@ initTechData =
         , TechItemData
             "Heroku"
             Nothing
-            "An intro"
+            (markedString "An intro")
             [ markedString "A point"
             , markedString "A point"
             ]
@@ -147,7 +139,7 @@ initTechData =
         , TechItemData
             "HTML5"
             Nothing
-            "An intro"
+            (markedString "An intro")
             [ markedString "A point"
             , markedString "A point"
             ]
@@ -155,7 +147,7 @@ initTechData =
         , TechItemData
             "internationalization & localization"
             (Just "i18n & l10n")
-            "An intro"
+            (markedString "An intro")
             [ markedString "A point"
             , markedString "A point"
             ]
@@ -163,7 +155,7 @@ initTechData =
         , TechItemData
             "JavaScript"
             Nothing
-            "An intro"
+            (markedString "An intro")
             [ markedString "A point"
             , markedString "A point"
             ]
@@ -171,7 +163,7 @@ initTechData =
         , TechItemData
             "Lua"
             Nothing
-            "An intro"
+            (markedString "An intro")
             [ markedString "A point"
             , markedString "A point"
             ]
@@ -179,7 +171,7 @@ initTechData =
         , TechItemData
             "Python"
             Nothing
-            "An intro"
+            (markedString "An intro")
             [ markedString "A point"
             , markedString "A point"
             ]
@@ -187,7 +179,7 @@ initTechData =
         , TechItemData
             "Qt"
             Nothing
-            "An intro"
+            (markedString "An intro")
             [ markedString "A point"
             , markedString "A point"
             ]
@@ -195,7 +187,7 @@ initTechData =
         , TechItemData
             "React"
             Nothing
-            "An intro"
+            (markedString "An intro")
             [ markedString "A point"
             , markedString "A point"
             ]
@@ -203,7 +195,7 @@ initTechData =
         , TechItemData
             "responsive design"
             Nothing
-            "An intro"
+            (markedString "An intro")
             [ markedString "A point"
             , markedString "A point"
             ]
@@ -211,7 +203,7 @@ initTechData =
         , TechItemData
             "Ruby"
             Nothing
-            "An intro"
+            (markedString "An intro")
             [ markedString "A point"
             , markedString "A point"
             ]
@@ -219,15 +211,15 @@ initTechData =
         , TechItemData
             "Rails"
             Nothing
-            "An intro"
-            [ markedString "A point"
-            , markedString "A point"
+            (markedString "I’m `learning` this `Ruby` framework for insight into the tech behind some of my favourite web apps.")
+            [ markedString "With `/tmp/blog`, I built my very first Rails app and deployed it to `Heroku`"
+            , markedString "In `Forks in the Road`, I’m using Rails together with `React` to create an alternatives-ranking SPA web app"
             ]
             PortfolioAndResume
         , TechItemData
             "Sass"
             Nothing
-            "An intro"
+            (markedString "An intro")
             [ markedString "A point"
             , markedString "A point"
             ]
@@ -235,7 +227,7 @@ initTechData =
         , TechItemData
             "SQL"
             Nothing
-            "An intro"
+            (markedString "An intro")
             [ markedString "A point"
             , markedString "A point"
             ]
@@ -243,7 +235,7 @@ initTechData =
         , TechItemData
             "SVG"
             Nothing
-            "An intro"
+            (markedString "An intro")
             [ markedString "A point"
             , markedString "A point"
             ]
@@ -251,7 +243,7 @@ initTechData =
         , TechItemData
             "Scala"
             Nothing
-            "An intro"
+            (markedString "An intro")
             [ markedString "A point"
             , markedString "A point"
             ]
@@ -259,7 +251,7 @@ initTechData =
         , TechItemData
             "Scheme"
             Nothing
-            "An intro"
+            (markedString "An intro")
             [ markedString "A point"
             , markedString "A point"
             ]
@@ -267,7 +259,7 @@ initTechData =
         , TechItemData
             "TDD"
             Nothing
-            "An intro"
+            (markedString "An intro")
             [ markedString "A point"
             , markedString "A point"
             ]
@@ -275,7 +267,7 @@ initTechData =
         , TechItemData
             "Unicode"
             Nothing
-            "An intro"
+            (markedString "An intro")
             [ markedString "A point"
             , markedString "A point"
             ]
@@ -283,7 +275,7 @@ initTechData =
         , TechItemData
             "Vue.js"
             Nothing
-            "An intro"
+            (markedString "An intro")
             [ markedString "A point"
             , markedString "A point"
             ]
@@ -291,7 +283,7 @@ initTechData =
         , TechItemData
             "WinForms"
             Nothing
-            "An intro"
+            (markedString "An intro")
             [ markedString "A point"
             , markedString "A point"
             ]
