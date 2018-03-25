@@ -3,8 +3,8 @@ module View.Resume
         ( viewResume
         )
 
-import Css exposing (Style, batch, bold, borderRadius, borderWidth, center, color, em, flexBasis, flexGrow, flexWrap, fontSize, fontStyle, fontWeight, height, italic, lineHeight, marginBottom, marginLeft, marginRight, marginTop, none, normal, num, paddingBottom, paddingLeft, paddingTop, right, textAlign, textDecoration, width, wrap, zero)
-import CssShorthand exposing (batchMap, borderBottomSolidColor, borderLeftSolidColor, borderSolidColor, displayFlexColumn, displayFlexRow, marginRightLeft, marginTopBottom, paddingRightLeft, paddingTopBottom, textDecorationSkipInk)
+import Css exposing (Em, Style, batch, bold, borderRadius, borderWidth, center, color, em, flexBasis, flexEnd, flexGrow, flexWrap, fontSize, fontStyle, fontWeight, height, italic, justifyContent, lineHeight, marginBottom, marginLeft, marginRight, marginTop, none, normal, num, paddingBottom, paddingLeft, paddingTop, right, textAlign, textDecoration, width, wrap, zero)
+import CssShorthand exposing (batchMap, borderBottomSolidColor, borderLeftSolidColor, borderSolidColor, displayFlexColumn, displayFlexRow, marginRightLeft, marginTopBottom, noStyle, paddingRightLeft, paddingTopBottom, textDecorationSkipInk)
 import Data.Links exposing (LinksItemData)
 import Data.Projects exposing (ProjectsItemData)
 import Data.Visibility exposing (Visibility(PortfolioAndResume), filterVisible)
@@ -37,9 +37,9 @@ viewResume model =
         style
         []
         [ viewHeader model
-        , viewHorizontalRule
+        , viewHorizontalRule <| em 1.0
         , viewMain model
-        , viewHorizontalRule
+        , viewHorizontalRule <| em 0.5
         , viewFooter model
         ]
 
@@ -55,7 +55,7 @@ viewHeader model =
 
         style =
             [ displayFlexRow
-            , marginBottom <| em 0.4
+            , marginBottom <| em 0.2
             ]
     in
     styled header
@@ -96,7 +96,7 @@ viewName name =
         style =
             [ marginTopBottom zero
             , lineHeight <| num 1.0
-            , fontSize <| em 3.7
+            , fontSize <| em 3.4
             , fontWeight bold
             ]
     in
@@ -389,6 +389,9 @@ viewFooter model =
 
         style =
             [ displayFlexColumn
+            , justifyContent flexEnd
+            , marginTop <| em 0.2
+            , flexGrow <| num 1
             ]
     in
     styled footer
@@ -491,12 +494,12 @@ viewIcon iconSource iconBackground =
         []
 
 
-viewHorizontalRule : Html msg
-viewHorizontalRule =
+viewHorizontalRule : Em -> Html msg
+viewHorizontalRule spacing =
     let
         style =
             [ marginRightLeft <| em 2
-            , batchMap [ marginBottom, paddingBottom ] <| em 1.0
+            , batchMap [ marginBottom, paddingBottom ] spacing
             , borderBottomSolidColor printPaleGreen
             , borderWidth printBorderWidth
             ]

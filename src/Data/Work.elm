@@ -52,6 +52,7 @@ initWorkData =
                 , "mentoring"
                 ]
                 [ markedString "Coded manufacturing subsystems in `C#`"
+                , markedString "Created a `JS`, `HTML`, `CSS` desktop app"
                 , markedString "Investigated bugs using `SQL` and `Excel`"
                 , markedString "Gathered and negotiated requirements"
                 , markedString "Coordinated team’s development cycles"
