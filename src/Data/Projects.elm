@@ -43,7 +43,7 @@ initProjectsData =
             (Just "Forks")
             "2018"
             "React / Rails"
-            "Probabalistic ranking"
+            "Probabilistic ranking"
             (Just "https://forks-in-the-road.herokuapp.com/")
             (Just "https://github.com/dcecile/forks-in-the-road")
             (markedString "This is the result of my job search outgrowing its spreadsheet:")

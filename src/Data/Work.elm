@@ -52,7 +52,7 @@ initWorkData =
                 , "mentoring"
                 ]
                 [ markedString "Coded manufacturing subsystems in `C#`"
-                , markedString "Created a `JS`, `HTML`, `CSS` desktop app"
+                , markedString "Built a hybrid `HTML5 / C#` desktop app"
                 , markedString "Investigated bugs using `SQL` and `Excel`"
                 , markedString "Gathered and negotiated requirements"
                 , markedString "Coordinated team’s development cycles"
@@ -115,7 +115,7 @@ initWorkData =
                 [ "C / C++"
                 ]
                 [ markedString "Fixed H.264 video decoder bugs in `C`"
-                , markedString "Created pipeline analysis tool in `C++`"
+                , markedString "Created a DSP log analysis tool in `C++`"
                 ]
                 (markedString "An intro")
                 [ markedString "A point"
