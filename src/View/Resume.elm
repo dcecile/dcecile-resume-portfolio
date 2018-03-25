@@ -410,16 +410,16 @@ viewSource iconSource sourceURL sourceShortURL =
         style =
             [ marginTopBottom zero
             , textAlign center
+            , fontStyle italic
             ]
 
-        techStyle =
-            [ fontWeight bold
-            , color printGreen
+        linkStyle =
+            [ fontStyle normal
             ]
     in
     (styled p style [] << List.concat)
-        [ viewMarkedString <| markedString "This resume was made with `Elm`, view source at "
-        , viewLink [] iconSource sourceURL sourceShortURL .externalLink |> List.singleton
+        [ viewMarkedString <| markedString "I made this resume with `Elm` and `CSS3`, view source at "
+        , viewLink linkStyle iconSource sourceURL sourceShortURL .externalLink |> List.singleton
         ]
 
 
