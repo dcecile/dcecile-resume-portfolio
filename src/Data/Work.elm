@@ -54,9 +54,9 @@ initWorkData =
                 [ markedString "Coded manufacturing subsystems in `C#`"
                 , markedString "Built a hybrid `HTML5 / C#` desktop app"
                 , markedString "Investigated bugs using `SQL` and `Excel`"
-                , markedString "Gathered and negotiated requirements"
+                , markedString "Negotiated and documented requirements"
                 , markedString "Coordinated team’s development cycles"
-                , markedString "Led improvements in team processes"
+                , markedString "Led key improvements in team processes"
                 , markedString "Mentored team members"
                 ]
                 (markedString "An intro")
