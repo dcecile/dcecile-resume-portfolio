@@ -3,7 +3,7 @@ module View.Intro
         ( viewIntro
         )
 
-import Css exposing (Style, alignItems, alignSelf, bold, calc, center, color, em, flexBasis, flexEnd, flexGrow, flexStart, fontSize, fontStyle, fontWeight, height, italic, justifyContent, lineHeight, marginBottom, marginTop, maxWidth, minHeight, minus, normal, num, opacity, px, stretch, vh, width, zero)
+import Css exposing (Style, alignItems, alignSelf, bold, calc, center, color, em, flexBasis, flexEnd, flexGrow, flexStart, fontSize, fontStyle, fontWeight, height, italic, justifyContent, lastOfType, lineHeight, marginBottom, marginTop, maxWidth, minHeight, minus, normal, num, opacity, px, stretch, vh, width, zero)
 import CssShorthand exposing (displayFlexColumn, displayFlexRow, displayFlexRowReverse, marginRightLeft, paddingRightLeft)
 import Html.Styled exposing (Html, a, div, h1, header, main_, p, span, styled, text)
 import Html.Styled.Attributes exposing (href)
@@ -34,13 +34,13 @@ viewIntro model =
         []
         [ viewHeader
             basicData.name
-            basicData.portfolioTitle
+            basicData.portfolioTagline
         , viewMain model
         ]
 
 
 viewHeader : String -> String -> Html Msg
-viewHeader name title =
+viewHeader name tagline =
     let
         style =
             [ displayFlexColumn
@@ -50,7 +50,7 @@ viewHeader name title =
         style
         []
         [ viewName name
-        , viewTitle title
+        , viewTagline tagline
         ]
 
 
@@ -71,8 +71,8 @@ viewName name =
         [ text name ]
 
 
-viewTitle : String -> Html Msg
-viewTitle title =
+viewTagline : String -> Html Msg
+viewTagline tagline =
     let
         style =
             [ marginTop zero
@@ -83,7 +83,7 @@ viewTitle title =
     styled p
         style
         []
-        [ text title ]
+        [ text tagline ]
 
 
 viewMain : Model -> Html Msg
@@ -96,27 +96,25 @@ viewMain model =
             [ displayFlexColumn
             ]
     in
-    styled main_
-        style
-        []
-        [ viewSellingPoint
-            basicData.portfolioSellingPoint
-        , viewPitch
-            basicData.portfolioPitch
-        , viewCallsToAction
-            model.iconSource
-            basicData.emailAddress
+    List.concat
+        [ basicData.portfolioIntroPoints
+            |> List.map viewPoint
+        , basicData.emailAddress
+            |> viewCallsToAction model.iconSource
+            |> List.singleton
         ]
+        |> styled main_ style []
 
 
-viewSellingPoint : MarkedString -> Html Msg
-viewSellingPoint sellingPoint =
+viewPoint : MarkedString -> Html Msg
+viewPoint sellingPoint =
     let
         style =
             [ alignSelf center
             , marginTop zero
-            , marginBottom <| em 1.8
-            , maxWidth <| em 22
+            , marginBottom <| em 0.8
+            , maxWidth <| em 21
+            , lastOfType [ fontWeight bold ]
             ]
 
         highlight =
@@ -127,27 +125,13 @@ viewSellingPoint sellingPoint =
         |> styled p style []
 
 
-viewPitch : String -> Html Msg
-viewPitch pitch =
-    let
-        style =
-            [ marginTop zero
-            , marginBottom <| em 1.2
-            , fontWeight bold
-            ]
-    in
-    styled p
-        style
-        []
-        [ text pitch ]
-
-
 viewCallsToAction : IconSource -> String -> Html Msg
 viewCallsToAction iconSource emailAddress =
     let
         style =
             [ displayFlexRow
             , justifyContent stretch
+            , marginTop <| em 0.4
             ]
     in
     styled div

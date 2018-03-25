@@ -11,10 +11,9 @@ type alias BasicData =
     { name : String
     , emailAddress : String
     , homepageURL : String
-    , portfolioTitle : String
+    , portfolioTagline : String
     , resumeTagline : String
-    , portfolioSellingPoint : MarkedString
-    , portfolioPitch : String
+    , portfolioIntroPoints : List MarkedString
     , sourceURL : String
     , sourceShortURL : Maybe String
     }
@@ -25,10 +24,13 @@ initBasicData =
     { name = "Dan Cecile"
     , emailAddress = "dancecile@gmail.com"
     , homepageURL = "https://dcecile.github.io"
-    , portfolioTitle = "Software developer generalist"
+    , portfolioTagline = "~ Software developer ~"
     , resumeTagline = "Software developer, 10 years experience"
-    , portfolioSellingPoint = markedString "10 years of experience learning new `tech`, writing `code`, and improving `systems`."
-    , portfolioPitch = "How can I help your team grow?"
+    , portfolioIntroPoints =
+        [ markedString "Every code change I make starts with `listening` and `learning`."
+        , markedString "I get things `done`, I seek out `improvements`, and I’m ready for my next challenge."
+        , markedString "Are you looking to grow your team?"
+        ]
     , sourceURL = "https://github.com/dcecile/dcecile-resume-portfolio"
     , sourceShortURL = Just "https://git.io/dcecile-resume"
     }
