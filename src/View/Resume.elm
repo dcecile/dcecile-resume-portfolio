@@ -70,6 +70,7 @@ viewHeader model =
             model.iconSource
             basicData.emailAddress
             linksData.resumeItems
+            basicData.currentLocation
         ]
 
 
@@ -141,8 +142,8 @@ viewTagline tagline =
         [ text tagline ]
 
 
-viewContact : IconSource -> String -> List LinksItemData -> Html Msg
-viewContact iconSource emailAddress links =
+viewContact : IconSource -> String -> List LinksItemData -> String -> Html Msg
+viewContact iconSource emailAddress links currentLocation =
     let
         style =
             [ displayFlexColumn
@@ -153,6 +154,7 @@ viewContact iconSource emailAddress links =
     in
     [ emailAddress |> viewContactEmail iconSource |> List.singleton
     , links |> List.map (viewContactLink iconSource)
+    , currentLocation |> viewContactLocation iconSource |> List.singleton
     ]
         |> List.concat
         |> styled nav style []
@@ -166,6 +168,21 @@ viewContactEmail iconSource emailAddress =
 viewContactLink : IconSource -> LinksItemData -> Html Msg
 viewContactLink iconSource link =
     viewLink [] iconSource link.url link.shortURL link.iconBackground
+
+
+viewContactLocation : IconSource -> String -> Html Msg
+viewContactLocation iconSource location =
+    let
+        style =
+            [ fontStyle italic
+            ]
+    in
+    styled span
+        style
+        []
+        [ text location
+        , viewIcon iconSource .mapPin
+        ]
 
 
 viewMain : Model -> Html Msg

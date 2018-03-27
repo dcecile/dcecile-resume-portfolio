@@ -10,6 +10,7 @@ import MarkedString exposing (MarkedString, markedString)
 type alias BasicData =
     { name : String
     , emailAddress : String
+    , currentLocation : String
     , homepageURL : String
     , portfolioTagline : String
     , resumeTagline : String
@@ -23,6 +24,7 @@ initBasicData : BasicData
 initBasicData =
     { name = "Dan Cecile"
     , emailAddress = "dancecile@gmail.com"
+    , currentLocation = "Kitchener, Ontario"
     , homepageURL = "https://dcecile.github.io"
     , portfolioTagline = "~ Software developer ~"
     , resumeTagline = "Software developer, 10 years experience"
