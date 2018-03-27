@@ -1,41 +1,57 @@
 module View.DetailsAnimation
     exposing
         ( animateDetails
+        , animateDetailsItem
         , animatePortfolio
         )
 
 import ClickInfo exposing (ClickInfo)
 import Css exposing (Style, batch)
 import CssShorthand exposing (animation, mediaNotPrint, noStyle, transformOrigin, willChangeTransform)
-import Display.Details exposing (DetailsAnimation(DetailsAnimationClose, DetailsAnimationOpen))
+import Display.Details exposing (DetailsAnimation(DetailsAnimationClose, DetailsAnimationNavigate, DetailsAnimationOpen))
 import Model exposing (Model)
 
 
 animatePortfolio : Model -> Style
 animatePortfolio model =
-    animate model .pagePos <|
+    animate model (.pagePos >> Just) <|
         \animation ->
             case animation of
-                DetailsAnimationOpen ->
-                    combine [ "fadeOut", "zoomIn" ] True
-
                 DetailsAnimationClose ->
                     combine [ "fadeIn", "zoomOut" ] False
+
+                _ ->
+                    combine [ "fadeOut", "zoomIn" ] True
 
 
 animateDetails : Model -> Style
 animateDetails model =
-    animate model .clientPos <|
+    animate model (.clientPos >> Just) <|
         \animation ->
             case animation of
-                DetailsAnimationOpen ->
-                    combine [ "fadePartialIn", "growIn" ] False
-
                 DetailsAnimationClose ->
-                    combine [ "fadePartialOut", "growOut" ] True
+                    combine [ "fadeOut", "growOut" ] True
+
+                _ ->
+                    combine [ "fadeIn", "growIn" ] False
 
 
-animate : Model -> (ClickInfo -> ( Float, Float )) -> (DetailsAnimation -> String) -> Style
+animateDetailsItem : Bool -> Model -> Style
+animateDetailsItem isNew model =
+    animate model (always Nothing) <|
+        \animation ->
+            case ( isNew, animation ) of
+                ( True, DetailsAnimationNavigate _ ) ->
+                    combine [ "fadeIn", "growIn" ] True
+
+                ( False, DetailsAnimationNavigate _ ) ->
+                    combine [ "fadeOut", "growOut" ] True
+
+                _ ->
+                    ""
+
+
+animate : Model -> (ClickInfo -> Maybe ( Float, Float )) -> (DetailsAnimation -> String) -> Style
 animate model originSelector animationValue =
     let
         originStyle ( x, y ) =
@@ -52,7 +68,9 @@ animate model originSelector animationValue =
         Just details ->
             batch
                 [ animation (animationValue details.animation)
-                , originStyle (originSelector details.openClickInfo)
+                , originSelector details.openClickInfo
+                    |> Maybe.map originStyle
+                    |> Maybe.withDefault noStyle
                 ]
 
 

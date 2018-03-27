@@ -4,10 +4,10 @@ module View.Details
         , subscribeDetails
         )
 
-import Css exposing (Style, alignItems, backgroundColor, batch, bold, borderRadius, borderWidth, bottom, capitalize, center, color, display, em, empty, fixed, fontSize, fontWeight, hidden, justifyContent, lastChild, left, lineHeight, marginBottom, marginLeft, marginRight, marginTop, maxWidth, minWidth, none, num, padding, position, px, right, spaceBetween, textDecoration, textTransform, top, underline, vh, visibility, vw, zero)
-import CssShorthand exposing (batchMap, borderSolidColor, displayFlexColumn, displayFlexRow, marginRightLeft, marginTopBottom, mediaNotPrint, noStyle, paddingRightLeft, paddingTopBottom, textDecorationSkipInk, willChangeTransform, zIndexBackground)
+import Css exposing (Style, alignItems, backgroundColor, batch, bold, borderRadius, borderWidth, bottom, capitalize, center, color, display, em, empty, fixed, fontSize, fontWeight, height, hidden, justifyContent, lastChild, left, lineHeight, marginBottom, marginLeft, marginRight, marginTop, maxWidth, minWidth, none, num, padding, position, px, right, spaceBetween, textDecoration, textTransform, top, underline, vh, visibility, vw, zero)
+import CssShorthand exposing (batchMap, borderSolidColor, displayFlexColumn, displayFlexRow, marginRightLeft, marginTopBottom, mediaNotPrint, noStyle, paddingRightLeft, paddingTopBottom, textDecorationSkipInk, willChangeTransform, zIndexBackground, zIndexNormal, zIndexOverlay)
 import Data.Details exposing (DetailsItemData)
-import Display.Details exposing (DetailsDisplay)
+import Display.Details exposing (DetailsAnimation(DetailsAnimationNavigate), DetailsDisplay, DetailsDoubleBufferState(DetailsDoubleBufferFirstSlotNew, DetailsDoubleBufferFirstSlotOld))
 import Html.Styled exposing (Html, a, div, h1, li, p, span, styled, text, ul)
 import Html.Styled.Attributes exposing (href, title)
 import HtmlShorthand exposing (ariaLabel, onClickPreventDefault, styledSpanText, targetBlank)
@@ -19,7 +19,7 @@ import Model exposing (Model)
 import Msg exposing (Msg(DetailsClose, DetailsNavigate, NoMsg))
 import View.Button as Button
 import View.Colors exposing (black, blackLevel, extraPaleGreen, green, paleGreen, white)
-import View.DetailsAnimation exposing (animateDetails)
+import View.DetailsAnimation exposing (animateDetails, animateDetailsItem)
 import View.Metrics exposing (standardBorderRadius, standardLineHeight, standardScreenFontSize)
 
 
@@ -32,14 +32,9 @@ maybeViewDetails model =
 viewDetails : Model -> DetailsDisplay -> Html Msg
 viewDetails model details =
     let
-        item =
-            details.itemData
-
         style =
             [ display none
-            , mediaNotPrint [ displayFlexRow ]
-            , justifyContent center
-            , alignItems center
+            , mediaNotPrint [ displayFlexColumn ]
             , position fixed
             , batchMap [ top, right, bottom, left ] zero
             , backgroundColor extraPaleGreen
@@ -48,6 +43,56 @@ viewDetails model details =
             , color black
             , willChangeTransform
             , animateDetails model
+            ]
+    in
+    List.concatMap MaybeEx.toList
+        [ maybeViewDetailsBuffer True model details
+        , maybeViewDetailsBuffer False model details
+        ]
+        |> styled div style []
+
+
+maybeViewDetailsBuffer : Bool -> Model -> DetailsDisplay -> Maybe (Html Msg)
+maybeViewDetailsBuffer isFirstBuffer model details =
+    let
+        viewNew =
+            Just <| viewDetailsItem True model details details.itemData
+
+        viewOld =
+            Just << viewDetailsItem False model details
+    in
+    case ( isFirstBuffer, details.doubleBufferState, details.animation ) of
+        ( True, DetailsDoubleBufferFirstSlotNew, _ ) ->
+            viewNew
+
+        ( False, DetailsDoubleBufferFirstSlotOld, _ ) ->
+            viewNew
+
+        ( True, DetailsDoubleBufferFirstSlotOld, DetailsAnimationNavigate { oldItemData } ) ->
+            viewOld oldItemData
+
+        ( False, DetailsDoubleBufferFirstSlotNew, DetailsAnimationNavigate { oldItemData } ) ->
+            viewOld oldItemData
+
+        _ ->
+            Nothing
+
+
+viewDetailsItem : Bool -> Model -> DetailsDisplay -> DetailsItemData -> Html Msg
+viewDetailsItem isNew model details item =
+    let
+        style =
+            [ if isNew then
+                zIndexOverlay
+              else
+                zIndexNormal
+            , displayFlexRow
+            , justifyContent center
+            , alignItems center
+            , marginBottom <| vh -100
+            , height <| vh 100
+            , willChangeTransform
+            , animateDetailsItem isNew model
             ]
     in
     styled div

@@ -21,6 +21,8 @@ module CssShorthand
         , transformOrigin
         , willChangeTransform
         , zIndexBackground
+        , zIndexNormal
+        , zIndexOverlay
         )
 
 import Css exposing (BorderStyle, Color, Length, LengthOrAuto, Style, TextDecorationStyle, batch, borderBottomStyle, borderColor, borderLeftStyle, borderStyle, borderTopStyle, column, displayFlex, flexDirection, int, marginBottom, marginLeft, marginRight, marginTop, paddingBottom, paddingLeft, paddingRight, paddingTop, property, row, rowReverse, solid, visited, zIndex)
@@ -136,3 +138,13 @@ willChangeTransform =
 zIndexBackground : Style
 zIndexBackground =
     zIndex <| int -1
+
+
+zIndexNormal : Style
+zIndexNormal =
+    zIndex <| int 0
+
+
+zIndexOverlay : Style
+zIndexOverlay =
+    zIndex <| int 1

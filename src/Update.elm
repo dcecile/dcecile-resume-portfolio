@@ -6,7 +6,7 @@ module Update
 
 import ClickInfo exposing (ClickInfo)
 import Data.Details exposing (DetailsItemData)
-import Display.Details exposing (DetailsAnimation(DetailsAnimationClose, DetailsAnimationOpen), DetailsDisplay)
+import Display.Details exposing (DetailsAnimation(DetailsAnimationClose, DetailsAnimationNavigate, DetailsAnimationOpen), DetailsDisplay, initDoubleBuffer, swapDoubleBuffer)
 import ListEx
 import Model exposing (Model)
 import Msg exposing (Msg(DetailsClose, DetailsNavigate, DetailsOpen, NoMsg, Print))
@@ -94,6 +94,7 @@ open clickInfo item =
     { itemData = item
     , animation = DetailsAnimationOpen
     , openClickInfo = clickInfo
+    , doubleBufferState = initDoubleBuffer
     }
 
 
@@ -101,6 +102,8 @@ navigate : DetailsDisplay -> DetailsItemData -> DetailsDisplay
 navigate details item =
     { details
         | itemData = item
+        , animation = DetailsAnimationNavigate { oldItemData = details.itemData }
+        , doubleBufferState = swapDoubleBuffer details
     }
 
 
