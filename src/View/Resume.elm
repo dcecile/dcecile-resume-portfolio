@@ -86,8 +86,8 @@ viewPrimary iconSource name homepageURL tagline =
         style
         []
         [ viewName name
-        , viewHomepage iconSource homepageURL
         , viewTagline tagline
+        , viewHomepage iconSource homepageURL
         ]
 
 
@@ -97,7 +97,7 @@ viewName name =
         style =
             [ marginTopBottom zero
             , lineHeight <| num 1.0
-            , fontSize <| em 3.4
+            , fontSize <| em 3.6
             , fontWeight bold
             ]
     in
@@ -107,32 +107,13 @@ viewName name =
         [ text name ]
 
 
-viewHomepage : IconSource -> String -> Html Msg
-viewHomepage iconSource homepageURL =
-    let
-        style =
-            [ marginTop <| em 0.5
-            , marginBottom <| em 0.2
-            , fontSize <| em 1.5
-            , fontWeight bold
-            ]
-
-        linkStyle =
-            [ textDecoration none
-            ]
-    in
-    styled p
-        style
-        []
-        [ viewLink linkStyle iconSource homepageURL Nothing .externalLink ]
-
-
 viewTagline : String -> Html Msg
 viewTagline tagline =
     let
         style =
-            [ marginTopBottom zero
-            , fontSize <| em 1.5
+            [ marginTop <| em 0.6
+            , marginBottom <| em 0.2
+            , fontSize <| em 1.3
             , color printGreen
             ]
     in
@@ -142,11 +123,34 @@ viewTagline tagline =
         [ text tagline ]
 
 
+viewHomepage : IconSource -> String -> Html Msg
+viewHomepage iconSource homepageURL =
+    let
+        style =
+            [ marginTop zero
+            , marginBottom <| em 0.2
+            , fontSize <| em 1.3
+            , fontStyle italic
+            ]
+
+        linkStyle =
+            [ fontStyle normal
+            ]
+    in
+    styled p
+        style
+        []
+        [ text "View my portfolio website at "
+        , viewLink linkStyle iconSource homepageURL Nothing .externalLink
+        ]
+
+
 viewContact : IconSource -> String -> List LinksItemData -> String -> Html Msg
 viewContact iconSource emailAddress links currentLocation =
     let
         style =
             [ displayFlexColumn
+            , justifyContent center
             , marginTop <| em 0.3
             , textAlign right
             , lineHeight <| num 1.9
@@ -350,7 +354,7 @@ viewHistory model =
         style =
             [ displayFlexColumn
             , flexBasis <| em 0
-            , flexGrow <| num 1.2
+            , flexGrow <| num 1.22
             ]
     in
     styled div
@@ -454,7 +458,7 @@ viewSubheading subheading =
         style =
             [ marginTop zero
             , marginBottom <| em 0.1
-            , fontSize <| em 1.8
+            , fontSize <| em 1.9
             , fontWeight bold
             ]
     in
