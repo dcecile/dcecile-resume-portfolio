@@ -295,12 +295,16 @@ viewProjectsMore iconSource homepageURL =
             , marginLeft <| em 0.8
             , fontStyle italic
             ]
+
+        linkStyle =
+            [ fontStyle normal
+            ]
     in
     styled p
         style
         []
         [ text "…more at "
-        , viewLink [] iconSource homepageURL Nothing .externalLink
+        , viewLink linkStyle iconSource homepageURL Nothing .externalLink
         ]
 
 
