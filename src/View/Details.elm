@@ -7,7 +7,7 @@ module View.Details
 import Css exposing (Style, alignItems, backgroundColor, batch, bold, borderRadius, borderWidth, bottom, capitalize, center, color, display, em, empty, fixed, fontSize, fontWeight, height, hidden, justifyContent, lastChild, left, lineHeight, marginBottom, marginLeft, marginRight, marginTop, maxWidth, minWidth, none, num, padding, position, px, right, spaceBetween, textDecoration, textTransform, top, underline, vh, visibility, vw, zero)
 import CssShorthand exposing (batchMap, borderSolidColor, displayFlexColumn, displayFlexRow, marginRightLeft, marginTopBottom, mediaNotPrint, noStyle, paddingRightLeft, paddingTopBottom, textDecorationSkipInk, willChangeTransform, zIndexBackground, zIndexNormal, zIndexOverlay)
 import Data.Details exposing (DetailsItemData)
-import Display.Details exposing (DetailsAnimation(DetailsAnimationNavigate), DetailsDisplay, DetailsDoubleBufferState(DetailsDoubleBufferFirstSlotNew, DetailsDoubleBufferFirstSlotOld))
+import Display.Details exposing (DetailsAnimation(DetailsAnimationNavigate), DetailsDisplay, DetailsDoubleBufferState(DetailsDoubleBufferFirstSlotNew, DetailsDoubleBufferFirstSlotOld), DetailsNavigateDirection(DetailsNavigateLink, DetailsNavigateNext, DetailsNavigatePrevious))
 import Html.Styled exposing (Html, a, div, h1, li, p, span, styled, text, ul)
 import Html.Styled.Attributes exposing (href, title)
 import HtmlShorthand exposing (ariaLabel, onClickPreventDefault, styledSpanText, targetBlank)
@@ -129,16 +129,16 @@ viewCloseLink caption style =
 
 viewPrevious : IconSource -> Maybe String -> Html Msg
 viewPrevious iconSource =
-    viewNavigateButton iconSource .arrowLeft
+    viewNavigateButton DetailsNavigatePrevious iconSource .arrowLeft
 
 
 viewNext : IconSource -> Maybe String -> Html Msg
 viewNext iconSource =
-    viewNavigateButton iconSource .arrowRight
+    viewNavigateButton DetailsNavigateNext iconSource .arrowRight
 
 
-viewNavigateButton : IconSource -> IconBackground -> Maybe String -> Html Msg
-viewNavigateButton iconSource iconBackground maybeLinkName =
+viewNavigateButton : DetailsNavigateDirection -> IconSource -> IconBackground -> Maybe String -> Html Msg
+viewNavigateButton direction iconSource iconBackground maybeLinkName =
     let
         style =
             [ Button.border
@@ -160,7 +160,7 @@ viewNavigateButton iconSource iconBackground maybeLinkName =
                 [ title linkName
                 , ariaLabel linkName
                 , href "#"
-                , onClickPreventDefault (always (DetailsNavigate linkName))
+                , onClickPreventDefault (always (DetailsNavigate direction linkName))
                 ]
                 [ iconSpan [] iconSource iconBackground ]
 
@@ -332,7 +332,7 @@ viewNavigateLink name =
     styled a
         style
         [ href "#"
-        , onClickPreventDefault (always (DetailsNavigate name))
+        , onClickPreventDefault (always (DetailsNavigate DetailsNavigateLink name))
         ]
         [ text name ]
 
@@ -347,9 +347,9 @@ subscribeDetails model =
             if keyCode == escapeKeyCode then
                 Just DetailsClose
             else if keyCode == leftKeyCode then
-                Maybe.map DetailsNavigate item.previousName
+                Maybe.map (DetailsNavigate DetailsNavigatePrevious) item.previousName
             else if keyCode == rightKeyCode then
-                Maybe.map DetailsNavigate item.nextName
+                Maybe.map (DetailsNavigate DetailsNavigateNext) item.nextName
             else
                 Nothing
     in

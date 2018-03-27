@@ -3,6 +3,7 @@ module Display.Details
         ( DetailsAnimation(DetailsAnimationClose, DetailsAnimationNavigate, DetailsAnimationOpen)
         , DetailsDisplay
         , DetailsDoubleBufferState(DetailsDoubleBufferFirstSlotNew, DetailsDoubleBufferFirstSlotOld)
+        , DetailsNavigateDirection(DetailsNavigateLink, DetailsNavigateNext, DetailsNavigatePrevious)
         , initDoubleBuffer
         , swapDoubleBuffer
         )
@@ -22,7 +23,13 @@ type alias DetailsDisplay =
 type DetailsAnimation
     = DetailsAnimationOpen
     | DetailsAnimationClose
-    | DetailsAnimationNavigate { oldItemData : DetailsItemData }
+    | DetailsAnimationNavigate { direction : DetailsNavigateDirection, oldItemData : DetailsItemData }
+
+
+type DetailsNavigateDirection
+    = DetailsNavigatePrevious
+    | DetailsNavigateNext
+    | DetailsNavigateLink
 
 
 type DetailsDoubleBufferState

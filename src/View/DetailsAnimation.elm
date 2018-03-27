@@ -5,93 +5,177 @@ module View.DetailsAnimation
         , animatePortfolio
         )
 
-import ClickInfo exposing (ClickInfo)
 import Css exposing (Style, batch)
 import CssShorthand exposing (animation, mediaNotPrint, noStyle, transformOrigin, willChangeTransform)
-import Display.Details exposing (DetailsAnimation(DetailsAnimationClose, DetailsAnimationNavigate, DetailsAnimationOpen))
+import Display.Details exposing (DetailsAnimation(DetailsAnimationClose, DetailsAnimationNavigate, DetailsAnimationOpen), DetailsDisplay, DetailsNavigateDirection(DetailsNavigateLink, DetailsNavigateNext, DetailsNavigatePrevious))
 import Model exposing (Model)
 
 
-animatePortfolio : Model -> Style
-animatePortfolio model =
-    animate model (.pagePos >> Just) <|
-        \animation ->
-            case animation of
-                DetailsAnimationClose ->
-                    combine [ "fadeIn", "zoomOut" ] False
+type OpenOrClose
+    = Open
+    | Close
 
-                _ ->
-                    combine [ "fadeOut", "zoomIn" ] True
+
+type PortfolioOrDetails
+    = Portfolio
+    | Details
+
+
+type NewOrOld
+    = New
+    | Old
+
+
+animatePortfolio : Model -> Style
+animatePortfolio =
+    maybeDetailsStyle (animateProtfolioAndDetails Portfolio)
 
 
 animateDetails : Model -> Style
-animateDetails model =
-    animate model (.clientPos >> Just) <|
-        \animation ->
-            case animation of
-                DetailsAnimationClose ->
-                    combine [ "fadeOut", "growOut" ] True
-
-                _ ->
-                    combine [ "fadeIn", "growIn" ] False
+animateDetails =
+    maybeDetailsStyle (animateProtfolioAndDetails Details)
 
 
-animateDetailsItem : Bool -> Model -> Style
-animateDetailsItem isNew model =
-    animate model (always Nothing) <|
-        \animation ->
-            case ( isNew, animation ) of
-                ( True, DetailsAnimationNavigate _ ) ->
-                    combine [ "fadeIn", "growIn" ] True
-
-                ( False, DetailsAnimationNavigate _ ) ->
-                    combine [ "fadeOut", "growOut" ] True
-
-                _ ->
-                    ""
+maybeDetailsStyle : (DetailsDisplay -> Maybe Style) -> Model -> Style
+maybeDetailsStyle style model =
+    model.details
+        |> Maybe.andThen style
+        |> Maybe.withDefault noStyle
 
 
-animate : Model -> (ClickInfo -> Maybe ( Float, Float )) -> (DetailsAnimation -> String) -> Style
-animate model originSelector animationValue =
+animateProtfolioAndDetails : PortfolioOrDetails -> DetailsDisplay -> Maybe Style
+animateProtfolioAndDetails portfolioOrDetails details =
     let
+        openOrClose =
+            case details.animation of
+                DetailsAnimationClose ->
+                    Close
+
+                _ ->
+                    Open
+
         originStyle ( x, y ) =
             transformOrigin <|
                 toString x
                     ++ "px "
                     ++ toString y
                     ++ "px"
-    in
-    case model.details of
-        Nothing ->
-            noStyle
 
-        Just details ->
-            batch
-                [ animation (animationValue details.animation)
-                , originSelector details.openClickInfo
-                    |> Maybe.map originStyle
-                    |> Maybe.withDefault noStyle
-                ]
+        origin =
+            case portfolioOrDetails of
+                Portfolio ->
+                    originStyle details.openClickInfo.pagePos
 
+                Details ->
+                    originStyle details.openClickInfo.clientPos
 
-combine : List String -> Bool -> String
-combine animationNames first =
-    let
         fullDuration =
             250
 
         overlap =
-            0.4
+            0.6
 
         duration =
             (fullDuration * (1 + overlap)) / 2
 
-        delay =
-            if first then
-                0
-            else
-                fullDuration - duration
+        delay newOrOld =
+            case newOrOld of
+                New ->
+                    fullDuration - duration
+
+                Old ->
+                    0
+
+        easing newOrOld =
+            case newOrOld of
+                New ->
+                    "ease-out"
+
+                Old ->
+                    "ease-in"
+
+        animate animationNames newOrOld =
+            combineAnimations
+                animationNames
+                duration
+                (delay newOrOld)
+                (easing newOrOld)
+
+        switch =
+            case ( openOrClose, portfolioOrDetails ) of
+                ( Open, Portfolio ) ->
+                    animate [ "fadeOut", "zoomIn" ] Old
+
+                ( Open, Details ) ->
+                    animate [ "fadePartialIn", "growIn" ] New
+
+                ( Close, Portfolio ) ->
+                    animate [ "fadeIn", "zoomOut" ] New
+
+                ( Close, Details ) ->
+                    animate [ "fadePartialOut", "growOut" ] Old
     in
+    (Just << batch)
+        [ switch
+        , origin
+        ]
+
+
+animateDetailsItem : Bool -> Model -> Style
+animateDetailsItem isNew =
+    let
+        maybeDirection details =
+            case details.animation of
+                DetailsAnimationNavigate { direction } ->
+                    Just direction
+
+                _ ->
+                    Nothing
+
+        newOrOld =
+            if isNew then
+                New
+            else
+                Old
+
+        animateSlow =
+            animate 250
+
+        animateFast =
+            animate 200
+
+        animate duration animationNames =
+            combineAnimations
+                animationNames
+                duration
+                0
+                "ease"
+
+        switch direction =
+            case ( direction, newOrOld ) of
+                ( DetailsNavigatePrevious, Old ) ->
+                    animateSlow [ "fadePartialOut", "toRight" ]
+
+                ( DetailsNavigatePrevious, New ) ->
+                    animateSlow [ "fadePartialIn", "fromLeft" ]
+
+                ( DetailsNavigateNext, Old ) ->
+                    animateSlow [ "fadePartialOut", "toLeft" ]
+
+                ( DetailsNavigateNext, New ) ->
+                    animateSlow [ "fadePartialIn", "fromRight" ]
+
+                ( DetailsNavigateLink, Old ) ->
+                    animateFast [ "fadePartialOut", "growOut" ]
+
+                ( DetailsNavigateLink, New ) ->
+                    animateFast [ "fadePartialIn", "fromBottom" ]
+    in
+    maybeDetailsStyle (maybeDirection >> Maybe.map switch)
+
+
+combineAnimations : List String -> Float -> Float -> String -> Style
+combineAnimations animationNames duration delay easing =
     animationNames
         |> List.map
             (\animationName ->
@@ -100,10 +184,8 @@ combine animationNames first =
                     , toString duration ++ "ms"
                     , toString delay ++ "ms"
                     , "both"
-                    , if first then
-                        "ease-out"
-                      else
-                        "ease-in"
+                    , easing
                     ]
             )
         |> String.join ", "
+        |> animation

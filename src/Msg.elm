@@ -5,13 +5,14 @@ module Msg
         )
 
 import ClickInfo exposing (ClickInfo)
+import Display.Details exposing (DetailsNavigateDirection)
 import Mouse exposing (Event)
 
 
 type Msg
     = Print
     | DetailsOpen String ClickInfo
-    | DetailsNavigate String
+    | DetailsNavigate DetailsNavigateDirection String
     | DetailsClose
     | NoMsg
 

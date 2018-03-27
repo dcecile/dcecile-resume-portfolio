@@ -62,3 +62,33 @@
     transform: scale(0);
   }
 }
+
+@keyframes fromLeft {
+  0% {
+    transform: translateX(-100vw);
+  }
+}
+
+@keyframes toLeft {
+  100% {
+    transform: translateX(-100vw);
+  }
+}
+
+@keyframes fromRight {
+  0% {
+    transform: translateX(100vw);
+  }
+}
+
+@keyframes toRight {
+  100% {
+    transform: translateX(100vw);
+  }
+}
+
+@keyframes fromBottom {
+  0% {
+    transform: translateY(100vh);
+  }
+}

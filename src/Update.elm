@@ -6,7 +6,7 @@ module Update
 
 import ClickInfo exposing (ClickInfo)
 import Data.Details exposing (DetailsItemData)
-import Display.Details exposing (DetailsAnimation(DetailsAnimationClose, DetailsAnimationNavigate, DetailsAnimationOpen), DetailsDisplay, initDoubleBuffer, swapDoubleBuffer)
+import Display.Details exposing (DetailsAnimation(DetailsAnimationClose, DetailsAnimationNavigate, DetailsAnimationOpen), DetailsDisplay, DetailsNavigateDirection, initDoubleBuffer, swapDoubleBuffer)
 import ListEx
 import Model exposing (Model)
 import Msg exposing (Msg(DetailsClose, DetailsNavigate, DetailsOpen, NoMsg, Print))
@@ -31,13 +31,13 @@ update msg =
                         maybeWithDetailsItem name <|
                             open clickInfo
 
-        DetailsNavigate name ->
+        DetailsNavigate direction name ->
             updateModel <|
                 maybeModel <|
                     maybeUpdateDetails <|
                         \details ->
                             maybeWithDetailsItem name <|
-                                navigate details
+                                navigate details direction
 
         DetailsClose ->
             updateModel <|
@@ -98,11 +98,11 @@ open clickInfo item =
     }
 
 
-navigate : DetailsDisplay -> DetailsItemData -> DetailsDisplay
-navigate details item =
+navigate : DetailsDisplay -> DetailsNavigateDirection -> DetailsItemData -> DetailsDisplay
+navigate details direction item =
     { details
         | itemData = item
-        , animation = DetailsAnimationNavigate { oldItemData = details.itemData }
+        , animation = DetailsAnimationNavigate { direction = direction, oldItemData = details.itemData }
         , doubleBufferState = swapDoubleBuffer details
     }
 
