@@ -445,10 +445,16 @@ viewSource iconSource sourceURL sourceShortURL =
         linkStyle =
             [ fontStyle normal
             ]
+
+        highlightStyle =
+            [ color printGreen
+            ]
     in
     (styled p style [] << List.concat)
-        [ viewMarkedString <| markedString "I made this resume with `Elm` and `CSS3`, view source at "
-        , viewLink linkStyle iconSource sourceURL sourceShortURL .externalLink |> List.singleton
+        [ markedString "I made this resume with `Elm` and `CSS3`, view source at "
+            |> MarkedString.transform text (styledSpanText highlightStyle)
+        , viewLink linkStyle iconSource sourceURL sourceShortURL .externalLink
+            |> List.singleton
         ]
 
 
@@ -704,10 +710,9 @@ viewItemDotsMargin =
 viewMarkedString : MarkedString -> List (Html Msg)
 viewMarkedString =
     let
-        highlight =
-            styledSpanText
-                [ fontWeight bold
-                , color printGreen
-                ]
+        highlightStyle =
+            [ fontWeight bold
+            , color printGreen
+            ]
     in
-    MarkedString.transform text highlight
+    MarkedString.transform text (styledSpanText highlightStyle)
