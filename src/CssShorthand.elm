@@ -20,6 +20,7 @@ module CssShorthand
         , textDecorationSkipInk
         , transformOrigin
         , willChangeTransform
+        , wordBreakBreakAll
         , zIndexBackground
         , zIndexNormal
         , zIndexOverlay
@@ -133,6 +134,11 @@ transformOrigin =
 willChangeTransform : Style
 willChangeTransform =
     property "will-change" "transform"
+
+
+wordBreakBreakAll : Style
+wordBreakBreakAll =
+    property "word-break" "break-all"
 
 
 zIndexBackground : Style

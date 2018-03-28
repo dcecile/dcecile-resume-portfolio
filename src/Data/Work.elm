@@ -71,8 +71,8 @@ initWorkData =
                 "8 months"
                 [ "co-op"
                 ]
-                [ ( "Developer", "2008 winter co-op" )
-                , ( "Application Developer", "2008 fall co-op" )
+                [ ( "Developer", "winter co-op, 2008" )
+                , ( "Application Developer", "fall co-op, 2008" )
                 ]
                 [ "Java / Scheme"
                 ]
@@ -91,7 +91,7 @@ initWorkData =
                 "8 months"
                 [ "co-op"
                 ]
-                [ ( "Software Developer", "2006/2007 co-op" )
+                [ ( "Software Developer", "co-op, 2006/2007" )
                 ]
                 [ "C# / SQL"
                 ]
@@ -110,7 +110,7 @@ initWorkData =
                 "8 months"
                 [ "co-op"
                 ]
-                [ ( "Software Engineer", "2005/2006 co-op" )
+                [ ( "Software Engineer", "co-op, 2005/2006" )
                 ]
                 [ "C / C++"
                 ]

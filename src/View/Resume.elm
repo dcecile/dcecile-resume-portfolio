@@ -3,8 +3,9 @@ module View.Resume
         ( viewResume
         )
 
-import Css exposing (Em, Style, batch, bold, borderRadius, borderWidth, center, color, em, flexBasis, flexEnd, flexGrow, flexWrap, fontSize, fontStyle, fontWeight, height, italic, justifyContent, lineHeight, marginBottom, marginLeft, marginRight, marginTop, none, normal, num, paddingBottom, paddingLeft, paddingTop, right, textAlign, textDecoration, width, wrap, zero)
-import CssShorthand exposing (batchMap, borderBottomSolidColor, borderLeftSolidColor, borderSolidColor, displayFlexColumn, displayFlexRow, marginRightLeft, marginTopBottom, noStyle, paddingRightLeft, paddingTopBottom, textDecorationSkipInk)
+import Char
+import Css exposing (Em, Style, auto, batch, bold, borderRadius, borderWidth, center, color, em, flexBasis, flexEnd, flexGrow, flexShrink, flexWrap, fontSize, fontStyle, fontWeight, height, hidden, hsl, italic, justifyContent, letterSpacing, lineHeight, marginBottom, marginLeft, marginRight, marginTop, none, normal, num, opacity, overflow, paddingBottom, paddingLeft, paddingTop, right, textAlign, textDecoration, width, wrap, zero)
+import CssShorthand exposing (batchMap, borderBottomSolidColor, borderLeftSolidColor, borderSolidColor, displayFlexColumn, displayFlexRow, marginRightLeft, marginTopBottom, noStyle, paddingRightLeft, paddingTopBottom, textDecorationSkipInk, wordBreakBreakAll)
 import Data.Links exposing (LinksItemData)
 import Data.Projects exposing (ProjectsItemData)
 import Data.Visibility exposing (Visibility(PortfolioAndResume), filterVisible)
@@ -17,7 +18,7 @@ import MarkedString exposing (MarkedString, MarkedSubstring(NormalSubstring, Spe
 import Model exposing (Model)
 import Msg exposing (Msg)
 import Regex exposing (HowMany(All), regex, replace)
-import View.Colors exposing (printBlack, printGreen, printPaleGreen)
+import View.Colors exposing (printBlack, printGreen, printPaleGreen, printPaleGreenComponents)
 import View.Metrics exposing (printBorderWidth, standardLineHeight)
 
 
@@ -37,7 +38,7 @@ viewResume model =
         style
         []
         [ viewHeader model
-        , viewHorizontalRule <| em 1.0
+        , viewHorizontalRule <| em 0.8
         , viewMain model
         , viewHorizontalRule <| em 0.5
         , viewFooter model
@@ -295,11 +296,12 @@ viewProjects model =
 viewProjectsItem : ProjectsItemData -> Html Msg
 viewProjectsItem item =
     viewItem True
-        [ viewItemLine0
-            [ viewItemName item.name
+        [ viewItemLineFlex0
+            [ viewItemTitle item.name
+            , viewItemDots
             , viewItemPeriod True item.period
             ]
-        , viewItemLine1 True <|
+        , viewItemLineNormal1 True <|
             viewMarkedString
                 [ SpecialSubstring item.tech
                 , NormalSubstring <| " " ++ item.description
@@ -337,11 +339,12 @@ viewEducation model =
     in
     viewSection "Education"
         [ viewItem True
-            [ viewItemLine0
+            [ viewItemLineFlex0
                 [ viewItemName sectionData.name
+                , viewItemDots
                 , viewItemPeriod True sectionData.period
                 ]
-            , viewItemLine1 True
+            , viewItemLineFlex1 True
                 [ viewItemTitle sectionData.specialization
                 ]
             ]
@@ -386,16 +389,18 @@ viewWorkItem iconSource narrow item =
 
 viewWorkItemNameLocation : IconSource -> String -> String -> Html Msg
 viewWorkItemNameLocation iconSource name location =
-    viewItemLine0
+    viewItemLineFlex0
         [ viewItemName name
+        , viewItemDots
         , viewItemLocation iconSource location
         ]
 
 
 viewWorkItemTitlePeriod : Bool -> String -> String -> Html Msg
 viewWorkItemTitlePeriod narrow title period =
-    viewItemLine1 narrow
+    viewItemLineFlex1 narrow
         [ viewItemTitle title
+        , viewItemDots
         , viewItemPeriod narrow period
         ]
 
@@ -549,6 +554,7 @@ viewItem narrow nodes =
 
         innerStyle =
             [ displayFlexColumn
+            , flexGrow <| num 1
             ]
 
         verticalRuleStyle =
@@ -566,11 +572,12 @@ viewItem narrow nodes =
         ]
 
 
-viewItemLine0 : List (Html Msg) -> Html Msg
-viewItemLine0 =
+viewItemLineFlex0 : List (Html Msg) -> Html Msg
+viewItemLineFlex0 =
     let
         style =
-            [ marginTopBottom zero
+            [ displayFlexRow
+            , marginTopBottom zero
             , fontSize <| em 1
             , fontWeight normal
             ]
@@ -578,11 +585,25 @@ viewItemLine0 =
     styled h3 style []
 
 
-viewItemLine1 : Bool -> List (Html Msg) -> Html Msg
-viewItemLine1 narrow =
+viewItemLineFlex1 : Bool -> List (Html Msg) -> Html Msg
+viewItemLineFlex1 =
+    viewItemLineMaybeFlex1 True
+
+
+viewItemLineNormal1 : Bool -> List (Html Msg) -> Html Msg
+viewItemLineNormal1 =
+    viewItemLineMaybeFlex1 False
+
+
+viewItemLineMaybeFlex1 : Bool -> Bool -> List (Html Msg) -> Html Msg
+viewItemLineMaybeFlex1 flex narrow =
     let
         style =
-            [ marginTopBottom zero
+            [ if flex then
+                displayFlexRow
+              else
+                noStyle
+            , marginTopBottom zero
             , marginLeft <|
                 em
                     (if narrow then
@@ -623,7 +644,7 @@ viewItemLocation : IconSource -> String -> Html Msg
 viewItemLocation iconSource location =
     let
         style =
-            [ marginLeft <| em 0.6
+            [ marginLeft <| em -0.4
             , fontStyle italic
             ]
     in
@@ -638,13 +659,7 @@ viewItemLocation iconSource location =
 viewItemPeriod : Bool -> String -> Html Msg
 viewItemPeriod narrow =
     styledSpanText
-        [ marginLeft <|
-            em
-                (if narrow then
-                    0.6
-                 else
-                    0.8
-                )
+        [ color printGreen
         ]
 
 
@@ -653,6 +668,43 @@ viewItemTitle =
     styledSpanText
         [ fontWeight bold
         ]
+
+
+viewItemDots : Html Msg
+viewItemDots =
+    let
+        ( hue, saturation, lightness ) =
+            printPaleGreenComponents
+
+        style =
+            [ overflow hidden
+            , opacity <| num (1 - lightness)
+            , displayFlexRow
+            , flexBasis <| em 0
+            , flexGrow <| num 1
+            , height <| em standardLineHeight
+            , wordBreakBreakAll
+            , textAlign center
+            , letterSpacing <| em 0.05
+            , color <| hsl hue saturation 0
+            ]
+    in
+    styled span
+        style
+        []
+        [ viewItemDotsMargin
+        , text <| String.repeat 30 ("." ++ String.fromChar (Char.fromCode 0x2009))
+        , viewItemDotsMargin
+        ]
+
+
+viewItemDotsMargin : Html Msg
+viewItemDotsMargin =
+    styledSpanText
+        [ flexBasis <| em 0.6
+        , flexShrink <| num 0.2
+        ]
+        ""
 
 
 viewMarkedString : MarkedString -> List (Html Msg)
