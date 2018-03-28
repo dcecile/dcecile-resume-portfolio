@@ -2,6 +2,7 @@ module CssShorthand
     exposing
         ( animation
         , batchMap
+        , beforeText
         , borderBottomSolidColor
         , borderLeftSolidColor
         , borderSolidColor
@@ -26,7 +27,7 @@ module CssShorthand
         , zIndexOverlay
         )
 
-import Css exposing (BorderStyle, Color, Length, LengthOrAuto, Style, TextDecorationStyle, batch, borderBottomStyle, borderColor, borderLeftStyle, borderStyle, borderTopStyle, column, displayFlex, flexDirection, int, marginBottom, marginLeft, marginRight, marginTop, paddingBottom, paddingLeft, paddingRight, paddingTop, property, row, rowReverse, solid, visited, zIndex)
+import Css exposing (BorderStyle, Color, Length, LengthOrAuto, Style, TextDecorationStyle, batch, before, borderBottomStyle, borderColor, borderLeftStyle, borderStyle, borderTopStyle, column, displayFlex, flexDirection, int, marginBottom, marginLeft, marginRight, marginTop, paddingBottom, paddingLeft, paddingRight, paddingTop, property, row, rowReverse, solid, visited, zIndex)
 import Css.Media exposing (print, withMedia)
 
 
@@ -39,6 +40,14 @@ batchMap : List (a -> Style) -> a -> Style
 batchMap partialStyles styleParameter =
     List.map ((|>) styleParameter) partialStyles
         |> batch
+
+
+beforeText : String -> List Style -> Style
+beforeText text style =
+    before
+        [ property "content" ("'" ++ text ++ "'")
+        , batch style
+        ]
 
 
 borderBottomSolidColor : Color -> Style

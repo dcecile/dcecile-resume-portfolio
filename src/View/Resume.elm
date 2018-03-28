@@ -4,8 +4,8 @@ module View.Resume
         )
 
 import Char
-import Css exposing (Em, Style, auto, batch, bold, borderRadius, borderWidth, center, color, em, flexBasis, flexEnd, flexGrow, flexShrink, flexWrap, fontSize, fontStyle, fontWeight, height, hidden, hsl, italic, justifyContent, letterSpacing, lineHeight, marginBottom, marginLeft, marginRight, marginTop, none, normal, num, opacity, overflow, paddingBottom, paddingLeft, paddingTop, right, textAlign, textDecoration, width, wrap, zero)
-import CssShorthand exposing (batchMap, borderBottomSolidColor, borderLeftSolidColor, borderSolidColor, displayFlexColumn, displayFlexRow, marginRightLeft, marginTopBottom, noStyle, paddingRightLeft, paddingTopBottom, textDecorationSkipInk, wordBreakBreakAll)
+import Css exposing (Em, Style, absolute, auto, batch, bold, borderRadius, borderWidth, center, color, em, flexBasis, flexEnd, flexGrow, flexShrink, flexWrap, fontSize, fontStyle, fontWeight, height, hidden, hsl, italic, justifyContent, letterSpacing, lineHeight, marginBottom, marginLeft, marginRight, marginTop, none, normal, num, opacity, overflow, paddingBottom, paddingLeft, paddingTop, position, right, textAlign, textDecoration, width, wrap, zero)
+import CssShorthand exposing (batchMap, beforeText, borderBottomSolidColor, borderLeftSolidColor, borderSolidColor, displayFlexColumn, displayFlexRow, marginRightLeft, marginTopBottom, noStyle, paddingRightLeft, paddingTopBottom, textDecorationSkipInk, wordBreakBreakAll)
 import Data.Links exposing (LinksItemData)
 import Data.Projects exposing (ProjectsItemData)
 import Data.Visibility exposing (Visibility(PortfolioAndResume), filterVisible)
@@ -40,7 +40,7 @@ viewResume model =
         [ viewHeader model
         , viewHorizontalRule <| em 0.8
         , viewMain model
-        , viewHorizontalRule <| em 0.5
+        , viewHorizontalRule <| em 0.2
         , viewFooter model
         ]
 
@@ -56,7 +56,7 @@ viewHeader model =
 
         style =
             [ displayFlexRow
-            , marginBottom <| em 0.2
+            , marginBottom <| em 0.3
             ]
     in
     styled header
@@ -113,7 +113,7 @@ viewTagline tagline =
     let
         style =
             [ marginTop <| em 0.6
-            , marginBottom <| em 0.2
+            , marginBottom <| em 0.1
             , fontSize <| em 1.3
             , color printGreen
             ]
@@ -128,8 +128,7 @@ viewHomepage : IconSource -> String -> Html Msg
 viewHomepage iconSource homepageURL =
     let
         style =
-            [ marginTop zero
-            , marginBottom <| em 0.2
+            [ marginTopBottom zero
             , fontSize <| em 1.3
             , fontStyle italic
             ]
@@ -213,7 +212,7 @@ viewInfo model =
             [ displayFlexColumn
             , flexBasis <| em 0
             , flexGrow <| num 1
-            , marginRight <| em 1.0
+            , marginRight <| em 1.1
             ]
     in
     styled div
@@ -260,7 +259,7 @@ viewTechLineItem : String -> Html Msg
 viewTechLineItem item =
     let
         style =
-            [ marginRight <| em 0.1
+            [ marginRight <| em 0.2
             , borderSolidColor printPaleGreen
             , borderWidth printBorderWidth
             , borderRadius <| em 0.3
@@ -299,9 +298,9 @@ viewProjectsItem item =
         [ viewItemLineFlex0
             [ viewItemTitle item.name
             , viewItemDots
-            , viewItemPeriod True item.period
+            , viewItemPeriod item.period
             ]
-        , viewItemLineNormal1 True <|
+        , viewItemLineNormal1 <|
             viewMarkedString
                 [ SpecialSubstring item.tech
                 , NormalSubstring <| " " ++ item.description
@@ -342,9 +341,9 @@ viewEducation model =
             [ viewItemLineFlex0
                 [ viewItemName sectionData.name
                 , viewItemDots
-                , viewItemPeriod True sectionData.period
+                , viewItemPeriod sectionData.period
                 ]
-            , viewItemLineFlex1 True
+            , viewItemLineFlex1
                 [ viewItemTitle sectionData.specialization
                 ]
             ]
@@ -357,7 +356,7 @@ viewHistory model =
         style =
             [ displayFlexColumn
             , flexBasis <| em 0
-            , flexGrow <| num 1.22
+            , flexGrow <| num 1.18
             ]
     in
     styled div
@@ -382,8 +381,8 @@ viewWorkItem : IconSource -> Bool -> WorkItemData -> Html Msg
 viewWorkItem iconSource narrow item =
     (viewItem narrow << List.concat)
         [ viewWorkItemNameLocation iconSource item.name item.resumeLocation |> List.singleton
-        , item.resumeTitlePeriods |> List.map (uncurry (viewWorkItemTitlePeriod narrow))
-        , item.resumePoints |> List.map (viewWorkItemPoint narrow)
+        , item.resumeTitlePeriods |> List.map (uncurry viewWorkItemTitlePeriod)
+        , item.resumePoints |> List.map viewWorkItemPoint
         ]
 
 
@@ -396,18 +395,18 @@ viewWorkItemNameLocation iconSource name location =
         ]
 
 
-viewWorkItemTitlePeriod : Bool -> String -> String -> Html Msg
-viewWorkItemTitlePeriod narrow title period =
-    viewItemLineFlex1 narrow
+viewWorkItemTitlePeriod : String -> String -> Html Msg
+viewWorkItemTitlePeriod title period =
+    viewItemLineFlex1
         [ viewItemTitle title
         , viewItemDots
-        , viewItemPeriod narrow period
+        , viewItemPeriod period
         ]
 
 
-viewWorkItemPoint : Bool -> MarkedString -> Html Msg
-viewWorkItemPoint narrow point =
-    viewItemLine2 narrow <|
+viewWorkItemPoint : MarkedString -> Html Msg
+viewWorkItemPoint point =
+    viewItemLine2 <|
         viewMarkedString point
 
 
@@ -462,7 +461,7 @@ viewSubheading subheading =
     let
         style =
             [ marginTop zero
-            , marginBottom <| em 0.1
+            , marginBottom <| em 0.05
             , fontSize <| em 1.9
             , fontWeight bold
             ]
@@ -548,7 +547,7 @@ viewItem narrow nodes =
                     (if narrow then
                         0.6
                      else
-                        1.0
+                        0.9
                     )
             ]
 
@@ -585,18 +584,18 @@ viewItemLineFlex0 =
     styled h3 style []
 
 
-viewItemLineFlex1 : Bool -> List (Html Msg) -> Html Msg
+viewItemLineFlex1 : List (Html Msg) -> Html Msg
 viewItemLineFlex1 =
     viewItemLineMaybeFlex1 True
 
 
-viewItemLineNormal1 : Bool -> List (Html Msg) -> Html Msg
+viewItemLineNormal1 : List (Html Msg) -> Html Msg
 viewItemLineNormal1 =
     viewItemLineMaybeFlex1 False
 
 
-viewItemLineMaybeFlex1 : Bool -> Bool -> List (Html Msg) -> Html Msg
-viewItemLineMaybeFlex1 flex narrow =
+viewItemLineMaybeFlex1 : Bool -> List (Html Msg) -> Html Msg
+viewItemLineMaybeFlex1 flex =
     let
         style =
             [ if flex then
@@ -604,30 +603,25 @@ viewItemLineMaybeFlex1 flex narrow =
               else
                 noStyle
             , marginTopBottom zero
-            , marginLeft <|
-                em
-                    (if narrow then
-                        0.5
-                     else
-                        1.0
-                    )
+            , marginLeft <| em 0.8
             ]
     in
     styled p style []
 
 
-viewItemLine2 : Bool -> List (Html Msg) -> Html Msg
-viewItemLine2 narrow =
+viewItemLine2 : List (Html Msg) -> Html Msg
+viewItemLine2 =
     let
         style =
             [ marginTopBottom zero
-            , marginLeft <|
-                em
-                    (if narrow then
-                        1.0
-                     else
-                        2.0
-                    )
+            , marginLeft <| em 1.6
+            , beforeText
+                "-"
+                [ position absolute
+                , marginTop zero
+                , marginLeft <| em -0.8
+                , color printGreen
+                ]
             ]
     in
     styled p style []
@@ -656,8 +650,8 @@ viewItemLocation iconSource location =
         ]
 
 
-viewItemPeriod : Bool -> String -> Html Msg
-viewItemPeriod narrow =
+viewItemPeriod : String -> Html Msg
+viewItemPeriod =
     styledSpanText
         [ color printGreen
         ]
@@ -682,7 +676,7 @@ viewItemDots =
             , displayFlexRow
             , flexBasis <| em 0
             , flexGrow <| num 1
-            , height <| em standardLineHeight
+            , height <| em (standardLineHeight - 0.1)
             , wordBreakBreakAll
             , textAlign center
             , letterSpacing <| em 0.05

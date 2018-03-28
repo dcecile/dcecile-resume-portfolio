@@ -23,7 +23,7 @@ standardBorderWidth =
 
 standardLineHeight : Float
 standardLineHeight =
-    1.65
+    1.7
 
 
 standardScreenFontSize : Pct
