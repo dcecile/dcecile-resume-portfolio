@@ -44,9 +44,9 @@ viewPortfolio model =
         , viewIntro model
         , viewLinks model
         , viewContents model
+        , viewWork model
         , viewMindsets model
         , viewTech model
         , viewProjects model
-        , viewWork model
         , viewFooter model
         ]

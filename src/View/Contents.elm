@@ -70,12 +70,12 @@ viewLinks model =
         style
         []
         [ viewLinksColumn
-            [ viewLink model False .mindsets
-            , viewLink model False .tech
+            [ viewLink model False .work
+            , viewLink model False .mindsets
             ]
         , viewLinksColumn
-            [ viewLink model True .projects
-            , viewLink model True .work
+            [ viewLink model True .tech
+            , viewLink model True .projects
             ]
         ]
 

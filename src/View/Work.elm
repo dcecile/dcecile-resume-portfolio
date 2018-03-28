@@ -38,7 +38,13 @@ viewItems isLarge items =
             , flexWrap wrap
             , justifyContent center
             , marginRightLeft <| em 0.5
-            , marginBottom <| em 1.0
+            , marginBottom <|
+                em
+                    (if isLarge then
+                        0.8
+                     else
+                        1.3
+                    )
             ]
     in
     items
@@ -56,7 +62,10 @@ viewItem isLarge item =
                 displayFlexRow
               else
                 displayFlexColumn
-            , marginTop <| px 16
+            , if isLarge then
+                noStyle
+              else
+                marginTop <| px 8
             , if isLarge then
                 noStyle
               else
@@ -82,15 +91,15 @@ viewItem isLarge item =
             [ viewItemColumn True <|
                 List.concat
                     [ item.name |> viewName |> List.singleton
-                    , item.portfolioDuration |> viewDurationTitles |> List.singleton
-                    , item.portfolioTitles |> List.map (\title -> "(" ++ title ++ ")" |> viewDurationTitles)
+                    , item.portfolioDuration |> viewDurationTitles True |> List.singleton
+                    , item.portfolioTitles |> List.map (viewDurationTitles False)
                     ]
             , viewItemColumn False <|
                 (item.portfolioSkills |> List.map viewSkills)
             ]
         else
             [ item.name |> viewName
-            , ( item.portfolioDuration, item.portfolioTitles ) |> uncurry combineDurationAndTitles |> viewDurationTitles
+            , ( item.portfolioDuration, item.portfolioTitles ) |> uncurry combineDurationAndTitles |> viewDurationTitles True
             , item.portfolioSkills |> String.join " " |> viewSkills
             ]
 
@@ -133,11 +142,14 @@ combineDurationAndTitles duration titles =
         |> String.concat
 
 
-viewDurationTitles : String -> Html Msg
-viewDurationTitles durationTitles =
+viewDurationTitles : Bool -> String -> Html Msg
+viewDurationTitles useItalic durationTitles =
     let
         style =
-            [ fontStyle italic
+            [ if useItalic then
+                fontStyle italic
+              else
+                noStyle
             , marginBottom <| em 0.3
             ]
     in

@@ -46,7 +46,11 @@ allDetailsItems data =
                 (List.drop 1 (List.map Just items) ++ [ Nothing ])
     in
     List.concat
-        [ convert data.mindsets.items <|
+        [ convert data.work.portfolioItems <|
+            getDetails
+                (always Nothing)
+                False
+        , convert data.mindsets.items <|
             getDetails
                 (always Nothing)
                 True
@@ -57,10 +61,6 @@ allDetailsItems data =
         , convert data.projects.items <|
             getDetails
                 Just
-                False
-        , convert data.work.portfolioItems <|
-            getDetails
-                (always Nothing)
                 False
         ]
 

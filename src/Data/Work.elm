@@ -46,10 +46,10 @@ initWorkData =
                 [ ( "Software Developer", "2009–2013" )
                 , ( "Senior Software Developer", "2013–2018" )
                 ]
-                [ "C# / .NET / WinForms /"
-                , "SQL / data analysis /"
-                , "requirements gathering /"
-                , "mentoring"
+                [ "C# / WinForms / HTML5 /"
+                , "SQL / Excel / data analysis /"
+                , "communication / coordination /"
+                , "leadership / mentoring"
                 ]
                 [ markedString "Coded manufacturing subsystems in `C#`"
                 , markedString "Built a hybrid `HTML5 / C#` desktop app"
@@ -151,7 +151,7 @@ initWorkData =
     , name = "Work history"
     , iconBackground = .calendar
     , intro =
-        "I’ve got 10 years of experience writing software, and I’m looking to add the name of a new team to this list:"
+        "These are the teams that I’ve learned from and contributed to:"
     , portfolioItems = portfolioLargeItems ++ portfolioSmallItems
     , portfolioLargeItems = portfolioLargeItems
     , portfolioSmallItems = portfolioSmallItems
@@ -165,5 +165,5 @@ initWorkData =
         [ themusuem
         ]
     , outro =
-        Just "Think my skills would be a good fit for your team? Let me know!"
+        Just "Want more details about my skills? Keep reading for my mindsets, tech fluency, and side projects."
     }
