@@ -1,6 +1,7 @@
 module View.Metrics
     exposing
         ( printBorderWidth
+        , printLineHeight
         , standardBorderRadius
         , standardBorderWidth
         , standardLineHeight
@@ -23,17 +24,22 @@ standardBorderWidth =
 
 standardLineHeight : Float
 standardLineHeight =
-    1.7
+    1.6
 
 
 standardScreenFontSize : Pct
 standardScreenFontSize =
-    pct 155
+    pct 145
 
 
 standardPrintFontSize : Pt
 standardPrintFontSize =
     pt 12
+
+
+printLineHeight : Float
+printLineHeight =
+    1.7
 
 
 printBorderWidth : Em

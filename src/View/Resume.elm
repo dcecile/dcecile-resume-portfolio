@@ -19,7 +19,7 @@ import Model exposing (Model)
 import Msg exposing (Msg)
 import Regex exposing (HowMany(All), regex, replace)
 import View.Colors exposing (printBlack, printGreen, printPaleGreen, printPaleGreenComponents)
-import View.Metrics exposing (printBorderWidth, standardLineHeight)
+import View.Metrics exposing (printBorderWidth, printLineHeight)
 
 
 viewResume : Model -> Html Msg
@@ -30,7 +30,7 @@ viewResume model =
             , paddingTopBottom <| em 3.2
             , paddingRightLeft <| em 3.5
             , flexGrow <| num 1
-            , lineHeight <| num standardLineHeight
+            , lineHeight <| num printLineHeight
             , color printBlack
             ]
     in
@@ -682,7 +682,7 @@ viewItemDots =
             , displayFlexRow
             , flexBasis <| em 0
             , flexGrow <| num 1
-            , height <| em (standardLineHeight - 0.1)
+            , height <| em (printLineHeight - 0.1)
             , wordBreakBreakAll
             , textAlign center
             , letterSpacing <| em 0.05

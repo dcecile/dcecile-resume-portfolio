@@ -26,12 +26,13 @@ initBasicData =
     , emailAddress = "dancecile@gmail.com"
     , currentLocation = "Kitchener, Ontario"
     , homepageURL = "https://dcecile.github.io"
-    , portfolioTagline = "~ Software developer ~"
+    , portfolioTagline = "Software developer"
     , resumeTagline = "Software developer, 10 years experience"
     , portfolioIntroPoints =
-        [ markedString "Every code change I make starts with `listening` and `learning`."
-        , markedString "I get things `done`, I seek out `improvements`, and I’m ready for my next challenge."
-        , markedString "Are you looking to grow your team?"
+        [ markedString "It’s in the work I do."
+        , markedString "I start with `listening` and `learning`, I look for improvements, and I get things done."
+        , markedString "I’m ready for my next challenge."
+        , markedString "How can I help your team `grow`?"
         ]
     , sourceURL = "https://github.com/dcecile/dcecile-resume-portfolio"
     , sourceShortURL = Just "https://git.io/dcecile-resume"

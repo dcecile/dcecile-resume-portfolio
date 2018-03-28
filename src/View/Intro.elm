@@ -3,8 +3,8 @@ module View.Intro
         ( viewIntro
         )
 
-import Css exposing (Style, alignItems, alignSelf, bold, calc, center, color, em, flexBasis, flexEnd, flexGrow, flexStart, fontSize, fontStyle, fontWeight, height, italic, justifyContent, lastOfType, lineHeight, marginBottom, marginTop, maxWidth, minHeight, minus, normal, num, opacity, px, stretch, vh, width, zero)
-import CssShorthand exposing (displayFlexColumn, displayFlexRow, displayFlexRowReverse, marginRightLeft, paddingRightLeft)
+import Css exposing (Style, alignItems, alignSelf, bold, calc, center, color, em, firstOfType, flexBasis, flexEnd, flexGrow, flexStart, fontSize, fontStyle, fontWeight, height, italic, justifyContent, lastOfType, lineHeight, marginBottom, marginTop, maxWidth, minHeight, minus, normal, num, opacity, px, stretch, vh, width, zero)
+import CssShorthand exposing (afterText, beforeText, displayFlexColumn, displayFlexRow, displayFlexRowReverse, marginRightLeft, paddingRightLeft)
 import Html.Styled exposing (Html, a, div, h1, header, main_, p, span, styled, text)
 import Html.Styled.Attributes exposing (href)
 import HtmlShorthand exposing (HtmlTag, hrefHash, onClickPreventDefault, styledSpanText, targetBlank)
@@ -13,7 +13,7 @@ import MarkedString exposing (MarkedString)
 import Model exposing (Model)
 import Msg exposing (Msg(Print))
 import View.Button as Button
-import View.Colors exposing (blackLevel, green)
+import View.Colors exposing (blackLevel, green, paleGreen)
 import View.Links exposing (linksCutoff)
 
 
@@ -60,7 +60,7 @@ viewName name =
         style =
             [ marginTop zero
             , marginBottom zero
-            , fontWeight normal
+            , fontWeight bold
             , fontSize <| em 2.2
             , lineHeight <| num 1.4
             ]
@@ -74,10 +74,16 @@ viewName name =
 viewTagline : String -> Html Msg
 viewTagline tagline =
     let
+        decorationStyle =
+            [ color paleGreen
+            ]
+
         style =
             [ marginTop zero
             , marginBottom <| em 1.4
             , fontStyle italic
+            , beforeText "— " decorationStyle
+            , afterText " —" decorationStyle
             ]
     in
     styled p
@@ -112,8 +118,9 @@ viewPoint sellingPoint =
         style =
             [ alignSelf center
             , marginTop zero
-            , marginBottom <| em 0.8
-            , maxWidth <| em 21
+            , marginBottom <| em 0.6
+            , maxWidth <| em 20
+            , firstOfType [ fontWeight bold ]
             , lastOfType [ fontWeight bold ]
             ]
 
@@ -131,7 +138,7 @@ viewCallsToAction iconSource emailAddress =
         style =
             [ displayFlexRow
             , justifyContent stretch
-            , marginTop <| em 0.4
+            , marginTop <| em 1.2
             ]
     in
     styled div

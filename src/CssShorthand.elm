@@ -1,6 +1,7 @@
 module CssShorthand
     exposing
-        ( animation
+        ( afterText
+        , animation
         , batchMap
         , beforeText
         , borderBottomSolidColor
@@ -27,8 +28,13 @@ module CssShorthand
         , zIndexOverlay
         )
 
-import Css exposing (BorderStyle, Color, Length, LengthOrAuto, Style, TextDecorationStyle, batch, before, borderBottomStyle, borderColor, borderLeftStyle, borderStyle, borderTopStyle, column, displayFlex, flexDirection, int, marginBottom, marginLeft, marginRight, marginTop, paddingBottom, paddingLeft, paddingRight, paddingTop, property, row, rowReverse, solid, visited, zIndex)
+import Css exposing (BorderStyle, Color, Length, LengthOrAuto, Style, TextDecorationStyle, after, batch, before, borderBottomStyle, borderColor, borderLeftStyle, borderStyle, borderTopStyle, column, displayFlex, flexDirection, int, marginBottom, marginLeft, marginRight, marginTop, paddingBottom, paddingLeft, paddingRight, paddingTop, property, row, rowReverse, solid, visited, zIndex)
 import Css.Media exposing (print, withMedia)
+
+
+afterText : String -> List Style -> Style
+afterText =
+    pseudoElementContentText after
 
 
 animation : String -> Style
@@ -43,11 +49,8 @@ batchMap partialStyles styleParameter =
 
 
 beforeText : String -> List Style -> Style
-beforeText text style =
-    before
-        [ property "content" ("'" ++ text ++ "'")
-        , batch style
-        ]
+beforeText =
+    pseudoElementContentText before
 
 
 borderBottomSolidColor : Color -> Style
@@ -128,6 +131,14 @@ mediaPrint =
 noStyle : Style
 noStyle =
     batch []
+
+
+pseudoElementContentText : (List Style -> Style) -> String -> List Style -> Style
+pseudoElementContentText pseudoElement text style =
+    pseudoElement
+        [ property "content" ("'" ++ text ++ "'")
+        , batch style
+        ]
 
 
 textDecorationSkipInk : Style
