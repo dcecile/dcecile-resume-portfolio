@@ -28,9 +28,15 @@ initMindsetsData =
     , name = "Mindsets"
     , iconBackground = .eye
     , intro =
-        "From my toolbox of paradigms and perspectives, these are my most strongly-developed mindsets:"
+        "I see software as including more than just code, and I use all of these mindsets as I work:"
     , items =
         [ MindsetsItemData
+            "making"
+            (markedString "An intro")
+            [ markedString "A point"
+            , markedString "A point"
+            ]
+        , MindsetsItemData
             "learning"
             (markedString "There’s always something new to learn, some deeper understanding to be gained, some path to grow my skills.")
             [ markedString "At `Unitron`, I learned the ins and outs of numerous internal business and software systems, helping me make my team’s solutions more robust"

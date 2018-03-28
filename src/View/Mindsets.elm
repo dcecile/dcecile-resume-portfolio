@@ -52,7 +52,7 @@ viewItems items =
             [ displayFlexRow
             , flexWrap wrap
             , justifyContent center
-            , marginBottom <| em 0.5
+            , marginBottom <| em 0.8
             ]
     in
     items
@@ -68,7 +68,7 @@ viewItem item =
             , displayFlexColumn
             , alignItems center
             , batchMap [ width, height ] itemSize
-            , marginTopBottom <| em 0.4
+            , marginBottom <| em 0.8
             , marginRightLeft <| em 0.8
             ]
     in
