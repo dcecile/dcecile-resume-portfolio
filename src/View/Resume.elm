@@ -451,7 +451,7 @@ viewSource iconSource sourceURL sourceShortURL =
             ]
     in
     (styled p style [] << List.concat)
-        [ markedString "I made this resume with `Elm` and `CSS3`, view source at "
+        [ markedString "I made this resume with `Elm` and `CSS3` — view source at "
             |> MarkedString.transform text (styledSpanText highlightStyle)
         , viewLink linkStyle iconSource sourceURL sourceShortURL .externalLink
             |> List.singleton
