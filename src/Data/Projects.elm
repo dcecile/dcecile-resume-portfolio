@@ -36,7 +36,7 @@ initProjectsData =
     , name = "Side projects"
     , iconBackground = .heart
     , intro =
-        "I see software as a medium with amazing potential, and curiosity drives me to learn and create more of it:"
+        "In my spare time, I’ve been working on a few of my own software ideas. Come take a look!"
     , items =
         [ ProjectsItemData
             "Forks in the Road"
