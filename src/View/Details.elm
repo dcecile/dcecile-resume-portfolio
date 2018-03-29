@@ -7,7 +7,7 @@ module View.Details
 import Css exposing (Style, alignItems, backgroundColor, batch, bold, borderRadius, borderWidth, bottom, capitalize, center, color, display, em, empty, fixed, fontSize, fontWeight, height, hidden, justifyContent, lastChild, left, lineHeight, marginBottom, marginLeft, marginRight, marginTop, maxWidth, minWidth, none, num, padding, position, px, right, spaceBetween, textDecoration, textTransform, top, underline, vh, visibility, vw, zero)
 import CssShorthand exposing (batchMap, borderSolidColor, displayFlexColumn, displayFlexRow, marginRightLeft, marginTopBottom, mediaNotPrint, noStyle, paddingRightLeft, paddingTopBottom, textDecorationSkipInk, willChangeTransform, zIndexBackground, zIndexNormal, zIndexOverlay)
 import Data.Details exposing (DetailsItemData)
-import Display.Details exposing (DetailsAnimation(DetailsAnimationNavigate), DetailsDisplay, DetailsDoubleBufferState(DetailsDoubleBufferFirstSlotNew, DetailsDoubleBufferFirstSlotOld), DetailsNavigateDirection(DetailsNavigateLink, DetailsNavigateNext, DetailsNavigatePrevious))
+import Display.Details exposing (DetailsAnimation(DetailsAnimationClose, DetailsAnimationNavigate), DetailsDisplay, DetailsDoubleBufferState(DetailsDoubleBufferFirstSlotNew, DetailsDoubleBufferFirstSlotOld), DetailsNavigateDirection(DetailsNavigateLink, DetailsNavigateNext, DetailsNavigatePrevious))
 import Html.Styled exposing (Html, a, div, h1, li, p, span, styled, text, ul)
 import Html.Styled.Attributes exposing (href, title)
 import HtmlShorthand exposing (ariaLabel, onClickPreventDefault, styledSpanText, targetBlank)
@@ -352,11 +352,19 @@ subscribeDetails model =
                 Maybe.map (DetailsNavigate DetailsNavigateNext) item.nextName
             else
                 Nothing
-    in
-    case model.details of
-        Just details ->
+
+        subscribe details =
             Keyboard.downs
                 (handleKey details.itemData >> Maybe.withDefault NoMsg)
 
-        Nothing ->
-            Sub.none
+        maybeSubscribe details =
+            case details.animation of
+                DetailsAnimationClose ->
+                    Nothing
+
+                _ ->
+                    Just (subscribe details)
+    in
+    model.details
+        |> Maybe.andThen maybeSubscribe
+        |> Maybe.withDefault Sub.none
