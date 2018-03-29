@@ -212,7 +212,7 @@ viewInfo model =
             [ displayFlexColumn
             , flexBasis <| em 0
             , flexGrow <| num 1
-            , marginRight <| em 1.1
+            , marginRight <| em 1.0
             ]
     in
     styled div
@@ -264,7 +264,7 @@ viewTechLineItem item =
             , borderWidth printBorderWidth
             , borderRadius <| em 0.3
             , paddingTopBottom <| em 0.0
-            , paddingRightLeft <| em 0.3
+            , paddingRightLeft <| em 0.4
             ]
     in
     styled span
@@ -300,10 +300,10 @@ viewProjectsItem item =
             , viewItemDots
             , viewItemPeriod item.period
             ]
-        , viewItemLineNormal1 <|
+        , viewItemLine1 [ viewItemLineBulletStyle ] <|
             viewMarkedString
-                [ SpecialSubstring item.tech
-                , NormalSubstring <| " " ++ item.description
+                [ NormalSubstring <| item.description ++ ": "
+                , SpecialSubstring item.tech
                 ]
         ]
 
@@ -356,7 +356,7 @@ viewHistory model =
         style =
             [ displayFlexColumn
             , flexBasis <| em 0
-            , flexGrow <| num 1.18
+            , flexGrow <| num 1.17
             ]
     in
     styled div
@@ -592,24 +592,16 @@ viewItemLineFlex0 =
 
 viewItemLineFlex1 : List (Html Msg) -> Html Msg
 viewItemLineFlex1 =
-    viewItemLineMaybeFlex1 True
+    viewItemLine1 [ displayFlexRow ]
 
 
-viewItemLineNormal1 : List (Html Msg) -> Html Msg
-viewItemLineNormal1 =
-    viewItemLineMaybeFlex1 False
-
-
-viewItemLineMaybeFlex1 : Bool -> List (Html Msg) -> Html Msg
-viewItemLineMaybeFlex1 flex =
+viewItemLine1 : List Style -> List (Html Msg) -> Html Msg
+viewItemLine1 customStyle =
     let
         style =
-            [ if flex then
-                displayFlexRow
-              else
-                noStyle
-            , marginTopBottom zero
+            [ marginTopBottom zero
             , marginLeft <| em 0.8
+            , batch customStyle
             ]
     in
     styled p style []
@@ -621,16 +613,21 @@ viewItemLine2 =
         style =
             [ marginTopBottom zero
             , marginLeft <| em 1.6
-            , beforeText
-                "-"
-                [ position absolute
-                , marginTop zero
-                , marginLeft <| em -0.8
-                , color printGreen
-                ]
+            , viewItemLineBulletStyle
             ]
     in
     styled p style []
+
+
+viewItemLineBulletStyle : Style
+viewItemLineBulletStyle =
+    beforeText
+        "-"
+        [ position absolute
+        , marginTop zero
+        , marginLeft <| em -0.8
+        , color printGreen
+        ]
 
 
 viewItemName : String -> Html Msg

@@ -71,7 +71,7 @@ initProjectsData =
             Nothing
             "2017"
             "Scala.js / FP"
-            "64x64 pixel RTS game"
+            "64x64 pixel web game"
             Nothing
             (Just "https://github.com/dcecile/off-grid-orcs")
             (markedString "An intro")
