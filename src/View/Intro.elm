@@ -3,17 +3,15 @@ module View.Intro
         ( viewIntro
         )
 
-import Css exposing (Style, alignItems, alignSelf, bold, calc, center, color, em, firstOfType, flexBasis, flexEnd, flexGrow, flexStart, fontSize, fontStyle, fontWeight, height, italic, justifyContent, lastOfType, lineHeight, marginBottom, marginTop, maxWidth, minHeight, minus, normal, num, opacity, px, stretch, vh, width, zero)
-import CssShorthand exposing (afterText, beforeText, displayFlexColumn, displayFlexRow, displayFlexRowReverse, marginRightLeft, paddingRightLeft)
-import Html.Styled exposing (Html, a, div, h1, header, main_, p, span, styled, text)
-import Html.Styled.Attributes exposing (href)
-import HtmlShorthand exposing (HtmlTag, hrefHash, onClickPreventDefault, styledSpanText, targetBlank)
-import Icon exposing (IconBackground, IconSource, iconSpan)
+import Css exposing (alignSelf, bold, calc, center, color, em, firstOfType, fontSize, fontStyle, fontWeight, italic, justifyContent, lastOfType, lineHeight, marginBottom, marginTop, maxWidth, minHeight, minus, num, vh, zero)
+import CssShorthand exposing (afterText, beforeText, displayFlexColumn)
+import Html.Styled exposing (Html, div, h1, header, main_, p, styled, text)
+import HtmlShorthand exposing (styledSpanText)
 import MarkedString exposing (MarkedString)
 import Model exposing (Model)
-import Msg exposing (Msg(Print))
-import View.Button as Button
-import View.Colors exposing (blackLevel, green, paleGreen)
+import Msg exposing (Msg)
+import View.CallsToAction exposing (viewCallsToAction)
+import View.Colors exposing (green, paleGreen)
 import View.Links exposing (linksCutoff)
 
 
@@ -105,8 +103,7 @@ viewMain model =
     List.concat
         [ basicData.portfolioIntroPoints
             |> List.map viewPoint
-        , basicData.emailAddress
-            |> viewCallsToAction model.iconSource
+        , viewCallsToAction [] model
             |> List.singleton
         ]
         |> styled main_ style []
@@ -130,69 +127,3 @@ viewPoint sellingPoint =
     sellingPoint
         |> MarkedString.transform text highlight
         |> styled p style []
-
-
-viewCallsToAction : IconSource -> String -> Html Msg
-viewCallsToAction iconSource emailAddress =
-    let
-        style =
-            [ displayFlexRow
-            , justifyContent stretch
-            , marginTop <| em 1.2
-            ]
-    in
-    styled div
-        style
-        []
-        [ viewCallToAction iconSource
-            displayFlexRow
-            .mail
-            [ href <| "mailto:" ++ emailAddress ++ "?subject=Hi"
-            , targetBlank
-            ]
-            [ text "Send me an email" ]
-        , viewCallToAction iconSource
-            displayFlexRowReverse
-            .printer
-            [ hrefHash
-            , onClickPreventDefault (always Print)
-            ]
-            [ text "Print my resume" ]
-        ]
-
-
-viewCallToAction : IconSource -> Style -> IconBackground -> HtmlTag Msg
-viewCallToAction iconSource displayStyle iconBackground attributes elements =
-    let
-        style =
-            [ displayStyle
-            , justifyContent flexEnd
-            , alignItems center
-            , flexBasis <| em 0
-            , flexGrow <| num 1
-            ]
-    in
-    styled div
-        style
-        []
-        [ viewCallToActionIcon iconSource iconBackground
-        , viewCallToActionButton attributes elements
-        ]
-
-
-viewCallToActionIcon : IconSource -> IconBackground -> Html Msg
-viewCallToActionIcon =
-    iconSpan [ marginRightLeft <| px 8 ]
-
-
-viewCallToActionButton : HtmlTag Msg
-viewCallToActionButton =
-    let
-        style =
-            [ Button.border
-            , Button.sizeLarge
-            , Button.text
-            , marginRightLeft <| px 18
-            ]
-    in
-    styled a style

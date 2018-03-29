@@ -3,16 +3,18 @@ module View.Footer
         ( viewFooter
         )
 
-import Css exposing (alignSelf, bold, borderWidth, center, color, em, fontSize, fontStyle, fontWeight, italic, lineHeight, marginBottom, marginTop, num, px)
-import CssShorthand exposing (borderBottomSolidColor, displayFlexColumn, marginTopBottom, paddingRightLeft)
+import Css exposing (alignSelf, bold, borderWidth, center, color, em, fontSize, fontStyle, fontWeight, italic, lineHeight, marginBottom, marginTop, num, px, zero)
+import CssShorthand exposing (borderBottomSolidColor, displayFlexColumn, paddingRightLeft)
 import Html.Styled exposing (Html, a, br, footer, h2, p, styled, text)
 import Html.Styled.Attributes exposing (href, id)
 import HtmlShorthand exposing (targetBlank)
 import Model exposing (Model)
 import Msg exposing (Msg)
 import View.Button as Button
+import View.CallsToAction exposing (viewCallsToAction)
 import View.Colors exposing (black, green, paleGreen)
 import View.ElmLogo exposing (viewElmLogo)
+import View.Links exposing (viewLinks)
 
 
 viewFooter : Model -> Html Msg
@@ -26,12 +28,18 @@ viewFooter model =
             , borderBottomSolidColor paleGreen
             , borderWidth <| px 6
             ]
+
+        callsToActionStyle =
+            [ marginBottom <| em 2.5
+            ]
     in
     styled footer
         style
         [ id "fin" ]
         [ viewHeader
         , viewButton
+        , viewCallsToAction callsToActionStyle model
+        , viewLinks model
         , viewInfo basicData.sourceURL
         ]
 
@@ -41,7 +49,7 @@ viewHeader =
     let
         style =
             [ marginTop <| em 3.0
-            , marginBottom <| em 1.0
+            , marginBottom <| em 2.3
             , fontWeight bold
             , fontSize <| em 1.0
             ]
@@ -57,10 +65,11 @@ viewButton =
     let
         style =
             [ Button.border
-            , Button.sizeMedium
+            , Button.sizeLarge
             , Button.text
             , alignSelf center
-            , marginTopBottom <| px 10
+            , marginTop zero
+            , marginBottom <| em 0.5
             ]
     in
     styled a
@@ -73,7 +82,7 @@ viewInfo : String -> Html Msg
 viewInfo sourceURL =
     let
         style =
-            [ marginTop <| em 2.5
+            [ marginTop <| em 0.5
             , marginBottom <| em 1.5
             , fontSize <| em 0.85
             , fontStyle italic
