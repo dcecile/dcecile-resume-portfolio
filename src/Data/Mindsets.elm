@@ -28,7 +28,7 @@ initMindsetsData =
     , name = "Mindsets"
     , iconBackground = .eye
     , intro =
-        "I see software as including more than just code, and I use all of these mindsets as I work:"
+        "Because I see building software as more than just writing code, I use all of these mindsets as I work:"
     , items =
         [ MindsetsItemData
             "making"

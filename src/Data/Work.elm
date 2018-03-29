@@ -151,7 +151,7 @@ initWorkData =
     , name = "Work history"
     , iconBackground = .calendar
     , intro =
-        "These are the teams that I’ve learned from and contributed to:"
+        "These are the teams that I’ve contributed to and learned from:"
     , portfolioItems = portfolioLargeItems ++ portfolioSmallItems
     , portfolioLargeItems = portfolioLargeItems
     , portfolioSmallItems = portfolioSmallItems
