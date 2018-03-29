@@ -31,10 +31,18 @@ initTechData =
     , name = "Tech fluency"
     , iconBackground = .box
     , intro =
-        "I’m always looking for new opportunities to learn, so my list of productive-use technologies keeps growing:"
+        "I’m serious about learning new skills. For me, extra time spent on reading and practice always pays off."
     , items =
         [ TechItemData
             "Bootstrap"
+            Nothing
+            (markedString "An intro")
+            [ markedString "A point"
+            , markedString "A point"
+            ]
+            PortfolioOnly
+        , TechItemData
+            "bug reporting"
             Nothing
             (markedString "An intro")
             [ markedString "A point"
@@ -65,6 +73,22 @@ initTechData =
             ]
             PortfolioAndResume
         , TechItemData
+            "continuous integration"
+            (Just "CI")
+            (markedString "An intro")
+            [ markedString "A point"
+            , markedString "A point"
+            ]
+            PortfolioOnly
+        , TechItemData
+            "code review"
+            Nothing
+            (markedString "An intro")
+            [ markedString "A point"
+            , markedString "A point"
+            ]
+            PortfolioOnly
+        , TechItemData
             "CSS3"
             Nothing
             (markedString "An intro")
@@ -73,8 +97,8 @@ initTechData =
             ]
             PortfolioAndResume
         , TechItemData
-            "DSLs"
-            Nothing
+            "domain-specific languages"
+            (Just "DSLs")
             (markedString "An intro")
             [ markedString "A point"
             , markedString "A point"
@@ -100,7 +124,7 @@ initTechData =
             "functional programming"
             (Just "FP")
             (markedString "After intially `learning` Haskell, this programming style has captured my imagination with the way it helps cleanly extracting sub-problems.")
-            [ markedString "At `Unitron`, functional programming made `TDD` easier to apply for a numeric comparison `C#` GUI app"
+            [ markedString "At `Unitron`, functional programming made `test-driven development` easier to apply for a numeric comparison `C#` GUI app"
             , markedString "In `My Portfolio and Resume`, functional programming helps keep my `Elm` code well-organized, and makes refactoring a breeze"
             ]
             PortfolioAndResume
@@ -257,8 +281,8 @@ initTechData =
             ]
             PortfolioOnly
         , TechItemData
-            "TDD"
-            Nothing
+            "test-driven development"
+            (Just "TDD")
             (markedString "An intro")
             [ markedString "A point"
             , markedString "A point"
@@ -266,6 +290,22 @@ initTechData =
             PortfolioOnly
         , TechItemData
             "Unicode"
+            Nothing
+            (markedString "An intro")
+            [ markedString "A point"
+            , markedString "A point"
+            ]
+            PortfolioOnly
+        , TechItemData
+            "version control"
+            Nothing
+            (markedString "An intro")
+            [ markedString "A point"
+            , markedString "A point"
+            ]
+            PortfolioOnly
+        , TechItemData
+            "visual design"
             Nothing
             (markedString "An intro")
             [ markedString "A point"
@@ -289,6 +329,5 @@ initTechData =
             ]
             PortfolioOnly
         ]
-    , outro =
-        Just "Part of your tech stack not listed? Great! I’m confident in my ability to pick new things up quickly."
+    , outro = Nothing
     }
