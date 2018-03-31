@@ -4,7 +4,7 @@ module View.Details
         , subscribeDetails
         )
 
-import Css exposing (Style, alignItems, backgroundColor, batch, bold, borderRadius, borderWidth, bottom, capitalize, center, color, display, em, empty, fixed, fontSize, fontWeight, height, hidden, justifyContent, lastChild, left, lineHeight, marginBottom, marginLeft, marginRight, marginTop, maxWidth, minWidth, none, num, padding, position, px, right, spaceBetween, textDecoration, textTransform, top, underline, vh, visibility, vw, zero)
+import Css exposing (Style, alignItems, backgroundColor, batch, bold, borderRadius, borderWidth, bottom, capitalize, center, color, display, em, empty, fixed, flexBasis, fontSize, fontWeight, height, hidden, justifyContent, lastChild, left, lineHeight, marginBottom, marginLeft, marginRight, marginTop, none, num, padding, position, px, right, spaceBetween, textDecoration, textTransform, top, underline, vh, visibility, vw, zero)
 import CssShorthand exposing (batchMap, borderSolidColor, displayFlexColumn, displayFlexRow, marginRightLeft, marginTopBottom, mediaNotPrint, noStyle, paddingRightLeft, paddingTopBottom, textDecorationSkipInk, willChangeTransform, zIndexBackground, zIndexNormal, zIndexOverlay)
 import Data.Details exposing (DetailsItemData)
 import Display.Details exposing (DetailsAnimation(DetailsAnimationClose, DetailsAnimationNavigate), DetailsDisplay, DetailsDoubleBufferState(DetailsDoubleBufferFirstSlotNew, DetailsDoubleBufferFirstSlotOld), DetailsNavigateDirection(DetailsNavigateLink, DetailsNavigateNext, DetailsNavigatePrevious))
@@ -181,8 +181,7 @@ viewContent model item =
             , backgroundColor white
             , paddingTopBottom <| em 0.9
             , paddingRightLeft <| em 1.5
-            , minWidth <| em 20
-            , maxWidth <| em 30
+            , flexBasis <| em 30
             , fontSize <| em 0.8
             ]
     in

@@ -4,6 +4,7 @@ import Data exposing (initData)
 import Data.Details exposing (allDetailsItems)
 import Expect
 import MarkedString
+import Set
 import Test exposing (Test, concat, describe)
 import TestEx exposing (testAll)
 import Update exposing (findDetailsItem)
@@ -30,17 +31,18 @@ findDetailsItemTests =
                         , item.points
                             |> List.concatMap (MarkedString.transform (always []) List.singleton)
                             |> List.concat
+                            |> Set.fromList
                         )
                     )
                 |> List.filter
                     (\( _, links ) ->
-                        not (List.isEmpty links)
+                        not (Set.isEmpty links)
                     )
 
         loop ( name, links ) =
             describe name
                 [ testAll "link"
-                    links
+                    (links |> Set.toList)
                     (\input ->
                         Expect.notEqual
                             Nothing

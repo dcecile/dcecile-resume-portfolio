@@ -59,9 +59,12 @@ initWorkData =
                 , markedString "Led key improvements in team processes"
                 , markedString "Mentored team members"
                 ]
-                (markedString "An intro")
-                [ markedString "A point"
-                , markedString "A point"
+                (markedString "I worked with my team at Unitron for 8 years, `making` hearing instrument manufacturing software.")
+                [ markedString "I used `C#` for software implementation and maintenance; `SQL` and `Excel` for `analyzing` data"
+                , markedString "I mitigated bugs by writing integration tests, and by thoroughly `learning` related business/software systems"
+                , markedString "I built a hybrid `HTML5` and `C#` desktop application to replace a paper-based inspection process"
+                , markedString "I followed `test-driven development` to build a test run comparison tool that saved weeks of manual effort"
+                , markedString "Also: negotiating and documenting requirements, `coordinating` development cycles, `improving` team processes, mentoring & `teaching` peers"
                 ]
 
         nexj =
@@ -79,9 +82,10 @@ initWorkData =
                 [ markedString "Simplified WiX installer using `Java`"
                 , markedString "Wrote tests, fixed CRM bugs in `Scheme`"
                 ]
-                (markedString "An intro")
-                [ markedString "A point"
-                , markedString "A point"
+                (markedString "My final two co-op terms were with teams at NexJ Systems, `making` customer relationship management software:")
+                [ markedString "I worked at `improving` an Ant + WiX installer build system, using `Java`"
+                , markedString "I investigated and fixed client-critical bugs, in `Scheme`"
+                , markedString "I wrote business logic unit tests, in `Scheme`"
                 ]
 
         coreworx =
@@ -98,9 +102,10 @@ initWorkData =
                 [ markedString "Developed DMS personalization in `C#`"
                 , markedString "Automated database migration via `SQL`"
                 ]
-                (markedString "An intro")
-                [ markedString "A point"
-                , markedString "A point"
+                (markedString "I had two co-op terms with the team Coreworx, `making` an ASP.NET document management system:")
+                [ markedString "I helped develop a personalization system, in `C#`"
+                , markedString "I automated an Oracle database migration, via `SQL`"
+                , markedString "I ran manual regression tests, `learning` the fundamentals of good `bug reporting`"
                 ]
 
         lsi =
@@ -117,9 +122,11 @@ initWorkData =
                 [ markedString "Fixed H.264 video decoder bugs in `C`"
                 , markedString "Created a DSP log analysis tool in `C++`"
                 ]
-                (markedString "An intro")
-                [ markedString "A point"
-                , markedString "A point"
+                (markedString "My first co-op experience was with the team at LSI Logic, `making` H.264 video decoders and encoders:")
+                [ markedString "I began by reading the H.264 spec, `learning` how video encoding works"
+                , markedString "I fixed video decoder bugs, in `C`"
+                , markedString "I implemented video debugger features, in `C`"
+                , markedString "I created an internal tool for analyzing the logs of a digital-signal-processor pipeline simulation, in `C++`"
                 ]
 
         themusuem =

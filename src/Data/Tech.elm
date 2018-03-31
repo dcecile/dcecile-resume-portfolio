@@ -177,6 +177,14 @@ initTechData =
             ]
             PortfolioOnly
         , TechItemData
+            "Java"
+            Nothing
+            (markedString "An intro")
+            [ markedString "A point"
+            , markedString "A point"
+            ]
+            PortfolioOnly
+        , TechItemData
             "JavaScript"
             Nothing
             (markedString "An intro")
