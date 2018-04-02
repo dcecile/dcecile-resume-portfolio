@@ -90,89 +90,92 @@ initTechData =
         , TechItemData
             "code review"
             Nothing
-            (markedString "An intro")
-            [ markedString "A point"
-            , markedString "A point"
+            (markedString "With my team at `Unitron`, every change required the approval of two reviewers before being committed to `version control`:")
+            [ markedString "This offered excellent opportunities for `learning` and `teaching` about code maintainability as well as specific features, components, and technologies"
+            , markedString "Diligently applying this practice was a key step in `improving` the quality of our software"
+            , markedString "We found that the time spent on reviews was a net positive for our team’s productivity"
+            , markedString "(We mainly used SmartBear’s Collaborator, and sometimes used GitHub)"
             ]
             PortfolioOnly
         , TechItemData
-            "CSS3"
+            "CSS"
             Nothing
-            (markedString "An intro")
-            [ markedString "A point"
-            , markedString "A point"
+            (markedString "These days, my primary tool for `visual design` is CSS:")
+            [ markedString "At `Unitron`, I used CSS to implement a hybrid `HTML` desktop app according to initial mockups"
+            , markedString "In `PR Quest` and `Forks in the Road`, I’ve leveraged my `Qt` experience to set up CSS flexbox layouts"
+            , markedString "In `/tmp/blog` and `PR Quest`, I use CSS3 media queries for `responsive design`"
+            , markedString "With `Reactic-Tac-Toe` and `Forks in the Road`, I’m `learning` CSS3 transitions and animations for `functional animation`"
+            , markedString "With `My Portfolio and Resume`, I’m using CSS for my entire resume layout & styling"
             ]
             PortfolioAndResume
         , TechItemData
             "domain-specific languages"
             (Just "DSLs")
-            (markedString "An intro")
-            [ markedString "A point"
-            , markedString "A point"
+            (markedString "I have experience both using and creating DSLs:")
+            [ markedString "At `NexJ Systems`, I used an in-house `Scheme` DSL with all of my work on the CRM user interface and business logic"
+            , markedString "At `Unitron`, I created a `C#` DSL for specifying related test plans, to improve maintainability and track history in `version control`"
+            , markedString "With `My Portfolio and Resume` and `Tacit`, I’m using `Elm` and `Scala` DSLs for writing `HTML` and `CSS` code"
             ]
             PortfolioOnly
         , TechItemData
             "Elm"
             Nothing
-            (markedString "An intro")
-            [ markedString "A point"
-            , markedString "A point"
-            ]
+            (markedString "Elm is a front-end `functional programming` language that I started learning while `making` `My Portfolio and Resume`.")
+            []
             PortfolioOnly
         , TechItemData
             "Excel"
             Nothing
-            (markedString "An intro")
-            [ markedString "A point"
-            , markedString "A point"
+            (markedString "At `Unitron`, I used Excel together with `SQL` for `analyzing` data:")
+            [ markedString "I used Excel pivot tables and pivot charts to explore trends and correlations"
+            , markedString "I copied Excel summary tables and charts into emails to help explain the data to managers"
+            , markedString "I linked Excel to `SQL` tables and views, to create live reports"
             ]
             PortfolioOnly
         , TechItemData
             "functional programming"
             (Just "FP")
-            (markedString "After intially `learning` Haskell, this programming style has captured my imagination with the way it helps cleanly extracting sub-problems.")
+            (markedString "I use this programming style because it helps me cleanly extract sub-problems:")
             [ markedString "At `Unitron`, functional programming made `test-driven development` easier to apply for a numeric comparison `C#` GUI app"
             , markedString "In `My Portfolio and Resume`, functional programming helps keep my `Elm` code well-organized, and makes refactoring a breeze"
+            , markedString "In `Off-Grid Orcs`, functional programming helped prevent newly-implemented `Scala` features from breaking existing functionality"
             ]
             PortfolioAndResume
         , TechItemData
             "functional animation"
             Nothing
-            (markedString "An intro")
-            [ markedString "A point"
-            , markedString "A point"
+            (markedString "Functional animation helps me remove surprise from my UIs during state changes:")
+            [ markedString "In `Ultra Rainbow Bake Sale`, I used functional animation in `Lua` to give the game a more lively feel"
+            , markedString "With `Reactic-Tac-Toe`, I learned how to use `CSS` animations and transitions"
+            , markedString "In `Forks in the Road`, I use functional animation for all `React` page changes and form actions"
             ]
             PortfolioOnly
         , TechItemData
             "Google App Engine"
             (Just "GAE")
-            (markedString "An intro")
-            [ markedString "A point"
-            , markedString "A point"
-            ]
+            (markedString "My `Go` back-end for `Tiny Worker Bee` is built on Google App Engine, making use of the Datastore, Task Queue, and URL Fetch features.")
+            []
             PortfolioOnly
         , TechItemData
             "Go"
             Nothing
-            (markedString "An intro")
-            [ markedString "A point"
-            , markedString "A point"
-            ]
+            (markedString "I’m using Go with `Google App Engine` for the back-end for `Tiny Worker Bee`. It’s not a lot of code, but I’m making use of Go data structures, higher-order functions, and error handling.")
+            []
             PortfolioOnly
         , TechItemData
             "Heroku"
             Nothing
-            (markedString "An intro")
-            [ markedString "A point"
-            , markedString "A point"
-            ]
+            (markedString "I’ve deployed both of my `Rails` apps, `/tmp/blog/` and `Forks in the Road`, to Heroku (using Postgres as my `SQL` database).")
+            []
             PortfolioOnly
         , TechItemData
-            "HTML5"
+            "HTML"
             Nothing
-            (markedString "An intro")
-            [ markedString "A point"
-            , markedString "A point"
+            (markedString "I enjoy `making` web applications using HTML, `CSS`, and `JavaScript` because I know they’ll run on any modern browser:")
+            [ markedString "At `Unitron`, as an experiment with a new GUI technology beyond `WinForms` and WPF, I created a hybrid HTML and `C#` desktop application (not using Chrome + Electron, but using a custom IE + .NET WebBrowser control integration)"
+            , markedString "With `Off-Grid Orcs`, I learned how to do direct HTML5 Canvas buffer uploads to create a 64x64-pixel `Scala` game"
+            , markedString "With `PR Quest`, I used `Vue.js` (with an HTML5 History API router) to create a single-page application that can be navigated without page loads"
+            , markedString "Other web apps I’ve made: `Forks in the Road`, `My Portfolio and Resume`, `Reactic-Tac-Toe`, `Tacit`, `Tiny Worker Bee`, `/tmp/blog`"
             ]
             PortfolioOnly
         , TechItemData
@@ -181,7 +184,6 @@ initTechData =
             (markedString "An intro")
             [ markedString "A point"
             , markedString "A point"
-            , markedString "(Recently I’ve been using the related `C#` and `Scala` languages more than Java)"
             ]
             PortfolioOnly
         , TechItemData
@@ -190,6 +192,7 @@ initTechData =
             (markedString "An intro")
             [ markedString "A point"
             , markedString "A point"
+            , markedString "(Recently I’ve been using the related `C#` and `Scala` languages more than Java)"
             ]
             PortfolioOnly
         , TechItemData
@@ -230,7 +233,7 @@ initTechData =
             (markedString "My first `Linux` distro was Kubuntu, and from using KDE I got curious about `making` my own desktop applications in Qt:")
             [ markedString "From 2007 to 2009, I used Qt Widget to create my `Yomikata` comic book and manga reader"
             , markedString "In 2016, I learned enough Qt Quick to start creating a management simulation game"
-            , markedString "(Recently I’ve been more focused on `HTML5` instead of Qt)"
+            , markedString "(Recently I’ve been more focused on `HTML` instead of Qt)"
             ]
             PortfolioOnly
         , TechItemData
@@ -276,9 +279,12 @@ initTechData =
         , TechItemData
             "SQL"
             Nothing
-            (markedString "An intro")
-            [ markedString "A point"
-            , markedString "A point"
+            (markedString "At `Unitron`, I used `SQL` for `analyzing` data and creating internal development/QA tools:")
+            [ markedString "I used Excel together with ad hoc SQL queries to investigate bugs and communicate my findings"
+            , markedString "I optimized my ad hoc SQL queries to run on large datasets that were originally impossible"
+            , markedString "I created an SQL data warehouse with materialized views, for analyzing trends that spanned multiple upstream DBs"
+            , markedString "I used `C#` and SQL via `continuous integration` for populating and monitoring the data warehouse"
+            , markedString "I used the SQL materialized views in internal development and QA tools, with `C#` and `WinForms`"
             ]
             PortfolioAndResume
         , TechItemData

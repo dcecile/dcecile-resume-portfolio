@@ -46,13 +46,13 @@ initWorkData =
                 [ ( "Software Developer", "2009–2013" )
                 , ( "Senior Software Developer", "2013–2018" )
                 ]
-                [ "C# / WinForms / HTML5 /"
+                [ "C# / WinForms / HTML /"
                 , "SQL / Excel / data analysis /"
                 , "communication / coordination /"
                 , "leadership / mentoring"
                 ]
                 [ markedString "Coded manufacturing subsystems in `C#`"
-                , markedString "Built a hybrid `HTML5 / C#` desktop app"
+                , markedString "Built a hybrid `HTML / C#` desktop app"
                 , markedString "Investigated bugs using `SQL` and `Excel`"
                 , markedString "Negotiated and documented requirements"
                 , markedString "Coordinated team’s development cycles"
@@ -62,7 +62,7 @@ initWorkData =
                 (markedString "I worked with my team at Unitron for 8 years, `making` hearing instrument manufacturing software.")
                 [ markedString "I used `C#` for software implementation and maintenance; `SQL` and `Excel` for `analyzing` data"
                 , markedString "I mitigated bugs by writing integration tests, and by thoroughly `learning` related business/software systems"
-                , markedString "I built a hybrid `HTML5` and `C#` desktop application to replace a paper-based inspection process"
+                , markedString "I built a hybrid `HTML` and `C#` desktop application to replace a paper-based inspection process"
                 , markedString "I followed `test-driven development` to build a test run comparison tool that saved weeks of manual effort"
                 , markedString "Also: negotiating and documenting requirements, `coordinating` development cycles, `improving` team processes, mentoring & `teaching` peers"
                 ]

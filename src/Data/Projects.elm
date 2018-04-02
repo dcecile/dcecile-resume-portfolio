@@ -49,7 +49,7 @@ initProjectsData =
             (markedString "This is the result of my job search outgrowing its spreadsheet:")
             [ markedString "`Ruby` and `Rails` for the back-end, using GitHub-based JWT authentication"
             , markedString "`React` and ES6 `JavaScript` an emphasis on `functional programming` for the front-end"
-            , markedString "`Sass` to simplify `CSS3` syntax, and `Bootstrap` for basic UI elements"
+            , markedString "`Sass` to simplify `CSS` syntax, and `Bootstrap` for basic UI elements"
             , markedString "All continuously deployed to `Heroku` with each commit"
             ]
             PortfolioAndResume
@@ -57,7 +57,7 @@ initProjectsData =
             "Tacit"
             Nothing
             "2017–2018"
-            "Scala / CSS3"
+            "Scala / CSS"
             "A programming language"
             Nothing
             (Just "https://github.com/tacit-lang/tacit")
@@ -122,7 +122,7 @@ initProjectsData =
             "Reactic-Tac-Toe"
             (Just "RTT")
             "2017"
-            "React / CSS3"
+            "React / CSS"
             "Animations & transitions"
             Nothing
             (Just "https://github.com/dcecile/reactic-tac-toe")
@@ -174,13 +174,14 @@ initProjectsData =
             "My Portfolio and Resume"
             (Just "(This website)")
             "2018"
-            "Elm / CSS3"
+            "Elm / CSS"
             "My portfolio and resume"
             Nothing
             (Just "https://github.com/dcecile/dcecile-resume-portfolio")
             (markedString "An intro")
-            [ markedString "A point"
-            , markedString "A point"
+            [ markedString "I use Elm’s `functional programming` architecture to transform immutable data during state changes"
+            , markedString "I have unit tests, style tests, and continuous deployment to GitHub Pages set up through Semaphore `continuous integration`"
+            , markedString "I’ve used `CSS` to create a unified `visual design` for both screen and print"
             ]
             PortfolioOnly
         ]
