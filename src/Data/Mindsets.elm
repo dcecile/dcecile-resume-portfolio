@@ -64,7 +64,7 @@ initMindsetsData =
             ]
         , MindsetsItemData
             "coordinating"
-            (markedString "At `Unitron`, one of my responsibilities as a Senior Software Developer was to help keep everyone on the same page:")
+            (markedString "As a Senior Software Developer at `Unitron`, I helped keep everyone on the same page:")
             [ markedString "I worked with developers, QA, and project management to coordinate software release milestones"
             , markedString "I worked on-site with production managers to negotiate and coordinate custom software solutions"
             , markedString "I worked with developers and technical support to coordinate hot-fix releases"
