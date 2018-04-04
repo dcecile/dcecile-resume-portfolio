@@ -44,7 +44,7 @@ initTechData =
         , TechItemData
             "bug reporting"
             Nothing
-            (markedString "Writing clear and helpful bug reports is a key skill for any member of a software development team, and it’s one that I’ve been practising since my second co-op job:")
+            (markedString "Writing clear and helpful bug reports is a key skill for any member of a software development team. It’s one that I’ve been practising since my second co-op job:")
             [ markedString "At `Coreworx`, during my time helping QA with testing, I learned the keys to effective bug reporting"
             , markedString "At `Unitron`, I continued to work at `improving` my bug reporting as I started logging bugs for software components created by other teams"
             , markedString "At `Unitron`, I regularly triaged my team’s bugs, and spent time `teaching` others what to fix for unclear bug reports"
@@ -84,7 +84,7 @@ initTechData =
             (markedString "I have a strong interest in build systems and continuous integration:")
             [ markedString "Starting at `LSI Logic`, and continuing at `NexJ Systems` and `Unitron`, I’ve been making build systems improvements for maintainability and productivity"
             , markedString "At `Unitron`, I translated my build system experience into improvements and maintenance for our TeamCity continuous integration server"
-            , markedString "After experiencing the benefit of continually-deployed ClickOnce internal tools at `Unitron`, I’ve set up `Forks in the Road` and `My Portfolio and Resume` for continuous deployment using Semaphore"
+            , markedString "At `Unitron` I experienced the benefit of continuously-deployed ClickOnce internal tools—now I’m using Semaphore to continuously deploy `Forks in the Road` and `My Portfolio and Resume`"
             ]
             PortfolioOnly
         , TechItemData
@@ -113,7 +113,7 @@ initTechData =
             "domain-specific languages"
             (Just "DSLs")
             (markedString "I have experience both using and creating DSLs:")
-            [ markedString "At `NexJ Systems`, I used an in-house `Scheme` DSL with all of my work on the CRM user interface and business logic"
+            [ markedString "At `NexJ Systems`, I used an in-house `Scheme` DSL with my work on the CRM user interface and business logic"
             , markedString "At `Unitron`, I created a `C#` DSL for specifying related test plans—to improve maintainability and track history in `version control`"
             , markedString "With `My Portfolio and Resume` and `Tacit`, I’m using `Elm` and `Scala` DSLs for writing `HTML` and `CSS` code"
             , markedString "With `Tacit`, I’m creating a small DSL for each transformation that the compiler applies"
@@ -131,7 +131,7 @@ initTechData =
             (markedString "At `Unitron`, I used Excel together with `SQL` for `analyzing` data:")
             [ markedString "I used Excel pivot tables and pivot charts to explore trends and correlations"
             , markedString "I copied Excel table and chart summaries into emails—to help explain the data to managers"
-            , markedString "I linked Excel to directly `SQL` tables and views, to create live reports"
+            , markedString "I linked Excel directly to `SQL` tables and views, to create live reports"
             ]
             PortfolioOnly
         , TechItemData
@@ -156,13 +156,13 @@ initTechData =
         , TechItemData
             "Google App Engine"
             (Just "GAE")
-            (markedString "My `Go` back-end for `Tiny Worker Bee` is built on Google App Engine, making use of the Datastore, Task Queue, and URL Fetch features.")
+            (markedString "I built my `Go` back-end for `Tiny Worker Bee` with Google App Engine, making use of the Datastore, Task Queue, and URL Fetch features.")
             []
             PortfolioOnly
         , TechItemData
             "Go"
             Nothing
-            (markedString "I’m using Go with `Google App Engine` for the back-end for `Tiny Worker Bee`, a Twitter content library that post Tweets according to a dynamically-determined schedule.")
+            (markedString "I used Go with `Google App Engine` for the back-end for `Tiny Worker Bee`, a Twitter content library that post Tweets according to a dynamically-determined schedule.")
             []
             PortfolioOnly
         , TechItemData
@@ -188,7 +188,7 @@ initTechData =
             [ markedString "I converted our primary `WinForms` software from hard-coded English to supporting Chinese and German, including on-the-fly language changes"
             , markedString "I added basic right-to-left language support to our secondary-market `WinForms` software"
             , markedString "I managed the localization of our software plus another team's software, `coordinating` translator activities for up to 14 languages"
-            , markedString "I worked at continually `improving` our translation workflow with process changes and `C#` tooling"
+            , markedString "I worked at continuously `improving` our translation workflow with process changes and `C#` tooling"
             ]
             PortfolioOnly
         , TechItemData
@@ -203,10 +203,10 @@ initTechData =
         , TechItemData
             "JavaScript"
             Nothing
-            (markedString "I use JavaScript for most of my front-end development, with language features like modules, await, and classes provided by Babel:")
+            (markedString "I use JavaScript for most of my front-end development (with language features like modules, await, and classes provided by Babel):")
             [ markedString "At `Unitron`, I used JavaScript for the UI logic of a hybrid `HTML` and `C#` desktop app"
             , markedString "In `Forks in the Road`, I’m using JavaScript with `React` for the front-end of my probabilistic ranking web app"
-            , markedString "In `Tiny Worker Bee`, I’m using JavaScript with `Vue.js` for the front-end of my Twitter content library web app"
+            , markedString "In `Tiny Worker Bee`, I used JavaScript with `Vue.js` for the front-end of my Twitter content library web app"
             , markedString "In `PR Quest`, I used JavaScript with `Vue.js` to build a static-content single page application"
             , markedString "(I sometimes use `Elm` or `Scala` instead of JavaScript)"
             ]
@@ -216,7 +216,7 @@ initTechData =
             Nothing
             (markedString "I’m comfortable working in Linux, having used it for my primary development environment since university:")
             [ markedString "I know my way around the command line (e.g. for `version control`)"
-            , markedString "I have some experience making cross-platform desktop applications: `Ultra Rainbow Bake Sale` and `Yomikata`"
+            , markedString "I’ve built a couple cross-platform desktop applications: `Ultra Rainbow Bake Sale` and `Yomikata`"
             ]
             PortfolioOnly
         , TechItemData
@@ -228,7 +228,7 @@ initTechData =
         , TechItemData
             "Python"
             Nothing
-            (markedString "With `bitfontmake`, I’ve used Python to compile my TTF fonts from a custom pixel-based input format. This code is deployed on `Heroku` as a Flask application.")
+            (markedString "With `bitfontmake`, I’ve used Python to compile my TTF fonts from a custom pixel-based input format. I deployed this code to `Heroku` as a Flask application.")
             []
             PortfolioAndResume
         , TechItemData
@@ -282,7 +282,7 @@ initTechData =
             Nothing
             (markedString "At `Unitron`, I used `SQL` for `analyzing` data and creating internal development/QA tools:")
             [ markedString "I used Excel together with ad hoc SQL queries to investigate bugs and communicate my findings"
-            , markedString "I optimized my ad hoc SQL queries to run on large datasets that were originally impossible"
+            , markedString "I optimized my ad hoc SQL queries to run on large datasets that were initially impossible"
             , markedString "I created an SQL data warehouse with materialized views, for analyzing trends that spanned multiple upstream DBs"
             , markedString "I used `C#` and SQL via `continuous integration` for populating and monitoring the data warehouse"
             , markedString "I used the SQL materialized views in internal development and QA tools, with `C#` and `WinForms`"
@@ -292,8 +292,8 @@ initTechData =
             "Scala"
             Nothing
             (markedString "I’m using Scala as my “serious” `functional programming` language:")
-            [ markedString "For my `Tacit` programming language, the support for `functional programming` from the type system and standard library has been great"
-            , markedString "I used `Scala` and Scala.js to create `Off-Grid Orcs` as an HTML game with a `functional programming` architecture"
+            [ markedString "For my `Tacit` programming language, I’m taking advantage of support for `functional programming` from  of Scala’s type system and standard library"
+            , markedString "I used Scala.js to create `Off-Grid Orcs` as an HTML game with a `functional programming` architecture"
             ]
             PortfolioAndResume
         , TechItemData

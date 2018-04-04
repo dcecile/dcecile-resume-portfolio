@@ -132,7 +132,7 @@ initProjectsData =
             "Reactic-Tac-Toe"
             (Just "RTT")
             "2017"
-            "React / CSS"
+            "React / CSS3"
             "Animations & transitions"
             (Just "https://dcecile-reactic-tac-toe.now.sh/")
             (Just "https://github.com/dcecile/reactic-tac-toe")

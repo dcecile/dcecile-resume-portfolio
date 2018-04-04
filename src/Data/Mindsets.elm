@@ -56,8 +56,8 @@ initMindsetsData =
             ]
         , MindsetsItemData
             "analyzing"
-            (markedString "At `Unitron`, my team often encountered questions that could only be answered analyzing production data. Using a combination of `SQL` and `Excel`,")
-            [ markedString "I calculated the value of maintaining software solutions vs. the cost of setting up manual workarounds"
+            (markedString "At `Unitron`, my team often encountered questions that could only be answered by analyzing production data. Using a combination of `SQL` and `Excel`,")
+            [ markedString "I researched the value of maintaining software solutions vs. the cost of setting up manual workarounds"
             , markedString "I investigated the hardware component causes of software-level bugs"
             , markedString "I expanded test coverage using real-world test cases"
             , markedString "I proposed new quality tolerances based on historic measurements"
@@ -73,7 +73,7 @@ initMindsetsData =
             "improving"
             (markedString "When I work on a project, I always look for potential improvements that have good cost/benefit value:")
             [ markedString "At `Unitron`, I led key improvements to team processes for development and QA"
-            , markedString "At `NexJ Systems`, I improved the Ant+WiX installer build system to require less maintenance"
+            , markedString "At `NexJ Systems`, I improved the Ant+WiX installer build system to need less maintenance"
             , markedString "In `Forks in the Road`, I improved my initial `React` implementation by converting components to use `functional programming`"
             , markedString "In `Ultra Rainbow Bake Sale`, I improved the experience for new players by creating a dynamic hints system"
             ]
