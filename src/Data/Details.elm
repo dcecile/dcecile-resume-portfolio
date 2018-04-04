@@ -11,8 +11,8 @@ import MarkedString exposing (MarkedString)
 type alias DetailsItemData =
     { name : String
     , capitalizeName : Bool
-    , homepageUrl : Maybe String
-    , sourceUrl : Maybe String
+    , homepageURL : Maybe String
+    , sourceURL : Maybe String
     , intro : MarkedString
     , points : List MarkedString
     , previousName : Maybe String
@@ -28,10 +28,10 @@ type alias DetailsItemDataInput a =
     }
 
 
-type alias DetailsItemDataInputUrl a =
+type alias DetailsItemDataInputURL a =
     { a
-        | homepageUrl : Maybe String
-        , sourceUrl : Maybe String
+        | homepageURL : Maybe String
+        , sourceURL : Maybe String
     }
 
 
@@ -67,22 +67,22 @@ allDetailsItems data =
 
 getDetails :
     (DetailsItemDataInput a
-     -> Maybe (DetailsItemDataInputUrl b)
+     -> Maybe (DetailsItemDataInputURL b)
     )
     -> Bool
     -> DetailsItemDataInput a
     -> Maybe (DetailsItemDataInput a)
     -> Maybe (DetailsItemDataInput a)
     -> DetailsItemData
-getDetails itemUrlSelector capitalizeName item previousItem nextItem =
+getDetails itemURLSelector capitalizeName item previousItem nextItem =
     let
-        itemUrlPart part =
-            Maybe.andThen part (itemUrlSelector item)
+        itemURLPart part =
+            Maybe.andThen part (itemURLSelector item)
     in
     { name = item.name
     , capitalizeName = capitalizeName
-    , homepageUrl = itemUrlPart .homepageUrl
-    , sourceUrl = itemUrlPart .sourceUrl
+    , homepageURL = itemURLPart .homepageURL
+    , sourceURL = itemURLPart .sourceURL
     , intro = item.detailsIntro
     , points = item.detailsPoints
     , previousName = Maybe.map .name previousItem

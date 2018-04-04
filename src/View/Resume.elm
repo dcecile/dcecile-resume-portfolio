@@ -492,7 +492,7 @@ viewSection subheading nodes =
 
 
 viewLink : List Style -> IconSource -> String -> Maybe String -> IconBackground -> Html Msg
-viewLink customStyle iconSource url shortUrl iconBackground =
+viewLink customStyle iconSource url shortURL iconBackground =
     let
         style =
             [ color printBlack
@@ -504,7 +504,7 @@ viewLink customStyle iconSource url shortUrl iconBackground =
             replace All (regex "^(?:https://|mailto:)") (always "")
 
         urlText =
-            trimProtocol <| Maybe.withDefault url shortUrl
+            trimProtocol <| Maybe.withDefault url shortURL
     in
     styled a
         style

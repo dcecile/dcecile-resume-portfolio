@@ -240,8 +240,8 @@ viewLinks iconSource item =
             , marginRightLeft <| em 0.2
             ]
     in
-    [ item.homepageUrl |> Maybe.map (viewLink iconSource "Homepage" .home)
-    , item.sourceUrl |> Maybe.map (viewLink iconSource "Source code" .github)
+    [ item.homepageURL |> Maybe.map (viewLink iconSource "Homepage" .home)
+    , item.sourceURL |> Maybe.map (viewLink iconSource "Source code" .github)
     ]
         |> List.concatMap MaybeEx.toList
         |> styled p style []

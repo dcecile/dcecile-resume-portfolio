@@ -1,7 +1,9 @@
 module Data.Basic
     exposing
         ( BasicData
+        , homepageURL
         , initBasicData
+        , sourceURL
         )
 
 import MarkedString exposing (MarkedString, markedString)
@@ -20,12 +22,22 @@ type alias BasicData =
     }
 
 
+homepageURL : String
+homepageURL =
+    "https://dcecile.github.io"
+
+
+sourceURL : String
+sourceURL =
+    "https://github.com/dcecile/dcecile-resume-portfolio"
+
+
 initBasicData : BasicData
 initBasicData =
     { name = "Dan Cecile"
     , emailAddress = "dancecile@gmail.com"
     , currentLocation = "Kitchener, Ontario"
-    , homepageURL = "https://dcecile.github.io"
+    , homepageURL = homepageURL
     , portfolioTagline = "Software developer"
     , resumeTagline = "Software developer, 10 years experience"
     , portfolioIntroPoints =
@@ -34,6 +46,6 @@ initBasicData =
         , markedString "I’m ready for my next challenge."
         , markedString "How can I help your team `grow`?"
         ]
-    , sourceURL = "https://github.com/dcecile/dcecile-resume-portfolio"
+    , sourceURL = sourceURL
     , sourceShortURL = Just "https://git.io/dcecile-resume"
     }
