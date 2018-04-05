@@ -3,7 +3,7 @@ module View.Work
         ( viewWork
         )
 
-import Css exposing (bold, center, color, em, flexWrap, fontSize, fontStyle, fontWeight, italic, justifyContent, left, marginBottom, marginTop, paddingRight, px, textAlign, width, wrap)
+import Css exposing (Style, batch, bold, center, color, em, flexWrap, fontSize, fontStyle, fontWeight, italic, justifyContent, left, marginBottom, marginTop, paddingRight, px, textAlign, width, wrap)
 import CssShorthand exposing (displayFlexColumn, displayFlexRow, marginRightLeft, noStyle, paddingRightLeft, paddingTopBottom)
 import Data.Work exposing (WorkItemData)
 import Html.Styled exposing (Html, a, div, styled, text)
@@ -58,10 +58,7 @@ viewItem isLarge item =
         style =
             [ Button.border
             , Button.text
-            , if isLarge then
-                displayFlexRow
-              else
-                displayFlexColumn
+            , displayFlexColumn
             , if isLarge then
                 noStyle
               else
@@ -71,103 +68,61 @@ viewItem isLarge item =
               else
                 marginBottom <| px 16
             , marginRightLeft <| px 14
-            , paddingTopBottom <| em 0.8
+            , paddingTopBottom <|
+                if isLarge then
+                    em 1.0
+                else
+                    em 0.8
             , paddingRightLeft <|
                 if isLarge then
-                    em 1.2
+                    em 1.4
                 else
                     em 1.0
-            , textAlign left
             , fontSize <| em 0.85
             ]
     in
-    styled a
-        style
-        [ href "#"
-        , onClickPreventDefault (clickDetailsOpen item)
+    List.concat
+        [ item.name |> viewName |> List.singleton
+        , item.portfolioSkills |> List.map viewSkills
+        , item.portfolioDuration |> viewDuration |> List.singleton
         ]
-    <|
-        if isLarge then
-            [ viewItemColumn True <|
-                List.concat
-                    [ item.name |> viewName |> List.singleton
-                    , item.portfolioDuration |> viewDurationTitles True |> List.singleton
-                    , item.portfolioTitles |> List.map (viewDurationTitles False)
-                    ]
-            , viewItemColumn False <|
-                (item.portfolioSkills |> List.map viewSkills)
-            ]
-        else
-            [ item.name |> viewName
-            , ( item.portfolioDuration, item.portfolioTitles ) |> uncurry combineDurationAndTitles |> viewDurationTitles True
-            , item.portfolioSkills |> String.join " " |> viewSkills
+        |> styled a
+            style
+            [ href "#"
+            , onClickPreventDefault (clickDetailsOpen item)
             ]
 
 
-viewItemColumn : Bool -> List (Html Msg) -> Html Msg
-viewItemColumn usePadding =
+viewItemLine : List Style -> String -> Html Msg
+viewItemLine customStyle lineText =
     let
         style =
-            [ displayFlexColumn
-            , if usePadding then
-                paddingRight <| em 1.0
-              else
-                noStyle
+            [ marginBottom <| em 0.3
+            , batch customStyle
             ]
     in
-    styled div style []
+    styled div
+        style
+        []
+        [ text lineText ]
 
 
 viewName : String -> Html Msg
-viewName name =
-    let
-        style =
-            [ fontWeight bold
-            , marginBottom <| em 0.3
-            ]
-    in
-    styled div
-        style
-        []
-        [ text name ]
+viewName =
+    viewItemLine
+        [ fontWeight bold
+        ]
 
 
-combineDurationAndTitles : String -> List String -> String
-combineDurationAndTitles duration titles =
-    [ duration
-    , " ("
-    , String.join ", " titles
-    , ")"
-    ]
-        |> String.concat
-
-
-viewDurationTitles : Bool -> String -> Html Msg
-viewDurationTitles useItalic durationTitles =
-    let
-        style =
-            [ if useItalic then
-                fontStyle italic
-              else
-                noStyle
-            , marginBottom <| em 0.3
-            ]
-    in
-    styled div
-        style
-        []
-        [ text durationTitles ]
+viewDuration : String -> Html Msg
+viewDuration =
+    viewItemLine
+        [ fontStyle italic
+        ]
 
 
 viewSkills : String -> Html Msg
-viewSkills skills =
-    let
-        style =
-            [ color green
-            , marginBottom <| em 0.3
-            ]
-    in
-    styled div
-        style
-        []
-        [ text skills ]
+viewSkills =
+    viewItemLine
+        [ color green
+        ]

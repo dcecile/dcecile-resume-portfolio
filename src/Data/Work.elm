@@ -23,7 +23,6 @@ type alias WorkItemData =
     { name : String
     , resumeLocation : String
     , portfolioDuration : String
-    , portfolioTitles : List String
     , resumeTitlePeriods : List ( String, String )
     , portfolioSkills : List String
     , resumePoints : List MarkedString
@@ -39,17 +38,13 @@ initWorkData =
             WorkItemData
                 "Unitron"
                 "Kitchener, Ontario"
-                "8 years"
-                [ "Software Developer"
-                , "Senior Software Developer"
-                ]
+                "8 years (post-graduation)"
                 [ ( "Software Developer", "2009–2013" )
                 , ( "Senior Software Developer", "2013–2018" )
                 ]
-                [ "C# / WinForms / HTML /"
-                , "SQL / Excel / data analysis /"
-                , "communication / coordination /"
-                , "leadership / mentoring"
+                [ "C# / WinForms / HTML / SQL"
+                , "data analysis / communication"
+                , "coordination / leadership / mentoring"
                 ]
                 [ markedString "Coded manufacturing subsystems in `C#`"
                 , markedString "Built a hybrid `HTML / C#` desktop app"
@@ -71,9 +66,7 @@ initWorkData =
             WorkItemData
                 "NexJ Systems"
                 "Toronto, Ontario"
-                "8 months"
-                [ "co-op"
-                ]
+                "8 months (co-op)"
                 [ ( "Developer", "winter co-op, 2008" )
                 , ( "Application Developer", "fall co-op, 2008" )
                 ]
@@ -92,9 +85,7 @@ initWorkData =
             WorkItemData
                 "Coreworx"
                 "Kitchener, Ontario"
-                "8 months"
-                [ "co-op"
-                ]
+                "8 months (co-op)"
                 [ ( "Software Developer", "co-op, 2006/2007" )
                 ]
                 [ "C# / SQL"
@@ -112,9 +103,7 @@ initWorkData =
             WorkItemData
                 "LSI Logic"
                 "Waterloo, Ontario"
-                "8 months"
-                [ "co-op"
-                ]
+                "8 months (co-op)"
                 [ ( "Software Engineer", "co-op, 2005/2006" )
                 ]
                 [ "C / C++"
@@ -134,7 +123,6 @@ initWorkData =
                 "THEMUSEUM"
                 "Kitchener"
                 ""
-                []
                 [ ( "Makerspace Assistant", "2017–now" )
                 ]
                 []
