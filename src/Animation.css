@@ -1,3 +1,5 @@
+/* Illustration cycle animations */
+
 @keyframes castleCycle {
   0% {
     transform: translateX(-100px);
@@ -33,15 +35,15 @@
   30% {
     opacity: 1;
     transform: translate(50px, 35px) scale(1) translate(-50px, -35px);
-    animation-timing-function: ease-in-out;
   }
 
   35% {
     opacity: 1;
     transform: translate(50px, 35px) scale(1) translate(-50px, -35px);
+    animation-timing-function: ease-out;
   }
 
-  70% {
+  60% {
     opacity: 0;
     transform: translate(50px, 35px) scale(3) translate(-50px, -35px);
   }
@@ -86,6 +88,130 @@
     animation-timing-function: ease-in;
   }
 }
+
+@keyframes seedlingSunCycle {
+  0% {
+    opacity: 0;
+    transform:
+      translate(60px, 60px) rotate(-50deg) translate(-60px, -60px)
+      translate(29.420692px, 25.374981px) rotate(30deg) translate(-29.420692px, -25.374981px);
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  60% {
+    transform:
+      translate(60px, 60px) rotate(0deg) translate(-60px, -60px)
+      translate(29.420692px, 25.374981px) rotate(0deg) translate(-29.420692px, -25.374981px);
+  }
+
+  75% {
+    opacity: 1;
+  }
+
+  80% {
+    opacity: 0.5;
+  }
+
+  100% {
+    opacity: 0;
+    transform:
+      translate(60px, 60px) rotate(100deg) translate(-60px, -60px)
+      translate(29.420692px, 25.374981px) rotate(-60deg) translate(-29.420692px, -25.374981px);
+  }
+}
+
+@keyframes seedlingSunHaloCycle {
+  0% {
+    opacity: 0;
+  }
+
+  40% {
+    opacity: 1;
+  }
+
+  60% {
+    opacity: 1;
+  }
+
+  90% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes seedlingPlantCycle {
+  0% {
+    opacity: 0;
+    transform: translate(60.628791px, 63.558752px) scale(0.1) translate(-60.628791px, -63.558752px);
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  60% {
+    transform: translate(60.628791px, 63.558752px) scale(1) translate(-60.628791px, -63.558752px);
+  }
+
+  70% {
+    opacity: 1;
+    animation-timing-function: ease-in;
+  }
+
+  95% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(60.628791px, 63.558752px) scale(1) translate(-60.628791px, -63.558752px);
+  }
+}
+
+@keyframes seedlingPlantLeafFastCycle {
+  0% {
+    transform: scale(0.1);
+  }
+
+  20% {
+    transform: scale(0.3);
+  }
+
+  70% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes seedlingPlantLeafSlowCycle {
+  0% {
+    transform: scale(0.1);
+  }
+
+  22% {
+    transform: scale(0.25);
+  }
+
+  70% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+
+/* UI animations */
 
 @keyframes fadeOut {
   100% {

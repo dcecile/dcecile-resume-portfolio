@@ -1,6 +1,8 @@
 module View.Leaf
     exposing
-        ( viewLeaf
+        ( leafPathData
+        , leafStalkPoint
+        , viewLeaf
         )
 
 import Css exposing (Vw, height, num, opacity, px, vw, width)
@@ -40,6 +42,16 @@ leafCycle =
 leafDelayOffset : Float
 leafDelayOffset =
     leafCycle * 0.08
+
+
+leafPathData : String
+leafPathData =
+    "M 4,15 C 22,59 43,93 96,79 C 74,39 57,-9 4,15 Z"
+
+
+leafStalkPoint : ( Float, Float )
+leafStalkPoint =
+    ( 4, 15 )
 
 
 viewLeaf : Bool -> Bool -> Float -> Svg Msg
@@ -109,9 +121,6 @@ viewLeafPath reverseAnimation delay parentSize size degrees ( x, y ) =
                     , "both"
                     ]
             ]
-
-        pathData =
-            "M 4,15 C 22,59 43,93 96,79 C 74,39 57,-9 4,15 Z"
     in
     g
         [ transform
@@ -122,6 +131,6 @@ viewLeafPath reverseAnimation delay parentSize size degrees ( x, y ) =
         ]
         [ styled path
             style
-            [ d pathData ]
+            [ d leafPathData ]
             []
         ]

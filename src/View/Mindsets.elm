@@ -17,6 +17,7 @@ import View.Castle exposing (viewCastle)
 import View.Colors exposing (white)
 import View.MindsetsCircle exposing (viewMindsetsCircle)
 import View.Section exposing (viewSection)
+import View.Seedling exposing (viewSeedling)
 
 
 itemSize : Em
@@ -58,7 +59,7 @@ viewItems data =
             ]
     in
     [ ( .making, Just viewCastle )
-    , ( .learning, Nothing )
+    , ( .learning, Just viewSeedling )
     , ( .teaching, Nothing )
     , ( .analyzing, Nothing )
     , ( .coordinating, Nothing )
