@@ -2,6 +2,7 @@ module CssShorthand
     exposing
         ( afterText
         , animation
+        , animationCycle
         , batchMap
         , beforeText
         , borderBottomSolidColor
@@ -40,6 +41,17 @@ afterText =
 animation : String -> Style
 animation =
     property "animation"
+
+
+animationCycle : Float -> String -> Style
+animationCycle durationMilliseconds name =
+    animation <|
+        String.join " "
+            [ name
+            , toString durationMilliseconds ++ "ms"
+            , "infinite"
+            , "both"
+            ]
 
 
 batchMap : List (a -> Style) -> a -> Style

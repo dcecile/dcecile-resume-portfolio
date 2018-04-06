@@ -1,6 +1,7 @@
 module View.Button
     exposing
         ( border
+        , borderCenter
         , sizeLarge
         , sizeMedium
         , sizeSmall
@@ -24,6 +25,19 @@ border =
             (px 5)
             zero
             (px -1)
+            paleGreen
+        ]
+
+
+borderCenter : Style
+borderCenter =
+    batch
+        [ border
+        , boxShadow5
+            (px 0)
+            (px 10)
+            zero
+            (px -6)
             paleGreen
         ]
 

@@ -1,4 +1,76 @@
-@keyframes sway {
+@keyframes castleCycle {
+  0% {
+    transform: translateX(-100px);
+    animation-timing-function: ease-out;
+  }
+
+  20% {
+    transform: initial;
+  }
+
+  80% {
+    transform: initial;
+    animation-timing-function: linear;
+  }
+
+  100% {
+    transform: translateY(-100px);
+  }
+}
+
+@keyframes castleCircleCycle {
+  0% {
+    opacity: 0;
+    transform: translate(50px, 35px) scale(0) translate(-50px, -35px);
+  }
+
+  20% {
+    opacity: 0;
+    transform: translate(50px, 35px) scale(0) translate(-50px, -35px);
+    animation-timing-function: ease-out;
+  }
+
+  30% {
+    opacity: 1;
+    transform: translate(50px, 35px) scale(1) translate(-50px, -35px);
+    animation-timing-function: ease-in-out;
+  }
+
+  35% {
+    opacity: 1;
+    transform: translate(50px, 35px) scale(1) translate(-50px, -35px);
+  }
+
+  70% {
+    opacity: 0;
+    transform: translate(50px, 35px) scale(3) translate(-50px, -35px);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(50px, 35px) scale(3) translate(-50px, -35px);
+  }
+}
+
+@keyframes castleBuildingCycle {
+  0% {
+    opacity: 0;
+    transform: translate(50px, 35px) scale(0.2) translate(-50px, -35px);
+  }
+
+  35% {
+    opacity: 0;
+    transform: translate(50px, 35px) scale(0.2) translate(-50px, -35px);
+    animation-timing-function: ease-out;
+  }
+
+  70% {
+    opacity: 1;
+    transform: translate(50px, 35px) scale(1) translate(-50px, -35px);
+  }
+}
+
+@keyframes leafCycle {
   0% {
     transform: rotate(5deg);
     animation-timing-function: ease-in;

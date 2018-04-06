@@ -98,7 +98,7 @@ viewLeafPath reverseAnimation delay parentSize size degrees ( x, y ) =
             [ strokeWidthUnscaled (px 2) (parentSize * size)
             , animation <|
                 String.join " "
-                    [ "sway"
+                    [ "leafCycle"
                     , toString leafCycle ++ "ms"
                     , toString delay ++ "ms"
                     , "infinite"
@@ -109,6 +109,9 @@ viewLeafPath reverseAnimation delay parentSize size degrees ( x, y ) =
                     , "both"
                     ]
             ]
+
+        pathData =
+            "M 4,15 C 22,59 43,93 96,79 C 74,39 57,-9 4,15 Z"
     in
     g
         [ transform
@@ -119,7 +122,6 @@ viewLeafPath reverseAnimation delay parentSize size degrees ( x, y ) =
         ]
         [ styled path
             style
-            [ d "M 4,15 C 22,59 43,93 96,79 C 74,39 57,-9 4,15 Z"
-            ]
+            [ d pathData ]
             []
         ]

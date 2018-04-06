@@ -5,13 +5,15 @@ module View.Mindsets
 
 import Css exposing (Em, alignItems, backgroundColor, capitalize, center, em, flexWrap, height, justifyContent, marginBottom, minWidth, textTransform, width, wrap)
 import CssShorthand exposing (batchMap, displayFlexColumn, displayFlexRow, marginRightLeft, marginTopBottom)
-import Data.Mindsets exposing (MindsetsItemData)
+import Data.Mindsets exposing (MindsetsData, MindsetsItemData)
 import Html.Styled exposing (Html, a, div, span, styled, text)
 import Html.Styled.Attributes exposing (href)
 import HtmlShorthand exposing (onClickPreventDefault)
 import Model exposing (Model)
 import Msg exposing (Msg, clickDetailsOpen)
+import Svg.Styled exposing (Svg)
 import View.Button as Button
+import View.Castle exposing (viewCastle)
 import View.Colors exposing (white)
 import View.MindsetsCircle exposing (viewMindsetsCircle)
 import View.Section exposing (viewSection)
@@ -41,12 +43,12 @@ viewMindsets model =
     viewSection
         model.iconSource
         sectionData
-        [ viewItems sectionData.items
+        [ viewItems sectionData
         ]
 
 
-viewItems : List MindsetsItemData -> Html Msg
-viewItems items =
+viewItems : MindsetsData -> Html Msg
+viewItems data =
     let
         style =
             [ displayFlexRow
@@ -55,13 +57,19 @@ viewItems items =
             , marginBottom <| em 0.8
             ]
     in
-    items
-        |> List.map viewItem
+    [ ( .making, Just viewCastle )
+    , ( .learning, Nothing )
+    , ( .teaching, Nothing )
+    , ( .analyzing, Nothing )
+    , ( .coordinating, Nothing )
+    , ( .improving, Nothing )
+    ]
+        |> List.map (\( itemSelector, illustration ) -> viewItem (itemSelector data) illustration)
         |> styled div style []
 
 
-viewItem : MindsetsItemData -> Html Msg
-viewItem item =
+viewItem : MindsetsItemData -> Maybe (Svg Msg) -> Html Msg
+viewItem item illustration =
     let
         style =
             [ Button.text
@@ -77,27 +85,27 @@ viewItem item =
         [ href "#"
         , onClickPreventDefault (clickDetailsOpen item)
         ]
-        [ viewItemBackground
+        [ viewItemBackground illustration
         , viewItemLink item.name
         ]
 
 
-viewItemBackground : Html Msg
-viewItemBackground =
+viewItemBackground : Maybe (Svg Msg) -> Html Msg
+viewItemBackground illustration =
     let
         style =
             [ batchMap [ width, height ] itemSize
             , marginBottom itemButtonOffset
             ]
     in
-    viewMindsetsCircle style
+    viewMindsetsCircle style illustration
 
 
 viewItemLink : String -> Html Msg
 viewItemLink name =
     let
         style =
-            [ Button.border
+            [ Button.borderCenter
             , Button.sizeMedium
             , minWidth itemButtonWidth
             , backgroundColor white
