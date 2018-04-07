@@ -15,6 +15,7 @@ import Svg.Styled exposing (Svg)
 import View.Button as Button
 import View.Castle exposing (viewCastle)
 import View.Colors exposing (white)
+import View.Fire exposing (viewFire)
 import View.MindsetsCircle exposing (viewMindsetsCircle)
 import View.Section exposing (viewSection)
 import View.Seedling exposing (viewSeedling)
@@ -60,7 +61,7 @@ viewItems data =
     in
     [ ( .making, Just viewCastle )
     , ( .learning, Just viewSeedling )
-    , ( .teaching, Nothing )
+    , ( .teaching, Just viewFire )
     , ( .analyzing, Nothing )
     , ( .coordinating, Nothing )
     , ( .improving, Nothing )
