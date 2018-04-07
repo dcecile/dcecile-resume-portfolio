@@ -83,7 +83,7 @@ viewPlant =
 
 
 viewPlantLeaf : Bool -> ( Float, Float ) -> Float -> Float -> Bool -> Svg Msg
-viewPlantLeaf flipX ( attachX, attachY ) leafScale rotation growFast =
+viewPlantLeaf flipX ( attachX, attachY ) leafScale degrees growFast =
     let
         ( leafStalkX, leafStalkY ) =
             leafStalkPoint
@@ -106,7 +106,7 @@ viewPlantLeaf flipX ( attachX, attachY ) leafScale rotation growFast =
         [ transform
             [ translate attachX attachY
             , flipAxes flipX False
-            , rotate rotation ( 0, 0 )
+            , rotate degrees ( 0, 0 )
             ]
         ]
         [ styled g

@@ -20,6 +20,7 @@ import View.Fire exposing (viewFire)
 import View.MindsetsCircle exposing (viewMindsetsCircle)
 import View.Section exposing (viewSection)
 import View.Seedling exposing (viewSeedling)
+import View.Wheel exposing (viewWheel)
 
 
 itemSize : Em
@@ -64,7 +65,7 @@ viewItems data =
     , ( .learning, Just viewSeedling )
     , ( .teaching, Just viewFire )
     , ( .analyzing, Just viewChart )
-    , ( .coordinating, Nothing )
+    , ( .coordinating, Just viewWheel )
     , ( .improving, Nothing )
     ]
         |> List.map (\( itemSelector, illustration ) -> viewItem (itemSelector data) illustration)
