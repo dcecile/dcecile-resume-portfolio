@@ -14,6 +14,7 @@ import Msg exposing (Msg, clickDetailsOpen)
 import Svg.Styled exposing (Svg)
 import View.Button as Button
 import View.Castle exposing (viewCastle)
+import View.Chart exposing (viewChart)
 import View.Colors exposing (white)
 import View.Fire exposing (viewFire)
 import View.MindsetsCircle exposing (viewMindsetsCircle)
@@ -62,7 +63,7 @@ viewItems data =
     [ ( .making, Just viewCastle )
     , ( .learning, Just viewSeedling )
     , ( .teaching, Just viewFire )
-    , ( .analyzing, Nothing )
+    , ( .analyzing, Just viewChart )
     , ( .coordinating, Nothing )
     , ( .improving, Nothing )
     ]
