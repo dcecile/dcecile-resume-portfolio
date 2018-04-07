@@ -3,7 +3,7 @@ module View.Diamond
         ( viewDiamond
         )
 
-import Css exposing (Style, px)
+import Css exposing (Style, num, opacity, px)
 import CssShorthand exposing (animationCycle)
 import Msg exposing (Msg)
 import Svg.Styled exposing (Svg, g, path, styled)
@@ -39,6 +39,7 @@ viewRock =
         style =
             [ fill paleGreen
             , strokeWidth <| px 0
+            , opacity <| num 0
             , diamondAnimation "diamondRockCycle"
             ]
 
@@ -57,6 +58,7 @@ viewBlur =
         style =
             [ fill paleGreen
             , strokeWidth <| px 0
+            , opacity <| num 0
             , diamondAnimation "diamondBlurCycle"
             ]
 

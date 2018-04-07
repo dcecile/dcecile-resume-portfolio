@@ -261,6 +261,7 @@
   }
 
   100% {
+    opacity: 1;
     transform: translate(50px, 39px) scale(1) rotate(0deg) translate(-50px, -39px);
   }
 }
