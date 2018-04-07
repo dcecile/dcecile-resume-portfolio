@@ -133,6 +133,138 @@
   }
 }
 
+@keyframes diamondCycle {
+  0% {
+    transform: translate(50px, 39px) rotate(0turn) translate(-50px, -39px);
+  }
+
+  15% {
+    transform: translate(50px, 39px) rotate(0turn) translate(-50px, -39px);
+    animation-timing-function: ease-in-out;
+  }
+
+  65% {
+    transform: translate(50px, 39px) rotate(3turn) translate(-50px, -39px);
+  }
+
+  100% {
+    transform: translate(50px, 39px) rotate(3turn) translate(-50px, -39px);
+  }
+}
+
+@keyframes diamondRockCycle {
+  0% {
+    opacity: 0;
+    animation-timing-function: ease-in;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  25% {
+    opacity: 1;
+    animation-timing-function: linear;
+  }
+
+  45% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes diamondBlurCycle {
+  0% {
+    opacity: 0;
+  }
+
+  15% {
+    opacity: 0;
+    animation-timing-function: linear;
+  }
+
+  45% {
+    opacity: 0.3;
+    animation-timing-function: linear;
+  }
+
+  65% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes diamondGemCycle {
+  0% {
+    opacity: 0;
+  }
+
+  35% {
+    opacity: 0;
+    animation-timing-function: linear;
+  }
+
+  65% {
+    opacity: 1;
+  }
+
+  87% {
+    opacity: 1;
+    animation-timing-function: ease-in;
+  }
+
+  96% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes diamondGemShineCycle {
+  0% {
+    opacity: 0;
+    transform: translate(50px, 39px) scale(0.95) rotate(0deg) translate(-50px, -39px);
+  }
+
+  65% {
+    opacity: 0;
+    animation-timing-function: ease-in;
+  }
+
+  68% {
+    transform: translate(50px, 39px) scale(0.95) rotate(0deg) translate(-50px, -39px);
+  }
+
+  69% {
+    transform: translate(50px, 39px) scale(0.95) rotate(-2deg) translate(-50px, -39px);
+  }
+
+  71% {
+    opacity: 1;
+    transform: translate(50px, 39px) scale(1) rotate(0deg) translate(-50px, -39px);
+  }
+
+  73% {
+    transform: translate(50px, 39px) scale(1) rotate(2deg) translate(-50px, -39px);
+  }
+
+  75% {
+    transform: translate(50px, 39px) scale(1) rotate(0deg) translate(-50px, -39px);
+  }
+
+  100% {
+    transform: translate(50px, 39px) scale(1) rotate(0deg) translate(-50px, -39px);
+  }
+}
+
 @keyframes fireSpinnerCycle {
   0% {
     opacity: 0;

@@ -8,7 +8,7 @@ import CssShorthand exposing (animationCycle)
 import Msg exposing (Msg)
 import Svg.Styled exposing (Svg, circle, g, path, styled)
 import Svg.Styled.Attributes exposing (cx, cy, d, r)
-import SvgShorthand exposing (fill, flipAxes, rotate, scale, strokeWidth, transform, translate)
+import SvgShorthand exposing (fill, rotate, scale, strokeWidth, transform, translate)
 import View.Colors exposing (paleGreen)
 
 

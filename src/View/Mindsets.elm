@@ -16,6 +16,7 @@ import View.Button as Button
 import View.Castle exposing (viewCastle)
 import View.Chart exposing (viewChart)
 import View.Colors exposing (white)
+import View.Diamond exposing (viewDiamond)
 import View.Fire exposing (viewFire)
 import View.MindsetsCircle exposing (viewMindsetsCircle)
 import View.Section exposing (viewSection)
@@ -61,18 +62,18 @@ viewItems data =
             , marginBottom <| em 0.8
             ]
     in
-    [ ( .making, Just viewCastle )
-    , ( .learning, Just viewSeedling )
-    , ( .teaching, Just viewFire )
-    , ( .analyzing, Just viewChart )
-    , ( .coordinating, Just viewWheel )
-    , ( .improving, Nothing )
+    [ ( .making, viewCastle )
+    , ( .learning, viewSeedling )
+    , ( .teaching, viewFire )
+    , ( .analyzing, viewChart )
+    , ( .coordinating, viewWheel )
+    , ( .improving, viewDiamond )
     ]
         |> List.map (\( itemSelector, illustration ) -> viewItem (itemSelector data) illustration)
         |> styled div style []
 
 
-viewItem : MindsetsItemData -> Maybe (Svg Msg) -> Html Msg
+viewItem : MindsetsItemData -> Svg Msg -> Html Msg
 viewItem item illustration =
     let
         style =
@@ -94,7 +95,7 @@ viewItem item illustration =
         ]
 
 
-viewItemBackground : Maybe (Svg Msg) -> Html Msg
+viewItemBackground : Svg Msg -> Html Msg
 viewItemBackground illustration =
     let
         style =

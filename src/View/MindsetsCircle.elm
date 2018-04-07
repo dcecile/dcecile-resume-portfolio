@@ -4,7 +4,6 @@ module View.MindsetsCircle
         )
 
 import Css exposing (Style, batch, px, transparent)
-import MaybeEx
 import Msg exposing (Msg)
 import Svg.Styled exposing (Svg, circle, clipPath, g, styled, svg)
 import Svg.Styled.Attributes as SvgAttributes exposing (cx, cy, id, r)
@@ -12,7 +11,7 @@ import SvgShorthand exposing (fill, stroke, strokeWidth, viewBoxSquare)
 import View.Colors exposing (paleGreen)
 
 
-viewMindsetsCircle : List Style -> Maybe (Svg Msg) -> Svg Msg
+viewMindsetsCircle : List Style -> Svg Msg -> Svg Msg
 viewMindsetsCircle customStyle illustration =
     let
         style =
@@ -31,5 +30,5 @@ viewMindsetsCircle customStyle illustration =
             [ circle [ cx "50", cy "50", r "42" ] [] ]
         , g
             [ SvgAttributes.clipPath "url(#clip)" ]
-            (illustration |> MaybeEx.toList)
+            [ illustration ]
         ]
