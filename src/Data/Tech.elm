@@ -278,17 +278,6 @@ initTechData =
             ]
             PortfolioOnly
         , TechItemData
-            "SQL"
-            Nothing
-            (markedString "At `Unitron`, I used `SQL` for `analyzing` data and creating internal development/QA tools:")
-            [ markedString "I used Excel together with ad hoc SQL queries to investigate bugs and communicate my findings"
-            , markedString "I optimized my ad hoc SQL queries to run on large datasets that were initially impossible"
-            , markedString "I created an SQL data warehouse with materialized views, for analyzing trends that spanned multiple upstream DBs"
-            , markedString "I used `C#` and SQL via `continuous integration` for populating and monitoring the data warehouse"
-            , markedString "I used the SQL materialized views in internal development and QA tools, with `C#` and `WinForms`"
-            ]
-            PortfolioAndResume
-        , TechItemData
             "Scala"
             Nothing
             (markedString "I’m using Scala as my “serious” `functional programming` language:")
@@ -301,6 +290,27 @@ initTechData =
             Nothing
             (markedString "Scheme was my introduction to the `functional programming` concept of higher-order functions. I used it at `NexJ Systems` to fix bugs and write unit tests.")
             []
+            PortfolioOnly
+        , TechItemData
+            "SQL"
+            Nothing
+            (markedString "At `Unitron`, I used `SQL` for `analyzing` data and creating internal development/QA tools:")
+            [ markedString "I used Excel together with ad hoc SQL queries to investigate bugs and communicate my findings"
+            , markedString "I optimized my ad hoc SQL queries to run on large datasets that were initially impossible"
+            , markedString "I created an SQL data warehouse with materialized views, for analyzing trends that spanned multiple upstream DBs"
+            , markedString "I used `C#` and SQL via `continuous integration` for populating and monitoring the data warehouse"
+            , markedString "I used the SQL materialized views in internal development and QA tools, with `C#` and `WinForms`"
+            ]
+            PortfolioAndResume
+        , TechItemData
+            "SVG"
+            Nothing
+            (markedString "I use SVG in my `HTML` applications, and I know its capabilities (and limitations).")
+            [ markedString "At `Unitron`, I created an interactive SVG document (via the D3.js `JavaScript` library) for `teaching` our network topology of production/test servers and databases"
+            , markedString "At `Unitron`, I designed and used SVG icons for a hybrid `HTML` desktop app"
+            , markedString "For `Forks in the Road`, I began my `visual design` by creating SVG mockup in Inkscape"
+            , markedString "For `My Portfolio and Resume`, I created SVG illustrations in `Elm`—animating them using `CSS`"
+            ]
             PortfolioOnly
         , TechItemData
             "test-driven development"
@@ -325,7 +335,7 @@ initTechData =
             "visual design"
             Nothing
             (markedString "I use visual design to try to help my software communicate effectively:")
-            [ markedString "I use Inkscape (vector graphics software) to draw UI mockups and logos"
+            [ markedString "I use Inkscape (`SVG` editing software) to draw UI mockup, icons, and logos"
             , markedString "With `My Portfolio and Resume`, I tried using `CSS` to create a highly-readable resume that doesn’t follow the standard single column layout"
             , markedString "With `PR Quest`, I tried to create a professional-quality website with crisp typography and `responsive design`"
             , markedString "With `/tmp/blog`, I tried to create an attractive and inviting design focused around a monospace font"

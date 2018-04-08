@@ -197,6 +197,7 @@ initProjectsData =
             (markedString "For my 2018 job search, I decided to create a GitHub homepage to host my portfolio and my resume:")
             [ markedString "I use `CSS` (via an `Elm` DSL) to create a unified `visual design` for both screen and print"
             , markedString "I use `Elm`’s `functional programming` architecture to transform immutable data during state changes and display it as `HTML`"
+            , markedString "I use `Elm` to construct custom `SVG` illustrations, which I style and animate via `CSS`"
             , markedString "I use Semaphore `continuous integration` for unit tests, style tests, and continuous deployment to GitHub Pages"
             ]
             PortfolioOnly

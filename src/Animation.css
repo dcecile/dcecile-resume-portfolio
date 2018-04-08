@@ -344,6 +344,13 @@
     animation-timing-function: ease-in-out;
   }
 
+  40% {
+    transform:
+      translateX(0px)
+      translate(30px, 47.021843px) scale(0.9) translate(-30px, -47.021843px);
+    animation-timing-function: ease-in-out;
+  }
+
   75% {
     transform:
       translateX(0px)
