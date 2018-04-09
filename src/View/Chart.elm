@@ -19,7 +19,7 @@ chartAnimation =
 
 chartCenterPoint : ( Float, Float )
 chartCenterPoint =
-    ( 50, 150 )
+    ( 50, 100 )
 
 
 viewChart : Svg Msg
