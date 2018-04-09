@@ -44,7 +44,7 @@ initProjectsData =
             (Just "Forks")
             "2018"
             "React / Rails"
-            "Probabilistic ranking"
+            "Probabilistic ranking tool"
             (Just "https://forks-in-the-road.herokuapp.com/")
             (Just "https://github.com/dcecile/forks-in-the-road")
             (markedString "I’m `making` a probabilistic ranking web app. The primary goal is to help me determine the list of companies that I want to apply to for my job search.")
@@ -108,7 +108,7 @@ initProjectsData =
             "SPA static data viewer"
             (Just "https://pr-quest.netlify.com/")
             (Just "https://github.com/dcecile/pr-quest")
-            (markedString "As the Canadian debate over proportional representation was heating up in 2017, I created this website for tracking MP support for electoral change:")
+            (markedString "As the Canadian debate over proportional representation (PR) was heating up in 2017, I created this website for tracking MP support for electoral change:")
             [ markedString "I learned `Vue.js` and used it to create my first single-page application"
             , markedString "I used Airtable as my data source, exporting the data to JSON during `continuous integration` (deployment to Netlify)"
             , markedString "I also used `HTML` pre-rendering, to help improve page load times and allow basic site use without `JavaScript`"
@@ -133,7 +133,7 @@ initProjectsData =
             (Just "RTT")
             "2017"
             "React / CSS3"
-            "Animations & transitions"
+            "CSS3 animation experiment"
             (Just "https://dcecile-reactic-tac-toe.now.sh/")
             (Just "https://github.com/dcecile/reactic-tac-toe")
             (markedString "I created this simple 2-player game by following a `React` tutorial, and took the opportunity to experiment with `visual design`:")
@@ -164,10 +164,11 @@ initProjectsData =
             "Deck building + baking game"
             (Just "https://dcecile.itch.io/ultra-rainbow-bake-sale")
             (Just "https://github.com/dcecile/ultra-rainbow-bake-sale")
-            (markedString "In 2016, I had an idea for a single-player, deck-building, baking game, and brought it to life with `Lua` and LÖVE:")
-            [ markedString "I learned Lua together with a new style of programming: prototype-based OOP"
+            (markedString "In 2016, I had an idea for a single-player, deck-building, baking game, and brought it to life with the `Lua` and LÖVE:")
+            [ markedString "I used the LÖVE game development library to draw 2D shapes, display text, play music, and get user input"
+            , markedString "Using Lua, I learned a new style of programming: prototype-based OOP"
             , markedString "I started with a simple implementation—gradually adding features informed by feedback from friends and forum users"
-            , markedString "I used `functional animation` to give the game an element of “juiciness”"
+            , markedString "I used `functional animation` to give the game an element of juiciness"
             , markedString "I implemented an AI-like dynamic hints system using a sequence of play conditions and suggestions"
             ]
             PortfolioOnly
@@ -176,7 +177,7 @@ initProjectsData =
             (Just "TWB")
             "2017"
             "Vue.js / Go"
-            "Twitter content library"
+            "Twitter content library bot"
             (Just "https://tinyworkerbee.social/")
             Nothing
             (markedString "In 2017, I got curious about marketing and social media. One result is this Twitter bot:")

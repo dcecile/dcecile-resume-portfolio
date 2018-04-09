@@ -31,7 +31,7 @@ initTechData =
     , name = "Tech fluency"
     , iconBackground = .box
     , intro =
-        "I’m serious about learning new skills and improving my old ones. (New skills bring new perspectives and open new doors—old skills hide the keys to mastery.)"
+        "I’m serious about learning new skills and improving my old ones. New skills bring new perspectives and open new doors. With practice, old skills reveal the keys to mastery."
     , items =
         [ TechItemData
             "Bootstrap"
@@ -44,9 +44,9 @@ initTechData =
         , TechItemData
             "bug reporting"
             Nothing
-            (markedString "Writing clear and helpful bug reports is a key skill for any member of a software development team. It’s one that I’ve been practising since my second co-op job:")
+            (markedString "Writing clear and informative bug reports is a key skill for any member of a software development team. It’s one that I’ve been practising since my second co-op job:")
             [ markedString "At `Coreworx`, during my time helping QA with testing, I learned the keys to effective bug reporting"
-            , markedString "At `Unitron`, I continued to work at `improving` my bug reporting as I started logging bugs for software components created by other teams"
+            , markedString "At `Unitron`, I continued to work at `improving` my bug reporting as I logged bugs for software components maintained by other teams"
             , markedString "At `Unitron`, I regularly triaged my team’s bugs, and spent time `teaching` others what to fix for unclear bug reports"
             ]
             PortfolioOnly
@@ -215,14 +215,14 @@ initTechData =
             "Linux"
             Nothing
             (markedString "I’m comfortable working in Linux, having used it for my primary development environment since university:")
-            [ markedString "I know my way around the command line (e.g. for `version control`)"
+            [ markedString "I know my way around the command line (e.g. for `version control`, shell scripts, and personal system adminitration)"
             , markedString "I’ve built a couple cross-platform desktop applications: `Ultra Rainbow Bake Sale` and `Yomikata`"
             ]
             PortfolioOnly
         , TechItemData
             "Lua"
             Nothing
-            (markedString "For `Ultra Rainbow Bake Sale`, I finally learned Lua and used it with LÖVE to build a single-player, deck-building, baking game.")
+            (markedString "I finally learned Lua and used it with LÖVE (a 2D game development library) to build a single-player, deck-building, baking game: `Ultra Rainbow Bake Sale`.")
             []
             PortfolioOnly
         , TechItemData

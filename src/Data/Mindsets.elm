@@ -36,8 +36,8 @@ initMindsetsData =
                 "making"
                 (markedString "The reason I’m a software developer is because I enjoy making abstract ideas come alive as working software:")
                 [ markedString "At `Unitron`, I made manufacturing software in `C#`, from requirements negotiation to implementation to QA and production hand-off"
-                , markedString "With `Forks in the Road`, I’m making a `Rails` + `React` web app that computes probabilistic rankings"
-                , markedString "With `Off-Grid Orcs`, I made an `HTML` Canvas `Scala` game during a 17-day game jam"
+                , markedString "With `Forks in the Road`, I’m making a `Rails` + `React` web app that assists decision-making via probabilistic rankings"
+                , markedString "With `Off-Grid Orcs`, I created an `HTML` Canvas `Scala` game—from concept to release—during a 17-day game jam"
                 , markedString "I’m volunteering as a makerspace assistant, `teaching` kids how they can also be makers"
                 ]
 
@@ -54,10 +54,10 @@ initMindsetsData =
         teaching =
             MindsetsItemData
                 "teaching"
-                (markedString "I take complex topics and break them down into pieces that others understand:")
+                (markedString "I help others learn by I breaking complex topics down into pieces that they understand:")
                 [ markedString "At `Unitron`, I used my knowledge of related business and software systems to teach others how to avoid bugs and perform more thorough tests"
                 , markedString "At `Unitron`, I used code reviews as teaching opportunities, to help my teammates improve their `C#` code maintainability"
-                , markedString "At `NexJ Systems`, I learned that pair programming to fix bugs is all about teaching your partner to see the causes and effects that you see"
+                , markedString "At `NexJ Systems`, I pair programmed to fix bugs by teaching my partner to see the causes and effects that I saw"
                 , markedString "As a volunteer makerspace assistant, I teach kids the skills required to succeed at (and enjoy) each maker activity"
                 ]
 
@@ -67,8 +67,9 @@ initMindsetsData =
                 (markedString "At `Unitron`, my team often encountered questions that could only be answered by analyzing production data. Using a combination of `SQL` and `Excel`,")
                 [ markedString "I researched the value of maintaining software solutions vs. the cost of setting up manual workarounds"
                 , markedString "I investigated the hardware component causes of software-level bugs"
+                , markedString "I communicated my findings using easy-to-understand tables and charts"
+                , markedString "I created reports and internal tools to help others carry out their own analysis tasks"
                 , markedString "I expanded test coverage using real-world test cases"
-                , markedString "I proposed new quality tolerances based on historic measurements"
                 ]
 
         coordinating =
@@ -78,6 +79,8 @@ initMindsetsData =
                 [ markedString "I worked with developers, QA, and project management to coordinate software release milestones"
                 , markedString "I worked on-site with production managers to negotiate and coordinate custom software solutions"
                 , markedString "I worked with developers and technical support to coordinate hot-fix releases"
+                , markedString "I clearly documented all findings, discussions, action items, and status information in our issue tracking system"
+                , markedString "I used a custom spreadsheet plus reports from our issue tracking system to manage and communicate timelines"
                 ]
 
         improving =
@@ -85,9 +88,9 @@ initMindsetsData =
                 "improving"
                 (markedString "When I work on a project, I always look for potential improvements that have good cost/benefit value:")
                 [ markedString "At `Unitron`, I led key improvements to team processes for development and QA"
-                , markedString "At `NexJ Systems`, I improved the Ant+WiX installer build system to need less maintenance"
+                , markedString "At `NexJ Systems`, I improved the Ant+WiX installer build system to reduce required maintenance"
                 , markedString "In `Forks in the Road`, I improved my initial `React` implementation by converting components to use `functional programming`"
-                , markedString "In `Ultra Rainbow Bake Sale`, I improved the experience for new players by creating a dynamic hints system"
+                , markedString "In `Ultra Rainbow Bake Sale`, I listened to player feedback, and improved the experience for new players by creating a dynamic hints system"
                 ]
     in
     { id = "mindsets"

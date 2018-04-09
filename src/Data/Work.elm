@@ -55,11 +55,11 @@ initWorkData =
                 , markedString "Mentored team members"
                 ]
                 (markedString "I worked with my team at Unitron for 8 years, `making` hearing instrument manufacturing software.")
-                [ markedString "I used `C#` for software implementation and maintenance; `SQL` and `Excel` for `analyzing` data"
+                [ markedString "I used `C#` for software implementation and maintenance, and `SQL` + `Excel` for `analyzing` data"
                 , markedString "I mitigated bugs by writing integration tests, and by thoroughly `learning` related business/software systems"
                 , markedString "I built a hybrid `HTML` and `C#` desktop application to replace a paper-based inspection process"
                 , markedString "I followed `test-driven development` to build a test run comparison tool that saved weeks of manual effort"
-                , markedString "Also: negotiating and documenting requirements, `coordinating` development cycles, `improving` team processes, mentoring & `teaching` peers"
+                , markedString "Also: negotiating and documenting requirements, `coordinating` development cycles, `improving` team processes, mentoring and `teaching` peers"
                 ]
 
         nexj =
@@ -93,7 +93,7 @@ initWorkData =
                 [ markedString "Developed DMS personalization in `C#`"
                 , markedString "Automated database migration via `SQL`"
                 ]
-                (markedString "I had two co-op terms with the team Coreworx, `making` an ASP.NET document management system:")
+                (markedString "I had two co-op terms with the team at Coreworx, `making` an ASP.NET document management system:")
                 [ markedString "I helped develop a personalization system, in `C#`"
                 , markedString "I automated an Oracle database migration, via `SQL`"
                 , markedString "I ran manual regression tests, `learning` the fundamentals of good `bug reporting`"
