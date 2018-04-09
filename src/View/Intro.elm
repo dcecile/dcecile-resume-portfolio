@@ -3,15 +3,13 @@ module View.Intro
         ( viewIntro
         )
 
-import Css exposing (alignSelf, bold, calc, center, color, em, firstOfType, fontSize, fontStyle, fontWeight, italic, justifyContent, lastOfType, lineHeight, marginBottom, marginTop, maxWidth, minHeight, minus, num, vh, zero)
+import Css exposing (alignSelf, bold, calc, center, color, em, firstOfType, fontSize, fontStyle, fontWeight, italic, justifyContent, lastOfType, lineHeight, marginBottom, marginTop, maxWidth, minHeight, minus, normal, nthOfType, num, vh, zero)
 import CssShorthand exposing (afterText, beforeText, displayFlexColumn)
 import Html.Styled exposing (Html, div, h1, header, main_, p, styled, text)
-import HtmlShorthand exposing (styledSpanText)
-import MarkedString exposing (MarkedString)
 import Model exposing (Model)
 import Msg exposing (Msg)
 import View.CallsToAction exposing (viewCallsToAction)
-import View.Colors exposing (green, paleGreen)
+import View.Colors exposing (paleGreen)
 import View.Links exposing (linksCutoff)
 
 
@@ -109,21 +107,20 @@ viewMain model =
         |> styled main_ style []
 
 
-viewPoint : MarkedString -> Html Msg
-viewPoint sellingPoint =
+viewPoint : String -> Html Msg
+viewPoint introPoint =
     let
         style =
             [ alignSelf center
             , marginTop zero
             , marginBottom <| em 0.6
             , maxWidth <| em 20
-            , firstOfType [ fontWeight bold ]
-            , lastOfType [ fontWeight bold ]
+            , nthOfType "2n + 1" [ fontStyle italic ]
+            , firstOfType [ fontStyle normal, fontWeight bold ]
+            , lastOfType [ fontStyle normal, fontWeight bold ]
             ]
-
-        highlight =
-            styledSpanText [ color green ]
     in
-    sellingPoint
-        |> MarkedString.transform text highlight
-        |> styled p style []
+    styled p
+        style
+        []
+        [ text introPoint ]
