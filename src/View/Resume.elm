@@ -28,7 +28,7 @@ viewResume model =
         style =
             [ displayFlexColumn
             , paddingTopBottom <| em 3.2
-            , paddingRightLeft <| em 3.5
+            , paddingRightLeft <| em 4.1
             , flexGrow <| num 1
             , lineHeight <| num printLineHeight
             , color printBlack
@@ -212,7 +212,7 @@ viewInfo model =
             [ displayFlexColumn
             , flexBasis <| em 0
             , flexGrow <| num 1
-            , marginRight <| em 1.0
+            , marginRight <| em 1.8
             ]
     in
     styled div
@@ -243,7 +243,7 @@ viewTechLine model =
         style =
             [ marginTopBottom zero
             , marginRight <| em 0.2
-            , lineHeight <| num 2.0
+            , lineHeight <| num 2.1
             , color printGreen
             ]
     in
@@ -259,11 +259,12 @@ viewTechLineItem : String -> Html Msg
 viewTechLineItem item =
     let
         style =
-            [ marginRight <| em 0.2
+            [ marginRight <| em 0.25
             , borderSolidColor printPaleGreen
             , borderWidth printBorderWidth
             , borderRadius <| em 0.3
-            , paddingTopBottom <| em 0.0
+            , paddingTop <| zero
+            , paddingBottom <| em 0.1
             , paddingRightLeft <| em 0.4
             ]
     in
@@ -356,7 +357,7 @@ viewHistory model =
         style =
             [ displayFlexColumn
             , flexBasis <| em 0
-            , flexGrow <| num 1.17
+            , flexGrow <| num 1.25
             ]
     in
     styled div
@@ -564,7 +565,8 @@ viewItem narrow nodes =
 
         verticalRuleStyle =
             [ marginTopBottom <| em 0.25
-            , batchMap [ marginLeft, paddingLeft ] <| em 0.7
+            , marginLeft <| em 0.7
+            , paddingLeft <| em 0.8
             , borderLeftSolidColor printPaleGreen
             , borderWidth printBorderWidth
             ]

@@ -36,7 +36,7 @@ initMindsetsData =
                 "making"
                 (markedString "The reason I’m a software developer is because I enjoy making abstract ideas come alive as working software:")
                 [ markedString "At `Unitron`, I made manufacturing software in `C#`, from requirements negotiation to implementation to QA and production hand-off"
-                , markedString "With `Forks in the Road`, I’m making a `Rails` + `React` web app that assists decision-making via probabilistic rankings"
+                , markedString "With `Forks in the Road`, I’m making a `Rails` + `React` web app that helps users make decisions via probability-based value estimation"
                 , markedString "With `Off-Grid Orcs`, I created an `HTML` Canvas `Scala` game—from concept to release—during a 17-day game jam"
                 , markedString "I’m volunteering as a makerspace assistant, `teaching` kids how they can also be makers"
                 ]

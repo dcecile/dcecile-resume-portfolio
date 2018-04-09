@@ -44,10 +44,10 @@ initProjectsData =
             (Just "Forks")
             "2018"
             "React / Rails"
-            "Probabilistic ranking tool"
+            "Value estimation tool"
             (Just "https://forks-in-the-road.herokuapp.com/")
             (Just "https://github.com/dcecile/forks-in-the-road")
-            (markedString "I’m `making` a probabilistic ranking web app. The primary goal is to help me determine the list of companies that I want to apply to for my job search.")
+            (markedString "I’m `making` a web app that helps users make data-informed decisions. It estimates expected values based on user-specified probabilities, and its first task is helping me pick the companies that I want to apply to for my job search.")
             [ markedString "I’m using `Ruby` and `Rails` for the back-end, with GitHub-based JWT authentication"
             , markedString "I’m using `React` and `JavaScript` for the front-end, with an emphasis on `functional programming`"
             , markedString "I’m using `Sass` to simplify `CSS` syntax, `Bootstrap` for base styling, and `functional animation` for every state change"
@@ -177,7 +177,7 @@ initProjectsData =
             (Just "TWB")
             "2017"
             "Vue.js / Go"
-            "Twitter content library bot"
+            "Twitter scheduling bot"
             (Just "https://tinyworkerbee.social/")
             Nothing
             (markedString "In 2017, I got curious about marketing and social media. One result is this Twitter bot:")

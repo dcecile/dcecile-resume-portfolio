@@ -162,7 +162,7 @@ initTechData =
         , TechItemData
             "Go"
             Nothing
-            (markedString "I used Go with `Google App Engine` for the back-end for `Tiny Worker Bee`, a Twitter content library that post Tweets according to a dynamically-determined schedule.")
+            (markedString "I used Go with `Google App Engine` for the back-end for `Tiny Worker Bee`, a Twitter scheduling bot that post Tweets at dynamically-determined intervals.")
             []
             PortfolioOnly
         , TechItemData
@@ -176,7 +176,7 @@ initTechData =
             Nothing
             (markedString "I’m `making` web applications with HTML, `CSS`, and `JavaScript`:")
             [ markedString "At `Unitron`, as an experiment with a new GUI technology beyond `WinForms` and WPF, I created a hybrid HTML and `C#` desktop application (not using Chrome + Electron, but using a custom IE + .NET WebBrowser control integration)"
-            , markedString "With `Forks in the Road`, I’m making a `Rails` and `React` web app that does probabilistic rankings"
+            , markedString "With `Forks in the Road`, I’m making a `Rails` and `React` web app that helps users make decisions via probability-based value estimation"
             , markedString "With `PR Quest`, I used `Vue.js` (with an HTML5 History API router) to create a single-page application that can be navigated without page loads"
             , markedString "Other web apps I’ve made: `Forks in the Road`, `My Portfolio and Resume`, `Off-Grid Orcs`, `Reactic-Tac-Toe`, `Tacit`, `Tiny Worker Bee`, `/tmp/blog`"
             ]
@@ -205,8 +205,8 @@ initTechData =
             Nothing
             (markedString "I use JavaScript for most of my front-end development (with language features like modules, await, and classes provided by Babel):")
             [ markedString "At `Unitron`, I used JavaScript for the UI logic of a hybrid `HTML` and `C#` desktop app"
-            , markedString "In `Forks in the Road`, I’m using JavaScript with `React` for the front-end of my probabilistic ranking web app"
-            , markedString "In `Tiny Worker Bee`, I used JavaScript with `Vue.js` for the front-end of my Twitter content library web app"
+            , markedString "In `Forks in the Road`, I’m using JavaScript with `React` for the front-end of my value estimation web app"
+            , markedString "In `Tiny Worker Bee`, I used JavaScript with `Vue.js` for the front-end UI of my Twitter scheduling bot"
             , markedString "In `PR Quest`, I used JavaScript with `Vue.js` to build a static-content single page application"
             , markedString "(I sometimes use `Elm` or `Scala` instead of JavaScript)"
             ]
@@ -245,7 +245,7 @@ initTechData =
             Nothing
             (markedString "I’m `learning` React to get experience with today’s most popular front-end framework (according to The State of JavaScript 2017):")
             [ markedString "I used `Reactic-Tac-Toe` to learn the basics of creating React components"
-            , markedString "With `Forks in the Road`, I’m using React to create the front-end of my probabilistic ranking web app"
+            , markedString "With `Forks in the Road`, I’m using React to create the front-end of my value estimation web app"
             , markedString "(I’ve also used `Vue.js` and `Elm` for creating `HTML` front-ends)"
             ]
             PortfolioAndResume
@@ -267,7 +267,7 @@ initTechData =
             Nothing
             (markedString "I’m `learning` this `Ruby` framework for a peek into the tech behind some of my favourite web apps.")
             [ markedString "With `/tmp/blog`, I built my very first Rails app and deployed it to `Heroku`"
-            , markedString "In `Forks in the Road`, I’m using Rails together with `React` to create a probabilistic ranking web app"
+            , markedString "In `Forks in the Road`, I’m using Rails together with `React` to create a value estimation web app"
             ]
             PortfolioAndResume
         , TechItemData
@@ -347,7 +347,7 @@ initTechData =
             Nothing
             (markedString "Before `learning` `React`, I learned this front-end framework and created two applications using it:")
             [ markedString "`PR Quest` is a static informational site (with search) about MP support for proportional representation"
-            , markedString "`Tiny Worker Bee` is a Twitter content library that post Tweets according to a dynamically-determined schedule"
+            , markedString "`Tiny Worker Bee` is a Twitter scheduling bot that post Tweets from your content library at dynamically-determined intervals"
             ]
             PortfolioAndResume
         , TechItemData
