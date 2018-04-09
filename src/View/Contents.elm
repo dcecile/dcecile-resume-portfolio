@@ -107,7 +107,7 @@ viewLink model reverse sectionDataSelector =
     styled span
         style
         []
-        [ viewLinkIcon model.iconSource sectionData.iconBackground
+        [ viewLinkIcon model.iconSource sectionData.portfolioIconBackground
         , viewLinkButton sectionData.id sectionData.name
         ]
 

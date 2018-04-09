@@ -35,8 +35,9 @@ initProjectsData : ProjectsData
 initProjectsData =
     { id = "projects"
     , name = "Side projects"
-    , iconBackground = .heart
-    , intro =
+    , portfolioIconBackground = .heart
+    , detailsNoun = "project"
+    , portfolioIntro =
         "In my spare time, I’ve been working on a few of my own software ideas. Come take a look!"
     , items =
         [ ProjectsItemData
@@ -203,5 +204,5 @@ initProjectsData =
             ]
             PortfolioOnly
         ]
-    , outro = Nothing
+    , portfolioOutro = Nothing
     }

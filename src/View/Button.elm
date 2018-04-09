@@ -45,7 +45,7 @@ borderCenter =
 sizeSmall : Style
 sizeSmall =
     batch
-        [ paddingRightLeft <| em 0.4
+        [ paddingRightLeft <| em 0.5
         , lineHeight <| num 1.7
         ]
 

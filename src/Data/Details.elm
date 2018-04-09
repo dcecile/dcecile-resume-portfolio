@@ -15,6 +15,7 @@ type alias DetailsItemData =
     , sourceURL : Maybe String
     , intro : MarkedString
     , points : List MarkedString
+    , noun : String
     , previousName : Maybe String
     , nextName : Maybe String
     }
@@ -38,27 +39,34 @@ type alias DetailsItemDataInputURL a =
 allDetailsItems : Data -> List DetailsItemData
 allDetailsItems data =
     let
-        convert items transform =
+        convert sectionSelector itemsSelector transform =
+            let
+                section =
+                    sectionSelector data
+
+                items =
+                    itemsSelector section
+            in
             List.map3
-                transform
+                (transform section.detailsNoun)
                 items
                 ([ Nothing ] ++ List.map Just items)
                 (List.drop 1 (List.map Just items) ++ [ Nothing ])
     in
     List.concat
-        [ convert data.work.portfolioItems <|
+        [ convert .work .portfolioItems <|
             getDetails
                 (always Nothing)
                 False
-        , convert data.mindsets.items <|
+        , convert .mindsets .items <|
             getDetails
                 (always Nothing)
                 True
-        , convert data.tech.items <|
+        , convert .tech .items <|
             getDetails
                 (always Nothing)
                 True
-        , convert data.projects.items <|
+        , convert .projects .items <|
             getDetails
                 Just
                 False
@@ -70,11 +78,12 @@ getDetails :
      -> Maybe (DetailsItemDataInputURL b)
     )
     -> Bool
+    -> String
     -> DetailsItemDataInput a
     -> Maybe (DetailsItemDataInput a)
     -> Maybe (DetailsItemDataInput a)
     -> DetailsItemData
-getDetails itemURLSelector capitalizeName item previousItem nextItem =
+getDetails itemURLSelector capitalizeName noun item previousItem nextItem =
     let
         itemURLPart part =
             Maybe.andThen part (itemURLSelector item)
@@ -85,6 +94,7 @@ getDetails itemURLSelector capitalizeName item previousItem nextItem =
     , sourceURL = itemURLPart .sourceURL
     , intro = item.detailsIntro
     , points = item.detailsPoints
+    , noun = noun
     , previousName = Maybe.map .name previousItem
     , nextName = Maybe.map .name nextItem
     }

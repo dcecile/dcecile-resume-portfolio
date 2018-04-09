@@ -28,9 +28,10 @@ type alias TechItemData =
 initTechData : TechData
 initTechData =
     { id = "tech"
-    , name = "Tech fluency"
-    , iconBackground = .box
-    , intro =
+    , name = "Tech skills"
+    , portfolioIconBackground = .box
+    , detailsNoun = "skill"
+    , portfolioIntro =
         "I’m serious about learning new skills and improving my old ones. New skills bring new perspectives and open new doors. With practice, old skills reveal the keys to mastery."
     , items =
         [ TechItemData
@@ -361,5 +362,5 @@ initTechData =
             ]
             PortfolioOnly
         ]
-    , outro = Nothing
+    , portfolioOutro = Nothing
     }

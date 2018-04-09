@@ -4,8 +4,8 @@ module View.Details
         , subscribeDetails
         )
 
-import Css exposing (Style, alignItems, backgroundColor, batch, bold, borderRadius, borderWidth, bottom, capitalize, center, color, display, em, empty, fixed, flexBasis, fontSize, fontWeight, height, hidden, justifyContent, lastChild, left, lineHeight, marginBottom, marginLeft, marginRight, marginTop, none, num, padding, position, px, right, spaceBetween, textDecoration, textTransform, top, underline, vh, visibility, vw, zero)
-import CssShorthand exposing (batchMap, borderSolidColor, displayFlexColumn, displayFlexRow, marginRightLeft, marginTopBottom, mediaNotPrint, noStyle, paddingRightLeft, paddingTopBottom, textDecorationSkipInk, willChangeTransform, zIndexBackground, zIndexNormal, zIndexOverlay)
+import Css exposing (Style, alignItems, backgroundColor, bold, borderRadius, borderWidth, bottom, capitalize, center, color, display, em, empty, fixed, flexBasis, flexEnd, flexGrow, fontSize, fontWeight, height, justifyContent, lastChild, left, lineHeight, marginBottom, marginLeft, marginRight, marginTop, maxWidth, none, num, padding, position, px, right, spaceBetween, textDecoration, textTransform, top, underline, vh, vw, zero)
+import CssShorthand exposing (batchMap, borderSolidColor, displayFlexColumn, displayFlexRow, displayFlexRowReverse, marginRightLeft, marginTopBottom, mediaNotPrint, noStyle, paddingRightLeft, paddingTopBottom, textDecorationSkipInk, willChangeTransform, zIndexBackground, zIndexNormal, zIndexOverlay)
 import Data.Details exposing (DetailsItemData)
 import Display.Details exposing (DetailsAnimation(DetailsAnimationClose, DetailsAnimationNavigate), DetailsDisplay, DetailsDoubleBufferState(DetailsDoubleBufferFirstSlotNew, DetailsDoubleBufferFirstSlotOld), DetailsNavigateDirection(DetailsNavigateLink, DetailsNavigateNext, DetailsNavigatePrevious))
 import Html.Styled exposing (Html, a, div, h1, li, p, span, styled, text, ul)
@@ -87,7 +87,6 @@ viewDetailsItem isNew model details item =
               else
                 zIndexNormal
             , displayFlexRow
-            , justifyContent center
             , alignItems center
             , marginBottom <| vh -100
             , height <| vh 100
@@ -99,9 +98,9 @@ viewDetailsItem isNew model details item =
         style
         []
         [ viewCloseBackground
-        , viewPrevious model.iconSource item.previousName
+        , viewPrevious model item
         , viewContent model item
-        , viewNext model.iconSource item.nextName
+        , viewNext model item
         ]
 
 
@@ -127,48 +126,88 @@ viewCloseLink caption style =
         ]
 
 
-viewPrevious : IconSource -> Maybe String -> Html Msg
-viewPrevious iconSource =
-    viewNavigateButton DetailsNavigatePrevious iconSource .arrowLeft
+viewPrevious : Model -> DetailsItemData -> Html Msg
+viewPrevious =
+    viewNavigateButton
+        displayFlexRow
+        DetailsNavigatePrevious
+        "Previous"
+        .previousName
+        .chevronLeft
 
 
-viewNext : IconSource -> Maybe String -> Html Msg
-viewNext iconSource =
-    viewNavigateButton DetailsNavigateNext iconSource .arrowRight
+viewNext : Model -> DetailsItemData -> Html Msg
+viewNext =
+    viewNavigateButton
+        displayFlexRowReverse
+        DetailsNavigateNext
+        "Next"
+        .nextName
+        .chevronRight
 
 
-viewNavigateButton : DetailsNavigateDirection -> IconSource -> IconBackground -> Maybe String -> Html Msg
-viewNavigateButton direction iconSource iconBackground maybeLinkName =
+viewNavigateButton : Style -> DetailsNavigateDirection -> String -> (DetailsItemData -> Maybe String) -> IconBackground -> Model -> DetailsItemData -> Html Msg
+viewNavigateButton displayStyle direction directionName linkNameSelector iconBackground model item =
     let
-        style =
+        iconSource =
+            model.iconSource
+
+        containerStyle =
+            [ displayStyle
+            , justifyContent flexEnd
+            , flexBasis <| em 0
+            , flexGrow <| num 1
+            ]
+
+        buttonStyle =
             [ Button.border
-            , displayFlexRow
+            , displayStyle
+            , alignItems center
             , marginRightLeft <| em 1.4
             , backgroundColor white
-            , padding <| em 0.7
+            , padding <| em 0.5
+            , color black
+            , textDecoration none
             ]
 
-        hiddenStyle =
-            [ batch style
-            , visibility hidden
+        descriptionStyle =
+            [ displayFlexColumn
+            , fontSize <| em 0.7
+            , marginRightLeft <| em 1
+            , maxWidth <| em 11
             ]
-    in
-    case maybeLinkName of
-        Just linkName ->
+
+        descriptionLinkStyle =
+            [ color green
+            , textDecoration underline
+            , fontWeight bold
+            ]
+
+        viewButton linkName =
             styled a
-                style
-                [ title linkName
-                , ariaLabel linkName
-                , href "#"
+                buttonStyle
+                [ href "#"
                 , onClickPreventDefault (always (DetailsNavigate direction linkName))
                 ]
-                [ iconSpan [] iconSource iconBackground ]
-
-        Nothing ->
-            styled a
-                hiddenStyle
-                []
-                [ iconSpan [] iconSource iconBackground ]
+                [ iconSpan [] iconSource iconBackground
+                , styled div
+                    descriptionStyle
+                    []
+                    [ styledSpanText [] <|
+                        String.concat
+                            [ directionName
+                            , " "
+                            , item.noun
+                            , ":"
+                            ]
+                    , styledSpanText descriptionLinkStyle linkName
+                    ]
+                ]
+    in
+    linkNameSelector item
+        |> Maybe.map viewButton
+        |> MaybeEx.toList
+        |> styled span containerStyle []
 
 
 viewContent : Model -> DetailsItemData -> Html Msg

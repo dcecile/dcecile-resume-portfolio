@@ -1,7 +1,7 @@
-import arrowLeft from './Icon/arrow-left.svg'
-import arrowRight from './Icon/arrow-right.svg'
 import box from './Icon/box.svg'
 import calendar from './Icon/calendar.svg'
+import chevronLeft from './Icon/chevron-left.svg'
+import chevronRight from './Icon/chevron-right.svg'
 import externalLink from './Icon/external-link.svg'
 import eye from './Icon/eye.svg'
 import fiveHundredPx from './Icon/500px.svg'
@@ -17,10 +17,10 @@ import twitter from './Icon/twitter.svg'
 import xSquare from './Icon/x-square.svg'
 
 export default {
-  arrowLeft,
-  arrowRight,
   box,
   calendar,
+  chevronLeft,
+  chevronRight,
   externalLink,
   eye,
   fiveHundredPx,

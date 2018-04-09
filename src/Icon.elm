@@ -15,10 +15,10 @@ import View.Colors exposing (blackLevel)
 
 
 type alias IconSource =
-    { arrowLeft : String
-    , arrowRight : String
-    , box : String
+    { box : String
     , calendar : String
+    , chevronLeft : String
+    , chevronRight : String
     , externalLink : String
     , eye : String
     , fiveHundredPx : String

@@ -10,7 +10,8 @@ type alias SectionData a =
     { a
         | id : String
         , name : String
-        , iconBackground : IconBackground
-        , intro : String
-        , outro : Maybe String
+        , portfolioIconBackground : IconBackground
+        , detailsNoun : String
+        , portfolioIntro : String
+        , portfolioOutro : Maybe String
     }

@@ -144,8 +144,9 @@ initWorkData =
     in
     { id = "work"
     , name = "Work history"
-    , iconBackground = .calendar
-    , intro =
+    , portfolioIconBackground = .calendar
+    , detailsNoun = "team"
+    , portfolioIntro =
         "These are the teams that I’ve contributed to and learned from:"
     , portfolioItems = portfolioLargeItems ++ portfolioSmallItems
     , portfolioLargeItems = portfolioLargeItems
@@ -159,6 +160,6 @@ initWorkData =
     , resumeVolunteerItems =
         [ themusuem
         ]
-    , outro =
-        Just "Want more details about my skills? Keep reading for my mindsets, tech fluency, and side projects."
+    , portfolioOutro =
+        Just "Want more details about my skills? Keep reading for my mindsets, tech skills, and side projects."
     }

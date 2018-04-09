@@ -33,13 +33,13 @@ viewSection iconSource sectionData nodes =
             ]
 
         requiredNodesBefore =
-            [ viewBackgroundIcon iconSource sectionData.iconBackground
+            [ viewBackgroundIcon iconSource sectionData.portfolioIconBackground
             , viewHeader sectionData.name
-            , viewParagraph sectionData.intro
+            , viewParagraph sectionData.portfolioIntro
             ]
 
         requiredNodesAfter =
-            sectionData.outro
+            sectionData.portfolioOutro
                 |> Maybe.map viewParagraph
                 |> MaybeEx.toList
     in

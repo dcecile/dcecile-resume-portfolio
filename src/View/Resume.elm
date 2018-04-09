@@ -227,7 +227,7 @@ viewInfo model =
 
 viewTech : Model -> Html Msg
 viewTech model =
-    viewSection "Proficiencies"
+    viewSection "Tech skills"
         [ viewItem True
             [ viewTechLine model
             ]

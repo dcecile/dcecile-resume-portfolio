@@ -95,8 +95,9 @@ initMindsetsData =
     in
     { id = "mindsets"
     , name = "Mindsets"
-    , iconBackground = .eye
-    , intro =
+    , portfolioIconBackground = .eye
+    , detailsNoun = "mindset"
+    , portfolioIntro =
         "Because I see building software as more than just writing code, I use all of these mindsets as I work:"
     , making = making
     , learning = learning
@@ -112,5 +113,5 @@ initMindsetsData =
         , coordinating
         , improving
         ]
-    , outro = Nothing
+    , portfolioOutro = Nothing
     }
