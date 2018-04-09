@@ -43,7 +43,7 @@
     animation-timing-function: ease-out;
   }
 
-  60% {
+  55% {
     opacity: 0;
     transform: translate(50px, 35px) scale(3) translate(-50px, -35px);
   }
@@ -54,7 +54,25 @@
   }
 }
 
-@keyframes castleBuildingCycle {
+@keyframes castleBuildingLeftCycle {
+  0% {
+    opacity: 0;
+    transform: translate(47px, 38px) scale(0.1) translate(-47px, -38px);
+  }
+
+  35% {
+    opacity: 0;
+    transform: translate(47px, 38px) scale(0.1) translate(-47px, -38px);
+    animation-timing-function: linear;
+  }
+
+  70% {
+    opacity: 1;
+    transform: translate(47px, 38px) scale(1) translate(-47px, -38px);
+  }
+}
+
+@keyframes castleBuildingCenterCycle {
   0% {
     opacity: 0;
     transform: translate(50px, 35px) scale(0.2) translate(-50px, -35px);
@@ -63,12 +81,30 @@
   35% {
     opacity: 0;
     transform: translate(50px, 35px) scale(0.2) translate(-50px, -35px);
-    animation-timing-function: ease-out;
+    animation-timing-function: linear;
+  }
+
+  68% {
+    opacity: 1;
+    transform: translate(50px, 35px) scale(1) translate(-50px, -35px);
+  }
+}
+
+@keyframes castleBuildingRightCycle {
+  0% {
+    opacity: 0;
+    transform: translate(53px, 37px) scale(0.1) translate(-53px, -37px);
+  }
+
+  35% {
+    opacity: 0;
+    transform: translate(53px, 37px) scale(0.1) translate(-53px, -37px);
+    animation-timing-function: linear;
   }
 
   70% {
     opacity: 1;
-    transform: translate(50px, 35px) scale(1) translate(-50px, -35px);
+    transform: translate(53px, 37px) scale(1) translate(-53px, -37px);
   }
 }
 

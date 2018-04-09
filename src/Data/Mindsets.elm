@@ -35,9 +35,10 @@ initMindsetsData =
             MindsetsItemData
                 "making"
                 (markedString "The reason I’m a software developer is because I enjoy making abstract ideas come alive as working software:")
-                [ markedString "At `Unitron`, I made manufacturing software in `C#`, from requirements negotiation to implementation to QA and production hand-off"
-                , markedString "With `Forks in the Road`, I’m making a `Rails` + `React` web app that helps users make decisions via probability-based value estimation"
+                [ markedString "At `Unitron`, I made manufacturing software in `C#`—by listening for details hidden behind rough wishes, and building solutions to fit the needs and the context"
                 , markedString "With `Off-Grid Orcs`, I created an `HTML` Canvas `Scala` game—from concept to release—during a 17-day game jam"
+                , markedString "With `Forks in the Road`, I’m making a `Rails` + `React` web app that helps users make decisions via probability-based value estimation"
+                , markedString "With `My Portfolio and Resume`, I turned my simple sketches into multi-element, animated `SVG` illustrations"
                 , markedString "I’m volunteering as a makerspace assistant, `teaching` kids how they can also be makers"
                 ]
 
@@ -87,10 +88,10 @@ initMindsetsData =
             MindsetsItemData
                 "improving"
                 (markedString "When I work on a project, I always look for potential improvements that have good cost/benefit value:")
-                [ markedString "At `Unitron`, I led key improvements to team processes for development and QA"
+                [ markedString "At `Unitron`, I listened for pain points in our daily work, and led improvements to development and QA team processes"
                 , markedString "At `NexJ Systems`, I improved the Ant+WiX installer build system to reduce required maintenance"
                 , markedString "In `Forks in the Road`, I improved my initial `React` implementation by converting components to use `functional programming`"
-                , markedString "In `Ultra Rainbow Bake Sale`, I listened to player feedback, and improved the experience for new players by creating a dynamic hints system"
+                , markedString "In `Ultra Rainbow Bake Sale`, I listened to player feedback, and created dynamic hints to improve the experience for new players"
                 ]
     in
     { id = "mindsets"

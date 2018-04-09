@@ -165,10 +165,9 @@ initProjectsData =
             "Deck building + baking game"
             (Just "https://dcecile.itch.io/ultra-rainbow-bake-sale")
             (Just "https://github.com/dcecile/ultra-rainbow-bake-sale")
-            (markedString "In 2016, I had an idea for a single-player, deck-building, baking game, and brought it to life with the `Lua` and LÖVE:")
-            [ markedString "I used the LÖVE game development library to draw 2D shapes, display text, play music, and get user input"
-            , markedString "Using Lua, I learned a new style of programming: prototype-based OOP"
-            , markedString "I started with a simple implementation—gradually adding features informed by feedback from friends and forum users"
+            (markedString "In 2016, I had an idea for a deck-building baking game, and brought it to life with the `Lua`, the LÖVE game development library, and lots of listening to players:")
+            [ markedString "I started with a simple implementation—gradually adding features informed by feedback from friends and forum users"
+            , markedString "I learned a new style of programming: prototype-based OOP"
             , markedString "I used `functional animation` to give the game an element of juiciness"
             , markedString "I implemented an AI-like dynamic hints system using a sequence of play conditions and suggestions"
             ]
