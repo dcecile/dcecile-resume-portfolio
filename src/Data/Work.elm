@@ -76,9 +76,9 @@ initWorkData =
                 , markedString "Wrote tests, fixed CRM bugs in `Scheme`"
                 ]
                 (markedString "My final two co-op terms were with teams at NexJ Systems, `making` customer relationship management software:")
-                [ markedString "I worked at `improving` an Ant + WiX installer build system, using `Java`"
-                , markedString "I investigated and fixed client-critical bugs, in `Scheme`"
-                , markedString "I wrote business logic unit tests, in `Scheme`"
+                [ markedString "I used `Java` for `improving` an Ant + WiX installer build system"
+                , markedString "I investigated and fixed client-critical bugs in `Scheme`"
+                , markedString "I wrote business logic unit tests in `Scheme`"
                 ]
 
         coreworx =
@@ -94,8 +94,8 @@ initWorkData =
                 , markedString "Automated database migration via `SQL`"
                 ]
                 (markedString "I had two co-op terms with the team at Coreworx, `making` an ASP.NET document management system:")
-                [ markedString "I helped develop a personalization system, in `C#`"
-                , markedString "I automated an Oracle database migration, via `SQL`"
+                [ markedString "I helped develop a personalization system in `C#`"
+                , markedString "I automated an Oracle database migration via `SQL`"
                 , markedString "I ran manual regression tests, `learning` the fundamentals of good `bug reporting`"
                 ]
 
@@ -113,9 +113,9 @@ initWorkData =
                 ]
                 (markedString "My first co-op experience was with the team at LSI Logic, `making` H.264 video decoders and encoders:")
                 [ markedString "I began by reading the H.264 spec, `learning` how video encoding works"
-                , markedString "I fixed video decoder bugs, in `C`"
-                , markedString "I implemented video debugger features, in `C`"
-                , markedString "I created an internal tool for analyzing the logs of a digital-signal-processor pipeline simulation, in `C++`"
+                , markedString "I fixed video decoder bugs in `C`"
+                , markedString "I implemented video debugger features in `C`"
+                , markedString "I created an internal tool for analyzing the logs of a digital-signal-processor pipeline simulation in `C++`"
                 ]
 
         themusuem =
