@@ -152,7 +152,7 @@ initProjectsData =
             Nothing
             (Just "https://github.com/dcecile/yomikata-qt")
             (markedString "From 2007 to 2009 I worked to create a `Qt` comics and manga reader using `C++`:")
-            [ markedString "I used processes and threads to unpack and decode images in the background"
+            [ markedString "I used processes and `threads` to unpack and decode images in the background"
             , markedString "I used unit tests to verify my page turning logic (complicated by the presence of spread pages)"
             , markedString "I used a full-screen `functional animation` during image loading to provide user feedback"
             ]

@@ -49,7 +49,7 @@ initMindsetsData =
                 [ markedString "At `Unitron`, I learned the keys to effective communication in a large, geographically-distributed organization"
                 , markedString "In `Forks in the Road`, I learned how to use JWT authentication for an API-only `Rails` app"
                 , markedString "In `Off-Grid Orcs`, I learned how to apply a `functional programming` architecture to a highly-interactive `Scala` application"
-                , markedString "In `Yomikata`, I learned how to use multiple processes and threads in `C++`, to give a smooth user experience while loading images"
+                , markedString "In `Yomikata`, I learned how to use multiple processes and `threads` in `C++`, to give a smooth user experience while loading images"
                 ]
 
         teaching =

@@ -66,17 +66,18 @@ initTechData =
             Nothing
             (markedString "C++ in high school was when I learned how pointers work. It was also my first exposure to generic programming.")
             [ markedString "In high school, I worked on a team project to build a 3D RPG game in C++"
-            , markedString "I used C++ and `Qt` to build my `Yomikata` comic book and manga reader"
+            , markedString "I used C++ and `Qt` to build my `Yomikata` comic book and manga reader—taking advantage of background `threads` and processes to keep the UI snappy"
             , markedString "(Recently I’ve been using the related `Go`, `C#`, and `Scala` languages more than C++)"
             ]
             PortfolioOnly
         , TechItemData
             "C#"
             Nothing
-            (markedString "By now, I’ve read and written more code in .NET’s C# than any other programming language. I have a solid grasp of advanced features like LINQ, reflection, code generation, and async/await. I know how to write good, maintainable C#.")
+            (markedString "By now, I’ve read and written more code in .NET’s C# than any other programming language. I have a solid grasp of advanced features like LINQ, reflection, code generation, and generics. I know how to write good, maintainable C#.")
             [ markedString "At `Coreworx`, I first used C# to add features to an ASP.NET document management system"
             , markedString "At `Unitron`, I used C# for 8 years as I implemented and maintained manufacturing subsystems"
             , markedString "At `Unitron`, I used C# together with `SQL` to create internal tools focused on `improving` development and QA processes"
+            , markedString "At `Unitron`, I used C# `threads` and async/await to build `WinForms` that don’t freeze during extended network and CPU tasks"
             ]
             PortfolioAndResume
         , TechItemData
@@ -320,6 +321,15 @@ initTechData =
             [ markedString "At `Unitron` with `C#`, I followed test-driven development to build a test run comparison tool"
             , markedString "In `Tacit` with `Scala`, I wrote my initial parser using TDD"
             , markedString "In `Forks in the Road` with `Ruby`, I used TDD to add back-end functionality"
+            ]
+            PortfolioOnly
+        , TechItemData
+            "threads"
+            Nothing
+            (markedString "I know how to write correct multithreading code, and how to debug threading issues. Threads, mutexes, semaphores, condition variables, and barriers are all familiar tools for me.")
+            [ markedString "At `Unitron` with `C#` and `WinForms`, I used async/await to build desktop applications that perform long-running tasks on background threads"
+            , markedString "At `Unitron` with `C#`, I used Parallel LINQ as well as the Task Parallel Library to automatically coordinate background threads"
+            , markedString "In `Yomikata` with `C++` and `Qt`, I used threads and processes to unpack and decode images in the background while keeping the UI responsive"
             ]
             PortfolioOnly
         , TechItemData
