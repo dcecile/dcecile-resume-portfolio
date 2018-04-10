@@ -177,7 +177,7 @@ initTechData =
             "HTML"
             Nothing
             (markedString "I’m `making` web applications with HTML, `CSS`, and `JavaScript`:")
-            [ markedString "At `Unitron`, as an experiment with a new GUI technology beyond `WinForms` and WPF, I created a hybrid HTML and `C#` desktop application (not using Chrome + Electron, but using a custom IE + .NET WebBrowser control integration)"
+            [ markedString "At `Unitron`, as an experiment with a new GUI technology beyond `WinForms` and WPF, I created a hybrid HTML and `C#` desktop application for `Windows` (not using Chrome + Electron, but using a custom IE + .NET WebBrowser control integration)"
             , markedString "With `Forks in the Road`, I’m making a `Rails` and `React` web app that helps users make decisions via probability-based value estimation"
             , markedString "With `PR Quest`, I used `Vue.js` (with an HTML5 History API router) to create a single-page application that can be navigated without page loads"
             , markedString "Other web apps I’ve made: `Forks in the Road`, `My Portfolio and Resume`, `Off-Grid Orcs`, `Reactic-Tac-Toe`, `Tacit`, `Tiny Worker Bee`, `/tmp/blog`"
@@ -218,7 +218,9 @@ initTechData =
             Nothing
             (markedString "I’m comfortable working in Linux, having used it for my primary development environment since university:")
             [ markedString "I know my way around the command line (e.g. for `version control`, shell scripts, and personal system adminitration)"
+            , markedString "I troubleshoot my Linux system problems using system logs, application logs, man pages, GDB, Google searches, and bug searches"
             , markedString "I’ve built a couple cross-platform desktop applications: `Ultra Rainbow Bake Sale` and `Yomikata`"
+            , markedString "(I also have lots of experience using and troubleshooting `Windows`)"
             ]
             PortfolioOnly
         , TechItemData
@@ -327,7 +329,7 @@ initTechData =
             "threads"
             Nothing
             (markedString "I know how to write correct multithreading code, and how to debug threading issues. Threads, mutexes, semaphores, condition variables, and barriers are all familiar tools for me.")
-            [ markedString "At `Unitron` with `C#` and `WinForms`, I used async/await to build desktop applications that perform long-running tasks on background threads"
+            [ markedString "At `Unitron` with `C#` and `WinForms`, I used async/await to build `Windows` desktop applications that perform long-running tasks on background threads"
             , markedString "At `Unitron` with `C#`, I used Parallel LINQ as well as the Task Parallel Library to automatically coordinate background threads"
             , markedString "In `Yomikata` with `C++` and `Qt`, I used threads and processes to unpack and decode images in the background while keeping the UI responsive"
             ]
@@ -362,9 +364,18 @@ initTechData =
             ]
             PortfolioAndResume
         , TechItemData
+            "Windows"
+            Nothing
+            (markedString "I have lots of Windows experience, having used it at home and at work, including 8 years at `Unitron`:")
+            [ markedString "I use PowerShell for advanced command-line tasks (e.g. for shell scripts and WMI queries)"
+            , markedString "I troubleshoot Windows system problems (for myself, family, and teammates) using event logs, the device manager, Process Monitor, Process Explorer, Dependency Walker, ILSpy, Visual Studio’s debugger, and Google searches"
+            , markedString "(I’m also comfortable using and troubleshooting `Linux`)"
+            ]
+            PortfolioOnly
+        , TechItemData
             "WinForms"
             Nothing
-            (markedString "My team at `Unitron` worked primarily in `C#` creating WinForms desktop software. Using this technology,")
+            (markedString "My team at `Unitron` worked primarily in `C#` creating WinForms desktop software for `Windows`. Using this technology,")
             [ markedString "I created a user management module using DevExpress layouts and data-binding"
             , markedString "I built a test run comparison application, `improving` a process that previously included manual spreadsheet authoring"
             , markedString "I made an `SQL`-backed test run search and summary application, to help QA focus testing resources using production data"
