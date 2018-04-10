@@ -39,6 +39,11 @@ can try using an automated script like this Gist:
 
 > https://gist.github.com/dcecile/b03ea8c5a807ca1ff8068908ce669d54
 
+Optional environment variables (set these before running `yarn elm-app
+build`):
+
+- `ELM_APP_PORTFOLIO_GOOGLE_VERIFICATION` for Google Search Console verification
+
 
 ## Credits
 
