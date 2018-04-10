@@ -55,7 +55,7 @@ initTechData =
             "C"
             Nothing
             (markedString "I can read and write C code:")
-            [ markedString "At university, I used C to add virtual memory features to an operating system"
+            [ markedString "At university, I used C to add virtual memory features to an educational operating system"
             , markedString "At `LSI Logic`, I used C to add features to a visual H.264 video debugger"
             , markedString "At `LSI Logic`, I used C to fix H.264 video decoder bugs"
             , markedString "(Recently I’ve been using the related `C#` and `Go` languages more than C)"
@@ -73,18 +73,18 @@ initTechData =
         , TechItemData
             "C#"
             Nothing
-            (markedString "By now, I’ve read and written more code in .NET’s C# than any other programming language. I have a solid grasp of advanced features like LINQ, reflection, code generation, and generics. I know how to write good, maintainable C#.")
+            (markedString "By now, I’ve read and written more code in .NET’s C# than in any other programming language. I have a solid grasp of advanced features like LINQ, reflection, code generation, and generics. I know how to write good, maintainable C#.")
             [ markedString "At `Coreworx`, I first used C# to add features to an ASP.NET document management system"
             , markedString "At `Unitron`, I used C# for 8 years as I implemented and maintained manufacturing subsystems"
             , markedString "At `Unitron`, I used C# together with `SQL` to create internal tools focused on `improving` development and QA processes"
-            , markedString "At `Unitron`, I used C# `threads` and async/await to build `WinForms` that don’t freeze during extended network and CPU tasks"
+            , markedString "At `Unitron`, I used C# `threads` and async/await to build `WinForms` apps that don’t freeze during extended network and CPU tasks"
             ]
             PortfolioAndResume
         , TechItemData
             "continuous integration"
             (Just "CI")
             (markedString "I have a strong interest in build systems and continuous integration:")
-            [ markedString "Starting at `LSI Logic`, and continuing at `NexJ Systems` and `Unitron`, I’ve been making build systems improvements for maintainability and productivity"
+            [ markedString "Starting at `LSI Logic`, and continuing at `NexJ Systems` and `Unitron`, I’ve made build systems improvements for maintainability and productivity"
             , markedString "At `Unitron`, I translated my build system experience into improvements and maintenance for our TeamCity continuous integration server"
             , markedString "At `Unitron` I experienced the benefit of continuously-deployed ClickOnce internal tools—now I’m using Semaphore to continuously deploy `Forks in the Road` and `My Portfolio and Resume`"
             ]
@@ -102,13 +102,13 @@ initTechData =
         , TechItemData
             "CSS"
             Nothing
-            (markedString "These days, my primary tool for `visual design` is CSS for `HTML` web applications:")
+            (markedString "These days, my primary tool for `visual design` is CSS, for making `HTML` web applications:")
             [ markedString "At `Unitron`, I used CSS to implement a hybrid `HTML` desktop app according to initial mockups"
             , markedString "In `PR Quest` and `Forks in the Road`, I’ve leveraged my `Qt` experience to set up CSS flexbox layouts"
             , markedString "In `/tmp/blog` and `PR Quest`, I use CSS3 media queries for `responsive design`"
             , markedString "With `Reactic-Tac-Toe` and `Forks in the Road`, I’m `learning` how to do `functional animation` with CSS3 transitions and animations"
             , markedString "I’m a fan of Block Element Modifier for organization"
-            , markedString "(I’ve also been using CSS via `Sass` and `domain-specific languages` in `Elm` and `Scala`)"
+            , markedString "(I’ve also been using CSS via `Sass`, and via `domain-specific languages` in `Elm` and `Scala`)"
             ]
             PortfolioAndResume
         , TechItemData
@@ -116,9 +116,9 @@ initTechData =
             (Just "DSLs")
             (markedString "I have experience both using and creating DSLs:")
             [ markedString "At `NexJ Systems`, I used an in-house `Scheme` DSL with my work on the CRM user interface and business logic"
-            , markedString "At `Unitron`, I created a `C#` DSL for specifying related test plans—to improve maintainability and track history in `version control`"
+            , markedString "At `Unitron`, I created a `C#` DSL for specifying related test plans—to improve maintainability and to track history in `version control`"
             , markedString "With `My Portfolio and Resume` and `Tacit`, I’m using `Elm` and `Scala` DSLs for writing `HTML` and `CSS` code"
-            , markedString "With `Tacit`, I’m creating a small DSL for each transformation that the compiler applies"
+            , markedString "With `Tacit`, I’m creating a small DSL for each transformation that the programming language compiler applies"
             ]
             PortfolioOnly
         , TechItemData
@@ -132,8 +132,9 @@ initTechData =
             Nothing
             (markedString "At `Unitron`, I used Excel together with `SQL` for `analyzing` data:")
             [ markedString "I used Excel pivot tables and pivot charts to explore trends and correlations"
-            , markedString "I copied Excel table and chart summaries into emails—to help explain the data to managers"
+            , markedString "I copied Excel table and chart summaries into emails—to help communicate the data to managers"
             , markedString "I linked Excel directly to `SQL` tables and views, to create live reports"
+            , markedString "I imported Excel files into Microsoft’s Power BI for more advanced drill-down reporting"
             ]
             PortfolioOnly
         , TechItemData
@@ -177,7 +178,7 @@ initTechData =
             "HTML"
             Nothing
             (markedString "I’m `making` web applications with HTML, `CSS`, and `JavaScript`:")
-            [ markedString "At `Unitron`, as an experiment with a new GUI technology beyond `WinForms` and WPF, I created a hybrid HTML and `C#` desktop application for `Windows` (not using Chrome + Electron, but using a custom IE + .NET WebBrowser control integration)"
+            [ markedString "At `Unitron`, as an experiment with a new GUI technology beyond `WinForms` and WPF, I created a hybrid HTML and `C#` desktop application for `Windows` (I built a custom IE + .NET WebBrowser control integration instead of using Chrome + Electron)"
             , markedString "With `Forks in the Road`, I’m making a `Rails` and `React` web app that helps users make decisions via probability-based value estimation"
             , markedString "With `PR Quest`, I used `Vue.js` (with an HTML5 History API router) to create a single-page application that can be navigated without page loads"
             , markedString "Other web apps I’ve made: `Forks in the Road`, `My Portfolio and Resume`, `Off-Grid Orcs`, `Reactic-Tac-Toe`, `Tacit`, `Tiny Worker Bee`, `/tmp/blog`"
@@ -330,7 +331,7 @@ initTechData =
             Nothing
             (markedString "I’m comfortable using technical requirements documents as a communication medium:")
             [ markedString "I’ve used official specs to write software for H.264 video encoding/decoding (at `LSI Logic`), ANSI hearing instrument testing (at `Unitron`), and XMPP messaging"
-            , markedString "At `Unitron`, I wrote clear technical requirements that included contextual information for all readers, discussed the trade-offs of different solutions, and provided enough detail for correct implementation"
+            , markedString "At `Unitron`, I wrote clear technical requirements that included contextual information, discussed trade-offs of different solutions, and provided enough detail for correct implementation"
             , markedString "At `Unitron`, I used the technical requirements I’d written negotiating features and implementation details, `making` the software, and introducing the changes to QA"
             , markedString "For `bitfontmake`, I wrote a technical specification to document my custom image-based font format"
             ]
@@ -351,15 +352,15 @@ initTechData =
             [ markedString "I have experience using Git, SVN, Bazaar, ClearCase, and AccuRev"
             , markedString "I use history annotations for `learning` where code came from and why"
             , markedString "I use change bisection to pinpoint the source of tricky bugs"
-            , markedString "I write clear and descriptive commit messages, and use references to external bug/feature tracking systems"
+            , markedString "I write clear and descriptive commit messages, and use references to external issue tracking systems"
             ]
             PortfolioOnly
         , TechItemData
             "visual design"
             Nothing
             (markedString "I use visual design to try to help my software communicate effectively:")
-            [ markedString "I use Inkscape (`SVG` editing software) to draw UI mockup, icons, and logos"
-            , markedString "With `My Portfolio and Resume`, I tried using `CSS` to create a highly-readable resume that doesn’t follow the standard single column layout"
+            [ markedString "I draw my own UI mockups, icons, and logos using Inkscape (`SVG` editing software)"
+            , markedString "With `My Portfolio and Resume`, I tried using `CSS` to create a printable and highly-readable resume that doesn’t follow the standard single column layout"
             , markedString "With `PR Quest`, I tried to create a professional-quality website with crisp typography and `responsive design`"
             , markedString "With `/tmp/blog`, I tried to create an attractive and inviting design focused around a monospace font"
             , markedString "With `Off-Grid Orcs`, I tried creating my first font, with a glyph size of 6x6 pixels"

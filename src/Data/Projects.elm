@@ -78,7 +78,7 @@ initProjectsData =
             "64x64 pixel web game"
             (Just "https://dcecile.itch.io/off-grid-orcs")
             (Just "https://github.com/dcecile/off-grid-orcs")
-            (markedString "In 2017, I joined a 17-day game jam, and created this `HTML` game using `Scala` and Scala.js:")
+            (markedString "In 2017, I joined a 17-day game jam, and created this pixel-art, real-time strategy `HTML` game using `Scala` and Scala.js:")
             [ markedString "I made a simple software rendering engine that uploads image data directly to the HTML5 Canvas"
             , markedString "I used this rendering engine to create my 64x64 pixel `visual design`"
             , markedString "I implemented a goal-based, pathfinding AI for orcs to gather resources and construct buildings"
