@@ -96,7 +96,7 @@ initProjectsData =
             (Just "https://github.com/dcecile/bitfontmake")
             (markedString "After creating a custom pixel-based font for `Off-Grid Orcs`, I decided to use `Python` to export that font to TTF:")
             [ markedString "I learned how TTF and UFO font formats work"
-            , markedString "I designed and implemented a custom image-based font specification format"
+            , markedString "I designed and implemented a custom image-based font specification format, which I documented in a `technical requirements` Markdown file"
             , markedString "I converted pixels into vector glyph contours—and together with the correct metadata, I created a working TTF font file"
             , markedString "I turned my Python code into a Flask application and deployed it to `Heroku`"
             ]

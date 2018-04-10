@@ -59,7 +59,7 @@ initWorkData =
                 , markedString "I mitigated bugs by writing integration tests, by actively listening to stakeholders, and by thoroughly `learning` related business/software systems"
                 , markedString "I built a hybrid `HTML` and `C#` desktop application to replace a paper-based inspection process"
                 , markedString "I followed `test-driven development` to build a test run comparison tool that saved weeks of manual effort"
-                , markedString "Also: negotiating and documenting requirements, `coordinating` development cycles, `improving` team processes, mentoring and `teaching` peers"
+                , markedString "Also: negotiating solutions, documenting `technical requirements`, `coordinating` development cycles, `improving` team processes, mentoring and `teaching` peers"
                 ]
 
         nexj =

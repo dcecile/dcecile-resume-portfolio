@@ -326,6 +326,16 @@ initTechData =
             ]
             PortfolioOnly
         , TechItemData
+            "technical requirements"
+            Nothing
+            (markedString "I’m comfortable using technical requirements documents as a communication medium:")
+            [ markedString "I’ve used official specs to write software for H.264 video encoding/decoding (at `LSI Logic`), ANSI hearing instrument testing (at `Unitron`), and XMPP messaging"
+            , markedString "At `Unitron`, I wrote clear technical requirements that included contextual information for all readers, discussed the trade-offs of different solutions, and provided enough detail for correct implementation"
+            , markedString "At `Unitron`, I used the technical requirements I’d written negotiating features and implementation details, `making` the software, and introducing the changes to QA"
+            , markedString "For `bitfontmake`, I wrote a technical specification to document my custom image-based font format"
+            ]
+            PortfolioOnly
+        , TechItemData
             "threads"
             Nothing
             (markedString "I know how to write correct multithreading code, and how to debug threading issues. Threads, mutexes, semaphores, condition variables, and barriers are all familiar tools for me.")
