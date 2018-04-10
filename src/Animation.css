@@ -63,10 +63,9 @@
   35% {
     opacity: 0;
     transform: translate(47px, 38px) scale(0.1) translate(-47px, -38px);
-    animation-timing-function: linear;
   }
 
-  70% {
+  65% {
     opacity: 1;
     transform: translate(47px, 38px) scale(1) translate(-47px, -38px);
   }
@@ -81,10 +80,9 @@
   35% {
     opacity: 0;
     transform: translate(50px, 35px) scale(0.2) translate(-50px, -35px);
-    animation-timing-function: linear;
   }
 
-  68% {
+  62% {
     opacity: 1;
     transform: translate(50px, 35px) scale(1) translate(-50px, -35px);
   }
@@ -99,10 +97,9 @@
   35% {
     opacity: 0;
     transform: translate(53px, 37px) scale(0.1) translate(-53px, -37px);
-    animation-timing-function: linear;
   }
 
-  70% {
+  65% {
     opacity: 1;
     transform: translate(53px, 37px) scale(1) translate(-53px, -37px);
   }
