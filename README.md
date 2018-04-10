@@ -42,13 +42,13 @@ can try using an automated script like this Gist:
 Optional environment variables (set these before running `yarn elm-app
 build`):
 
-- `ELM_APP_PORTFOLIO_GOOGLE_VERIFICATION` for Google Search Console verification
+- `ELM_APP_PORTFOLIO_GOOGLE_VERIFICATION` for Google Search Console
+  verification
 
 
 ## Credits
 
-Font: [TeX Gyre
-Schola](http://www.gust.org.pl/projects/e-foundry/tex-gyre/)
+Font: [Source Sans Pro](https://github.com/adobe-fonts/source-sans-pro)
 
 Icons: [Feather](https://feathericons.com/), [Font
 Awesome](https://fontawesome.com/)
