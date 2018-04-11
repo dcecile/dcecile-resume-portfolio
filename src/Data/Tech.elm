@@ -358,12 +358,12 @@ initTechData =
         , TechItemData
             "visual design"
             Nothing
-            (markedString "I use visual design to try to help my software communicate effectively:")
-            [ markedString "I draw my own UI mockups, icons, and logos using Inkscape (`SVG` editing software)"
-            , markedString "With `My Portfolio and Resume`, I tried using `CSS` to create a printable and highly-readable resume that doesn’t follow the standard single column layout"
-            , markedString "With `PR Quest`, I tried to create a professional-quality website with crisp typography and `responsive design`"
-            , markedString "With `/tmp/blog`, I tried to create an attractive and inviting design focused around a monospace font"
-            , markedString "With `Off-Grid Orcs`, I tried creating my first font, with a glyph size of 6x6 pixels"
+            (markedString "I use visual design to help my software communicate effectively:")
+            [ markedString "I draw my own UI mockups, colour/typography schemes, icons, and logos using Inkscape (`SVG` editing software)"
+            , markedString "With `My Portfolio and Resume`, I used `CSS` to create a printable and highly-readable resume that doesn’t follow the standard single column layout"
+            , markedString "With `PR Quest`, I worked step by step to build a professional-quality website featuring crisp typography and `responsive design`"
+            , markedString "With `/tmp/blog`, I picked a monospace font as the centrepiece for designing an attractive and light-hearted blog"
+            , markedString "With `Off-Grid Orcs`, I designed and implemented my first font, with a glyph size of 6x6 pixels"
             ]
             PortfolioOnly
         , TechItemData
