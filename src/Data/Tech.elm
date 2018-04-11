@@ -32,7 +32,7 @@ initTechData =
     , portfolioIconBackground = .box
     , detailsNoun = "skill"
     , portfolioIntro =
-        "I’m serious about learning new skills and improving my old ones. New skills bring new perspectives and open new doors. With practice, old skills reveal the keys to mastery."
+        "I’m serious about learning new skills and improving my old ones. New skills bring new perspectives and open new doors. Through practice, old skills reveal the keys to mastery."
     , items =
         [ TechItemData
             "Bootstrap"

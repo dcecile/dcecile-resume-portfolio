@@ -10,12 +10,11 @@ import Data.Details exposing (DetailsItemData, allDetailsItems)
 import Display.Details exposing (DetailsDisplay)
 import Icon exposing (IconSource)
 import Msg exposing (Msg)
-import Scroll exposing (initScroll)
+import Navigation exposing (initScroll)
 
 
 type alias Flags =
     { iconSource : IconSource
-    , resumeDisplay : Bool
     }
 
 
@@ -38,7 +37,7 @@ initModel flags =
     { data = initData
     , allDetailsItems = allDetailsItems initData
     , iconSource = flags.iconSource
-    , resumeDisplay = flags.resumeDisplay
+    , resumeDisplay = False
     , details = Nothing
     }
 

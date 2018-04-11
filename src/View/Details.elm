@@ -1,7 +1,7 @@
 module View.Details
     exposing
-        ( maybeViewDetails
-        , subscribeDetails
+        ( maybeSubscribeDetails
+        , maybeViewDetails
         )
 
 import Css exposing (Style, alignItems, backgroundColor, bold, borderRadius, borderWidth, bottom, capitalize, center, color, display, em, empty, fixed, flexBasis, flexEnd, flexGrow, fontSize, fontWeight, height, justifyContent, lastChild, left, lineHeight, marginBottom, marginLeft, marginRight, marginTop, maxWidth, none, num, padding, position, px, right, spaceBetween, textDecoration, textTransform, top, underline, vh, vw, zero)
@@ -375,8 +375,8 @@ viewNavigateLink name =
         [ text name ]
 
 
-subscribeDetails : Model -> Sub Msg
-subscribeDetails model =
+maybeSubscribeDetails : Model -> Maybe (Sub Msg)
+maybeSubscribeDetails model =
     let
         ( escapeKeyCode, leftKeyCode, rightKeyCode ) =
             ( 27, 37, 39 )
@@ -405,4 +405,3 @@ subscribeDetails model =
     in
     model.details
         |> Maybe.andThen maybeSubscribe
-        |> Maybe.withDefault Sub.none

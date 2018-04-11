@@ -9,7 +9,7 @@ import Data.Details exposing (DetailsItemData)
 import Display.Details exposing (DetailsAnimation(DetailsAnimationClose, DetailsAnimationNavigate, DetailsAnimationOpen), DetailsDisplay, DetailsNavigateDirection, initDoubleBuffer, swapDoubleBuffer)
 import ListEx
 import Model exposing (Model)
-import Msg exposing (Msg(DetailsClose, DetailsNavigate, DetailsOpen, NoMsg, Print))
+import Msg exposing (Msg(DetailsClose, DetailsNavigate, DetailsOpen, HashChange, NoMsg, Print))
 import Print exposing (print)
 
 
@@ -20,6 +20,10 @@ type alias Update =
 update : Msg -> Model -> Update
 update msg =
     case msg of
+        HashChange hash ->
+            updateModel <|
+                hashChange hash
+
         Print ->
             sendCommand <|
                 print ()
@@ -87,6 +91,13 @@ maybeWithDetailsItem name transform model =
 findDetailsItem : String -> List DetailsItemData -> Maybe DetailsItemData
 findDetailsItem name =
     ListEx.find (\item -> item.name == name)
+
+
+hashChange : String -> Model -> Model
+hashChange hash model =
+    { model
+        | resumeDisplay = hash == "resume"
+    }
 
 
 open : ClickInfo -> DetailsItemData -> DetailsDisplay

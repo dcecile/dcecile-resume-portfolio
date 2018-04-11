@@ -5,19 +5,17 @@ import './Root.css'
 
 import { Main } from './Main.elm'
 
-import icon from './Icon'
-import print from './Print'
-import registerServiceWorker from './registerServiceWorker'
-import scroll from './Scroll'
+import Icon from './Icon'
+import Navigation from './Navigation'
+import Print from './Print'
+import RegisterServiceWorker from './RegisterServiceWorker'
 
-const hashId = window.location.hash.substr(1)
 const node = document.getElementById('root')
 const app = Main.embed(node, {
-  iconSource: icon,
-  resumeDisplay: hashId === "resume"
+  iconSource: Icon
 })
 
-print.subscribe(app)
-scroll.subscribe(app, hashId)
+Navigation.subscribe(app)
+Print.subscribe(app)
 
-registerServiceWorker()
+RegisterServiceWorker()

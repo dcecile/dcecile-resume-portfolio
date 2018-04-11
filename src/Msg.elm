@@ -1,6 +1,6 @@
 module Msg
     exposing
-        ( Msg(DetailsClose, DetailsNavigate, DetailsOpen, NoMsg, Print)
+        ( Msg(DetailsClose, DetailsNavigate, DetailsOpen, HashChange, NoMsg, Print)
         , clickDetailsOpen
         )
 
@@ -10,7 +10,8 @@ import Mouse exposing (Event)
 
 
 type Msg
-    = Print
+    = HashChange String
+    | Print
     | DetailsOpen String ClickInfo
     | DetailsNavigate DetailsNavigateDirection String
     | DetailsClose
