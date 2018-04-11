@@ -6,4 +6,5 @@ module Head
 
 type alias Head =
     { title : String
+    , favicon : String
     }

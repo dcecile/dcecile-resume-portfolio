@@ -53,6 +53,7 @@ alsoViewHead ( model, cmd ) =
 viewHead : Model -> Head
 viewHead model =
     { title = viewTitle model
+    , favicon = viewFavicon model
     }
 
 
@@ -62,6 +63,14 @@ viewTitle model =
         viewResumeName model
     else
         model.data.basic.name ++ "’s portfolio homepage"
+
+
+viewFavicon : Model -> String
+viewFavicon model =
+    if model.resumeDisplay then
+        model.faviconSource.resume
+    else
+        model.faviconSource.portfolio
 
 
 subscribe : Model -> Sub Msg

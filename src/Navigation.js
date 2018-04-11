@@ -16,7 +16,7 @@ function onHashChange(app) {
   }
 }
 
-function getHash() {
+export function getHash() {
   return window.location.hash.substr(1)
 }
 
@@ -24,8 +24,7 @@ export default {
   subscribe(app) {
     app.ports.initScroll.subscribe(initScroll)
 
+    previousHash = getHash()
     window.addEventListener('popstate', () => onHashChange(app))
-
-    onHashChange(app)
   }
 }
