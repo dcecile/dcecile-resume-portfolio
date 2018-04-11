@@ -11,9 +11,9 @@ import home from './Icon/home.svg'
 import linkedin from './Icon/linkedin.svg'
 import mail from './Icon/mail.svg'
 import mapPin from './Icon/map-pin.svg'
-import printer from './Icon/printer.svg'
 import stackOverflow from './Icon/stack-overflow.svg'
 import twitter from './Icon/twitter.svg'
+import user from './Icon/user.svg'
 import xSquare from './Icon/x-square.svg'
 
 export default {
@@ -30,8 +30,8 @@ export default {
   linkedin,
   mail,
   mapPin,
-  printer,
   stackOverflow,
   twitter,
+  user,
   xSquare
 }

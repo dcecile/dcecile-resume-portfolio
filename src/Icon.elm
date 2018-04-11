@@ -28,9 +28,9 @@ type alias IconSource =
     , linkedin : String
     , mail : String
     , mapPin : String
-    , printer : String
     , stackOverflow : String
     , twitter : String
+    , user : String
     , xSquare : String
     }
 

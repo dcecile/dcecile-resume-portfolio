@@ -7,7 +7,7 @@ import Css exposing (Style, alignItems, batch, center, em, flexBasis, flexEnd, f
 import CssShorthand exposing (displayFlexRow, displayFlexRowReverse, marginRightLeft)
 import Html.Styled exposing (Html, a, div, styled, text)
 import Html.Styled.Attributes exposing (href)
-import HtmlShorthand exposing (HtmlTag, hrefHash, onClickPreventDefault, targetBlank)
+import HtmlShorthand exposing (HtmlTag, targetBlank)
 import Icon exposing (IconBackground, IconSource, iconSpan)
 import Model exposing (Model)
 import Msg exposing (Msg(Print))
@@ -42,11 +42,9 @@ viewCallsToAction customStyle model =
             [ text "Send me an email" ]
         , viewCallToAction iconSource
             displayFlexRowReverse
-            .printer
-            [ hrefHash
-            , onClickPreventDefault (always Print)
-            ]
-            [ text "Print my resume" ]
+            .user
+            [ href "#resume" ]
+            [ text "View my resume" ]
         ]
 
 
