@@ -3,8 +3,8 @@ module View.ResumeDisplay
         ( viewResumeDisplay
         )
 
-import Css exposing (Em, Vw, alignItems, alignSelf, backgroundColor, boxShadow5, center, display, em, flexEnd, flexGrow, flexStart, fontSize, height, hex, hidden, justifyContent, marginBottom, marginLeft, marginRight, marginTop, minHeight, none, num, overflow, px, vh, vw, width, zero)
-import CssShorthand exposing (displayFlexColumn, displayFlexRow, marginRightLeft, marginTopBottom, mediaNotPrint, paddingRightLeft, paddingTopBottom, willChangeTransform)
+import Css exposing (Em, alignItems, backgroundColor, boxShadow5, center, display, em, flexEnd, flexStart, fontSize, height, hex, justifyContent, marginBottom, marginLeft, marginRight, marginTop, minHeight, none, px, vh, width, zero)
+import CssShorthand exposing (animation, displayFlexColumn, displayFlexRow, mediaNotPrint, paddingTopBottom, willChangeTransform)
 import Html.Styled exposing (Html, a, div, styled, text)
 import Html.Styled.Attributes exposing (downloadAs, href)
 import HtmlShorthand exposing (HtmlTag, hrefHash, onClickPreventDefault)
@@ -49,13 +49,13 @@ viewResumeDisplay model =
     styled div
         style
         []
-        [ viewButtons model.iconSource
+        [ viewActions model.iconSource
         , viewPage model
         ]
 
 
-viewButtons : IconSource -> Html Msg
-viewButtons iconSource =
+viewActions : IconSource -> Html Msg
+viewActions iconSource =
     let
         style =
             [ displayFlexColumn
@@ -63,6 +63,12 @@ viewButtons iconSource =
             , fontSize standardScreenFontSize
             , marginTop <| em 1.8
             , marginRight <| em 2.2
+            , animation <|
+                String.join " "
+                    [ "fromLeft"
+                    , "800ms"
+                    , "ease-out"
+                    ]
             ]
     in
     styled div
@@ -131,7 +137,13 @@ viewPage model =
                 (hex "#313131")
             , width <| ptToEm pageWidthPt
             , height <| ptToEm pageHeightPt
-            , backgroundColor <| hex "#ffffff"
+            , backgroundColor white
+            , animation <|
+                String.join " "
+                    [ "fadeIn"
+                    , "150ms"
+                    , "ease-in"
+                    ]
             ]
     in
     styled div

@@ -27,8 +27,19 @@ type NewOrOld
 
 
 animatePortfolio : Model -> Style
-animatePortfolio =
-    maybeDetailsStyle (animateProtfolioAndDetails Portfolio)
+animatePortfolio model =
+    case model.details of
+        Just details ->
+            animateProtfolioAndDetails Portfolio details
+                |> Maybe.withDefault noStyle
+
+        Nothing ->
+            animation <|
+                String.join " "
+                    [ "fadeIn"
+                    , "800ms"
+                    , "ease-out"
+                    ]
 
 
 animateDetails : Model -> Style
