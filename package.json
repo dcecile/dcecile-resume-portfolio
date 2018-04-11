@@ -1,16 +1,21 @@
 {
   "dependencies": {
     "create-elm-app": "^1.10.3",
-    "elm-format": "^0.7.0-exp"
+    "elm-format": "^0.7.0-exp",
+    "prettier": "^1.11.1",
+    "puppeteer": "^1.2.0",
+    "server-static": "^2.0.5"
   },
   "devDependencies": {
     "chokidar-cli": "^1.2.0"
   },
   "scripts": {
     "clean": "rm -rf elm-stuff/build-artifacts/0.18.0/dcecile/dcecile-resume-portfolio && rm -rf tests/elm-stuff/build-artifacts/0.18.0/user/project",
+    "generate-pdf": "node generate-pdf.js",
     "make-src": "elm-package install --yes && elm-make src/Main.elm --warn --output /dev/null",
     "make-tests": "cd ./tests && elm-package install --yes && elm-make *.elm --warn --output /dev/null",
     "test": "elm-app test",
-    "validate-format": "elm-format --validate src/ tests/"
+    "validate-format": "elm-format --validate src/ tests/ && yarn prettier-all --list-different",
+    "prettier-all": "prettier '**/*.js' '!**/build/**' '!**/elm-stuff/**'"
   }
 }

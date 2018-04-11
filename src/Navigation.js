@@ -24,10 +24,7 @@ export default {
   subscribe(app) {
     app.ports.initScroll.subscribe(initScroll)
 
-    window.addEventListener(
-      'popstate',
-      () => onHashChange(app)
-    )
+    window.addEventListener('popstate', () => onHashChange(app))
 
     onHashChange(app)
   }

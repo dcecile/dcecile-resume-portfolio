@@ -10,7 +10,7 @@ import Html.Styled.Attributes exposing (href)
 import HtmlShorthand exposing (HtmlTag, targetBlank)
 import Icon exposing (IconBackground, IconSource, iconSpan)
 import Model exposing (Model)
-import Msg exposing (Msg(Print))
+import Msg exposing (Msg)
 import View.Button as Button
 
 
@@ -74,12 +74,9 @@ viewCallToActionIcon =
 
 viewCallToActionButton : HtmlTag Msg
 viewCallToActionButton =
-    let
-        style =
-            [ Button.border
-            , Button.sizeLarge
-            , Button.text
-            , marginRightLeft <| px 18
-            ]
-    in
-    styled a style
+    styled a
+        [ Button.border
+        , Button.sizeLarge
+        , Button.text
+        , marginRightLeft <| px 18
+        ]

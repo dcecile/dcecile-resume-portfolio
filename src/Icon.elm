@@ -19,6 +19,7 @@ type alias IconSource =
     , calendar : String
     , chevronLeft : String
     , chevronRight : String
+    , download : String
     , externalLink : String
     , eye : String
     , fiveHundredPx : String
@@ -28,6 +29,7 @@ type alias IconSource =
     , linkedin : String
     , mail : String
     , mapPin : String
+    , printer : String
     , stackOverflow : String
     , twitter : String
     , user : String

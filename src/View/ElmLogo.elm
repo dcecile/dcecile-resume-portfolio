@@ -1,6 +1,6 @@
 module View.ElmLogo exposing (viewElmLogo)
 
-import Css exposing (em, marginBottom)
+import Css exposing (em, marginBottom, marginLeft)
 import CssShorthand exposing (batchMap, filter)
 import Svg.Styled exposing (Svg, polygon, rect, styled, svg)
 import Svg.Styled.Attributes exposing (fill, height, points, transform, version, viewBox, width, x, y)
@@ -12,6 +12,7 @@ viewElmLogo =
         style =
             [ batchMap [ Css.width, Css.height ] <| em 0.8
             , marginBottom <| em -0.1
+            , marginLeft <| em 0.1
             , filter "grayscale(30%) opacity(70%)"
             ]
     in

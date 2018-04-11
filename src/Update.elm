@@ -22,7 +22,8 @@ update msg =
     case msg of
         HashChange hash ->
             updateModel <|
-                hashChange hash
+                maybeModel <|
+                    hashChange hash
 
         Print ->
             sendCommand <|
@@ -93,11 +94,20 @@ findDetailsItem name =
     ListEx.find (\item -> item.name == name)
 
 
-hashChange : String -> Model -> Model
+hashChange : String -> Model -> Maybe Model
 hashChange hash model =
-    { model
-        | resumeDisplay = hash == "resume"
-    }
+    let
+        newResumeDisplay =
+            hash == "resume"
+    in
+    if newResumeDisplay /= model.resumeDisplay then
+        Just
+            { model
+                | resumeDisplay = newResumeDisplay
+                , details = Nothing
+            }
+    else
+        Nothing
 
 
 open : ClickInfo -> DetailsItemData -> DetailsDisplay
