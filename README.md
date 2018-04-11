@@ -15,7 +15,7 @@ _An interactive and printable webpage made with Elm_
 5. Run `./start-dev.sh` to start the development server or run
    `./start-test.sh` to start running tests
 6. Change a source file, and the app will reload automatically
-7. Run `./format-js-css.sh` to refromat JS code according to
+7. Run `./format-js.sh` to refromat JS code according to
    [Prettier](https://prettier.io/) rules
 8. Run `./check-all.sh` to run all pre-commit checks (formatting,
    warnings, and tests)
