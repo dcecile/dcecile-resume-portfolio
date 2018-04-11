@@ -14,7 +14,7 @@ import Msg exposing (Msg(Print))
 import View.Button as Button
 import View.Colors exposing (white)
 import View.Metrics exposing (standardPrintFontSize, standardScreenFontSize)
-import View.Resume exposing (viewResume)
+import View.Resume exposing (viewResume, viewResumeName)
 
 
 pageWidthPt : Float
@@ -49,14 +49,17 @@ viewResumeDisplay model =
     styled div
         style
         []
-        [ viewActions model.iconSource
+        [ viewActions model
         , viewPage model
         ]
 
 
-viewActions : IconSource -> Html Msg
-viewActions iconSource =
+viewActions : Model -> Html Msg
+viewActions model =
     let
+        iconSource =
+            model.iconSource
+
         style =
             [ displayFlexColumn
             , alignItems flexEnd
@@ -77,7 +80,7 @@ viewActions iconSource =
         [ viewAction iconSource
             .download
             [ href "%PUBLIC_URL%/resume.pdf"
-            , downloadAs "Dan Cecile’s resume"
+            , downloadAs <| viewResumeName model
             ]
             [ text "Download my resume"
             ]

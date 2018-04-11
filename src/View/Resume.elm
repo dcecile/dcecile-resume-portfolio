@@ -1,6 +1,7 @@
 module View.Resume
     exposing
         ( viewResume
+        , viewResumeName
         )
 
 import Char
@@ -715,3 +716,8 @@ viewMarkedString =
             ]
     in
     MarkedString.transform text (styledSpanText highlightStyle)
+
+
+viewResumeName : Model -> String
+viewResumeName model =
+    model.data.basic.name ++ "’s resume"

@@ -1,10 +1,13 @@
 module View
     exposing
-        ( subscribe
+        ( alsoViewHead
+        , subscribe
         , view
         )
 
 import Css exposing (hidden, overflow)
+import Head exposing (Head)
+import HeadPort exposing (sendHead)
 import Html.Styled exposing (Html, div, styled)
 import MaybeEx
 import Model exposing (Model)
@@ -12,6 +15,7 @@ import Msg exposing (Msg(HashChange))
 import Navigation exposing (onHashChange)
 import View.Details exposing (maybeSubscribeDetails, maybeViewDetails)
 import View.Portfolio exposing (viewPortfolio)
+import View.Resume exposing (viewResumeName)
 import View.ResumeDisplay exposing (viewResumeDisplay)
 import View.ResumePrint exposing (viewResumePrint)
 
@@ -34,6 +38,30 @@ view model =
                 ]
         , viewResumePrint model |> List.singleton
         ]
+
+
+alsoViewHead : ( Model, Cmd Msg ) -> ( Model, Cmd Msg )
+alsoViewHead ( model, cmd ) =
+    ( model
+    , Cmd.batch
+        [ cmd
+        , sendHead (viewHead model)
+        ]
+    )
+
+
+viewHead : Model -> Head
+viewHead model =
+    { title = viewTitle model
+    }
+
+
+viewTitle : Model -> String
+viewTitle model =
+    if model.resumeDisplay then
+        viewResumeName model
+    else
+        model.data.basic.name ++ "’s portfolio homepage"
 
 
 subscribe : Model -> Sub Msg
