@@ -8,12 +8,13 @@ import Css exposing (fontSize, minHeight, vh)
 import CssShorthand exposing (displayFlexColumn, displayNone, mediaPrint)
 import Data exposing (Data)
 import Html.Styled exposing (Html, div, styled)
+import LazyHtml exposing (LazyHtml, toLazyHtml)
 import Msg exposing (Msg)
 import View.Metrics exposing (standardPrintFontSize)
 import View.Resume exposing (viewResume)
 
 
-viewResumePrint : Assets -> Data -> Html Msg
+viewResumePrint : Assets -> Data -> LazyHtml Msg
 viewResumePrint assets data =
     let
         style =
@@ -27,3 +28,4 @@ viewResumePrint assets data =
         style
         []
         [ viewResume assets data ]
+        |> toLazyHtml

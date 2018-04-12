@@ -1,2 +1,2 @@
 #!/bin/sh
-yarn elm-app start
+ELM_DEBUGGER=false yarn elm-app start

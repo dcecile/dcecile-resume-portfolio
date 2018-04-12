@@ -5,10 +5,11 @@ module View.Portfolio
 
 import Assets exposing (Assets)
 import Css exposing (alignItems, center, color, fontSize, lineHeight, num, stretch, textAlign)
-import CssShorthand exposing (displayFlexColumn, displayNone, mediaNotPrint, willChangeTransform)
+import CssShorthand exposing (displayFlexColumn, displayNone, mediaNotPrint, noStyle, willChangeTransform)
 import Data exposing (Data)
 import Display exposing (Display)
 import Html.Styled exposing (Html, div, styled)
+import LazyHtml exposing (LazyHtml, fromLazyHtml2, toLazyHtml)
 import Msg exposing (Msg)
 import View.About exposing (viewAbout)
 import View.Colors exposing (black)
@@ -29,15 +30,32 @@ viewPortfolio : Assets -> Data -> Display -> Html Msg
 viewPortfolio assets data display =
     let
         style =
-            [ displayNone
+            [ willChangeTransform
+            , displayNone
+            , if display.showResumePreview then
+                noStyle
+              else
+                mediaNotPrint [ displayFlexColumn ]
+            , animatePortfolio display
+            ]
+    in
+    styled div
+        style
+        []
+        [ fromLazyHtml2 viewPortfolioStatic assets data
+        ]
+
+
+viewPortfolioStatic : Assets -> Data -> LazyHtml Msg
+viewPortfolioStatic assets data =
+    let
+        style =
+            [ displayFlexColumn
             , fontSize standardScreenFontSize
             , lineHeight <| num standardLineHeight
             , alignItems stretch
             , textAlign center
             , color black
-            , willChangeTransform
-            , mediaNotPrint [ displayFlexColumn ]
-            , animatePortfolio display
             ]
     in
     styled div
@@ -54,3 +72,4 @@ viewPortfolio assets data display =
         , viewProjects assets data
         , viewFooter assets data
         ]
+        |> toLazyHtml

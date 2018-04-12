@@ -5,12 +5,14 @@ module View.ResumePreview
 
 import Assets exposing (Assets)
 import Css exposing (Em, alignItems, backgroundColor, boxShadow5, center, em, flexEnd, flexStart, fontSize, height, hex, justifyContent, marginBottom, marginLeft, marginRight, marginTop, minHeight, px, vh, width, zero)
-import CssShorthand exposing (animation, displayFlexColumn, displayFlexRow, displayNone, mediaNotPrint, paddingTopBottom, willChangeTransform)
+import CssShorthand exposing (animation, displayFlexColumn, displayFlexRow, displayNone, mediaNotPrint, noStyle, paddingTopBottom, willChangeTransform)
 import Data exposing (Data)
+import Display exposing (Display)
 import Html.Styled exposing (Html, a, div, styled, text)
 import Html.Styled.Attributes exposing (downloadAs, href)
 import HtmlShorthand exposing (HtmlTag, hrefHash, onClickPreventDefault)
 import Icon exposing (IconBackground, IconSource, iconSpan)
+import LazyHtml exposing (LazyHtml, fromLazyHtml2, toLazyHtml)
 import Msg exposing (Msg(Print))
 import View.Button as Button
 import View.Colors exposing (white)
@@ -33,18 +35,35 @@ ptToEm length =
     em <| length / standardPrintFontSize.numericValue
 
 
-viewResumePreview : Assets -> Data -> Html Msg
-viewResumePreview assets data =
+viewResumePreview : Assets -> Data -> Display -> Html Msg
+viewResumePreview assets data display =
     let
         style =
             [ willChangeTransform
             , displayNone
+            , if display.showResumePreview then
+                mediaNotPrint [ displayFlexColumn ]
+              else
+                noStyle
+            , minHeight <| vh 100
+            ]
+    in
+    styled div
+        style
+        []
+        [ fromLazyHtml2 viewResumePreviewStatic assets data
+        ]
+
+
+viewResumePreviewStatic : Assets -> Data -> LazyHtml Msg
+viewResumePreviewStatic assets data =
+    let
+        style =
+            [ displayFlexRow
             , justifyContent center
             , alignItems flexStart
             , paddingTopBottom <| em 4
-            , minHeight <| vh 100
             , backgroundColor <| hex "#dadada"
-            , mediaNotPrint [ displayFlexRow ]
             ]
     in
     styled div
@@ -53,6 +72,7 @@ viewResumePreview assets data =
         [ viewActions assets data
         , viewPage assets data
         ]
+        |> toLazyHtml
 
 
 viewActions : Assets -> Data -> Html Msg
@@ -70,7 +90,7 @@ viewActions assets data =
             , animation <|
                 String.join " "
                     [ "fromLeft"
-                    , "800ms"
+                    , "500ms"
                     , "ease-out"
                     ]
             ]
@@ -145,7 +165,7 @@ viewPage assets data =
             , animation <|
                 String.join " "
                     [ "fadeIn"
-                    , "150ms"
+                    , "200ms"
                     , "ease-in"
                     ]
             ]

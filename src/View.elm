@@ -12,6 +12,7 @@ import Display exposing (Display)
 import Head exposing (Head)
 import HeadPort exposing (sendHead)
 import Html.Styled exposing (Html, div, styled)
+import LazyHtml exposing (fromLazyHtml2)
 import MaybeEx
 import Model exposing (Model)
 import Msg exposing (Msg(HashChange))
@@ -31,15 +32,10 @@ view { assets, data, display } =
             ]
     in
     (styled div style [] << List.concat)
-        [ if display.showResumePreview then
-            List.singleton <|
-                viewResumePreview assets data
-          else
-            List.concat
-                [ viewPortfolio assets data display |> List.singleton
-                , maybeViewDetails assets display |> MaybeEx.toList
-                ]
-        , viewResumePrint assets data |> List.singleton
+        [ viewPortfolio assets data display |> List.singleton
+        , maybeViewDetails assets display |> MaybeEx.toList
+        , viewResumePreview assets data display |> List.singleton
+        , fromLazyHtml2 viewResumePrint assets data |> List.singleton
         ]
 
 

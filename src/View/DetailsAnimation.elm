@@ -37,7 +37,7 @@ animatePortfolio display =
             animation <|
                 String.join " "
                     [ "fadeIn"
-                    , "800ms"
+                    , "300ms"
                     , "ease-out"
                     ]
 
@@ -144,38 +144,32 @@ animateDetailsItem isNew details =
             else
                 Old
 
-        animateSlow =
-            animate 250
-
-        animateFast =
-            animate 200
-
-        animate duration animationNames =
+        animate animationNames =
             combineAnimations
                 animationNames
-                duration
+                275
                 0
                 "ease"
 
         switch direction =
             case ( direction, newOrOld ) of
                 ( DetailsNavigatePrevious, Old ) ->
-                    animateSlow [ "fadePartialOut", "toRight" ]
+                    animate [ "fadePartialOut", "toRight" ]
 
                 ( DetailsNavigatePrevious, New ) ->
-                    animateSlow [ "fadePartialIn", "fromLeft" ]
+                    animate [ "fadePartialIn", "fromLeft" ]
 
                 ( DetailsNavigateNext, Old ) ->
-                    animateSlow [ "fadePartialOut", "toLeft" ]
+                    animate [ "fadePartialOut", "toLeft" ]
 
                 ( DetailsNavigateNext, New ) ->
-                    animateSlow [ "fadePartialIn", "fromRight" ]
+                    animate [ "fadePartialIn", "fromRight" ]
 
                 ( DetailsNavigateLink, Old ) ->
-                    animateFast [ "fadePartialOut", "growOut" ]
+                    animate [ "fadePartialOut", "growOut" ]
 
                 ( DetailsNavigateLink, New ) ->
-                    animateFast [ "fadePartialIn", "fromBottom" ]
+                    animate [ "fadePartialIn", "fromBottom" ]
     in
     maybeDirection
         |> Maybe.map switch
