@@ -4,14 +4,15 @@ module View.Links
         , viewLinks
         )
 
+import Assets exposing (Assets)
 import Css exposing (Compatible, Em, auto, calc, center, em, fontSize, fontWeight, height, justifyContent, marginBottom, marginTop, normal, padding, plus, px, width, zero)
 import CssShorthand exposing (batchMap, displayFlexColumn, displayFlexRow, marginRightLeft, marginTopBottom, paddingRightLeft, paddingTopBottom)
+import Data exposing (Data)
 import Data.Links exposing (LinksItemData)
 import Html.Styled exposing (Html, a, div, h2, nav, styled, text)
 import Html.Styled.Attributes exposing (href, title)
 import HtmlShorthand exposing (ariaLabel, targetBlank)
 import Icon exposing (IconBackground, IconSource, iconSpan)
-import Model exposing (Model)
 import Msg exposing (Msg)
 import View.Button as Button
 import View.GroupBox as GroupBox
@@ -73,8 +74,8 @@ linkIconSize =
     em 1.5
 
 
-viewLinks : Model -> Html Msg
-viewLinks model =
+viewLinks : Assets -> Data -> Html Msg
+viewLinks assets data =
     let
         style =
             [ displayFlexColumn
@@ -89,7 +90,7 @@ viewLinks model =
         style
         []
         [ viewLinksDescription
-        , viewLinkList model
+        , viewLinkList assets data
         ]
 
 
@@ -108,8 +109,8 @@ viewLinksDescription =
         [ text "Find me online:" ]
 
 
-viewLinkList : Model -> Html Msg
-viewLinkList model =
+viewLinkList : Assets -> Data -> Html Msg
+viewLinkList assets data =
     let
         style =
             [ displayFlexRow
@@ -118,8 +119,8 @@ viewLinkList model =
             , marginBottom <| em 0.5
             ]
     in
-    model.data.links.portfolioItems
-        |> List.map (viewLink model.iconSource)
+    data.links.portfolioItems
+        |> List.map (viewLink assets.iconSource)
         |> styled div style []
 
 

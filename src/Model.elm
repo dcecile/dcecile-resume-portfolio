@@ -1,33 +1,21 @@
 module Model
     exposing
-        ( Flags
-        , Model
+        ( Model
         , init
         )
 
+import Assets exposing (Assets, initAssets)
 import Data exposing (Data, initData)
-import Data.Details exposing (DetailsItemData, allDetailsItems)
-import Display.Details exposing (DetailsDisplay)
-import Favicon exposing (FaviconSource)
-import Icon exposing (IconSource)
+import Display exposing (Display, initDisplay)
+import Flags exposing (Flags)
 import Msg exposing (Msg)
 import Navigation exposing (initScroll)
 
 
-type alias Flags =
-    { faviconSource : FaviconSource
-    , hash : String
-    , iconSource : IconSource
-    }
-
-
 type alias Model =
-    { data : Data
-    , allDetailsItems : List DetailsItemData
-    , faviconSource : FaviconSource
-    , iconSource : IconSource
-    , resumeDisplay : Bool
-    , details : Maybe DetailsDisplay
+    { assets : Assets
+    , data : Data
+    , display : Display
     }
 
 
@@ -38,12 +26,13 @@ init flags =
 
 initModel : Flags -> Model
 initModel flags =
-    { data = initData
-    , allDetailsItems = allDetailsItems initData
-    , faviconSource = flags.faviconSource
-    , iconSource = flags.iconSource
-    , resumeDisplay = flags.hash == "resume"
-    , details = Nothing
+    let
+        data =
+            initData
+    in
+    { assets = initAssets flags
+    , data = data
+    , display = initDisplay flags data
     }
 
 

@@ -1,15 +1,16 @@
-module View.ResumeDisplay
+module View.ResumePreview
     exposing
-        ( viewResumeDisplay
+        ( viewResumePreview
         )
 
-import Css exposing (Em, alignItems, backgroundColor, boxShadow5, center, display, em, flexEnd, flexStart, fontSize, height, hex, justifyContent, marginBottom, marginLeft, marginRight, marginTop, minHeight, none, px, vh, width, zero)
-import CssShorthand exposing (animation, displayFlexColumn, displayFlexRow, mediaNotPrint, paddingTopBottom, willChangeTransform)
+import Assets exposing (Assets)
+import Css exposing (Em, alignItems, backgroundColor, boxShadow5, center, em, flexEnd, flexStart, fontSize, height, hex, justifyContent, marginBottom, marginLeft, marginRight, marginTop, minHeight, px, vh, width, zero)
+import CssShorthand exposing (animation, displayFlexColumn, displayFlexRow, displayNone, mediaNotPrint, paddingTopBottom, willChangeTransform)
+import Data exposing (Data)
 import Html.Styled exposing (Html, a, div, styled, text)
 import Html.Styled.Attributes exposing (downloadAs, href)
 import HtmlShorthand exposing (HtmlTag, hrefHash, onClickPreventDefault)
 import Icon exposing (IconBackground, IconSource, iconSpan)
-import Model exposing (Model)
 import Msg exposing (Msg(Print))
 import View.Button as Button
 import View.Colors exposing (white)
@@ -32,12 +33,12 @@ ptToEm length =
     em <| length / standardPrintFontSize.numericValue
 
 
-viewResumeDisplay : Model -> Html Msg
-viewResumeDisplay model =
+viewResumePreview : Assets -> Data -> Html Msg
+viewResumePreview assets data =
     let
         style =
             [ willChangeTransform
-            , display none
+            , displayNone
             , justifyContent center
             , alignItems flexStart
             , paddingTopBottom <| em 4
@@ -49,16 +50,16 @@ viewResumeDisplay model =
     styled div
         style
         []
-        [ viewActions model
-        , viewPage model
+        [ viewActions assets data
+        , viewPage assets data
         ]
 
 
-viewActions : Model -> Html Msg
-viewActions model =
+viewActions : Assets -> Data -> Html Msg
+viewActions assets data =
     let
         iconSource =
-            model.iconSource
+            assets.iconSource
 
         style =
             [ displayFlexColumn
@@ -80,7 +81,7 @@ viewActions model =
         [ viewAction iconSource
             .download
             [ href "%PUBLIC_URL%/resume.pdf"
-            , downloadAs <| viewResumeName model
+            , downloadAs <| viewResumeName data
             ]
             [ text "Download my resume"
             ]
@@ -127,8 +128,8 @@ viewButton =
         ]
 
 
-viewPage : Model -> Html Msg
-viewPage model =
+viewPage : Assets -> Data -> Html Msg
+viewPage assets data =
     let
         style =
             [ displayFlexColumn
@@ -152,4 +153,4 @@ viewPage model =
     styled div
         style
         []
-        [ viewResume model ]
+        [ viewResume assets data ]

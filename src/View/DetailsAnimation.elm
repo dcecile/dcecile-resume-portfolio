@@ -7,8 +7,8 @@ module View.DetailsAnimation
 
 import Css exposing (Style, batch)
 import CssShorthand exposing (animation, mediaNotPrint, noStyle, transformOrigin, willChangeTransform)
+import Display exposing (Display)
 import Display.Details exposing (DetailsAnimation(DetailsAnimationClose, DetailsAnimationNavigate, DetailsAnimationOpen), DetailsDisplay, DetailsNavigateDirection(DetailsNavigateLink, DetailsNavigateNext, DetailsNavigatePrevious))
-import Model exposing (Model)
 
 
 type OpenOrClose
@@ -26,9 +26,9 @@ type NewOrOld
     | Old
 
 
-animatePortfolio : Model -> Style
-animatePortfolio model =
-    case model.details of
+animatePortfolio : Display -> Style
+animatePortfolio display =
+    case display.details of
         Just details ->
             animateProtfolioAndDetails Portfolio details
                 |> Maybe.withDefault noStyle
@@ -42,15 +42,10 @@ animatePortfolio model =
                     ]
 
 
-animateDetails : Model -> Style
-animateDetails =
-    maybeDetailsStyle (animateProtfolioAndDetails Details)
-
-
-maybeDetailsStyle : (DetailsDisplay -> Maybe Style) -> Model -> Style
-maybeDetailsStyle style model =
-    model.details
-        |> Maybe.andThen style
+animateDetails : DetailsDisplay -> Style
+animateDetails details =
+    details
+        |> animateProtfolioAndDetails Details
         |> Maybe.withDefault noStyle
 
 
@@ -132,10 +127,10 @@ animateProtfolioAndDetails portfolioOrDetails details =
         ]
 
 
-animateDetailsItem : Bool -> Model -> Style
-animateDetailsItem isNew =
+animateDetailsItem : Bool -> DetailsDisplay -> Style
+animateDetailsItem isNew details =
     let
-        maybeDirection details =
+        maybeDirection =
             case details.animation of
                 DetailsAnimationNavigate { direction } ->
                     Just direction
@@ -182,7 +177,9 @@ animateDetailsItem isNew =
                 ( DetailsNavigateLink, New ) ->
                     animateFast [ "fadePartialIn", "fromBottom" ]
     in
-    maybeDetailsStyle (maybeDirection >> Maybe.map switch)
+    maybeDirection
+        |> Maybe.map switch
+        |> Maybe.withDefault noStyle
 
 
 combineAnimations : List String -> Float -> Float -> String -> Style

@@ -12,6 +12,7 @@ module CssShorthand
         , displayFlexColumn
         , displayFlexRow
         , displayFlexRowReverse
+        , displayNone
         , filter
         , marginRightLeft
         , marginTopBottom
@@ -29,7 +30,7 @@ module CssShorthand
         , zIndexOverlay
         )
 
-import Css exposing (BorderStyle, Color, Length, LengthOrAuto, Style, TextDecorationStyle, after, batch, before, borderBottomStyle, borderColor, borderLeftStyle, borderStyle, borderTopStyle, column, displayFlex, flexDirection, int, marginBottom, marginLeft, marginRight, marginTop, paddingBottom, paddingLeft, paddingRight, paddingTop, property, row, rowReverse, solid, visited, zIndex)
+import Css exposing (BorderStyle, Color, Length, LengthOrAuto, Style, TextDecorationStyle, after, batch, before, borderBottomStyle, borderColor, borderLeftStyle, borderStyle, borderTopStyle, column, display, displayFlex, flexDirection, int, marginBottom, marginLeft, marginRight, marginTop, none, paddingBottom, paddingLeft, paddingRight, paddingTop, property, row, rowReverse, solid, visited, zIndex)
 import Css.Media exposing (print, withMedia)
 
 
@@ -103,6 +104,11 @@ displayFlexRow =
 displayFlexRowReverse : Style
 displayFlexRowReverse =
     batch [ displayFlex, flexDirection rowReverse ]
+
+
+displayNone : Style
+displayNone =
+    display none
 
 
 filter : String -> Style

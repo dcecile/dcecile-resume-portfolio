@@ -3,27 +3,28 @@ module View.Work
         ( viewWork
         )
 
+import Assets exposing (Assets)
 import Css exposing (Style, batch, bold, center, color, em, flexWrap, fontSize, fontStyle, fontWeight, italic, justifyContent, left, marginBottom, marginTop, paddingRight, px, textAlign, width, wrap)
 import CssShorthand exposing (displayFlexColumn, displayFlexRow, marginRightLeft, noStyle, paddingRightLeft, paddingTopBottom)
+import Data exposing (Data)
 import Data.Work exposing (WorkItemData)
 import Html.Styled exposing (Html, a, div, styled, text)
 import Html.Styled.Attributes exposing (href)
 import HtmlShorthand exposing (onClickPreventDefault)
-import Model exposing (Model)
 import Msg exposing (Msg, clickDetailsOpen)
 import View.Button as Button
 import View.Colors exposing (green)
 import View.Section exposing (viewSection)
 
 
-viewWork : Model -> Html Msg
-viewWork model =
+viewWork : Assets -> Data -> Html Msg
+viewWork assets data =
     let
         sectionData =
-            model.data.work
+            data.work
     in
     viewSection
-        model.iconSource
+        assets.iconSource
         sectionData
         [ viewItems True sectionData.portfolioLargeItems
         , viewItems False sectionData.portfolioSmallItems

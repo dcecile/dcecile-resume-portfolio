@@ -3,13 +3,14 @@ module View.Mindsets
         ( viewMindsets
         )
 
+import Assets exposing (Assets)
 import Css exposing (Em, alignItems, backgroundColor, capitalize, center, em, flexWrap, height, justifyContent, marginBottom, minWidth, textTransform, width, wrap)
 import CssShorthand exposing (batchMap, displayFlexColumn, displayFlexRow, marginRightLeft, marginTopBottom)
+import Data exposing (Data)
 import Data.Mindsets exposing (MindsetsData, MindsetsItemData)
 import Html.Styled exposing (Html, a, div, span, styled, text)
 import Html.Styled.Attributes exposing (href)
 import HtmlShorthand exposing (onClickPreventDefault)
-import Model exposing (Model)
 import Msg exposing (Msg, clickDetailsOpen)
 import Svg.Styled exposing (Svg)
 import View.Button as Button
@@ -39,14 +40,14 @@ itemButtonWidth =
     em 5.3
 
 
-viewMindsets : Model -> Html Msg
-viewMindsets model =
+viewMindsets : Assets -> Data -> Html Msg
+viewMindsets assets data =
     let
         sectionData =
-            model.data.mindsets
+            data.mindsets
     in
     viewSection
-        model.iconSource
+        assets.iconSource
         sectionData
         [ viewItems sectionData
         ]

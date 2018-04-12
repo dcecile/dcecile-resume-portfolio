@@ -3,20 +3,21 @@ module View.ResumePrint
         ( viewResumePrint
         )
 
-import Css exposing (display, fontSize, minHeight, none, vh)
-import CssShorthand exposing (displayFlexColumn, mediaPrint)
+import Assets exposing (Assets)
+import Css exposing (fontSize, minHeight, vh)
+import CssShorthand exposing (displayFlexColumn, displayNone, mediaPrint)
+import Data exposing (Data)
 import Html.Styled exposing (Html, div, styled)
-import Model exposing (Model)
 import Msg exposing (Msg)
 import View.Metrics exposing (standardPrintFontSize)
 import View.Resume exposing (viewResume)
 
 
-viewResumePrint : Model -> Html Msg
-viewResumePrint model =
+viewResumePrint : Assets -> Data -> Html Msg
+viewResumePrint assets data =
     let
         style =
-            [ display none
+            [ displayNone
             , minHeight (vh 100)
             , fontSize standardPrintFontSize
             , mediaPrint [ displayFlexColumn ]
@@ -25,4 +26,4 @@ viewResumePrint model =
     styled div
         style
         []
-        [ viewResume model ]
+        [ viewResume assets data ]

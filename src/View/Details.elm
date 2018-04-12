@@ -4,9 +4,11 @@ module View.Details
         , maybeViewDetails
         )
 
-import Css exposing (Style, alignItems, backgroundColor, bold, borderRadius, borderWidth, bottom, capitalize, center, color, display, em, empty, fixed, flexBasis, flexEnd, flexGrow, fontSize, fontWeight, height, justifyContent, lastChild, left, lineHeight, marginBottom, marginLeft, marginRight, marginTop, maxWidth, none, num, padding, position, px, right, spaceBetween, textDecoration, textTransform, top, underline, vh, vw, zero)
-import CssShorthand exposing (batchMap, borderSolidColor, displayFlexColumn, displayFlexRow, displayFlexRowReverse, marginRightLeft, marginTopBottom, mediaNotPrint, noStyle, paddingRightLeft, paddingTopBottom, textDecorationSkipInk, willChangeTransform, zIndexBackground, zIndexNormal, zIndexOverlay)
+import Assets exposing (Assets)
+import Css exposing (Style, alignItems, backgroundColor, bold, borderRadius, borderWidth, bottom, capitalize, center, color, em, empty, fixed, flexBasis, flexEnd, flexGrow, fontSize, fontWeight, height, justifyContent, lastChild, left, lineHeight, marginBottom, marginLeft, marginRight, marginTop, maxWidth, none, num, padding, position, px, right, spaceBetween, textDecoration, textTransform, top, underline, vh, vw, zero)
+import CssShorthand exposing (batchMap, borderSolidColor, displayFlexColumn, displayFlexRow, displayFlexRowReverse, displayNone, marginRightLeft, marginTopBottom, mediaNotPrint, noStyle, paddingRightLeft, paddingTopBottom, textDecorationSkipInk, willChangeTransform, zIndexBackground, zIndexNormal, zIndexOverlay)
 import Data.Details exposing (DetailsItemData)
+import Display exposing (Display)
 import Display.Details exposing (DetailsAnimation(DetailsAnimationClose, DetailsAnimationNavigate), DetailsDisplay, DetailsDoubleBufferState(DetailsDoubleBufferFirstSlotNew, DetailsDoubleBufferFirstSlotOld), DetailsNavigateDirection(DetailsNavigateLink, DetailsNavigateNext, DetailsNavigatePrevious))
 import Html.Styled exposing (Html, a, div, h1, li, p, span, styled, text, ul)
 import Html.Styled.Attributes exposing (href, title)
@@ -15,7 +17,6 @@ import Icon exposing (IconBackground, IconSource, iconSpan)
 import Keyboard
 import MarkedString exposing (MarkedString, markedString)
 import MaybeEx
-import Model exposing (Model)
 import Msg exposing (Msg(DetailsClose, DetailsNavigate, NoMsg))
 import View.Button as Button
 import View.Colors exposing (black, blackLevel, extraPaleGreen, green, paleGreen, white)
@@ -23,17 +24,17 @@ import View.DetailsAnimation exposing (animateDetails, animateDetailsItem)
 import View.Metrics exposing (standardBorderRadius, standardLineHeight, standardScreenFontSize)
 
 
-maybeViewDetails : Model -> Maybe (Html Msg)
-maybeViewDetails model =
-    model.details
-        |> Maybe.map (viewDetails model)
+maybeViewDetails : Assets -> Display -> Maybe (Html Msg)
+maybeViewDetails assets display =
+    display.details
+        |> Maybe.map (viewDetails assets)
 
 
-viewDetails : Model -> DetailsDisplay -> Html Msg
-viewDetails model details =
+viewDetails : Assets -> DetailsDisplay -> Html Msg
+viewDetails assets details =
     let
         style =
-            [ display none
+            [ displayNone
             , mediaNotPrint [ displayFlexColumn ]
             , position fixed
             , batchMap [ top, right, bottom, left ] zero
@@ -42,24 +43,24 @@ viewDetails model details =
             , lineHeight <| num standardLineHeight
             , color black
             , willChangeTransform
-            , animateDetails model
+            , animateDetails details
             ]
     in
     List.concatMap MaybeEx.toList
-        [ maybeViewDetailsBuffer True model details
-        , maybeViewDetailsBuffer False model details
+        [ maybeViewDetailsBuffer True assets details
+        , maybeViewDetailsBuffer False assets details
         ]
         |> styled div style []
 
 
-maybeViewDetailsBuffer : Bool -> Model -> DetailsDisplay -> Maybe (Html Msg)
-maybeViewDetailsBuffer isFirstBuffer model details =
+maybeViewDetailsBuffer : Bool -> Assets -> DetailsDisplay -> Maybe (Html Msg)
+maybeViewDetailsBuffer isFirstBuffer assets details =
     let
         viewNew =
-            Just <| viewDetailsItem True model details details.itemData
+            Just <| viewDetailsItem True assets details details.itemData
 
         viewOld =
-            Just << viewDetailsItem False model details
+            Just << viewDetailsItem False assets details
     in
     case ( isFirstBuffer, details.doubleBufferState, details.animation ) of
         ( True, DetailsDoubleBufferFirstSlotNew, _ ) ->
@@ -78,8 +79,8 @@ maybeViewDetailsBuffer isFirstBuffer model details =
             Nothing
 
 
-viewDetailsItem : Bool -> Model -> DetailsDisplay -> DetailsItemData -> Html Msg
-viewDetailsItem isNew model details item =
+viewDetailsItem : Bool -> Assets -> DetailsDisplay -> DetailsItemData -> Html Msg
+viewDetailsItem isNew assets details item =
     let
         style =
             [ if isNew then
@@ -91,16 +92,16 @@ viewDetailsItem isNew model details item =
             , marginBottom <| vh -100
             , height <| vh 100
             , willChangeTransform
-            , animateDetailsItem isNew model
+            , animateDetailsItem isNew details
             ]
     in
     styled div
         style
         []
         [ viewCloseBackground
-        , viewPrevious model item
-        , viewContent model item
-        , viewNext model item
+        , viewPrevious assets item
+        , viewContent assets item
+        , viewNext assets item
         ]
 
 
@@ -126,7 +127,7 @@ viewCloseLink caption style =
         ]
 
 
-viewPrevious : Model -> DetailsItemData -> Html Msg
+viewPrevious : Assets -> DetailsItemData -> Html Msg
 viewPrevious =
     viewNavigateButton
         displayFlexRow
@@ -136,7 +137,7 @@ viewPrevious =
         .chevronLeft
 
 
-viewNext : Model -> DetailsItemData -> Html Msg
+viewNext : Assets -> DetailsItemData -> Html Msg
 viewNext =
     viewNavigateButton
         displayFlexRowReverse
@@ -146,11 +147,11 @@ viewNext =
         .chevronRight
 
 
-viewNavigateButton : Style -> DetailsNavigateDirection -> String -> (DetailsItemData -> Maybe String) -> IconBackground -> Model -> DetailsItemData -> Html Msg
-viewNavigateButton displayStyle direction directionName linkNameSelector iconBackground model item =
+viewNavigateButton : Style -> DetailsNavigateDirection -> String -> (DetailsItemData -> Maybe String) -> IconBackground -> Assets -> DetailsItemData -> Html Msg
+viewNavigateButton displayStyle direction directionName linkNameSelector iconBackground assets item =
     let
         iconSource =
-            model.iconSource
+            assets.iconSource
 
         containerStyle =
             [ displayStyle
@@ -210,8 +211,8 @@ viewNavigateButton displayStyle direction directionName linkNameSelector iconBac
         |> styled span containerStyle []
 
 
-viewContent : Model -> DetailsItemData -> Html Msg
-viewContent model item =
+viewContent : Assets -> DetailsItemData -> Html Msg
+viewContent assets item =
     let
         style =
             [ Button.border
@@ -227,8 +228,8 @@ viewContent model item =
     styled div
         style
         []
-        [ viewHeader model.iconSource item.name item.capitalizeName
-        , viewLinks model.iconSource item
+        [ viewHeader assets.iconSource item.name item.capitalizeName
+        , viewLinks assets.iconSource item
         , viewIntro item.intro
         , viewPoints item.points
         ]
@@ -273,7 +274,7 @@ viewLinks iconSource item =
     let
         style =
             [ displayFlexRow
-            , empty [ display none ]
+            , empty [ displayNone ]
             , marginTop <| em -0.3
             , marginBottom <| em 0.6
             , marginRightLeft <| em 0.2
@@ -375,8 +376,8 @@ viewNavigateLink name =
         [ text name ]
 
 
-maybeSubscribeDetails : Model -> Maybe (Sub Msg)
-maybeSubscribeDetails model =
+maybeSubscribeDetails : Display -> Maybe (Sub Msg)
+maybeSubscribeDetails display =
     let
         ( escapeKeyCode, leftKeyCode, rightKeyCode ) =
             ( 27, 37, 39 )
@@ -403,5 +404,5 @@ maybeSubscribeDetails model =
                 _ ->
                     Just (subscribe details)
     in
-    model.details
+    display.details
         |> Maybe.andThen maybeSubscribe

@@ -3,27 +3,28 @@ module View.Projects
         ( viewProjects
         )
 
+import Assets exposing (Assets)
 import Css exposing (bold, center, color, em, flexWrap, fontSize, fontStyle, fontWeight, italic, justifyContent, left, marginBottom, px, textAlign, width, wrap)
 import CssShorthand exposing (displayFlexColumn, displayFlexRow, marginRightLeft, marginTopBottom, paddingRightLeft, paddingTopBottom)
+import Data exposing (Data)
 import Data.Projects exposing (ProjectsItemData)
 import Html.Styled exposing (Html, a, div, styled, text)
 import Html.Styled.Attributes exposing (href)
 import HtmlShorthand exposing (onClickPreventDefault)
-import Model exposing (Model)
 import Msg exposing (Msg, clickDetailsOpen)
 import View.Button as Button
 import View.Colors exposing (green)
 import View.Section exposing (viewSection)
 
 
-viewProjects : Model -> Html Msg
-viewProjects model =
+viewProjects : Assets -> Data -> Html Msg
+viewProjects assets data =
     let
         sectionData =
-            model.data.projects
+            data.projects
     in
     viewSection
-        model.iconSource
+        assets.iconSource
         sectionData
         [ viewItems sectionData.items
         ]

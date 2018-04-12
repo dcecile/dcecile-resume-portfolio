@@ -3,25 +3,26 @@ module View.CallsToAction
         ( viewCallsToAction
         )
 
+import Assets exposing (Assets)
 import Css exposing (Style, alignItems, batch, center, em, flexBasis, flexEnd, flexGrow, justifyContent, marginTop, num, px, stretch)
 import CssShorthand exposing (displayFlexRow, displayFlexRowReverse, marginRightLeft)
+import Data exposing (Data)
 import Html.Styled exposing (Html, a, div, styled, text)
 import Html.Styled.Attributes exposing (href)
 import HtmlShorthand exposing (HtmlTag, targetBlank)
 import Icon exposing (IconBackground, IconSource, iconSpan)
-import Model exposing (Model)
 import Msg exposing (Msg)
 import View.Button as Button
 
 
-viewCallsToAction : List Style -> Model -> Html Msg
-viewCallsToAction customStyle model =
+viewCallsToAction : List Style -> Assets -> Data -> Html Msg
+viewCallsToAction customStyle assets data =
     let
         iconSource =
-            model.iconSource
+            assets.iconSource
 
         emailAddress =
-            model.data.basic.emailAddress
+            data.basic.emailAddress
 
         style =
             [ displayFlexRow

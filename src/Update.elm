@@ -73,19 +73,34 @@ maybeModel transform model =
 
 maybeSetDetails : (Model -> Maybe DetailsDisplay) -> Model -> Maybe Model
 maybeSetDetails transform model =
+    let
+        setDisplay details =
+            let
+                display =
+                    model.display
+            in
+            { display
+                | details = Just details
+            }
+
+        setModel details =
+            { model
+                | display = setDisplay details
+            }
+    in
     transform model
-        |> Maybe.map (\details -> { model | details = Just details })
+        |> Maybe.map setModel
 
 
 maybeUpdateDetails : (DetailsDisplay -> Model -> Maybe DetailsDisplay) -> Model -> Maybe Model
 maybeUpdateDetails transform =
     maybeSetDetails
-        (\model -> model.details |> Maybe.andThen (\details -> transform details model))
+        (\model -> model.display.details |> Maybe.andThen (\details -> transform details model))
 
 
 maybeWithDetailsItem : String -> (DetailsItemData -> a) -> Model -> Maybe a
 maybeWithDetailsItem name transform model =
-    findDetailsItem name model.allDetailsItems
+    findDetailsItem name model.display.detailsItems
         |> Maybe.map transform
 
 
@@ -97,15 +112,26 @@ findDetailsItem name =
 hashChange : String -> Model -> Maybe Model
 hashChange hash model =
     let
-        newResumeDisplay =
+        newShowResumePreview =
             hash == "resume"
-    in
-    if newResumeDisplay /= model.resumeDisplay then
-        Just
-            { model
-                | resumeDisplay = newResumeDisplay
+
+        setDisplay =
+            let
+                display =
+                    model.display
+            in
+            { display
+                | showResumePreview = newShowResumePreview
                 , details = Nothing
             }
+
+        setModel =
+            { model
+                | display = setDisplay
+            }
+    in
+    if newShowResumePreview /= model.display.showResumePreview then
+        Just setModel
     else
         Nothing
 

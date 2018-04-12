@@ -5,17 +5,17 @@ module View.About
 
 import Css exposing (auto, bold, center, em, fontSize, fontStyle, fontWeight, italic, marginBottom, maxWidth, zero)
 import CssShorthand exposing (marginRightLeft, marginTopBottom)
+import Data exposing (Data)
 import Html.Styled exposing (Html, div, h2, p, styled, text)
 import Html.Styled.Attributes exposing (id)
-import Model exposing (Model)
 import Msg exposing (Msg)
 
 
-viewAbout : Model -> Html Msg
-viewAbout model =
+viewAbout : Data -> Html Msg
+viewAbout data =
     let
         basicData =
-            model.data.basic
+            data.basic
 
         style =
             [ marginRightLeft auto

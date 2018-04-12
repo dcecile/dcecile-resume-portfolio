@@ -3,21 +3,22 @@ module View.Intro
         ( viewIntro
         )
 
+import Assets exposing (Assets)
 import Css exposing (alignSelf, bold, calc, center, color, em, firstOfType, fontSize, fontStyle, fontWeight, italic, justifyContent, lastOfType, lineHeight, marginBottom, marginTop, maxWidth, minHeight, minus, normal, nthOfType, num, vh, zero)
 import CssShorthand exposing (afterText, beforeText, displayFlexColumn)
+import Data exposing (Data)
 import Html.Styled exposing (Html, div, h1, header, main_, p, styled, text)
-import Model exposing (Model)
 import Msg exposing (Msg)
 import View.CallsToAction exposing (viewCallsToAction)
 import View.Colors exposing (paleGreen)
 import View.Links exposing (linksCutoff)
 
 
-viewIntro : Model -> Html Msg
-viewIntro model =
+viewIntro : Assets -> Data -> Html Msg
+viewIntro assets data =
     let
         basicData =
-            model.data.basic
+            data.basic
 
         style =
             [ displayFlexColumn
@@ -31,7 +32,7 @@ viewIntro model =
         [ viewHeader
             basicData.name
             basicData.portfolioTagline
-        , viewMain model
+        , viewMain assets data
         ]
 
 
@@ -88,11 +89,11 @@ viewTagline tagline =
         [ text tagline ]
 
 
-viewMain : Model -> Html Msg
-viewMain model =
+viewMain : Assets -> Data -> Html Msg
+viewMain assets data =
     let
         basicData =
-            model.data.basic
+            data.basic
 
         style =
             [ displayFlexColumn
@@ -101,7 +102,7 @@ viewMain model =
     List.concat
         [ basicData.portfolioIntroPoints
             |> List.map viewPoint
-        , viewCallsToAction [] model
+        , viewCallsToAction [] assets data
             |> List.singleton
         ]
         |> styled main_ style []

@@ -4,9 +4,11 @@ module View.Resume
         , viewResumeName
         )
 
+import Assets exposing (Assets)
 import Char
 import Css exposing (Em, Style, absolute, auto, batch, bold, borderRadius, borderWidth, center, color, em, flexBasis, flexEnd, flexGrow, flexShrink, flexWrap, fontSize, fontStyle, fontWeight, height, hidden, hsl, italic, justifyContent, letterSpacing, lineHeight, marginBottom, marginLeft, marginRight, marginTop, none, normal, num, opacity, overflow, paddingBottom, paddingLeft, paddingTop, position, right, textAlign, textDecoration, width, wrap, zero)
 import CssShorthand exposing (batchMap, beforeText, borderBottomSolidColor, borderLeftSolidColor, borderSolidColor, displayFlexColumn, displayFlexRow, marginRightLeft, marginTopBottom, noStyle, paddingRightLeft, paddingTopBottom, textDecorationSkipInk, wordBreakBreakAll)
+import Data exposing (Data)
 import Data.Links exposing (LinksItemData)
 import Data.Projects exposing (ProjectsItemData)
 import Data.Visibility exposing (Visibility(PortfolioAndResume), filterVisible)
@@ -16,15 +18,14 @@ import Html.Styled.Attributes exposing (href)
 import HtmlShorthand exposing (styledSpanText)
 import Icon exposing (IconBackground, IconSource, iconImage)
 import MarkedString exposing (MarkedString, MarkedSubstring(NormalSubstring, SpecialSubstring), markedString)
-import Model exposing (Model)
 import Msg exposing (Msg)
 import Regex exposing (HowMany(All), regex, replace)
 import View.Colors exposing (printBlack, printGreen, printPaleGreen, printPaleGreenComponents)
 import View.Metrics exposing (printBorderWidth, printLineHeight)
 
 
-viewResume : Model -> Html Msg
-viewResume model =
+viewResume : Assets -> Data -> Html Msg
+viewResume assets data =
     let
         style =
             [ displayFlexColumn
@@ -38,22 +39,22 @@ viewResume model =
     styled div
         style
         []
-        [ viewHeader model
+        [ viewHeader assets data
         , viewHorizontalRule <| em 0.8
-        , viewMain model
+        , viewMain assets data
         , viewHorizontalRule <| em 0.2
-        , viewFooter model
+        , viewFooter assets data
         ]
 
 
-viewHeader : Model -> Html Msg
-viewHeader model =
+viewHeader : Assets -> Data -> Html Msg
+viewHeader assets data =
     let
         basicData =
-            model.data.basic
+            data.basic
 
         linksData =
-            model.data.links
+            data.links
 
         style =
             [ displayFlexRow
@@ -64,12 +65,12 @@ viewHeader model =
         style
         []
         [ viewPrimary
-            model.iconSource
+            assets.iconSource
             basicData.name
             basicData.homepageURL
             basicData.resumeTagline
         , viewContact
-            model.iconSource
+            assets.iconSource
             basicData.emailAddress
             linksData.resumeItems
             basicData.currentLocation
@@ -190,8 +191,8 @@ viewContactLocation iconSource location =
         ]
 
 
-viewMain : Model -> Html Msg
-viewMain model =
+viewMain : Assets -> Data -> Html Msg
+viewMain assets data =
     let
         style =
             [ displayFlexRow
@@ -201,13 +202,13 @@ viewMain model =
     styled main_
         style
         []
-        [ viewInfo model
-        , viewHistory model
+        [ viewInfo assets data
+        , viewHistory assets data
         ]
 
 
-viewInfo : Model -> Html Msg
-viewInfo model =
+viewInfo : Assets -> Data -> Html Msg
+viewInfo assets data =
     let
         style =
             [ displayFlexColumn
@@ -219,27 +220,27 @@ viewInfo model =
     styled div
         style
         []
-        [ viewTech model
-        , viewProjects model
-        , viewWork model "Volunteering" .resumeVolunteerItems True
-        , viewEducation model
+        [ viewTech data
+        , viewProjects assets data
+        , viewWork assets data "Volunteering" .resumeVolunteerItems True
+        , viewEducation data
         ]
 
 
-viewTech : Model -> Html Msg
-viewTech model =
+viewTech : Data -> Html Msg
+viewTech data =
     viewSection "Tech skills"
         [ viewItem True
-            [ viewTechLine model
+            [ viewTechLine data
             ]
         ]
 
 
-viewTechLine : Model -> Html Msg
-viewTechLine model =
+viewTechLine : Data -> Html Msg
+viewTechLine data =
     let
         sectionData =
-            model.data.tech
+            data.tech
 
         style =
             [ marginTopBottom zero
@@ -275,21 +276,21 @@ viewTechLineItem item =
         [ text item ]
 
 
-viewProjects : Model -> Html Msg
-viewProjects model =
+viewProjects : Assets -> Data -> Html Msg
+viewProjects assets data =
     let
         basicData =
-            model.data.basic
+            data.basic
 
         sectionData =
-            model.data.projects
+            data.projects
     in
     (viewSection "Side projects" << List.concat)
         [ sectionData.items
             |> filterVisible PortfolioAndResume .visibility
             |> List.map viewProjectsItem
         , basicData.homepageURL
-            |> viewProjectsMore model.iconSource
+            |> viewProjectsMore assets.iconSource
             |> List.singleton
         ]
 
@@ -332,11 +333,11 @@ viewProjectsMore iconSource homepageURL =
         ]
 
 
-viewEducation : Model -> Html Msg
-viewEducation model =
+viewEducation : Data -> Html Msg
+viewEducation data =
     let
         sectionData =
-            model.data.education
+            data.education
     in
     viewSection "Education"
         [ viewItem True
@@ -352,8 +353,8 @@ viewEducation model =
         ]
 
 
-viewHistory : Model -> Html Msg
-viewHistory model =
+viewHistory : Assets -> Data -> Html Msg
+viewHistory assets data =
     let
         style =
             [ displayFlexColumn
@@ -364,18 +365,18 @@ viewHistory model =
     styled div
         style
         []
-        [ viewWork model "Work history" .resumeItems False
+        [ viewWork assets data "Work history" .resumeItems False
         ]
 
 
-viewWork : Model -> String -> (WorkData -> List WorkItemData) -> Bool -> Html Msg
-viewWork model subheading itemsSelector narrow =
+viewWork : Assets -> Data -> String -> (WorkData -> List WorkItemData) -> Bool -> Html Msg
+viewWork assets data subheading itemsSelector narrow =
     let
         sectionData =
-            model.data.work
+            data.work
     in
     itemsSelector sectionData
-        |> List.map (viewWorkItem model.iconSource narrow)
+        |> List.map (viewWorkItem assets.iconSource narrow)
         |> viewSection subheading
 
 
@@ -412,11 +413,11 @@ viewWorkItemPoint point =
         viewMarkedString point
 
 
-viewFooter : Model -> Html Msg
-viewFooter model =
+viewFooter : Assets -> Data -> Html Msg
+viewFooter assets data =
     let
         basicData =
-            model.data.basic
+            data.basic
 
         style =
             [ displayFlexColumn
@@ -429,7 +430,7 @@ viewFooter model =
         style
         []
         [ viewSource
-            model.iconSource
+            assets.iconSource
             basicData.sourceURL
             basicData.sourceShortURL
         ]
@@ -718,6 +719,6 @@ viewMarkedString =
     MarkedString.transform text (styledSpanText highlightStyle)
 
 
-viewResumeName : Model -> String
-viewResumeName model =
-    model.data.basic.name ++ "’s resume"
+viewResumeName : Data -> String
+viewResumeName data =
+    data.basic.name ++ "’s resume"

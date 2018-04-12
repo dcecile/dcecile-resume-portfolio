@@ -5,7 +5,10 @@ module View
         , view
         )
 
+import Assets exposing (Assets)
 import Css exposing (hidden, overflow)
+import Data exposing (Data)
+import Display exposing (Display)
 import Head exposing (Head)
 import HeadPort exposing (sendHead)
 import Html.Styled exposing (Html, div, styled)
@@ -16,27 +19,27 @@ import Navigation exposing (onHashChange)
 import View.Details exposing (maybeSubscribeDetails, maybeViewDetails)
 import View.Portfolio exposing (viewPortfolio)
 import View.Resume exposing (viewResumeName)
-import View.ResumeDisplay exposing (viewResumeDisplay)
+import View.ResumePreview exposing (viewResumePreview)
 import View.ResumePrint exposing (viewResumePrint)
 
 
 view : Model -> Html Msg
-view model =
+view { assets, data, display } =
     let
         style =
             [ overflow hidden
             ]
     in
     (styled div style [] << List.concat)
-        [ if model.resumeDisplay then
+        [ if display.showResumePreview then
             List.singleton <|
-                viewResumeDisplay model
+                viewResumePreview assets data
           else
             List.concat
-                [ viewPortfolio model |> List.singleton
-                , maybeViewDetails model |> MaybeEx.toList
+                [ viewPortfolio assets data display |> List.singleton
+                , maybeViewDetails assets display |> MaybeEx.toList
                 ]
-        , viewResumePrint model |> List.singleton
+        , viewResumePrint assets data |> List.singleton
         ]
 
 
@@ -51,31 +54,31 @@ alsoViewHead ( model, cmd ) =
 
 
 viewHead : Model -> Head
-viewHead model =
-    { title = viewTitle model
-    , favicon = viewFavicon model
+viewHead { assets, data, display } =
+    { title = viewTitle data display
+    , favicon = viewFavicon assets display
     }
 
 
-viewTitle : Model -> String
-viewTitle model =
-    if model.resumeDisplay then
-        viewResumeName model
+viewTitle : Data -> Display -> String
+viewTitle data display =
+    if display.showResumePreview then
+        viewResumeName data
     else
-        model.data.basic.name ++ "’s portfolio homepage"
+        data.basic.name ++ "’s portfolio homepage"
 
 
-viewFavicon : Model -> String
-viewFavicon model =
-    if model.resumeDisplay then
-        model.faviconSource.resume
+viewFavicon : Assets -> Display -> String
+viewFavicon assets display =
+    if display.showResumePreview then
+        assets.faviconSource.resume
     else
-        model.faviconSource.portfolio
+        assets.faviconSource.portfolio
 
 
 subscribe : Model -> Sub Msg
-subscribe model =
+subscribe { assets, data, display } =
     Sub.batch
         [ onHashChange HashChange
-        , maybeSubscribeDetails model |> Maybe.withDefault Sub.none
+        , maybeSubscribeDetails display |> Maybe.withDefault Sub.none
         ]

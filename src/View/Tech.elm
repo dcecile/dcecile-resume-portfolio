@@ -3,28 +3,29 @@ module View.Tech
         ( viewTech
         )
 
+import Assets exposing (Assets)
 import Css exposing (alignItems, baseline, center, color, em, flexWrap, fontStyle, italic, justifyContent, marginBottom, px, wrap)
 import CssShorthand exposing (displayFlexRow, marginRightLeft, marginTopBottom)
+import Data exposing (Data)
 import Data.Tech exposing (TechItemData)
 import Dict
 import Html.Styled exposing (Html, a, div, span, styled, text)
 import Html.Styled.Attributes exposing (href)
 import HtmlShorthand exposing (onClickPreventDefault)
-import Model exposing (Model)
 import Msg exposing (Msg, clickDetailsOpen)
 import View.Button as Button
 import View.Colors exposing (paleGreen)
 import View.Section exposing (viewSection)
 
 
-viewTech : Model -> Html Msg
-viewTech model =
+viewTech : Assets -> Data -> Html Msg
+viewTech assets data =
     let
         sectionData =
-            model.data.tech
+            data.tech
     in
     viewSection
-        model.iconSource
+        assets.iconSource
         sectionData
         [ viewItems sectionData.items
         ]

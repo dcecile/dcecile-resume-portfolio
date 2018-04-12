@@ -3,12 +3,13 @@ module View.Footer
         ( viewFooter
         )
 
+import Assets exposing (Assets)
 import Css exposing (alignSelf, bold, borderWidth, center, color, em, fontSize, fontStyle, fontWeight, italic, lineHeight, marginBottom, marginTop, num, px, zero)
 import CssShorthand exposing (borderBottomSolidColor, displayFlexColumn, paddingRightLeft)
+import Data exposing (Data)
 import Html.Styled exposing (Html, a, br, footer, h2, p, styled, text)
 import Html.Styled.Attributes exposing (href, id)
 import HtmlShorthand exposing (targetBlank)
-import Model exposing (Model)
 import Msg exposing (Msg)
 import View.Button as Button
 import View.CallsToAction exposing (viewCallsToAction)
@@ -17,11 +18,11 @@ import View.ElmLogo exposing (viewElmLogo)
 import View.Links exposing (viewLinks)
 
 
-viewFooter : Model -> Html Msg
-viewFooter model =
+viewFooter : Assets -> Data -> Html Msg
+viewFooter assets data =
     let
         basicData =
-            model.data.basic
+            data.basic
 
         style =
             [ displayFlexColumn
@@ -38,8 +39,8 @@ viewFooter model =
         [ id "fin" ]
         [ viewHeader
         , viewButton
-        , viewCallsToAction callsToActionStyle model
-        , viewLinks model
+        , viewCallsToAction callsToActionStyle assets data
+        , viewLinks assets data
         , viewInfo basicData.sourceURL
         ]
 

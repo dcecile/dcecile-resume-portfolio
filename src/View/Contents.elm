@@ -3,6 +3,7 @@ module View.Contents
         ( viewContents
         )
 
+import Assets exposing (Assets)
 import Css exposing (alignItems, bold, borderWidth, boxShadow5, center, em, fontSize, fontWeight, justifyContent, lineHeight, marginBottom, marginTop, minWidth, num, px, zero)
 import CssShorthand exposing (borderTopBottomSolidColor, displayFlexColumn, displayFlexRow, displayFlexRowReverse, marginRightLeft, marginTopBottom, paddingRightLeft, paddingTopBottom)
 import Data exposing (Data)
@@ -10,15 +11,14 @@ import Data.Section exposing (SectionData)
 import Html.Styled exposing (Html, a, div, h2, nav, span, styled, text)
 import Html.Styled.Attributes exposing (href, id)
 import Icon exposing (IconBackground, IconSource, iconSpan)
-import Model exposing (Model)
 import Msg exposing (Msg)
 import View.Button as Button
 import View.Colors exposing (black, paleGreen)
 import View.Metrics exposing (standardBorderWidth)
 
 
-viewContents : Model -> Html Msg
-viewContents model =
+viewContents : Assets -> Data -> Html Msg
+viewContents assets data =
     let
         style =
             [ displayFlexColumn
@@ -37,7 +37,7 @@ viewContents model =
         style
         [ id "contents" ]
         [ viewHeader
-        , viewLinks model
+        , viewLinks assets data
         ]
 
 
@@ -57,8 +57,8 @@ viewHeader =
         [ text "Portfolio contents" ]
 
 
-viewLinks : Model -> Html Msg
-viewLinks model =
+viewLinks : Assets -> Data -> Html Msg
+viewLinks assets data =
     let
         style =
             [ displayFlexRow
@@ -70,12 +70,12 @@ viewLinks model =
         style
         []
         [ viewLinksColumn
-            [ viewLink model False .work
-            , viewLink model False .mindsets
+            [ viewLink assets data False .work
+            , viewLink assets data False .mindsets
             ]
         , viewLinksColumn
-            [ viewLink model True .tech
-            , viewLink model True .projects
+            [ viewLink assets data True .tech
+            , viewLink assets data True .projects
             ]
         ]
 
@@ -90,11 +90,11 @@ viewLinksColumn =
     styled div style []
 
 
-viewLink : Model -> Bool -> (Data -> SectionData a) -> Html Msg
-viewLink model reverse sectionDataSelector =
+viewLink : Assets -> Data -> Bool -> (Data -> SectionData a) -> Html Msg
+viewLink assets data reverse sectionDataSelector =
     let
         sectionData =
-            sectionDataSelector model.data
+            sectionDataSelector data
 
         style =
             [ if reverse then
@@ -107,7 +107,7 @@ viewLink model reverse sectionDataSelector =
     styled span
         style
         []
-        [ viewLinkIcon model.iconSource sectionData.portfolioIconBackground
+        [ viewLinkIcon assets.iconSource sectionData.portfolioIconBackground
         , viewLinkButton sectionData.id sectionData.name
         ]
 

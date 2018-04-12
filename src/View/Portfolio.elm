@@ -3,10 +3,12 @@ module View.Portfolio
         ( viewPortfolio
         )
 
-import Css exposing (alignItems, center, color, display, fontSize, lineHeight, none, num, stretch, textAlign)
-import CssShorthand exposing (displayFlexColumn, mediaNotPrint, willChangeTransform)
+import Assets exposing (Assets)
+import Css exposing (alignItems, center, color, fontSize, lineHeight, num, stretch, textAlign)
+import CssShorthand exposing (displayFlexColumn, displayNone, mediaNotPrint, willChangeTransform)
+import Data exposing (Data)
+import Display exposing (Display)
 import Html.Styled exposing (Html, div, styled)
-import Model exposing (Model)
 import Msg exposing (Msg)
 import View.About exposing (viewAbout)
 import View.Colors exposing (black)
@@ -23,11 +25,11 @@ import View.Tech exposing (viewTech)
 import View.Work exposing (viewWork)
 
 
-viewPortfolio : Model -> Html Msg
-viewPortfolio model =
+viewPortfolio : Assets -> Data -> Display -> Html Msg
+viewPortfolio assets data display =
     let
         style =
-            [ display none
+            [ displayNone
             , fontSize standardScreenFontSize
             , lineHeight <| num standardLineHeight
             , alignItems stretch
@@ -35,20 +37,20 @@ viewPortfolio model =
             , color black
             , willChangeTransform
             , mediaNotPrint [ displayFlexColumn ]
-            , animatePortfolio model
+            , animatePortfolio display
             ]
     in
     styled div
         style
         []
         [ viewFrame
-        , viewIntro model
-        , viewLinks model
-        , viewAbout model
-        , viewContents model
-        , viewWork model
-        , viewMindsets model
-        , viewTech model
-        , viewProjects model
-        , viewFooter model
+        , viewIntro assets data
+        , viewLinks assets data
+        , viewAbout data
+        , viewContents assets data
+        , viewWork assets data
+        , viewMindsets assets data
+        , viewTech assets data
+        , viewProjects assets data
+        , viewFooter assets data
         ]
