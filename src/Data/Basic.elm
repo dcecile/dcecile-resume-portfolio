@@ -17,6 +17,7 @@ type alias BasicData =
     , portfolioIntroPoints : List String
     , sourceURL : String
     , sourceShortURL : Maybe String
+    , about : String
     }
 
 
@@ -46,4 +47,5 @@ initBasicData =
         ]
     , sourceURL = sourceURL
     , sourceShortURL = Just "https://git.io/dcecile-resume"
+    , about = "I live in Kitchener, Ontario, where I love to take walks even in the Canadian winter. I’m a lifelong student of Japanese, Chinese, and t’ai chi ch’üan. The most magical place for me is a library stacked with awesome books."
     }

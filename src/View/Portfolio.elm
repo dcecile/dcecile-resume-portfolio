@@ -8,6 +8,7 @@ import CssShorthand exposing (displayFlexColumn, mediaNotPrint, willChangeTransf
 import Html.Styled exposing (Html, div, styled)
 import Model exposing (Model)
 import Msg exposing (Msg)
+import View.About exposing (viewAbout)
 import View.Colors exposing (black)
 import View.Contents exposing (viewContents)
 import View.DetailsAnimation exposing (animatePortfolio)
@@ -43,6 +44,7 @@ viewPortfolio model =
         [ viewFrame
         , viewIntro model
         , viewLinks model
+        , viewAbout model
         , viewContents model
         , viewWork model
         , viewMindsets model
