@@ -3,7 +3,7 @@ module View.About
         ( viewAbout
         )
 
-import Css exposing (auto, bold, center, em, fontSize, fontStyle, fontWeight, italic, marginBottom, maxWidth, zero)
+import Css exposing (alignSelf, bold, center, em, fontSize, fontStyle, fontWeight, italic, marginBottom, maxWidth, zero)
 import CssShorthand exposing (marginRightLeft, marginTopBottom)
 import Data exposing (Data)
 import Html.Styled exposing (Html, div, h2, p, styled, text)
@@ -18,7 +18,7 @@ viewAbout data =
             data.basic
 
         style =
-            [ marginRightLeft auto
+            [ alignSelf center
             , marginBottom <| em 2
             , maxWidth <| em 26
             ]
@@ -51,6 +51,7 @@ viewContent about =
     let
         style =
             [ marginTopBottom zero
+            , marginRightLeft <| em 1
             , fontSize <| em 0.85
             , fontStyle italic
             ]

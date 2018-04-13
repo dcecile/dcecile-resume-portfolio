@@ -6,7 +6,8 @@ module View.Metrics
         , standardBorderWidth
         , standardLineHeight
         , standardPrintFontSize
-        , standardScreenFontSize
+        , standardScreenFontSizeLarge
+        , standardScreenFontSizeSmall
         )
 
 import Css exposing (Em, Pct, Pt, Px, em, num, pct, pt, px)
@@ -27,8 +28,13 @@ standardLineHeight =
     1.7
 
 
-standardScreenFontSize : Pct
-standardScreenFontSize =
+standardScreenFontSizeSmall : Pct
+standardScreenFontSizeSmall =
+    pct 125
+
+
+standardScreenFontSizeLarge : Pct
+standardScreenFontSizeLarge =
     pct 145
 
 

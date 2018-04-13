@@ -21,7 +21,7 @@ import Msg exposing (Msg(DetailsClose, DetailsNavigate, NoMsg))
 import View.Button as Button
 import View.Colors exposing (black, blackLevel, extraPaleGreen, green, paleGreen, white)
 import View.DetailsAnimation exposing (animateDetails, animateDetailsItem)
-import View.Metrics exposing (standardBorderRadius, standardLineHeight, standardScreenFontSize)
+import View.Metrics exposing (standardBorderRadius, standardLineHeight, standardScreenFontSizeSmall)
 
 
 maybeViewDetails : Assets -> Display -> Maybe (Html Msg)
@@ -39,7 +39,7 @@ viewDetails assets details =
             , position fixed
             , batchMap [ top, right, bottom, left ] zero
             , backgroundColor extraPaleGreen
-            , fontSize standardScreenFontSize
+            , fontSize standardScreenFontSizeSmall
             , lineHeight <| num standardLineHeight
             , color black
             , willChangeTransform

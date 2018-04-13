@@ -5,7 +5,7 @@ module View.Intro
 
 import Assets exposing (Assets)
 import Css exposing (alignSelf, bold, calc, center, color, em, firstOfType, fontSize, fontStyle, fontWeight, italic, justifyContent, lastOfType, lineHeight, marginBottom, marginTop, maxWidth, minHeight, minus, normal, nthOfType, num, vh, zero)
-import CssShorthand exposing (afterText, beforeText, displayFlexColumn)
+import CssShorthand exposing (afterText, beforeText, displayFlexColumn, marginRightLeft)
 import Data exposing (Data)
 import Html.Styled exposing (Html, div, h1, header, main_, p, styled, text)
 import Msg exposing (Msg)
@@ -55,7 +55,7 @@ viewName : String -> Html Msg
 viewName name =
     let
         style =
-            [ marginTop zero
+            [ marginTop <| em 0.7
             , marginBottom zero
             , fontWeight bold
             , fontSize <| em 2.2
@@ -98,11 +98,15 @@ viewMain assets data =
         style =
             [ displayFlexColumn
             ]
+
+        callsToActionStyle =
+            [ marginBottom <| em 2
+            ]
     in
     List.concat
         [ basicData.portfolioIntroPoints
             |> List.map viewPoint
-        , viewCallsToAction [] assets data
+        , viewCallsToAction callsToActionStyle assets data
             |> List.singleton
         ]
         |> styled main_ style []
@@ -115,6 +119,7 @@ viewPoint introPoint =
             [ alignSelf center
             , marginTop zero
             , marginBottom <| em 0.6
+            , marginRightLeft <| em 1
             , maxWidth <| em 20
             , nthOfType "2n + 1" [ fontStyle italic ]
             , firstOfType [ fontStyle normal, fontWeight bold ]

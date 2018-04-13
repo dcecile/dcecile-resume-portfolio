@@ -16,6 +16,7 @@ module CssShorthand
         , filter
         , marginRightLeft
         , marginTopBottom
+        , mediaMinWidthRem
         , mediaNotPrint
         , mediaPrint
         , noStyle
@@ -31,7 +32,7 @@ module CssShorthand
         )
 
 import Css exposing (BorderStyle, Color, Length, LengthOrAuto, Style, TextDecorationStyle, after, batch, before, borderBottomStyle, borderColor, borderLeftStyle, borderStyle, borderTopStyle, column, display, displayFlex, flexDirection, int, marginBottom, marginLeft, marginRight, marginTop, none, paddingBottom, paddingLeft, paddingRight, paddingTop, property, row, rowReverse, solid, visited, zIndex)
-import Css.Media exposing (print, withMedia)
+import Css.Media as Media exposing (withMedia)
 
 
 afterText : String -> List Style -> Style
@@ -138,12 +139,17 @@ marginTopBottom =
 
 mediaNotPrint : List Style -> Style
 mediaNotPrint =
-    withMedia [ Css.Media.not print [] ]
+    withMedia [ Media.not Media.print [] ]
 
 
 mediaPrint : List Style -> Style
 mediaPrint =
-    withMedia [ Css.Media.only print [] ]
+    withMedia [ Media.only Media.print [] ]
+
+
+mediaMinWidthRem : Float -> List Style -> Style
+mediaMinWidthRem length =
+    withMedia [ Media.all [ Media.minWidth (Css.rem length) ] ]
 
 
 noStyle : Style

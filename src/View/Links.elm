@@ -5,7 +5,7 @@ module View.Links
         )
 
 import Assets exposing (Assets)
-import Css exposing (Compatible, Em, auto, calc, center, em, fontSize, fontWeight, height, justifyContent, marginBottom, marginTop, normal, padding, plus, px, width, zero)
+import Css exposing (Compatible, Em, Px, alignSelf, calc, center, em, flexWrap, fontSize, fontWeight, height, initial, justifyContent, marginBottom, marginTop, maxWidth, normal, padding, plus, px, width, wrap, zero)
 import CssShorthand exposing (batchMap, displayFlexColumn, displayFlexRow, marginRightLeft, marginTopBottom, paddingRightLeft, paddingTopBottom)
 import Data exposing (Data)
 import Data.Links exposing (LinksItemData)
@@ -14,6 +14,7 @@ import Html.Styled.Attributes exposing (href, title)
 import HtmlShorthand exposing (ariaLabel, targetBlank)
 import Icon exposing (IconBackground, IconSource, iconSpan)
 import Msg exposing (Msg)
+import View.Breakpoints exposing (breakpointMedium)
 import View.Button as Button
 import View.GroupBox as GroupBox
 import View.Metrics exposing (standardBorderWidth, standardLineHeight)
@@ -48,7 +49,8 @@ linksCutoff =
     standardBorderWidth
         |> add linksTopBottomPadding
         |> add (em standardLineHeight)
-        |> add linksListTopPadding
+        |> add linksListTopMargin
+        |> add linkIconMargin
         |> add standardBorderWidth
         |> add linkIconPadding
         |> add (em (cutoffFactor * linkIconSize.numericValue))
@@ -59,9 +61,14 @@ linksTopBottomPadding =
     em 0.7
 
 
-linksListTopPadding : Em
-linksListTopPadding =
-    em 0.8
+linksListTopMargin : Em
+linksListTopMargin =
+    em 0.5
+
+
+linkIconMargin : Px
+linkIconMargin =
+    px 8
 
 
 linkIconPadding : Em
@@ -78,12 +85,17 @@ viewLinks : Assets -> Data -> Html Msg
 viewLinks assets data =
     let
         style =
-            [ displayFlexColumn
-            , GroupBox.border
+            [ GroupBox.border
+            , displayFlexColumn
+            , alignSelf center
+            , marginRightLeft <| em 2.0
+            , marginBottom <| em 2.0
             , paddingTopBottom <| linksTopBottomPadding
             , paddingRightLeft <| em 1.0
-            , marginRightLeft auto
-            , marginBottom <| em 2.0
+            , maxWidth <| em 11
+            , breakpointMedium
+                [ maxWidth initial
+                ]
             ]
     in
     styled nav
@@ -115,8 +127,9 @@ viewLinkList assets data =
         style =
             [ displayFlexRow
             , justifyContent center
-            , marginTop linksListTopPadding
-            , marginBottom <| em 0.5
+            , flexWrap wrap
+            , marginTop linksListTopMargin
+            , marginBottom <| em 0.2
             ]
     in
     data.links.portfolioItems
@@ -130,6 +143,7 @@ viewLink iconSource linksItem =
         style =
             [ Button.border
             , displayFlexRow
+            , marginTopBottom linkIconMargin
             , marginRightLeft <| px 11
             , padding linkIconPadding
             ]

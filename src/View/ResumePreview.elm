@@ -16,7 +16,7 @@ import LazyHtml exposing (LazyHtml, fromLazyHtml2, toLazyHtml)
 import Msg exposing (Msg(Print))
 import View.Button as Button
 import View.Colors exposing (white)
-import View.Metrics exposing (standardPrintFontSize, standardScreenFontSize)
+import View.Metrics exposing (standardPrintFontSize, standardScreenFontSizeSmall)
 import View.Resume exposing (viewResume, viewResumeName)
 
 
@@ -84,7 +84,7 @@ viewActions assets data =
         style =
             [ displayFlexColumn
             , alignItems flexEnd
-            , fontSize standardScreenFontSize
+            , fontSize standardScreenFontSizeSmall
             , marginTop <| em 1.8
             , marginRight <| em 2.2
             , animation <|

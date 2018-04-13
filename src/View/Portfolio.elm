@@ -12,6 +12,7 @@ import Html.Styled exposing (Html, div, styled)
 import LazyHtml exposing (LazyHtml, fromLazyHtml2, toLazyHtml)
 import Msg exposing (Msg)
 import View.About exposing (viewAbout)
+import View.Breakpoints exposing (breakpointMedium)
 import View.Colors exposing (black)
 import View.Contents exposing (viewContents)
 import View.DetailsAnimation exposing (animatePortfolio)
@@ -19,7 +20,7 @@ import View.Footer exposing (viewFooter)
 import View.Frame exposing (viewFrame)
 import View.Intro exposing (viewIntro)
 import View.Links exposing (viewLinks)
-import View.Metrics exposing (standardLineHeight, standardScreenFontSize)
+import View.Metrics exposing (standardLineHeight, standardScreenFontSizeLarge, standardScreenFontSizeSmall)
 import View.Mindsets exposing (viewMindsets)
 import View.Projects exposing (viewProjects)
 import View.Tech exposing (viewTech)
@@ -35,7 +36,9 @@ viewPortfolio assets data display =
             , if display.showResumePreview then
                 noStyle
               else
-                mediaNotPrint [ displayFlexColumn ]
+                mediaNotPrint
+                    [ displayFlexColumn
+                    ]
             , animatePortfolio display
             ]
     in
@@ -51,7 +54,10 @@ viewPortfolioStatic assets data =
     let
         style =
             [ displayFlexColumn
-            , fontSize standardScreenFontSize
+            , fontSize standardScreenFontSizeSmall
+            , breakpointMedium
+                [ fontSize standardScreenFontSizeLarge
+                ]
             , lineHeight <| num standardLineHeight
             , alignItems stretch
             , textAlign center
