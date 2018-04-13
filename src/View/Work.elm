@@ -12,7 +12,7 @@ import Html.Styled exposing (Html, a, div, styled, text)
 import Html.Styled.Attributes exposing (href)
 import HtmlShorthand exposing (onClickPreventDefault)
 import Msg exposing (Msg, clickDetailsOpen)
-import View.Breakpoints exposing (breakpointMedium)
+import View.Breakpoints exposing (breakpointPortfolioMedium)
 import View.Button as Button
 import View.Colors exposing (green)
 import View.Section exposing (viewSection)
@@ -38,7 +38,7 @@ viewItems isLarge items =
         style =
             [ displayFlexColumn
             , alignItems center
-            , breakpointMedium
+            , breakpointPortfolioMedium
                 [ displayFlexRow
                 , flexWrap wrap
                 , justifyContent center
@@ -73,7 +73,7 @@ viewItem isLarge item =
         largeStyle =
             [ batch baseStyle
             , paddingRightLeft <| em 1.2
-            , breakpointMedium
+            , breakpointPortfolioMedium
                 [ paddingTopBottom <| em 1.0
                 , paddingRightLeft <| em 1.4
                 ]
@@ -84,7 +84,7 @@ viewItem isLarge item =
             , marginTop <| px 8
             , marginBottom <| px 16
             , paddingRightLeft <| em 1.5
-            , breakpointMedium
+            , breakpointPortfolioMedium
                 [ paddingRightLeft <| em 1.0
                 ]
             ]

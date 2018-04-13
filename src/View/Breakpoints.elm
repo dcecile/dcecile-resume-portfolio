@@ -1,30 +1,30 @@
 module View.Breakpoints
     exposing
-        ( breakpointMedium
+        ( breakpointPortfolioMedium
+        , breakpointPortfolioTall
+        , breakpointPortfolioTallRemLength
         , breakpointResumePreviewLarge
         , breakpointResumePreviewMedium
         , breakpointResumePreviewMediumLarge
-        , breakpointTall
-        , breakpointTallRemLength
         )
 
 import Css exposing (Style)
 import CssShorthand exposing (batchMap, mediaMinHeightRem, mediaMinWidthRem, mediaMinWidthRemTo)
 
 
-breakpointMedium : List Style -> Style
-breakpointMedium =
+breakpointPortfolioMedium : List Style -> Style
+breakpointPortfolioMedium =
     mediaMinWidthRem 40
 
 
-breakpointTallRemLength : Float
-breakpointTallRemLength =
+breakpointPortfolioTallRemLength : Float
+breakpointPortfolioTallRemLength =
     52
 
 
-breakpointTall : List Style -> Style
-breakpointTall =
-    mediaMinHeightRem breakpointTallRemLength
+breakpointPortfolioTall : List Style -> Style
+breakpointPortfolioTall =
+    mediaMinHeightRem breakpointPortfolioTallRemLength
 
 
 breakpointResumePreviewMedium : List Style -> Style

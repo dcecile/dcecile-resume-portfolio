@@ -12,7 +12,7 @@ import Html.Styled.Attributes exposing (href)
 import HtmlShorthand exposing (HtmlTag, targetBlank)
 import Icon exposing (IconBackground, IconSource, iconSpan)
 import Msg exposing (Msg)
-import View.Breakpoints exposing (breakpointMedium)
+import View.Breakpoints exposing (breakpointPortfolioMedium)
 import View.Button as Button
 
 
@@ -27,7 +27,7 @@ viewCallsToAction customStyle assets data =
 
         style =
             [ displayFlexColumn
-            , breakpointMedium
+            , breakpointPortfolioMedium
                 [ displayFlexRow
                 ]
             , justifyContent stretch
@@ -59,7 +59,7 @@ viewCallToAction iconSource displayStyle iconBackground attributes elements =
     let
         style =
             [ displayFlexRowReverse
-            , breakpointMedium
+            , breakpointPortfolioMedium
                 [ displayStyle
                 ]
             , justifyContent flexEnd
@@ -68,7 +68,7 @@ viewCallToAction iconSource displayStyle iconBackground attributes elements =
             , firstOfType
                 [ marginTop zero
                 ]
-            , breakpointMedium
+            , breakpointPortfolioMedium
                 [ marginTop zero
                 , flexBasis <| em 0
                 , flexGrow <| num 1
@@ -88,7 +88,7 @@ viewCallToActionIcon =
     iconSpan
         [ marginLeft <| px 8
         , marginRight <| px -32
-        , breakpointMedium
+        , breakpointPortfolioMedium
             [ marginRight <| px 8
             ]
         ]

@@ -11,7 +11,7 @@ import Html.Styled exposing (Html, a, br, footer, h2, p, styled, text)
 import Html.Styled.Attributes exposing (href, id)
 import HtmlShorthand exposing (targetBlank)
 import Msg exposing (Msg)
-import View.Breakpoints exposing (breakpointMedium)
+import View.Breakpoints exposing (breakpointPortfolioMedium)
 import View.Button as Button
 import View.CallsToAction exposing (viewCallsToAction)
 import View.Colors exposing (black, green, paleGreen)
@@ -52,7 +52,7 @@ viewHeader =
         style =
             [ marginTop <| em 3.0
             , marginBottom <| em 0.8
-            , breakpointMedium
+            , breakpointPortfolioMedium
                 [ marginBottom <| em 2.3
                 ]
             , fontWeight bold
@@ -73,7 +73,7 @@ viewButton =
             , Button.sizeLarge
             , Button.text
             , displayNone
-            , breakpointMedium
+            , breakpointPortfolioMedium
                 [ displayInitial
                 ]
             , alignSelf center

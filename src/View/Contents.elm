@@ -12,7 +12,7 @@ import Html.Styled exposing (Html, a, div, h2, nav, span, styled, text)
 import Html.Styled.Attributes exposing (href, id)
 import Icon exposing (IconBackground, IconSource, iconSpan)
 import Msg exposing (Msg)
-import View.Breakpoints exposing (breakpointMedium)
+import View.Breakpoints exposing (breakpointPortfolioMedium)
 import View.Button as Button
 import View.Colors exposing (black, paleGreen)
 import View.Metrics exposing (standardBorderWidth)
@@ -33,7 +33,7 @@ viewContents assets data =
                 paleGreen
             , paddingTop <| em 1.3
             , paddingBottom <| em 1.0
-            , breakpointMedium
+            , breakpointPortfolioMedium
                 [ paddingTop <| em 1.8
                 , paddingBottom <| em 1.5
                 ]
@@ -68,7 +68,7 @@ viewLinks assets data =
     let
         style =
             [ displayFlexColumn
-            , breakpointMedium
+            , breakpointPortfolioMedium
                 [ displayFlexRow
                 ]
             , justifyContent center
@@ -108,7 +108,7 @@ viewLink assets data reverse sectionDataSelector =
 
         style =
             [ displayFlexRowReverse
-            , breakpointMedium
+            , breakpointPortfolioMedium
                 [ if reverse then
                     displayFlexRowReverse
                   else
@@ -129,7 +129,7 @@ viewLinkIcon : IconSource -> IconBackground -> Html Msg
 viewLinkIcon =
     iconSpan
         [ marginRight <| px -24
-        , breakpointMedium
+        , breakpointPortfolioMedium
             [ marginRight zero
             ]
         ]
@@ -144,7 +144,7 @@ viewLinkButton fragmentID linkText =
             , Button.text
             , marginTopBottom <| px 10
             , marginRightLeft <| px 18
-            , breakpointMedium
+            , breakpointPortfolioMedium
                 [ minWidth <| em 6.2
                 ]
             ]

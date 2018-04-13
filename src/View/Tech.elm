@@ -13,7 +13,7 @@ import Html.Styled exposing (Html, a, div, span, styled, text)
 import Html.Styled.Attributes exposing (href)
 import HtmlShorthand exposing (onClickPreventDefault)
 import Msg exposing (Msg, clickDetailsOpen)
-import View.Breakpoints exposing (breakpointMedium)
+import View.Breakpoints exposing (breakpointPortfolioMedium)
 import View.Button as Button
 import View.Colors exposing (paleGreen)
 import View.Section exposing (viewSection)
@@ -40,12 +40,12 @@ viewItems items =
             , flexWrap wrap
             , alignItems baseline
             , marginRightLeft <| em 0.4
-            , breakpointMedium
+            , breakpointPortfolioMedium
                 [ marginRightLeft <| em 3.8
                 ]
             , marginBottom <| em 1.5
             , fontSize <| em 0.92
-            , breakpointMedium
+            , breakpointPortfolioMedium
                 [ fontSize <| em 1.0
                 ]
             ]
@@ -111,7 +111,7 @@ viewKey key =
         style =
             [ displayFlexRow
             , marginRightLeft <| px 4
-            , breakpointMedium
+            , breakpointPortfolioMedium
                 [ marginRightLeft <| px 6
                 ]
             , color paleGreen
@@ -132,7 +132,7 @@ viewItem item =
             , Button.sizeSmall
             , Button.text
             , marginTopBottom <| px 11
-            , breakpointMedium
+            , breakpointPortfolioMedium
                 [ marginTopBottom <| px 17
                 ]
             , marginRightLeft <| px 7

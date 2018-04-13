@@ -13,7 +13,7 @@ import Html.Styled.Attributes exposing (href)
 import HtmlShorthand exposing (onClickPreventDefault)
 import Msg exposing (Msg, clickDetailsOpen)
 import Svg.Styled exposing (Svg)
-import View.Breakpoints exposing (breakpointMedium)
+import View.Breakpoints exposing (breakpointPortfolioMedium)
 import View.Button as Button
 import View.Castle exposing (viewCastle)
 import View.Chart exposing (viewChart)
@@ -93,7 +93,7 @@ viewItem item illustration =
             , displayFlexColumn
             , alignItems center
             , batchMap [ width, height ] itemSizeLarge
-            , breakpointMedium
+            , breakpointPortfolioMedium
                 [ batchMap [ width, height ] itemSizeSmall
                 ]
             , marginBottom <| em 0.8
@@ -115,7 +115,7 @@ viewItemBackground illustration =
     let
         style =
             [ batchMap [ width, height ] itemSizeLarge
-            , breakpointMedium
+            , breakpointPortfolioMedium
                 [ batchMap [ width, height ] itemSizeSmall
                 ]
             , marginBottom itemButtonOffset
@@ -131,7 +131,7 @@ viewItemLink name =
             [ Button.borderCenter
             , Button.sizeMedium
             , minWidth itemButtonWidthLarge
-            , breakpointMedium
+            , breakpointPortfolioMedium
                 [ minWidth itemButtonWidthSmall
                 ]
             , backgroundColor white

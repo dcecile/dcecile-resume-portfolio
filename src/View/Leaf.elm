@@ -11,7 +11,7 @@ import Msg exposing (Msg)
 import Svg.Styled exposing (Svg, g, path, styled, svg)
 import Svg.Styled.Attributes exposing (d)
 import SvgShorthand exposing (fill, flipAxes, rotate, scale, stroke, strokeWidthUnscaled, transform, translate, viewBoxSquare)
-import View.Breakpoints exposing (breakpointMedium)
+import View.Breakpoints exposing (breakpointPortfolioMedium)
 import View.Colors exposing (extraPaleGreen, paleGreen)
 
 
@@ -93,7 +93,7 @@ viewLeaf showUnderMediumWidth flipX flipY size =
                 noStyle
               else
                 visibility hidden
-            , breakpointMedium
+            , breakpointPortfolioMedium
                 [ visibility initial
                 ]
             , batchMap [ width, height ] (Css.rem leafSizeMinSizeRem)

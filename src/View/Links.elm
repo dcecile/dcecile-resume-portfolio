@@ -14,7 +14,7 @@ import Html.Styled.Attributes exposing (href, title)
 import HtmlShorthand exposing (ariaLabel, targetBlank)
 import Icon exposing (IconBackground, IconSource, iconSpan)
 import Msg exposing (Msg)
-import View.Breakpoints exposing (breakpointMedium)
+import View.Breakpoints exposing (breakpointPortfolioMedium)
 import View.Button as Button
 import View.GroupBox as GroupBox
 import View.Metrics exposing (standardBorderWidth, standardLineHeight)
@@ -93,7 +93,7 @@ viewLinks assets data =
             , paddingTopBottom <| linksTopBottomPadding
             , paddingRightLeft <| em 1.0
             , maxWidth <| em 11
-            , breakpointMedium
+            , breakpointPortfolioMedium
                 [ maxWidth initial
                 ]
             ]

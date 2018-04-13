@@ -12,7 +12,7 @@ import Html.Styled exposing (Html, div, styled)
 import LazyHtml exposing (LazyHtml, fromLazyHtml2, toLazyHtml)
 import Msg exposing (Msg)
 import View.About exposing (viewAbout)
-import View.Breakpoints exposing (breakpointMedium)
+import View.Breakpoints exposing (breakpointPortfolioMedium)
 import View.Colors exposing (black)
 import View.Contents exposing (viewContents)
 import View.DetailsAnimation exposing (animatePortfolio)
@@ -55,7 +55,7 @@ viewPortfolioStatic assets data =
         style =
             [ displayFlexColumn
             , fontSize standardScreenFontSizeSmall
-            , breakpointMedium
+            , breakpointPortfolioMedium
                 [ fontSize standardScreenFontSizeLarge
                 ]
             , lineHeight <| num standardLineHeight

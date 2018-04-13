@@ -7,7 +7,7 @@ import Css exposing (height, justifyContent, marginBottom, spaceBetween, vh)
 import CssShorthand exposing (displayFlexColumn, displayFlexRow, zIndexBackground)
 import Html.Styled exposing (Html, div, styled)
 import Msg exposing (Msg)
-import View.Breakpoints exposing (breakpointTall, breakpointTallRemLength)
+import View.Breakpoints exposing (breakpointPortfolioTall, breakpointPortfolioTallRemLength)
 import View.Leaf exposing (viewLeaf)
 
 
@@ -20,9 +20,9 @@ viewFrame =
             , justifyContent spaceBetween
             , marginBottom <| vh -100
             , height <| vh 100
-            , breakpointTall
-                [ marginBottom <| Css.rem -breakpointTallRemLength
-                , height <| Css.rem breakpointTallRemLength
+            , breakpointPortfolioTall
+                [ marginBottom <| Css.rem -breakpointPortfolioTallRemLength
+                , height <| Css.rem breakpointPortfolioTallRemLength
                 ]
             ]
     in

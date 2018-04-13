@@ -12,7 +12,7 @@ import Html.Styled exposing (Html, a, div, styled, text)
 import Html.Styled.Attributes exposing (href)
 import HtmlShorthand exposing (onClickPreventDefault)
 import Msg exposing (Msg, clickDetailsOpen)
-import View.Breakpoints exposing (breakpointMedium)
+import View.Breakpoints exposing (breakpointPortfolioMedium)
 import View.Button as Button
 import View.Colors exposing (green)
 import View.Section exposing (viewSection)
@@ -39,7 +39,7 @@ viewItems items =
             , flexWrap wrap
             , justifyContent center
             , marginTop <| px -8
-            , breakpointMedium
+            , breakpointPortfolioMedium
                 [ marginRightLeft <| em 0.5
                 ]
             , marginBottom <| em 1.0
@@ -59,18 +59,18 @@ viewItem item =
             , displayFlexColumn
             , marginTopBottom <| px 8
             , marginRightLeft <| px 8
-            , breakpointMedium
+            , breakpointPortfolioMedium
                 [ marginTopBottom <| px 16
                 , marginRightLeft <| px 14
                 ]
             , paddingTopBottom <| em 0.7
             , paddingRightLeft <| em 0.5
-            , breakpointMedium
+            , breakpointPortfolioMedium
                 [ paddingTopBottom <| em 0.8
                 , paddingRightLeft <| em 1.0
                 ]
             , width <| em 8.0
-            , breakpointMedium
+            , breakpointPortfolioMedium
                 [ textAlign left
                 ]
             , fontSize <| em 0.85
@@ -93,7 +93,7 @@ viewName name =
         style =
             [ fontWeight bold
             , marginBottom <| em 0.1
-            , breakpointMedium
+            , breakpointPortfolioMedium
                 [ marginBottom <| em 0.3
                 ]
             ]
@@ -110,7 +110,7 @@ viewTech tech =
         style =
             [ color green
             , marginBottom <| em 0.1
-            , breakpointMedium
+            , breakpointPortfolioMedium
                 [ marginBottom <| em 0.3
                 ]
             ]
@@ -127,7 +127,7 @@ viewDescription description =
         style =
             [ fontStyle italic
             , marginBottom <| em 0.1
-            , breakpointMedium
+            , breakpointPortfolioMedium
                 [ marginBottom <| em 0.2
                 ]
             ]

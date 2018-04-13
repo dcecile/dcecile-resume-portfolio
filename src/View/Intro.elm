@@ -9,7 +9,7 @@ import CssShorthand exposing (afterText, beforeText, displayFlexColumn, marginRi
 import Data exposing (Data)
 import Html.Styled exposing (Html, div, h1, header, main_, p, styled, text)
 import Msg exposing (Msg)
-import View.Breakpoints exposing (breakpointTall, breakpointTallRemLength)
+import View.Breakpoints exposing (breakpointPortfolioTall, breakpointPortfolioTallRemLength)
 import View.CallsToAction exposing (viewCallsToAction)
 import View.Colors exposing (paleGreen)
 import View.Links exposing (linksCutoff)
@@ -25,8 +25,8 @@ viewIntro assets data =
             [ displayFlexColumn
             , justifyContent center
             , minHeight <| calc (vh 100) minus linksCutoff
-            , breakpointTall
-                [ minHeight <| calc (Css.rem breakpointTallRemLength) minus linksCutoff
+            , breakpointPortfolioTall
+                [ minHeight <| calc (Css.rem breakpointPortfolioTallRemLength) minus linksCutoff
                 ]
             ]
     in
