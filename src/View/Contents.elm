@@ -4,14 +4,15 @@ module View.Contents
         )
 
 import Assets exposing (Assets)
-import Css exposing (alignItems, bold, borderWidth, boxShadow5, center, em, fontSize, fontWeight, justifyContent, lineHeight, marginBottom, marginTop, minWidth, num, px, zero)
-import CssShorthand exposing (borderTopBottomSolidColor, displayFlexColumn, displayFlexRow, displayFlexRowReverse, marginRightLeft, marginTopBottom, paddingRightLeft, paddingTopBottom)
+import Css exposing (alignItems, bold, borderWidth, boxShadow5, center, em, fontSize, fontWeight, justifyContent, lineHeight, marginBottom, marginRight, marginTop, minWidth, num, paddingBottom, paddingTop, px, zero)
+import CssShorthand exposing (borderTopBottomSolidColor, displayFlexColumn, displayFlexRow, displayFlexRowReverse, marginRightLeft, marginTopBottom, paddingRightLeft)
 import Data exposing (Data)
 import Data.Section exposing (SectionData)
 import Html.Styled exposing (Html, a, div, h2, nav, span, styled, text)
 import Html.Styled.Attributes exposing (href, id)
 import Icon exposing (IconBackground, IconSource, iconSpan)
 import Msg exposing (Msg)
+import View.Breakpoints exposing (breakpointMedium)
 import View.Button as Button
 import View.Colors exposing (black, paleGreen)
 import View.Metrics exposing (standardBorderWidth)
@@ -30,7 +31,12 @@ viewContents assets data =
                 zero
                 (px 1)
                 paleGreen
-            , paddingTopBottom <| em 2.0
+            , paddingTop <| em 1.3
+            , paddingBottom <| em 1.0
+            , breakpointMedium
+                [ paddingTop <| em 1.8
+                , paddingBottom <| em 1.5
+                ]
             ]
     in
     styled nav
@@ -61,7 +67,10 @@ viewLinks : Assets -> Data -> Html Msg
 viewLinks assets data =
     let
         style =
-            [ displayFlexRow
+            [ displayFlexColumn
+            , breakpointMedium
+                [ displayFlexRow
+                ]
             , justifyContent center
             , marginBottom <| px 12
             ]
@@ -85,6 +94,7 @@ viewLinksColumn =
     let
         style =
             [ displayFlexColumn
+            , alignItems center
             ]
     in
     styled div style []
@@ -97,10 +107,13 @@ viewLink assets data reverse sectionDataSelector =
             sectionDataSelector data
 
         style =
-            [ if reverse then
-                displayFlexRowReverse
-              else
-                displayFlexRow
+            [ displayFlexRowReverse
+            , breakpointMedium
+                [ if reverse then
+                    displayFlexRowReverse
+                  else
+                    displayFlexRow
+                ]
             , alignItems center
             ]
     in
@@ -114,7 +127,12 @@ viewLink assets data reverse sectionDataSelector =
 
 viewLinkIcon : IconSource -> IconBackground -> Html Msg
 viewLinkIcon =
-    iconSpan []
+    iconSpan
+        [ marginRight <| px -24
+        , breakpointMedium
+            [ marginRight zero
+            ]
+        ]
 
 
 viewLinkButton : String -> String -> Html Msg
@@ -126,7 +144,9 @@ viewLinkButton fragmentID linkText =
             , Button.text
             , marginTopBottom <| px 10
             , marginRightLeft <| px 18
-            , minWidth <| em 6.2
+            , breakpointMedium
+                [ minWidth <| em 6.2
+                ]
             ]
     in
     styled a

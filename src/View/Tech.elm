@@ -4,7 +4,7 @@ module View.Tech
         )
 
 import Assets exposing (Assets)
-import Css exposing (alignItems, baseline, center, color, em, flexWrap, fontStyle, italic, justifyContent, marginBottom, px, wrap)
+import Css exposing (alignItems, baseline, center, color, em, flexWrap, fontSize, fontStyle, italic, justifyContent, marginBottom, px, wrap)
 import CssShorthand exposing (displayFlexRow, marginRightLeft, marginTopBottom)
 import Data exposing (Data)
 import Data.Tech exposing (TechItemData)
@@ -13,6 +13,7 @@ import Html.Styled exposing (Html, a, div, span, styled, text)
 import Html.Styled.Attributes exposing (href)
 import HtmlShorthand exposing (onClickPreventDefault)
 import Msg exposing (Msg, clickDetailsOpen)
+import View.Breakpoints exposing (breakpointMedium)
 import View.Button as Button
 import View.Colors exposing (paleGreen)
 import View.Section exposing (viewSection)
@@ -38,8 +39,15 @@ viewItems items =
             [ displayFlexRow
             , flexWrap wrap
             , alignItems baseline
-            , marginRightLeft <| em 3.8
+            , marginRightLeft <| em 0.4
+            , breakpointMedium
+                [ marginRightLeft <| em 3.8
+                ]
             , marginBottom <| em 1.5
+            , fontSize <| em 0.92
+            , breakpointMedium
+                [ fontSize <| em 1.0
+                ]
             ]
     in
     items
@@ -78,14 +86,23 @@ viewGroup key items =
         style =
             [ displayFlexRow
             , alignItems baseline
-            , marginTopBottom <| px 17
             , marginRightLeft <| px 8
             ]
+
+        itemsStyle =
+            [ displayFlexRow
+            , flexWrap wrap
+            ]
     in
-    items
-        |> List.map viewItem
-        |> (::) (viewKey key)
-        |> styled span style []
+    styled span
+        style
+        []
+        [ viewKey key
+        , styled span
+            itemsStyle
+            []
+            (List.map viewItem items)
+        ]
 
 
 viewKey : String -> Html Msg
@@ -93,7 +110,10 @@ viewKey key =
     let
         style =
             [ displayFlexRow
-            , marginRightLeft <| px 6
+            , marginRightLeft <| px 4
+            , breakpointMedium
+                [ marginRightLeft <| px 6
+                ]
             , color paleGreen
             , fontStyle italic
             ]
@@ -111,6 +131,10 @@ viewItem item =
             [ Button.border
             , Button.sizeSmall
             , Button.text
+            , marginTopBottom <| px 11
+            , breakpointMedium
+                [ marginTopBottom <| px 17
+                ]
             , marginRightLeft <| px 7
             ]
     in

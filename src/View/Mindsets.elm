@@ -13,6 +13,7 @@ import Html.Styled.Attributes exposing (href)
 import HtmlShorthand exposing (onClickPreventDefault)
 import Msg exposing (Msg, clickDetailsOpen)
 import Svg.Styled exposing (Svg)
+import View.Breakpoints exposing (breakpointMedium)
 import View.Button as Button
 import View.Castle exposing (viewCastle)
 import View.Chart exposing (viewChart)
@@ -25,9 +26,14 @@ import View.Seedling exposing (viewSeedling)
 import View.Wheel exposing (viewWheel)
 
 
-itemSize : Em
-itemSize =
+itemSizeSmall : Em
+itemSizeSmall =
     em 9.0
+
+
+itemSizeLarge : Em
+itemSizeLarge =
+    em 11.0
 
 
 itemButtonOffset : Em
@@ -35,9 +41,14 @@ itemButtonOffset =
     em -3.4
 
 
-itemButtonWidth : Em
-itemButtonWidth =
+itemButtonWidthSmall : Em
+itemButtonWidthSmall =
     em 5.3
+
+
+itemButtonWidthLarge : Em
+itemButtonWidthLarge =
+    em 6.1
 
 
 viewMindsets : Assets -> Data -> Html Msg
@@ -81,7 +92,10 @@ viewItem item illustration =
             [ Button.text
             , displayFlexColumn
             , alignItems center
-            , batchMap [ width, height ] itemSize
+            , batchMap [ width, height ] itemSizeLarge
+            , breakpointMedium
+                [ batchMap [ width, height ] itemSizeSmall
+                ]
             , marginBottom <| em 0.8
             , marginRightLeft <| em 0.8
             ]
@@ -100,7 +114,10 @@ viewItemBackground : Svg Msg -> Html Msg
 viewItemBackground illustration =
     let
         style =
-            [ batchMap [ width, height ] itemSize
+            [ batchMap [ width, height ] itemSizeLarge
+            , breakpointMedium
+                [ batchMap [ width, height ] itemSizeSmall
+                ]
             , marginBottom itemButtonOffset
             ]
     in
@@ -113,7 +130,10 @@ viewItemLink name =
         style =
             [ Button.borderCenter
             , Button.sizeMedium
-            , minWidth itemButtonWidth
+            , minWidth itemButtonWidthLarge
+            , breakpointMedium
+                [ minWidth itemButtonWidthSmall
+                ]
             , backgroundColor white
             , textTransform capitalize
             ]

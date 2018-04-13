@@ -11,6 +11,7 @@ import Html.Styled.Attributes exposing (id)
 import Icon exposing (IconBackground, IconSource, iconBackgroundImage)
 import MaybeEx
 import Msg exposing (Msg)
+import View.Breakpoints exposing (breakpointMedium)
 import View.Colors exposing (black, paleGreen)
 import View.Metrics exposing (standardBorderWidth)
 
@@ -73,7 +74,10 @@ viewBackgroundIcon iconSource iconBackground =
             , height iconSize
             , marginTop <| em 0.8
             , marginBottom <| em -iconSize.numericValue
-            , marginLeft <| em -2.0
+            , marginLeft <| em -2.6
+            , breakpointMedium
+                [ marginLeft <| em -2.0
+                ]
             , opacity <| num 0.025
             ]
     in
@@ -88,7 +92,10 @@ viewHeader headerText =
     let
         style =
             [ marginTop <| em 1.2
-            , marginRightLeft <| em 1.3
+            , marginRightLeft <| em 0.7
+            , breakpointMedium
+                [ marginRightLeft <| em 1.3
+                ]
             , marginBottom <| em 0.8
             , textAlign left
             , fontWeight bold
@@ -106,7 +113,10 @@ viewParagraph paragraphText =
     let
         style =
             [ marginTop zero
-            , marginRightLeft <| em 3.5
+            , marginRightLeft <| em 1.6
+            , breakpointMedium
+                [ marginRightLeft <| em 3.5
+                ]
             , marginBottom <| em 1.5
             , textAlign left
             ]

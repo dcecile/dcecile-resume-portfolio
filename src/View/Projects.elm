@@ -4,7 +4,7 @@ module View.Projects
         )
 
 import Assets exposing (Assets)
-import Css exposing (bold, center, color, em, flexWrap, fontSize, fontStyle, fontWeight, italic, justifyContent, left, marginBottom, px, textAlign, width, wrap)
+import Css exposing (bold, center, color, em, flexWrap, fontSize, fontStyle, fontWeight, italic, justifyContent, left, marginBottom, marginTop, px, textAlign, width, wrap)
 import CssShorthand exposing (displayFlexColumn, displayFlexRow, marginRightLeft, marginTopBottom, paddingRightLeft, paddingTopBottom)
 import Data exposing (Data)
 import Data.Projects exposing (ProjectsItemData)
@@ -12,6 +12,7 @@ import Html.Styled exposing (Html, a, div, styled, text)
 import Html.Styled.Attributes exposing (href)
 import HtmlShorthand exposing (onClickPreventDefault)
 import Msg exposing (Msg, clickDetailsOpen)
+import View.Breakpoints exposing (breakpointMedium)
 import View.Button as Button
 import View.Colors exposing (green)
 import View.Section exposing (viewSection)
@@ -37,7 +38,10 @@ viewItems items =
             [ displayFlexRow
             , flexWrap wrap
             , justifyContent center
-            , marginRightLeft <| em 0.5
+            , marginTop <| px -8
+            , breakpointMedium
+                [ marginRightLeft <| em 0.5
+                ]
             , marginBottom <| em 1.0
             ]
     in
@@ -53,12 +57,22 @@ viewItem item =
             [ Button.border
             , Button.text
             , displayFlexColumn
-            , marginTopBottom <| px 16
-            , marginRightLeft <| px 14
-            , paddingTopBottom <| em 0.8
-            , paddingRightLeft <| em 1.0
+            , marginTopBottom <| px 8
+            , marginRightLeft <| px 8
+            , breakpointMedium
+                [ marginTopBottom <| px 16
+                , marginRightLeft <| px 14
+                ]
+            , paddingTopBottom <| em 0.7
+            , paddingRightLeft <| em 0.5
+            , breakpointMedium
+                [ paddingTopBottom <| em 0.8
+                , paddingRightLeft <| em 1.0
+                ]
             , width <| em 8.0
-            , textAlign left
+            , breakpointMedium
+                [ textAlign left
+                ]
             , fontSize <| em 0.85
             ]
     in
@@ -78,7 +92,10 @@ viewName name =
     let
         style =
             [ fontWeight bold
-            , marginBottom <| em 0.3
+            , marginBottom <| em 0.1
+            , breakpointMedium
+                [ marginBottom <| em 0.3
+                ]
             ]
     in
     styled div
@@ -92,7 +109,10 @@ viewTech tech =
     let
         style =
             [ color green
-            , marginBottom <| em 0.3
+            , marginBottom <| em 0.1
+            , breakpointMedium
+                [ marginBottom <| em 0.3
+                ]
             ]
     in
     styled div
@@ -106,7 +126,10 @@ viewDescription description =
     let
         style =
             [ fontStyle italic
-            , marginBottom <| em 0.2
+            , marginBottom <| em 0.1
+            , breakpointMedium
+                [ marginBottom <| em 0.2
+                ]
             ]
     in
     styled div

@@ -4,7 +4,7 @@ module View.Work
         )
 
 import Assets exposing (Assets)
-import Css exposing (Style, batch, bold, center, color, em, flexWrap, fontSize, fontStyle, fontWeight, italic, justifyContent, left, marginBottom, marginTop, paddingRight, px, textAlign, width, wrap)
+import Css exposing (Style, alignItems, batch, bold, center, color, em, flexWrap, fontSize, fontStyle, fontWeight, italic, justifyContent, left, marginBottom, marginTop, paddingRight, px, textAlign, width, wrap)
 import CssShorthand exposing (displayFlexColumn, displayFlexRow, marginRightLeft, noStyle, paddingRightLeft, paddingTopBottom)
 import Data exposing (Data)
 import Data.Work exposing (WorkItemData)
@@ -12,6 +12,7 @@ import Html.Styled exposing (Html, a, div, styled, text)
 import Html.Styled.Attributes exposing (href)
 import HtmlShorthand exposing (onClickPreventDefault)
 import Msg exposing (Msg, clickDetailsOpen)
+import View.Breakpoints exposing (breakpointMedium)
 import View.Button as Button
 import View.Colors exposing (green)
 import View.Section exposing (viewSection)
@@ -35,16 +36,20 @@ viewItems : Bool -> List WorkItemData -> Html Msg
 viewItems isLarge items =
     let
         style =
-            [ displayFlexRow
-            , flexWrap wrap
-            , justifyContent center
+            [ displayFlexColumn
+            , alignItems center
+            , breakpointMedium
+                [ displayFlexRow
+                , flexWrap wrap
+                , justifyContent center
+                ]
             , marginRightLeft <| em 0.5
             , marginBottom <|
                 em
                     (if isLarge then
                         0.8
                      else
-                        1.3
+                        1.1
                     )
             ]
     in
@@ -56,31 +61,39 @@ viewItems isLarge items =
 viewItem : Bool -> WorkItemData -> Html Msg
 viewItem isLarge item =
     let
-        style =
+        baseStyle =
             [ Button.border
             , Button.text
             , displayFlexColumn
-            , if isLarge then
-                noStyle
-              else
-                marginTop <| px 8
-            , if isLarge then
-                noStyle
-              else
-                marginBottom <| px 16
             , marginRightLeft <| px 14
-            , paddingTopBottom <|
-                if isLarge then
-                    em 1.0
-                else
-                    em 0.8
-            , paddingRightLeft <|
-                if isLarge then
-                    em 1.4
-                else
-                    em 1.0
+            , paddingTopBottom <| em 0.8
             , fontSize <| em 0.85
             ]
+
+        largeStyle =
+            [ batch baseStyle
+            , paddingRightLeft <| em 1.2
+            , breakpointMedium
+                [ paddingTopBottom <| em 1.0
+                , paddingRightLeft <| em 1.4
+                ]
+            ]
+
+        smallStyle =
+            [ batch baseStyle
+            , marginTop <| px 8
+            , marginBottom <| px 16
+            , paddingRightLeft <| em 1.5
+            , breakpointMedium
+                [ paddingRightLeft <| em 1.0
+                ]
+            ]
+
+        style =
+            if isLarge then
+                largeStyle
+            else
+                smallStyle
     in
     List.concat
         [ item.name |> viewName |> List.singleton

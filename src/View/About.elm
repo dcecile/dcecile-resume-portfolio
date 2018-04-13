@@ -20,6 +20,7 @@ viewAbout data =
         style =
             [ alignSelf center
             , marginBottom <| em 2
+            , marginRightLeft <| em 0.8
             , maxWidth <| em 26
             ]
     in
@@ -51,7 +52,6 @@ viewContent about =
     let
         style =
             [ marginTopBottom zero
-            , marginRightLeft <| em 1
             , fontSize <| em 0.85
             , fontStyle italic
             ]

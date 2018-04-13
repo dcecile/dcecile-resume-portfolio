@@ -5,12 +5,13 @@ module View.Footer
 
 import Assets exposing (Assets)
 import Css exposing (alignSelf, bold, borderWidth, center, color, em, fontSize, fontStyle, fontWeight, italic, lineHeight, marginBottom, marginTop, num, px, zero)
-import CssShorthand exposing (borderBottomSolidColor, displayFlexColumn, paddingRightLeft)
+import CssShorthand exposing (borderBottomSolidColor, displayFlexColumn, displayInitial, displayNone, paddingRightLeft)
 import Data exposing (Data)
 import Html.Styled exposing (Html, a, br, footer, h2, p, styled, text)
 import Html.Styled.Attributes exposing (href, id)
 import HtmlShorthand exposing (targetBlank)
 import Msg exposing (Msg)
+import View.Breakpoints exposing (breakpointMedium)
 import View.Button as Button
 import View.CallsToAction exposing (viewCallsToAction)
 import View.Colors exposing (black, green, paleGreen)
@@ -50,7 +51,10 @@ viewHeader =
     let
         style =
             [ marginTop <| em 3.0
-            , marginBottom <| em 2.3
+            , marginBottom <| em 0.8
+            , breakpointMedium
+                [ marginBottom <| em 2.3
+                ]
             , fontWeight bold
             , fontSize <| em 1.0
             ]
@@ -68,6 +72,10 @@ viewButton =
             [ Button.border
             , Button.sizeLarge
             , Button.text
+            , displayNone
+            , breakpointMedium
+                [ displayInitial
+                ]
             , alignSelf center
             , marginTop zero
             , marginBottom <| em 0.5
