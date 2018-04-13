@@ -5,8 +5,8 @@ module View.Leaf
         , viewLeaf
         )
 
-import Css exposing (height, hidden, initial, num, opacity, px, visibility, vw, width)
-import CssShorthand exposing (animation, batchMap, mediaMinWidthRem, noStyle)
+import Css exposing (Style, height, hidden, initial, num, opacity, px, visibility, vw, width)
+import CssShorthand exposing (animation, batchMap, mediaMinWidthRem, mediaMinWidthRemTo, noStyle)
 import Msg exposing (Msg)
 import Svg.Styled exposing (Svg, g, path, styled, svg)
 import Svg.Styled.Attributes exposing (d)
@@ -65,6 +65,26 @@ leafStalkPoint =
     ( 4, 15 )
 
 
+breakpointMinSizeRem : Float
+breakpointMinSizeRem =
+    leafSizeMinSizeRem / (leafSizeVw / 100)
+
+
+breakpointMaxSizeRem : Float
+breakpointMaxSizeRem =
+    leafSizeMaxSizeRem / (leafSizeVw / 100)
+
+
+breakpointMinSize : List Style -> Style
+breakpointMinSize =
+    mediaMinWidthRemTo breakpointMinSizeRem breakpointMaxSizeRem
+
+
+breakpointMaxSize : List Style -> Style
+breakpointMaxSize =
+    mediaMinWidthRem breakpointMaxSizeRem
+
+
 viewLeaf : Bool -> Bool -> Bool -> Float -> Svg Msg
 viewLeaf showUnderMediumWidth flipX flipY size =
     let
@@ -77,10 +97,10 @@ viewLeaf showUnderMediumWidth flipX flipY size =
                 [ visibility initial
                 ]
             , batchMap [ width, height ] (Css.rem leafSizeMinSizeRem)
-            , mediaMinWidthRem (leafSizeMinSizeRem / (leafSizeVw / 100))
+            , breakpointMinSize
                 [ batchMap [ width, height ] (Css.vw leafSizeVw)
                 ]
-            , mediaMinWidthRem (leafSizeMaxSizeRem / (leafSizeVw / 100))
+            , breakpointMaxSize
                 [ batchMap [ width, height ] (Css.rem leafSizeMaxSizeRem)
                 ]
             , fill extraPaleGreen

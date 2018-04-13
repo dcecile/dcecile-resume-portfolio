@@ -885,6 +885,12 @@
   }
 }
 
+@keyframes fromTop {
+  0% {
+    transform: translateY(-100vh);
+  }
+}
+
 @keyframes fromBottom {
   0% {
     transform: translateY(100vh);

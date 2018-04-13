@@ -19,6 +19,7 @@ module CssShorthand
         , marginTopBottom
         , mediaMinHeightRem
         , mediaMinWidthRem
+        , mediaMinWidthRemTo
         , mediaNotPrint
         , mediaPrint
         , noStyle
@@ -162,6 +163,11 @@ mediaMinHeightRem length =
 mediaMinWidthRem : Float -> List Style -> Style
 mediaMinWidthRem length =
     withMedia [ Media.all [ Media.minWidth (Css.rem length) ] ]
+
+
+mediaMinWidthRemTo : Float -> Float -> List Style -> Style
+mediaMinWidthRemTo length0 length1 =
+    withMedia [ Media.all [ Media.minWidth (Css.rem length0), Media.maxWidth (Css.rem length1) ] ]
 
 
 noStyle : Style
