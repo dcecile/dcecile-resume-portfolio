@@ -2,6 +2,7 @@ module View.Button
     exposing
         ( border
         , borderCenter
+        , borderShadow
         , sizeLarge
         , sizeMedium
         , sizeSmall
@@ -20,13 +21,18 @@ border =
         [ borderSolidColor black
         , borderWidth standardBorderWidth
         , borderRadius standardBorderRadius
-        , boxShadow5
-            (px 5)
-            (px 5)
-            zero
-            (px -1)
-            paleGreen
+        , borderShadow
         ]
+
+
+borderShadow : Style
+borderShadow =
+    boxShadow5
+        (px 5)
+        (px 5)
+        zero
+        (px -1)
+        paleGreen
 
 
 borderCenter : Style

@@ -7,6 +7,7 @@ module CssShorthand
         , beforeText
         , borderBottomSolidColor
         , borderLeftSolidColor
+        , borderRightLeftSolidColor
         , borderSolidColor
         , borderTopBottomSolidColor
         , displayFlexColumn
@@ -34,7 +35,7 @@ module CssShorthand
         , zIndexOverlay
         )
 
-import Css exposing (BorderStyle, Color, Length, LengthOrAuto, Rem, Style, TextDecorationStyle, after, batch, before, borderBottomStyle, borderColor, borderLeftStyle, borderStyle, borderTopStyle, column, display, displayFlex, flexDirection, initial, int, marginBottom, marginLeft, marginRight, marginTop, none, paddingBottom, paddingLeft, paddingRight, paddingTop, property, row, rowReverse, solid, visited, zIndex)
+import Css exposing (BorderStyle, Color, Length, LengthOrAuto, Rem, Style, TextDecorationStyle, after, batch, before, borderBottomStyle, borderColor, borderLeftStyle, borderRightStyle, borderStyle, borderTopStyle, column, display, displayFlex, flexDirection, initial, int, marginBottom, marginLeft, marginRight, marginTop, none, paddingBottom, paddingLeft, paddingRight, paddingTop, property, row, rowReverse, solid, visited, zIndex)
 import Css.Media as Media exposing (withMedia, withMediaQuery)
 import MaybeEx
 
@@ -88,6 +89,11 @@ borderLeftSolidColor =
 borderSolidColor : Color -> Style
 borderSolidColor =
     borderSidesSolidColor [ borderStyle ]
+
+
+borderRightLeftSolidColor : Color -> Style
+borderRightLeftSolidColor =
+    borderSidesSolidColor [ borderRightStyle, borderLeftStyle ]
 
 
 borderTopBottomSolidColor : Color -> Style

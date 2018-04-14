@@ -5,8 +5,8 @@ module View.Details
         )
 
 import Assets exposing (Assets)
-import Css exposing (Style, alignItems, backgroundColor, bold, borderRadius, borderWidth, bottom, capitalize, center, color, em, empty, fixed, flexBasis, flexEnd, flexGrow, fontSize, fontWeight, height, justifyContent, lastChild, left, lineHeight, marginBottom, marginLeft, marginRight, marginTop, maxWidth, none, num, padding, position, px, right, spaceBetween, textDecoration, textTransform, top, underline, vh, vw, zero)
-import CssShorthand exposing (batchMap, borderSolidColor, displayFlexColumn, displayFlexRow, displayFlexRowReverse, displayNone, marginRightLeft, marginTopBottom, mediaNotPrint, noStyle, paddingRightLeft, paddingTopBottom, textDecorationSkipInk, willChangeTransform, zIndexBackground, zIndexNormal, zIndexOverlay)
+import Css exposing (Style, alignItems, alignSelf, backgroundColor, bold, borderBox, borderRadius, borderWidth, bottom, boxShadow5, boxSizing, capitalize, center, color, em, empty, fixed, flexBasis, flexEnd, flexGrow, flexShrink, fontSize, fontWeight, height, hidden, justifyContent, lastChild, left, lineHeight, marginBottom, marginLeft, marginRight, marginTop, maxHeight, maxWidth, none, num, overflow, padding, position, px, right, spaceBetween, stretch, textDecoration, textTransform, top, underline, vh, vw, zero)
+import CssShorthand exposing (batchMap, borderRightLeftSolidColor, borderSolidColor, displayFlexColumn, displayFlexRow, displayFlexRowReverse, displayNone, marginRightLeft, marginTopBottom, mediaNotPrint, noStyle, paddingRightLeft, paddingTopBottom, textDecorationSkipInk, willChangeTransform, zIndexBackground, zIndexNormal, zIndexOverlay)
 import Data.Details exposing (DetailsItemData)
 import Display exposing (Display)
 import Display.Details exposing (DetailsAnimation(DetailsAnimationClose, DetailsAnimationNavigate), DetailsDisplay, DetailsDoubleBufferState(DetailsDoubleBufferFirstSlotNew, DetailsDoubleBufferFirstSlotOld), DetailsNavigateDirection(DetailsNavigateLink, DetailsNavigateNext, DetailsNavigatePrevious))
@@ -18,10 +18,11 @@ import Keyboard
 import MarkedString exposing (MarkedString, markedString)
 import MaybeEx
 import Msg exposing (Msg(DetailsClose, DetailsNavigate, NoMsg))
+import View.Breakpoints exposing (breakpointDetailsLarge, breakpointDetailsMediumHeight, breakpointDetailsMediumWidth, breakpointDetailsSmallWidth)
 import View.Button as Button
 import View.Colors exposing (black, blackLevel, extraPaleGreen, green, paleGreen, white)
 import View.DetailsAnimation exposing (animateDetails, animateDetailsItem)
-import View.Metrics exposing (standardBorderRadius, standardLineHeight, standardScreenFontSizeSmall)
+import View.Metrics exposing (standardBorderRadius, standardBorderWidth, standardLineHeight, standardScreenFontSizeLarge, standardScreenFontSizeSmall)
 
 
 maybeViewDetails : Assets -> Display -> Maybe (Html Msg)
@@ -40,6 +41,9 @@ viewDetails assets details =
             , batchMap [ top, right, bottom, left ] zero
             , backgroundColor extraPaleGreen
             , fontSize standardScreenFontSizeSmall
+            , breakpointDetailsLarge
+                [ fontSize standardScreenFontSizeLarge
+                ]
             , lineHeight <| num standardLineHeight
             , color black
             , willChangeTransform
@@ -88,6 +92,7 @@ viewDetailsItem isNew assets details item =
               else
                 zIndexNormal
             , displayFlexRow
+            , justifyContent center
             , alignItems center
             , marginBottom <| vh -100
             , height <| vh 100
@@ -154,7 +159,10 @@ viewNavigateButton displayStyle direction directionName linkNameSelector iconBac
             assets.iconSource
 
         containerStyle =
-            [ displayStyle
+            [ displayNone
+            , breakpointDetailsSmallWidth
+                [ displayStyle
+                ]
             , justifyContent flexEnd
             , flexBasis <| em 0
             , flexGrow <| num 1
@@ -164,15 +172,24 @@ viewNavigateButton displayStyle direction directionName linkNameSelector iconBac
             [ Button.border
             , displayStyle
             , alignItems center
-            , marginRightLeft <| em 1.4
+            , marginRightLeft <| em 0.9
+            , breakpointDetailsMediumWidth
+                [ marginRightLeft <| em 1.4
+                ]
             , backgroundColor white
-            , padding <| em 0.5
+            , padding <| em 0.6
+            , breakpointDetailsMediumWidth
+                [ padding <| em 0.5
+                ]
             , color black
             , textDecoration none
             ]
 
         descriptionStyle =
-            [ displayFlexColumn
+            [ displayNone
+            , breakpointDetailsMediumWidth
+                [ displayFlexColumn
+                ]
             , fontSize <| em 0.7
             , marginRightLeft <| em 1
             , maxWidth <| em 11
@@ -217,11 +234,17 @@ viewContent assets item =
         style =
             [ Button.border
             , displayFlexColumn
-            , marginTopBottom <| em 1
+            , alignSelf stretch
+            , breakpointDetailsMediumHeight
+                [ alignSelf center
+                , marginTopBottom <| em 1
+                ]
+            , boxSizing borderBox
             , backgroundColor white
             , paddingTopBottom <| em 0.9
             , paddingRightLeft <| em 1.5
             , flexBasis <| em 30
+            , maxHeight <| vh 100
             , fontSize <| em 0.8
             ]
     in
@@ -248,7 +271,11 @@ viewHeader iconSource headerText capitalizeName =
               else
                 noStyle
             , marginTop zero
-            , marginBottom <| em 0.4
+            , marginBottom <| em 0.2
+            , breakpointDetailsMediumHeight
+                [ marginBottom <| em 0.4
+                ]
+            , flexShrink <| num 0
             ]
     in
     styled h1
@@ -275,9 +302,14 @@ viewLinks iconSource item =
         style =
             [ displayFlexRow
             , empty [ displayNone ]
-            , marginTop <| em -0.3
-            , marginBottom <| em 0.6
+            , marginTop <| em -0.2
+            , marginBottom <| em 0.5
+            , breakpointDetailsMediumHeight
+                [ marginTop <| em -0.3
+                , marginBottom <| em 0.6
+                ]
             , marginRightLeft <| em 0.2
+            , flexShrink <| num 0
             ]
     in
     [ item.homepageURL |> Maybe.map (viewLink iconSource "Homepage" .home)
@@ -324,6 +356,7 @@ viewIntro =
     let
         style =
             [ marginTopBottom zero
+            , flexShrink <| num 0
             ]
     in
     viewMarkedString >> styled p style []
@@ -335,6 +368,7 @@ viewPoints points =
         style =
             [ marginTop zero
             , marginBottom <| em 1.0
+            , overflow hidden
             ]
     in
     styled ul
@@ -347,7 +381,10 @@ viewPoint : MarkedString -> Html Msg
 viewPoint =
     let
         style =
-            [ marginTopBottom <| em 1.0
+            [ marginTopBottom <| em 0.6
+            , breakpointDetailsMediumHeight
+                [ marginTopBottom <| em 1.0
+                ]
             , lastChild [ marginBottom zero ]
             ]
     in
