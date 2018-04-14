@@ -5,7 +5,7 @@ module View.Details
         )
 
 import Assets exposing (Assets)
-import Css exposing (Style, alignItems, alignSelf, backgroundColor, bold, borderBox, borderRadius, borderWidth, bottom, boxShadow5, boxSizing, capitalize, center, color, em, empty, fixed, flexBasis, flexEnd, flexGrow, flexShrink, fontSize, fontWeight, height, hidden, justifyContent, lastChild, left, lineHeight, marginBottom, marginLeft, marginRight, marginTop, maxHeight, maxWidth, none, num, overflow, padding, position, px, right, spaceBetween, stretch, textDecoration, textTransform, top, underline, vh, vw, zero)
+import Css exposing (Style, alignItems, alignSelf, backgroundColor, bold, borderBox, borderRadius, borderWidth, bottom, boxShadow5, boxSizing, calc, capitalize, center, color, em, empty, fixed, flexBasis, flexEnd, flexGrow, flexShrink, flexWrap, fontSize, fontWeight, height, hidden, justifyContent, lastChild, left, lineHeight, marginBottom, marginLeft, marginRight, marginTop, maxHeight, maxWidth, minus, none, num, overflow, padding, paddingLeft, pct, position, px, right, spaceBetween, stretch, textDecoration, textTransform, top, underline, vh, vw, width, wrap, zero)
 import CssShorthand exposing (batchMap, borderRightLeftSolidColor, borderSolidColor, displayFlexColumn, displayFlexRow, displayFlexRowReverse, displayNone, marginRightLeft, marginTopBottom, mediaNotPrint, noStyle, paddingRightLeft, paddingTopBottom, textDecorationSkipInk, willChangeTransform, zIndexBackground, zIndexNormal, zIndexOverlay)
 import Data.Details exposing (DetailsItemData)
 import Display exposing (Display)
@@ -366,9 +366,15 @@ viewPoints : List MarkedString -> Html Msg
 viewPoints points =
     let
         style =
-            [ marginTop zero
-            , marginBottom <| em 1.0
+            [ displayFlexColumn
+            , flexWrap wrap
+            , marginTop <| em 0.6
+            , breakpointDetailsMediumHeight
+                [ marginTop <| em 1.0
+                ]
+            , marginBottom zero
             , overflow hidden
+            , paddingLeft zero
             ]
     in
     styled ul
@@ -381,11 +387,17 @@ viewPoint : MarkedString -> Html Msg
 viewPoint =
     let
         style =
-            [ marginTopBottom <| em 0.6
+            [ marginTop zero
+            , marginBottom <| em 0.6
             , breakpointDetailsMediumHeight
-                [ marginTopBottom <| em 1.0
+                [ marginBottom <| em 1.0
                 ]
-            , lastChild [ marginBottom zero ]
+            , marginLeft <| em 1.6
+            , width <| calc (pct 100) minus (em 1.6)
+            , breakpointDetailsMediumHeight
+                [ marginLeft <| em 1.8
+                , width <| calc (pct 100) minus (em 1.8)
+                ]
             ]
     in
     viewMarkedString >> styled li style []
