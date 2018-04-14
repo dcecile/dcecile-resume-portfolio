@@ -9,12 +9,15 @@ module View.Breakpoints
         )
 
 import Css exposing (Style)
-import CssShorthand exposing (batchMap, mediaMinHeightRem, mediaMinWidthRem, mediaMinWidthRemTo)
+import Css.Media as Media
+import CssShorthand exposing (batchMap, mediaConditions, mediaInverseConditions, rem_)
 
 
 breakpointPortfolioMedium : List Style -> Style
 breakpointPortfolioMedium =
-    mediaMinWidthRem 40
+    mediaConditions
+        [ Media.minWidth <| rem_ 40
+        ]
 
 
 breakpointPortfolioTallRemLength : Float
@@ -24,19 +27,38 @@ breakpointPortfolioTallRemLength =
 
 breakpointPortfolioTall : List Style -> Style
 breakpointPortfolioTall =
-    mediaMinHeightRem breakpointPortfolioTallRemLength
+    mediaConditions
+        [ Media.minHeight <| rem_ breakpointPortfolioTallRemLength
+        ]
+
+
+breakpointResumePreviewMediumRemLength : Float
+breakpointResumePreviewMediumRemLength =
+    45
 
 
 breakpointResumePreviewMedium : List Style -> Style
 breakpointResumePreviewMedium =
-    mediaMinWidthRemTo 45 77
+    mediaConditions
+        [ Media.minWidth <| rem_ breakpointResumePreviewMediumRemLength
+        , Media.maxWidth <| rem_ breakpointResumePreviewLargeRemLength
+        ]
+
+
+breakpointResumePreviewLargeRemLength : Float
+breakpointResumePreviewLargeRemLength =
+    77
 
 
 breakpointResumePreviewLarge : List Style -> Style
 breakpointResumePreviewLarge =
-    mediaMinWidthRem 77
+    mediaInverseConditions
+        [ Media.maxWidth <| rem_ breakpointResumePreviewLargeRemLength
+        ]
 
 
 breakpointResumePreviewMediumLarge : List Style -> Style
 breakpointResumePreviewMediumLarge =
-    batchMap [ breakpointResumePreviewMedium, breakpointResumePreviewLarge ]
+    mediaConditions
+        [ Media.minWidth <| rem_ breakpointResumePreviewMediumRemLength
+        ]

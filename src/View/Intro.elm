@@ -5,7 +5,7 @@ module View.Intro
 
 import Assets exposing (Assets)
 import Css exposing (alignSelf, bold, calc, center, color, em, firstOfType, fontSize, fontStyle, fontWeight, italic, justifyContent, lastOfType, lineHeight, marginBottom, marginTop, maxWidth, minHeight, minus, normal, nthOfType, num, vh, zero)
-import CssShorthand exposing (afterText, beforeText, displayFlexColumn, marginRightLeft)
+import CssShorthand exposing (afterText, beforeText, displayFlexColumn, marginRightLeft, rem_)
 import Data exposing (Data)
 import Html.Styled exposing (Html, div, h1, header, main_, p, styled, text)
 import Msg exposing (Msg)
@@ -26,7 +26,7 @@ viewIntro assets data =
             , justifyContent center
             , minHeight <| calc (vh 100) minus linksCutoff
             , breakpointPortfolioTall
-                [ minHeight <| calc (Css.rem breakpointPortfolioTallRemLength) minus linksCutoff
+                [ minHeight <| calc (rem_ breakpointPortfolioTallRemLength) minus linksCutoff
                 ]
             ]
     in

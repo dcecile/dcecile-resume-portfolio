@@ -17,14 +17,14 @@ module CssShorthand
         , filter
         , marginRightLeft
         , marginTopBottom
-        , mediaMinHeightRem
-        , mediaMinWidthRem
-        , mediaMinWidthRemTo
+        , mediaConditions
+        , mediaInverseConditions
         , mediaNotPrint
         , mediaPrint
         , noStyle
         , paddingRightLeft
         , paddingTopBottom
+        , rem_
         , textDecorationSkipInk
         , transformOrigin
         , willChangeTransform
@@ -34,8 +34,13 @@ module CssShorthand
         , zIndexOverlay
         )
 
-import Css exposing (BorderStyle, Color, Length, LengthOrAuto, Style, TextDecorationStyle, after, batch, before, borderBottomStyle, borderColor, borderLeftStyle, borderStyle, borderTopStyle, column, display, displayFlex, flexDirection, initial, int, marginBottom, marginLeft, marginRight, marginTop, none, paddingBottom, paddingLeft, paddingRight, paddingTop, property, row, rowReverse, solid, visited, zIndex)
-import Css.Media as Media exposing (withMedia)
+import Css exposing (BorderStyle, Color, Length, LengthOrAuto, Rem, Style, TextDecorationStyle, after, batch, before, borderBottomStyle, borderColor, borderLeftStyle, borderStyle, borderTopStyle, column, display, displayFlex, flexDirection, initial, int, marginBottom, marginLeft, marginRight, marginTop, none, paddingBottom, paddingLeft, paddingRight, paddingTop, property, row, rowReverse, solid, visited, zIndex)
+import Css.Media as Media exposing (withMedia, withMediaQuery)
+import MaybeEx
+
+
+type alias MediaExpression =
+    { feature : String, value : Maybe String }
 
 
 afterText : String -> List Style -> Style
@@ -155,19 +160,40 @@ mediaPrint =
     withMedia [ Media.only Media.print [] ]
 
 
-mediaMinHeightRem : Float -> List Style -> Style
-mediaMinHeightRem length =
-    withMedia [ Media.all [ Media.minHeight (Css.rem length) ] ]
+mediaConditions : List MediaExpression -> List Style -> Style
+mediaConditions conditions =
+    mediaCustomConditions conditions []
 
 
-mediaMinWidthRem : Float -> List Style -> Style
-mediaMinWidthRem length =
-    withMedia [ Media.all [ Media.minWidth (Css.rem length) ] ]
+mediaInverseConditions : List MediaExpression -> List Style -> Style
+mediaInverseConditions conditions =
+    mediaCustomConditions [] conditions
 
 
-mediaMinWidthRemTo : Float -> Float -> List Style -> Style
-mediaMinWidthRemTo length0 length1 =
-    withMedia [ Media.all [ Media.minWidth (Css.rem length0), Media.maxWidth (Css.rem length1) ] ]
+mediaCustomConditions : List MediaExpression -> List MediaExpression -> List Style -> Style
+mediaCustomConditions positive negative =
+    let
+        prefix mode expressions =
+            if List.isEmpty expressions then
+                Nothing
+            else
+                Just <| String.join " and " ([ mode ] ++ List.map convertExpression expressions)
+
+        convertExpression expression =
+            String.concat
+                [ "("
+                , expression.feature
+                , expression.value
+                    |> Maybe.map ((++) ": ")
+                    |> Maybe.withDefault ""
+                , ")"
+                ]
+    in
+    [ prefix "all" positive
+    , prefix "not all" negative
+    ]
+        |> List.concatMap MaybeEx.toList
+        |> withMediaQuery
 
 
 noStyle : Style
@@ -181,6 +207,11 @@ pseudoElementContentText pseudoElement text style =
         [ property "content" ("'" ++ text ++ "'")
         , batch style
         ]
+
+
+rem_ : Float -> Rem
+rem_ =
+    Css.rem
 
 
 textDecorationSkipInk : Style

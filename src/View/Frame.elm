@@ -4,7 +4,7 @@ module View.Frame
         )
 
 import Css exposing (height, justifyContent, marginBottom, spaceBetween, vh)
-import CssShorthand exposing (displayFlexColumn, displayFlexRow, zIndexBackground)
+import CssShorthand exposing (displayFlexColumn, displayFlexRow, rem_, zIndexBackground)
 import Html.Styled exposing (Html, div, styled)
 import Msg exposing (Msg)
 import View.Breakpoints exposing (breakpointPortfolioTall, breakpointPortfolioTallRemLength)
@@ -21,8 +21,8 @@ viewFrame =
             , marginBottom <| vh -100
             , height <| vh 100
             , breakpointPortfolioTall
-                [ marginBottom <| Css.rem -breakpointPortfolioTallRemLength
-                , height <| Css.rem breakpointPortfolioTallRemLength
+                [ marginBottom <| rem_ -breakpointPortfolioTallRemLength
+                , height <| rem_ breakpointPortfolioTallRemLength
                 ]
             ]
     in
