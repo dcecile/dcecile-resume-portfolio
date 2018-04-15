@@ -867,9 +867,21 @@
   }
 }
 
+@keyframes fromFarLeft {
+  0% {
+    transform: translateX(-34.5rem) translateX(-50rem) scale(0.8);
+  }
+}
+
 @keyframes toLeft {
   100% {
     transform: translateX(-100vw);
+  }
+}
+
+@keyframes toFarLeft {
+  100% {
+    transform: translateX(-34.5rem) translateX(-50rem) scale(0.8);
   }
 }
 
@@ -879,9 +891,21 @@
   }
 }
 
+@keyframes fromFarRight {
+  0% {
+    transform: translateX(34.5rem) translateX(50rem) scale(0.8);
+  }
+}
+
 @keyframes toRight {
   100% {
     transform: translateX(100vw);
+  }
+}
+
+@keyframes toFarRight {
+  100% {
+    transform: translateX(34.5rem) translateX(50rem) scale(0.8);
   }
 }
 

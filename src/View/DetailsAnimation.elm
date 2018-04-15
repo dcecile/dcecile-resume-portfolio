@@ -9,6 +9,7 @@ import Css exposing (Style, batch)
 import CssShorthand exposing (animation, mediaNotPrint, noStyle, transformOrigin, willChangeTransform)
 import Display exposing (Display)
 import Display.Details exposing (DetailsAnimation(DetailsAnimationClose, DetailsAnimationNavigate, DetailsAnimationOpen), DetailsDisplay, DetailsNavigateDirection(DetailsNavigateLink, DetailsNavigateNext, DetailsNavigatePrevious))
+import View.Breakpoints exposing (breakpointDetailsMediumWidth)
 
 
 type OpenOrClose
@@ -144,32 +145,56 @@ animateDetailsItem isNew details =
             else
                 Old
 
-        animate animationNames =
+        animateResponsive defaultAnimationNames mediumWidthAnimationNames =
+            batch
+                [ animateSlow defaultAnimationNames
+                , breakpointDetailsMediumWidth
+                    [ animateFast mediumWidthAnimationNames
+                    ]
+                ]
+
+        animateSlow =
+            animate 325
+
+        animateFast =
+            animate 275
+
+        animate duration animationNames =
             combineAnimations
                 animationNames
-                275
+                duration
                 0
                 "ease"
 
         switch direction =
             case ( direction, newOrOld ) of
                 ( DetailsNavigatePrevious, Old ) ->
-                    animate [ "fadePartialOut", "toRight" ]
+                    animateResponsive
+                        [ "fadePartialOut", "toFarRight" ]
+                        [ "fadePartialOut", "toRight" ]
 
                 ( DetailsNavigatePrevious, New ) ->
-                    animate [ "fadePartialIn", "fromLeft" ]
+                    animateResponsive
+                        [ "fadePartialIn", "fromFarLeft" ]
+                        [ "fadePartialIn", "fromLeft" ]
 
                 ( DetailsNavigateNext, Old ) ->
-                    animate [ "fadePartialOut", "toLeft" ]
+                    animateResponsive
+                        [ "fadePartialOut", "toFarLeft" ]
+                        [ "fadePartialOut", "toLeft" ]
 
                 ( DetailsNavigateNext, New ) ->
-                    animate [ "fadePartialIn", "fromRight" ]
+                    animateResponsive
+                        [ "fadePartialIn", "fromFarRight" ]
+                        [ "fadePartialIn", "fromRight" ]
 
                 ( DetailsNavigateLink, Old ) ->
-                    animate [ "fadePartialOut", "growOut" ]
+                    animateFast
+                        [ "fadePartialOut", "growOut" ]
 
                 ( DetailsNavigateLink, New ) ->
-                    animate [ "fadePartialIn", "fromBottom" ]
+                    animateFast
+                        [ "fadePartialIn", "fromBottom" ]
     in
     maybeDirection
         |> Maybe.map switch
