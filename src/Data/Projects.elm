@@ -112,6 +112,7 @@ initProjectsData =
             (markedString "As the Canadian debate over proportional representation (PR) was heating up in 2017, I created this website for tracking MP support for electoral change:")
             [ markedString "I learned `Vue.js` and used it to create my first single-page application"
             , markedString "I used Airtable as my data source, exporting the data to JSON during `continuous integration` (deployment to Netlify)"
+            , markedString "I used Stylus, a `CSS` preprocessor language, to implement `responsive design` via easy-to-manage block mixins"
             , markedString "I also used `HTML` pre-rendering, to help improve page load times and allow basic site use without `JavaScript`"
             ]
             PortfolioOnly
@@ -196,7 +197,7 @@ initProjectsData =
             (Just homepageURL)
             (Just sourceURL)
             (markedString "For my 2018 job search, I decided to create a GitHub homepage to host my portfolio and my resume:")
-            [ markedString "I use `CSS` (via an `Elm` DSL) to create a unified `visual design` for both screen and print"
+            [ markedString "I use `CSS` (via an `Elm` DSL) for the `visual design`—screen, print, `responsive design`, and `functional animation`"
             , markedString "I use `Elm`’s `functional programming` architecture to transform immutable data during state changes and display it as `HTML`"
             , markedString "I use `Elm` to construct custom `SVG` illustrations, which I style and animate via `CSS`"
             , markedString "I use Semaphore `continuous integration` for unit tests, style tests, and continuous deployment to GitHub Pages"

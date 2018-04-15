@@ -258,7 +258,8 @@ initTechData =
             "responsive design"
             Nothing
             (markedString "The promise of `HTML` web apps is that they’ll run in any modern browser. I use responsive design to make sure that mobile devices are included too:")
-            [ markedString "I’ve used `CSS` media queries for responsive design (by progressively enabling more advanced styling for larger screens) in `PR Quest`, `Reactic-Tac-Toe`, and `/tmp/blog`"
+            [ markedString "I implement responsive design by using `CSS` media queries to progressively enabling more advanced styling for larger screens"
+            , markedString "I’ve set up responsive design for `My Portfolio and Resume`, `PR Quest`, `Reactic-Tac-Toe`, and `/tmp/blog`"
             ]
             PortfolioOnly
         , TechItemData
