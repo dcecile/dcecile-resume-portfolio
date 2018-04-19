@@ -6,12 +6,12 @@ module View.Resume
 
 import Assets exposing (Assets)
 import Char
-import Css exposing (Em, Style, absolute, auto, batch, bold, borderRadius, borderWidth, center, color, em, flexBasis, flexEnd, flexGrow, flexShrink, flexWrap, fontSize, fontStyle, fontWeight, height, hidden, hsl, italic, justifyContent, letterSpacing, lineHeight, marginBottom, marginLeft, marginRight, marginTop, none, normal, num, opacity, overflow, paddingBottom, paddingLeft, paddingTop, position, right, textAlign, textDecoration, width, wrap, zero)
+import Css exposing (Em, Style, absolute, auto, batch, bold, borderRadius, borderWidth, center, color, em, flexBasis, flexEnd, flexGrow, flexShrink, flexWrap, fontSize, fontStyle, fontWeight, height, hidden, hsl, italic, justifyContent, letterSpacing, lineHeight, marginBottom, marginLeft, marginRight, marginTop, noWrap, none, normal, num, opacity, overflow, paddingBottom, paddingLeft, paddingTop, position, right, textAlign, textDecoration, whiteSpace, width, wrap, zero)
 import CssShorthand exposing (batchMap, beforeText, borderBottomSolidColor, borderLeftSolidColor, borderSolidColor, displayFlexColumn, displayFlexRow, marginRightLeft, marginTopBottom, noStyle, paddingRightLeft, paddingTopBottom, textDecorationSkipInk, wordBreakBreakAll)
 import Data exposing (Data)
 import Data.Links exposing (LinksItemData)
 import Data.Projects exposing (ProjectsItemData)
-import Data.Visibility exposing (Visibility(PortfolioAndResume), filterVisible)
+import Data.Visibility exposing (ResumeVariant, filterResumeVisible)
 import Data.Work exposing (WorkData, WorkItemData)
 import Html.Styled exposing (Html, a, div, footer, h1, h2, h3, header, img, main_, nav, p, section, span, styled, text)
 import Html.Styled.Attributes exposing (href)
@@ -22,6 +22,11 @@ import Msg exposing (Msg)
 import Regex exposing (HowMany(All), regex, replace)
 import View.Colors exposing (printBlack, printGreen, printPaleGreen, printPaleGreenComponents)
 import View.Metrics exposing (printBorderWidth, printLineHeight)
+
+
+resumeVariant : ResumeVariant
+resumeVariant =
+    Data.Visibility.GeneralResume
 
 
 viewResume : Assets -> Data -> Html Msg
@@ -250,7 +255,7 @@ viewTechLine data =
             ]
     in
     sectionData.items
-        |> filterVisible PortfolioAndResume .visibility
+        |> filterResumeVisible resumeVariant .visibility
         |> List.map (\item -> Maybe.withDefault item.name item.shortName)
         |> List.map viewTechLineItem
         |> List.intersperse (text " ")
@@ -268,6 +273,7 @@ viewTechLineItem item =
             , paddingTop <| zero
             , paddingBottom <| em 0.1
             , paddingRightLeft <| em 0.4
+            , whiteSpace noWrap
             ]
     in
     styled span
@@ -287,7 +293,7 @@ viewProjects assets data =
     in
     (viewSection "Side projects" << List.concat)
         [ sectionData.items
-            |> filterVisible PortfolioAndResume .visibility
+            |> filterResumeVisible resumeVariant .visibility
             |> List.map viewProjectsItem
         , basicData.homepageURL
             |> viewProjectsMore assets.iconSource

@@ -6,7 +6,7 @@ module Data.Tech
         )
 
 import Data.Section exposing (SectionData)
-import Data.Visibility exposing (Visibility(PortfolioAndResume, PortfolioOnly))
+import Data.Visibility exposing (ResumeVariant(ElmResume, GeneralResume), Visibility, portfolioAndResume, portfolioOnly)
 import MarkedString exposing (MarkedString, markedString)
 
 
@@ -41,7 +41,7 @@ initTechData =
             [ markedString "With `/tmp/blog`, I used Bootstrap’s “cards” for attention-grabbing calls to action"
             , markedString "In `Forks in the Road`, I’m taking advantage of Bootstrap’s excellent form input controls"
             ]
-            PortfolioOnly
+            portfolioOnly
         , TechItemData
             "bug reporting"
             Nothing
@@ -50,7 +50,7 @@ initTechData =
             , markedString "At `Unitron`, I continued to work at `improving` my bug reporting as I logged bugs for software components maintained by other teams"
             , markedString "At `Unitron`, I regularly triaged my team’s bugs, and spent time `teaching` others what to fix for unclear bug reports"
             ]
-            PortfolioOnly
+            portfolioOnly
         , TechItemData
             "C"
             Nothing
@@ -60,7 +60,7 @@ initTechData =
             , markedString "At `LSI Logic`, I used C to fix H.264 video decoder bugs"
             , markedString "(Recently I’ve been using the related `C#` and `Go` languages more than C)"
             ]
-            PortfolioOnly
+            portfolioOnly
         , TechItemData
             "C++"
             Nothing
@@ -69,7 +69,7 @@ initTechData =
             , markedString "I used C++ and `Qt` to build my `Yomikata` comic book and manga reader—taking advantage of background `threads` and processes to keep the UI snappy"
             , markedString "(Recently I’ve been using the related `Go`, `C#`, and `Scala` languages more than C++)"
             ]
-            PortfolioOnly
+            portfolioOnly
         , TechItemData
             "C#"
             Nothing
@@ -79,7 +79,7 @@ initTechData =
             , markedString "At `Unitron`, I used C# together with `SQL` to create internal tools focused on `improving` development and QA processes"
             , markedString "At `Unitron`, I used C# `threads` and async/await to build `WinForms` apps that don’t freeze during extended network and CPU tasks"
             ]
-            PortfolioAndResume
+            (portfolioAndResume [ GeneralResume, ElmResume ])
         , TechItemData
             "continuous integration"
             (Just "CI")
@@ -88,7 +88,7 @@ initTechData =
             , markedString "At `Unitron`, I translated my build system experience into improvements and maintenance for our TeamCity continuous integration server"
             , markedString "At `Unitron` I experienced the benefit of continuously-deployed ClickOnce internal tools—now I’m using Semaphore to continuously deploy `Forks in the Road` and `My Portfolio and Resume`"
             ]
-            PortfolioOnly
+            portfolioOnly
         , TechItemData
             "code review"
             Nothing
@@ -98,7 +98,7 @@ initTechData =
             , markedString "We found that the time spent on reviews was a net positive for our team’s productivity"
             , markedString "(We mainly used SmartBear’s Collaborator, and sometimes used GitHub)"
             ]
-            PortfolioOnly
+            portfolioOnly
         , TechItemData
             "CSS"
             Nothing
@@ -110,7 +110,7 @@ initTechData =
             , markedString "I’m a fan of Block Element Modifier for organization"
             , markedString "(I’ve also been using CSS via `Sass`, and via `domain-specific languages` in `Elm` and `Scala`)"
             ]
-            PortfolioAndResume
+            (portfolioAndResume [ GeneralResume, ElmResume ])
         , TechItemData
             "domain-specific languages"
             (Just "DSLs")
@@ -120,13 +120,13 @@ initTechData =
             , markedString "With `My Portfolio and Resume` and `Tacit`, I’m using `Elm` and `Scala` DSLs for writing `HTML` and `CSS` code"
             , markedString "With `Tacit`, I’m creating a small DSL for each transformation that the programming language compiler applies"
             ]
-            PortfolioOnly
+            portfolioOnly
         , TechItemData
             "Elm"
             Nothing
             (markedString "Elm is a front-end framework and `functional programming` language that I’m `learning` as I make `My Portfolio and Resume`.")
             []
-            PortfolioOnly
+            (portfolioAndResume [ ElmResume ])
         , TechItemData
             "Excel"
             Nothing
@@ -136,7 +136,7 @@ initTechData =
             , markedString "I linked Excel directly to `SQL` tables and views, to create live reports"
             , markedString "I imported Excel files into Microsoft’s Power BI for more advanced drill-down reporting"
             ]
-            PortfolioOnly
+            portfolioOnly
         , TechItemData
             "functional programming"
             (Just "FP")
@@ -146,7 +146,7 @@ initTechData =
             , markedString "In `My Portfolio and Resume`, functional programming helps keep my `Elm` code well-organized, and makes refactoring a breeze"
             , markedString "In `Off-Grid Orcs`, functional programming helped prevent newly-implemented `Scala` features from breaking existing functionality"
             ]
-            PortfolioAndResume
+            (portfolioAndResume [ GeneralResume, ElmResume ])
         , TechItemData
             "functional animation"
             Nothing
@@ -155,25 +155,25 @@ initTechData =
             , markedString "With `Reactic-Tac-Toe`, I learned how to use `CSS` animations and transitions"
             , markedString "In `Forks in the Road`, I use functional animation for all `React` page changes and form actions"
             ]
-            PortfolioOnly
+            portfolioOnly
         , TechItemData
             "Google App Engine"
             (Just "GAE")
             (markedString "I built my `Go` back-end for `Tiny Worker Bee` with Google App Engine, making use of the Datastore, Task Queue, and URL Fetch features.")
             []
-            PortfolioOnly
+            portfolioOnly
         , TechItemData
             "Go"
             Nothing
             (markedString "I used Go with `Google App Engine` for the back-end for `Tiny Worker Bee`, a Twitter scheduling bot that post Tweets at dynamically-determined intervals.")
             []
-            PortfolioOnly
+            portfolioOnly
         , TechItemData
             "Heroku"
             Nothing
             (markedString "I’ve deployed both of my `Rails` apps, `/tmp/blog/` and `Forks in the Road`, to Heroku (using Postgres as my `SQL` database), along with one `Python` Flask service (`bitfontmake`).")
             []
-            PortfolioOnly
+            portfolioOnly
         , TechItemData
             "HTML"
             Nothing
@@ -183,7 +183,7 @@ initTechData =
             , markedString "With `PR Quest`, I used `Vue.js` (with an HTML5 History API router) to create a single-page application that can be navigated without page loads"
             , markedString "Other web apps I’ve made: `Forks in the Road`, `My Portfolio and Resume`, `Off-Grid Orcs`, `Reactic-Tac-Toe`, `Tacit`, `Tiny Worker Bee`, `/tmp/blog`"
             ]
-            PortfolioOnly
+            portfolioOnly
         , TechItemData
             "internationalization & localization"
             (Just "i18n & l10n")
@@ -193,7 +193,7 @@ initTechData =
             , markedString "I managed the localization of our software plus another team's software, `coordinating` translator activities for up to 14 languages"
             , markedString "I worked at continuously `improving` our translation workflow with process changes and `C#` tooling"
             ]
-            PortfolioOnly
+            portfolioOnly
         , TechItemData
             "Java"
             Nothing
@@ -202,7 +202,7 @@ initTechData =
             , markedString "At `NexJ Systems`, I used Java to improve an Ant + WiX installer build system"
             , markedString "(Recently I’ve been using the related `C#` and `Scala` languages more than Java)"
             ]
-            PortfolioOnly
+            portfolioOnly
         , TechItemData
             "JavaScript"
             Nothing
@@ -213,7 +213,7 @@ initTechData =
             , markedString "In `PR Quest`, I used JavaScript with `Vue.js` to build a static-content single page application"
             , markedString "(I sometimes use `Elm` or `Scala` instead of JavaScript)"
             ]
-            PortfolioAndResume
+            (portfolioAndResume [ GeneralResume, ElmResume ])
         , TechItemData
             "Linux"
             Nothing
@@ -223,19 +223,19 @@ initTechData =
             , markedString "I’ve built a couple cross-platform desktop applications: `Ultra Rainbow Bake Sale` and `Yomikata`"
             , markedString "(I also have lots of experience using and troubleshooting `Windows`)"
             ]
-            PortfolioOnly
+            portfolioOnly
         , TechItemData
             "Lua"
             Nothing
             (markedString "I finally learned Lua and used it with LÖVE (a 2D game development library) to build a single-player, deck-building, baking game: `Ultra Rainbow Bake Sale`.")
             []
-            PortfolioOnly
+            portfolioOnly
         , TechItemData
             "Python"
             Nothing
             (markedString "With `bitfontmake`, I’ve used Python to compile my TTF fonts from a custom pixel-based input format. I deployed this code to `Heroku` as a Flask application.")
             []
-            PortfolioAndResume
+            (portfolioAndResume [ GeneralResume ])
         , TechItemData
             "Qt"
             Nothing
@@ -244,7 +244,7 @@ initTechData =
             , markedString "In 2016, I learned enough Qt Quick to start creating a management simulation game"
             , markedString "(Recently I’ve been more focused on `HTML` instead of Qt)"
             ]
-            PortfolioOnly
+            portfolioOnly
         , TechItemData
             "React"
             Nothing
@@ -253,7 +253,7 @@ initTechData =
             , markedString "With `Forks in the Road`, I’m using React to create the front-end of my value estimation web app"
             , markedString "(I’ve also used `Vue.js` and `Elm` for creating `HTML` front-ends)"
             ]
-            PortfolioAndResume
+            (portfolioAndResume [ GeneralResume, ElmResume ])
         , TechItemData
             "responsive design"
             Nothing
@@ -261,13 +261,13 @@ initTechData =
             [ markedString "I implement responsive design by using `CSS` media queries to progressively enabling more advanced styling for larger screens"
             , markedString "I’ve set up responsive design for `My Portfolio and Resume`, `PR Quest`, `Reactic-Tac-Toe`, and `/tmp/blog`"
             ]
-            PortfolioOnly
+            (portfolioAndResume [ ElmResume ])
         , TechItemData
             "Ruby"
             Nothing
             (markedString "I’m `learning` Ruby so I can make `Rails` web apps. Right now that’s `Forks in the Road` and `/tmp/blog`.")
             []
-            PortfolioAndResume
+            (portfolioAndResume [ GeneralResume ])
         , TechItemData
             "Rails"
             Nothing
@@ -275,14 +275,14 @@ initTechData =
             [ markedString "With `/tmp/blog`, I built my very first Rails app and deployed it to `Heroku`"
             , markedString "In `Forks in the Road`, I’m using Rails together with `React` to create a value estimation web app"
             ]
-            PortfolioAndResume
+            (portfolioAndResume [ GeneralResume ])
         , TechItemData
             "Sass"
             Nothing
             (markedString "After using LESS at `Unitron`, and Stylus with `PR Quest` and `Tiny Worker Bee`, I’ve started using this `CSS` language to get smooth integration with `Bootstrap`:")
             [ markedString "For both `/tmp/blog` and `Forks in the Road`, I use Sass to take my application’s `CSS` classes—organized using Block Element Modifier—and extend them with `Bootstrap` styles"
             ]
-            PortfolioOnly
+            portfolioOnly
         , TechItemData
             "Scala"
             Nothing
@@ -290,13 +290,13 @@ initTechData =
             [ markedString "For my `Tacit` programming language, I’m taking advantage of support for `functional programming` from  of Scala’s type system and standard library"
             , markedString "I used Scala.js to create `Off-Grid Orcs` as an HTML game with a `functional programming` architecture"
             ]
-            PortfolioAndResume
+            (portfolioAndResume [ GeneralResume, ElmResume ])
         , TechItemData
             "Scheme"
             Nothing
             (markedString "Scheme was my introduction to the `functional programming` concept of higher-order functions. I used it at `NexJ Systems` to fix bugs and write unit tests.")
             []
-            PortfolioOnly
+            portfolioOnly
         , TechItemData
             "SQL"
             Nothing
@@ -307,7 +307,7 @@ initTechData =
             , markedString "I used `C#` and SQL via `continuous integration` for populating and monitoring the data warehouse"
             , markedString "I used the SQL materialized views in internal development and QA tools, with `C#` and `WinForms`"
             ]
-            PortfolioAndResume
+            (portfolioAndResume [ GeneralResume, ElmResume ])
         , TechItemData
             "SVG"
             Nothing
@@ -317,7 +317,7 @@ initTechData =
             , markedString "For `Forks in the Road`, I began my `visual design` by creating SVG mockup in Inkscape"
             , markedString "For `My Portfolio and Resume`, I created SVG illustrations in `Elm`—animating them using `CSS`"
             ]
-            PortfolioOnly
+            portfolioOnly
         , TechItemData
             "test-driven development"
             (Just "TDD")
@@ -326,7 +326,7 @@ initTechData =
             , markedString "In `Tacit` with `Scala`, I wrote my initial parser using TDD"
             , markedString "In `Forks in the Road` with `Ruby`, I used TDD to add back-end functionality"
             ]
-            PortfolioOnly
+            (portfolioAndResume [ GeneralResume, ElmResume ])
         , TechItemData
             "technical requirements"
             Nothing
@@ -336,7 +336,7 @@ initTechData =
             , markedString "At `Unitron`, I used the technical requirements I’d written negotiating features and implementation details, `making` the software, and introducing the changes to QA"
             , markedString "For `bitfontmake`, I wrote a technical specification to document my custom image-based font format"
             ]
-            PortfolioOnly
+            portfolioOnly
         , TechItemData
             "threads"
             Nothing
@@ -345,7 +345,7 @@ initTechData =
             , markedString "At `Unitron` with `C#`, I used Parallel LINQ as well as the Task Parallel Library to automatically coordinate background threads"
             , markedString "In `Yomikata` with `C++` and `Qt`, I used threads and processes to unpack and decode images in the background while keeping the UI responsive"
             ]
-            PortfolioOnly
+            portfolioOnly
         , TechItemData
             "version control"
             Nothing
@@ -355,7 +355,7 @@ initTechData =
             , markedString "I use change bisection to pinpoint the source of tricky bugs"
             , markedString "I write clear and descriptive commit messages, and use references to external issue tracking systems"
             ]
-            PortfolioOnly
+            portfolioOnly
         , TechItemData
             "visual design"
             Nothing
@@ -366,7 +366,7 @@ initTechData =
             , markedString "With `/tmp/blog`, I picked a monospace font as the centrepiece for designing an attractive and light-hearted blog"
             , markedString "With `Off-Grid Orcs`, I designed and implemented my first font, with a glyph size of 6x6 pixels"
             ]
-            PortfolioOnly
+            (portfolioAndResume [ ElmResume ])
         , TechItemData
             "Vue.js"
             Nothing
@@ -374,7 +374,7 @@ initTechData =
             [ markedString "`PR Quest` is a static informational site (with search) about MP support for proportional representation"
             , markedString "`Tiny Worker Bee` is a Twitter scheduling bot that post Tweets from your content library at dynamically-determined intervals"
             ]
-            PortfolioAndResume
+            (portfolioAndResume [ GeneralResume, ElmResume ])
         , TechItemData
             "Windows"
             Nothing
@@ -383,7 +383,7 @@ initTechData =
             , markedString "I troubleshoot Windows system problems (for myself, family, and teammates) using event logs, the device manager, Process Monitor, Process Explorer, Dependency Walker, ILSpy, Visual Studio’s debugger, and Google searches"
             , markedString "(I’m also comfortable using and troubleshooting `Linux`)"
             ]
-            PortfolioOnly
+            portfolioOnly
         , TechItemData
             "WinForms"
             Nothing
@@ -393,7 +393,7 @@ initTechData =
             , markedString "I made an `SQL`-backed test run search and summary application, to help QA focus testing resources using production data"
             , markedString "I set up a semi-automated `internationalization & localization` workflow"
             ]
-            PortfolioOnly
+            portfolioOnly
         ]
     , portfolioOutro = Nothing
     }

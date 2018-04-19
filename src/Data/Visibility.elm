@@ -1,15 +1,37 @@
 module Data.Visibility
     exposing
-        ( Visibility(PortfolioAndResume, PortfolioOnly)
-        , filterVisible
+        ( ResumeVariant(ElmResume, GeneralResume)
+        , Visibility
+        , filterResumeVisible
+        , portfolioAndResume
+        , portfolioOnly
         )
 
 
-type Visibility
-    = PortfolioOnly
-    | PortfolioAndResume
+type alias Visibility =
+    List ResumeVariant
 
 
-filterVisible : Visibility -> (a -> Visibility) -> List a -> List a
-filterVisible visibility selector =
-    List.filter (selector >> (==) visibility)
+type ResumeVariant
+    = GeneralResume
+    | ElmResume
+
+
+portfolioOnly : Visibility
+portfolioOnly =
+    []
+
+
+portfolioAndResume : List ResumeVariant -> Visibility
+portfolioAndResume =
+    identity
+
+
+filterResumeVisible : ResumeVariant -> (a -> Visibility) -> List a -> List a
+filterResumeVisible resumeVariant =
+    filterVisible (List.member resumeVariant)
+
+
+filterVisible : (Visibility -> Bool) -> (a -> Visibility) -> List a -> List a
+filterVisible test selector =
+    List.filter (selector >> test)

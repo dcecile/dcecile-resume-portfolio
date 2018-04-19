@@ -7,7 +7,7 @@ module Data.Projects
 
 import Data.Basic exposing (homepageURL, sourceURL)
 import Data.Section exposing (SectionData)
-import Data.Visibility exposing (Visibility(PortfolioAndResume, PortfolioOnly))
+import Data.Visibility exposing (ResumeVariant(ElmResume, GeneralResume), Visibility, portfolioAndResume, portfolioOnly)
 import MarkedString exposing (MarkedString, markedString)
 
 
@@ -54,7 +54,7 @@ initProjectsData =
             , markedString "I’m using `Sass` to simplify `CSS` syntax, `Bootstrap` for base styling, and `functional animation` for every state change"
             , markedString "I’ve set up Semaphore `continuous integration` to deploy to `Heroku` with each commit that passes unit testing"
             ]
-            PortfolioAndResume
+            (portfolioAndResume [ GeneralResume, ElmResume ])
         , ProjectsItemData
             "Tacit"
             Nothing
@@ -69,7 +69,7 @@ initProjectsData =
             , markedString "I’ve implemented a console read-eval-print loop (REPL) using the JLine `Java` library"
             , markedString "I’m working to create a web REPL using Scala.js and `CSS`"
             ]
-            PortfolioOnly
+            portfolioOnly
         , ProjectsItemData
             "Off-Grid Orcs"
             Nothing
@@ -85,7 +85,7 @@ initProjectsData =
             , markedString "I designed a custom font, and converted it to TTF format for outside-game-use via `bitfontmake`"
             , markedString "I used a `functional programming` architecture that transforms immutable data every frame"
             ]
-            PortfolioAndResume
+            (portfolioAndResume [ GeneralResume, ElmResume ])
         , ProjectsItemData
             "bitfontmake"
             Nothing
@@ -100,7 +100,7 @@ initProjectsData =
             , markedString "I converted pixels into vector glyph contours—and together with the correct metadata, I created a working TTF font file"
             , markedString "I turned my Python code into a Flask application and deployed it to `Heroku`"
             ]
-            PortfolioOnly
+            portfolioOnly
         , ProjectsItemData
             "PR Quest"
             Nothing
@@ -115,7 +115,7 @@ initProjectsData =
             , markedString "I used Stylus, a `CSS` preprocessor language, to implement `responsive design` via easy-to-manage block mixins"
             , markedString "I also used `HTML` pre-rendering, to help improve page load times and allow basic site use without `JavaScript`"
             ]
-            PortfolioOnly
+            portfolioOnly
         , ProjectsItemData
             "/tmp/blog"
             Nothing
@@ -129,7 +129,7 @@ initProjectsData =
             , markedString "I added features for parsing body paragraphs and tags"
             , markedString "I deployed the application to `Heroku`, and set up a scheduled task to delete any posts older than 24 hours"
             ]
-            PortfolioOnly
+            portfolioOnly
         , ProjectsItemData
             "Reactic-Tac-Toe"
             (Just "RTT")
@@ -143,7 +143,7 @@ initProjectsData =
             , markedString "I used `CSS` filters to apply a uniform chalk texture to all text and lines"
             , markedString "I created a seamless chalk dust texture in Inkscape, and used it for the background"
             ]
-            PortfolioOnly
+            portfolioOnly
         , ProjectsItemData
             "Yomikata"
             Nothing
@@ -157,7 +157,7 @@ initProjectsData =
             , markedString "I used unit tests to verify my page turning logic (complicated by the presence of spread pages)"
             , markedString "I used a full-screen `functional animation` during image loading to provide user feedback"
             ]
-            PortfolioOnly
+            portfolioOnly
         , ProjectsItemData
             "Ultra Rainbow Bake Sale"
             (Just "URBS")
@@ -172,7 +172,7 @@ initProjectsData =
             , markedString "I used `functional animation` to give the game an element of juiciness"
             , markedString "I implemented an AI-like dynamic hints system using a sequence of play conditions and suggestions"
             ]
-            PortfolioOnly
+            portfolioOnly
         , ProjectsItemData
             "Tiny Worker Bee"
             (Just "TWB")
@@ -187,13 +187,13 @@ initProjectsData =
             , markedString "I also created a static homepage using `HTML`, `CSS`, and `responsive design`"
             , markedString "(If you’d like to try using this web app or you’d like a peek at the source code, just send me an email to let me know)"
             ]
-            PortfolioAndResume
+            (portfolioAndResume [ GeneralResume ])
         , ProjectsItemData
             "My Portfolio and Resume"
             (Just "(This website)")
             "2018"
             "Elm / CSS"
-            "My portfolio and resume"
+            "Interactive skills showcase"
             (Just homepageURL)
             (Just sourceURL)
             (markedString "For my 2018 job search, I decided to create a GitHub homepage to host my portfolio and my resume:")
@@ -202,7 +202,7 @@ initProjectsData =
             , markedString "I use `Elm` to construct custom `SVG` illustrations, which I style and animate via `CSS`"
             , markedString "I use Semaphore `continuous integration` for unit tests, style tests, and continuous deployment to GitHub Pages"
             ]
-            PortfolioOnly
+            (portfolioAndResume [ ElmResume ])
         ]
     , portfolioOutro = Nothing
     }
