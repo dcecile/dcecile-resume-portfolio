@@ -7,7 +7,7 @@ module Data.Projects
 
 import Data.Basic exposing (homepageURL, sourceURL)
 import Data.Section exposing (SectionData)
-import Data.Visibility exposing (ResumeVariant(ElmResume, GeneralResume), Visibility, portfolioAndResume, portfolioOnly)
+import Data.Visibility exposing (ResumeVariant(ElmResume, GeneralResume, GoResume), Visibility, portfolioAndResume, portfolioOnly)
 import MarkedString exposing (MarkedString, markedString)
 
 
@@ -60,7 +60,7 @@ initProjectsData =
             Nothing
             "2017–2018"
             "Scala / CSS"
-            "A programming language"
+            "REPL error highlighting"
             Nothing
             (Just "https://github.com/tacit-lang/tacit")
             (markedString "I’m `making` a programming language.")
@@ -69,7 +69,7 @@ initProjectsData =
             , markedString "I’ve implemented a console read-eval-print loop (REPL) using the JLine `Java` library"
             , markedString "I’m working to create a web REPL using Scala.js and `CSS`"
             ]
-            portfolioOnly
+            (portfolioAndResume [ GoResume ])
         , ProjectsItemData
             "Off-Grid Orcs"
             Nothing
@@ -91,16 +91,16 @@ initProjectsData =
             Nothing
             "2017"
             "Python / UFO"
-            "Vectorized bitmap fonts"
+            "Bitmap font compiler"
             Nothing
             (Just "https://github.com/dcecile/bitfontmake")
-            (markedString "After creating a custom pixel-based font for `Off-Grid Orcs`, I decided to use `Python` to export that font to TTF:")
+            (markedString "After creating a custom pixel-based font for `Off-Grid Orcs`, I decided to use `Python` to export that font to vector-based TTF:")
             [ markedString "I learned how TTF and UFO font formats work"
             , markedString "I designed and implemented a custom image-based font specification format, which I documented in a `technical requirements` Markdown file"
             , markedString "I converted pixels into vector glyph contours—and together with the correct metadata, I created a working TTF font file"
             , markedString "I turned my Python code into a Flask application and deployed it to `Heroku`"
             ]
-            portfolioOnly
+            (portfolioAndResume [ GoResume ])
         , ProjectsItemData
             "PR Quest"
             Nothing
@@ -187,7 +187,7 @@ initProjectsData =
             , markedString "I also created a static homepage using `HTML`, `CSS`, and `responsive design`"
             , markedString "(If you’d like to try using this web app or you’d like a peek at the source code, just send me an email to let me know)"
             ]
-            (portfolioAndResume [ GeneralResume ])
+            (portfolioAndResume [ GeneralResume, GoResume ])
         , ProjectsItemData
             "My Portfolio and Resume"
             (Just "(This website)")

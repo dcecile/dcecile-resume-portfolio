@@ -6,7 +6,7 @@ module Data.Tech
         )
 
 import Data.Section exposing (SectionData)
-import Data.Visibility exposing (ResumeVariant(ElmResume, GeneralResume), Visibility, portfolioAndResume, portfolioOnly)
+import Data.Visibility exposing (ResumeVariant(ElmResume, GeneralResume, GoResume), Visibility, portfolioAndResume, portfolioOnly)
 import MarkedString exposing (MarkedString, markedString)
 
 
@@ -79,7 +79,7 @@ initTechData =
             , markedString "At `Unitron`, I used C# together with `SQL` to create internal tools focused on `improving` development and QA processes"
             , markedString "At `Unitron`, I used C# `threads` and async/await to build `WinForms` apps that don’t freeze during extended network and CPU tasks"
             ]
-            (portfolioAndResume [ GeneralResume, ElmResume ])
+            (portfolioAndResume [ GeneralResume, ElmResume, GoResume ])
         , TechItemData
             "continuous integration"
             (Just "CI")
@@ -146,7 +146,7 @@ initTechData =
             , markedString "In `My Portfolio and Resume`, functional programming helps keep my `Elm` code well-organized, and makes refactoring a breeze"
             , markedString "In `Off-Grid Orcs`, functional programming helped prevent newly-implemented `Scala` features from breaking existing functionality"
             ]
-            (portfolioAndResume [ GeneralResume, ElmResume ])
+            (portfolioAndResume [ GeneralResume, ElmResume, GoResume ])
         , TechItemData
             "functional animation"
             Nothing
@@ -161,13 +161,13 @@ initTechData =
             (Just "GAE")
             (markedString "I built my `Go` back-end for `Tiny Worker Bee` with Google App Engine, making use of the Datastore, Task Queue, and URL Fetch features.")
             []
-            portfolioOnly
+            (portfolioAndResume [ GoResume ])
         , TechItemData
             "Go"
             Nothing
             (markedString "I used Go with `Google App Engine` for the back-end for `Tiny Worker Bee`, a Twitter scheduling bot that post Tweets at dynamically-determined intervals.")
             []
-            portfolioOnly
+            (portfolioAndResume [ GoResume ])
         , TechItemData
             "Heroku"
             Nothing
@@ -213,7 +213,7 @@ initTechData =
             , markedString "In `PR Quest`, I used JavaScript with `Vue.js` to build a static-content single page application"
             , markedString "(I sometimes use `Elm` or `Scala` instead of JavaScript)"
             ]
-            (portfolioAndResume [ GeneralResume, ElmResume ])
+            (portfolioAndResume [ GeneralResume, ElmResume, GoResume ])
         , TechItemData
             "Linux"
             Nothing
@@ -223,7 +223,7 @@ initTechData =
             , markedString "I’ve built a couple cross-platform desktop applications: `Ultra Rainbow Bake Sale` and `Yomikata`"
             , markedString "(I also have lots of experience using and troubleshooting `Windows`)"
             ]
-            portfolioOnly
+            (portfolioAndResume [ GoResume ])
         , TechItemData
             "Lua"
             Nothing
@@ -235,7 +235,7 @@ initTechData =
             Nothing
             (markedString "With `bitfontmake`, I’ve used Python to compile my TTF fonts from a custom pixel-based input format. I deployed this code to `Heroku` as a Flask application.")
             []
-            (portfolioAndResume [ GeneralResume ])
+            (portfolioAndResume [ GeneralResume, GoResume ])
         , TechItemData
             "Qt"
             Nothing
@@ -253,7 +253,7 @@ initTechData =
             , markedString "With `Forks in the Road`, I’m using React to create the front-end of my value estimation web app"
             , markedString "(I’ve also used `Vue.js` and `Elm` for creating `HTML` front-ends)"
             ]
-            (portfolioAndResume [ GeneralResume, ElmResume ])
+            (portfolioAndResume [ GeneralResume, ElmResume, GoResume ])
         , TechItemData
             "responsive design"
             Nothing
@@ -267,7 +267,7 @@ initTechData =
             Nothing
             (markedString "I’m `learning` Ruby so I can make `Rails` web apps. Right now that’s `Forks in the Road` and `/tmp/blog`.")
             []
-            (portfolioAndResume [ GeneralResume ])
+            (portfolioAndResume [ GeneralResume, GoResume ])
         , TechItemData
             "Rails"
             Nothing
@@ -290,7 +290,7 @@ initTechData =
             [ markedString "For my `Tacit` programming language, I’m taking advantage of support for `functional programming` from  of Scala’s type system and standard library"
             , markedString "I used Scala.js to create `Off-Grid Orcs` as an HTML game with a `functional programming` architecture"
             ]
-            (portfolioAndResume [ GeneralResume, ElmResume ])
+            (portfolioAndResume [ GeneralResume, ElmResume, GoResume ])
         , TechItemData
             "Scheme"
             Nothing
@@ -307,7 +307,7 @@ initTechData =
             , markedString "I used `C#` and SQL via `continuous integration` for populating and monitoring the data warehouse"
             , markedString "I used the SQL materialized views in internal development and QA tools, with `C#` and `WinForms`"
             ]
-            (portfolioAndResume [ GeneralResume, ElmResume ])
+            (portfolioAndResume [ GeneralResume, ElmResume, GoResume ])
         , TechItemData
             "SVG"
             Nothing
@@ -326,7 +326,7 @@ initTechData =
             , markedString "In `Tacit` with `Scala`, I wrote my initial parser using TDD"
             , markedString "In `Forks in the Road` with `Ruby`, I used TDD to add back-end functionality"
             ]
-            (portfolioAndResume [ GeneralResume, ElmResume ])
+            (portfolioAndResume [ GeneralResume, ElmResume, GoResume ])
         , TechItemData
             "technical requirements"
             Nothing
@@ -374,7 +374,7 @@ initTechData =
             [ markedString "`PR Quest` is a static informational site (with search) about MP support for proportional representation"
             , markedString "`Tiny Worker Bee` is a Twitter scheduling bot that post Tweets from your content library at dynamically-determined intervals"
             ]
-            (portfolioAndResume [ GeneralResume, ElmResume ])
+            (portfolioAndResume [ GeneralResume, ElmResume, GoResume ])
         , TechItemData
             "Windows"
             Nothing
