@@ -62,9 +62,9 @@ animateProtfolioAndDetails portfolioOrDetails details =
 
         originStyle ( x, y ) =
             transformOrigin <|
-                toString x
+                String.fromFloat x
                     ++ "px "
-                    ++ toString y
+                    ++ String.fromFloat y
                     ++ "px"
 
         origin =
@@ -208,8 +208,8 @@ combineAnimations animationNames duration delay easing =
             (\animationName ->
                 String.join " "
                     [ animationName
-                    , toString duration ++ "ms"
-                    , toString delay ++ "ms"
+                    , String.fromFloat duration ++ "ms"
+                    , String.fromFloat delay ++ "ms"
                     , "both"
                     , easing
                     ]

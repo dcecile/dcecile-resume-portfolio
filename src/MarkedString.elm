@@ -34,10 +34,10 @@ transform normal special =
     let
         loop substring =
             case substring of
-                NormalSubstring substring ->
-                    normal substring
+                NormalSubstring substring2 ->
+                    normal substring2
 
-                SpecialSubstring substring ->
-                    special substring
+                SpecialSubstring substring2 ->
+                    special substring2
     in
     List.map loop

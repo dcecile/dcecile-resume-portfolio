@@ -18,6 +18,6 @@ toLazyHtml =
     toUnstyled
 
 
-fromLazyHtml2 : (a -> b -> LazyHtml msg) -> a -> b -> Html msg
+fromLazyHtml2 : (a -> b -> Html msg) -> a -> b -> Html msg
 fromLazyHtml2 =
     lazy2

@@ -58,7 +58,7 @@ animationCycle durationMilliseconds name =
     animation <|
         String.join " "
             [ name
-            , toString durationMilliseconds ++ "ms"
+            , String.fromFloat durationMilliseconds ++ "ms"
             , "infinite"
             , "both"
             ]

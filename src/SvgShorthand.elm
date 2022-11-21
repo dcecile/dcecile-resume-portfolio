@@ -42,11 +42,11 @@ strokeWidth =
 
 
 strokeWidthUnscaled : ExplicitLength units -> Float -> Style
-strokeWidthUnscaled length scale =
+strokeWidthUnscaled length scaleBy =
     strokeWidth
         { length
             | value =
-                toString (length.numericValue / scale)
+                String.fromFloat (length.numericValue / scaleBy)
                     ++ length.unitLabel
         }
 
@@ -100,7 +100,7 @@ transformToString { name, values } =
     String.concat
         [ name
         , "("
-        , values |> List.map toString |> String.join ","
+        , values |> List.map String.fromFloat |> String.join ","
         , ")"
         ]
 
@@ -108,7 +108,7 @@ transformToString { name, values } =
 viewBox : ( Float, Float ) -> ( Float, Float ) -> Attribute msg
 viewBox ( minX, minY ) ( width, height ) =
     [ minX, minY, width, height ]
-        |> List.map toString
+        |> List.map String.fromFloat
         |> String.join " "
         |> attribute "viewBox"
 
