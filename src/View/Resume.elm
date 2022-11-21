@@ -1,8 +1,7 @@
-module View.Resume
-    exposing
-        ( viewResume
-        , viewResumeName
-        )
+module View.Resume exposing
+    ( viewResume
+    , viewResumeName
+    )
 
 import Assets exposing (Assets)
 import Char
@@ -17,9 +16,9 @@ import Html.Styled exposing (Html, a, div, footer, h1, h2, h3, header, img, main
 import Html.Styled.Attributes exposing (href)
 import HtmlShorthand exposing (styledSpanText)
 import Icon exposing (IconBackground, IconSource, iconImage)
-import MarkedString exposing (MarkedString, MarkedSubstring(NormalSubstring, SpecialSubstring), markedString)
+import MarkedString exposing (MarkedString, MarkedSubstring(..), markedString)
 import Msg exposing (Msg)
-import Regex exposing (HowMany(All), regex, replace)
+import Regex exposing (HowMany(..), regex, replace)
 import View.Colors exposing (printBlack, printGreen, printPaleGreen, printPaleGreenComponents)
 import View.Metrics exposing (printBorderWidth, printLineHeight)
 
@@ -390,7 +389,7 @@ viewWorkItem : IconSource -> Bool -> WorkItemData -> Html Msg
 viewWorkItem iconSource narrow item =
     (viewItem narrow << List.concat)
         [ viewWorkItemNameLocation iconSource item.name item.resumeLocation |> List.singleton
-        , item.resumeTitlePeriods |> List.map (uncurry viewWorkItemTitlePeriod)
+        , item.resumeTitlePeriods |> List.map (\( a, b ) -> viewWorkItemTitlePeriod a b)
         , item.resumePoints |> List.map viewWorkItemPoint
         ]
 
@@ -561,6 +560,7 @@ viewItem narrow nodes =
                 em
                     (if narrow then
                         0.6
+
                      else
                         0.9
                     )

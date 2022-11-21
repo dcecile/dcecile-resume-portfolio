@@ -1,7 +1,4 @@
-module Flags
-    exposing
-        ( Flags
-        )
+module Flags exposing (Flags)
 
 import Favicon exposing (FaviconSource)
 import Icon exposing (IconSource)

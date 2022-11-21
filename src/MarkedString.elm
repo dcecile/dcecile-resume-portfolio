@@ -1,10 +1,9 @@
-module MarkedString
-    exposing
-        ( MarkedString
-        , MarkedSubstring(NormalSubstring, SpecialSubstring)
-        , markedString
-        , transform
-        )
+module MarkedString exposing
+    ( MarkedString
+    , MarkedSubstring(..)
+    , markedString
+    , transform
+    )
 
 
 type alias MarkedString =
@@ -20,8 +19,9 @@ markedString : String -> MarkedString
 markedString =
     let
         loop index =
-            if index % 2 == 0 then
+            if modBy 2 index == 0 then
                 NormalSubstring
+
             else
                 SpecialSubstring
     in

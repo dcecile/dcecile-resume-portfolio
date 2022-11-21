@@ -1,7 +1,4 @@
-module View.Tech
-    exposing
-        ( viewTech
-        )
+module View.Tech exposing (viewTech)
 
 import Assets exposing (Assets)
 import Css exposing (alignItems, baseline, center, color, em, flexWrap, fontSize, fontStyle, italic, justifyContent, marginBottom, px, wrap)
@@ -52,7 +49,7 @@ viewItems items =
     in
     items
         |> toGroup
-        |> List.map (uncurry viewGroup)
+        |> List.map (\( a, b ) -> viewGroup a b)
         |> styled div style []
 
 

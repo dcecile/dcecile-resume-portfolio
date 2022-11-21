@@ -1,7 +1,4 @@
-module View.Work
-    exposing
-        ( viewWork
-        )
+module View.Work exposing (viewWork)
 
 import Assets exposing (Assets)
 import Css exposing (Style, alignItems, batch, bold, center, color, em, flexWrap, fontSize, fontStyle, fontWeight, italic, justifyContent, left, marginBottom, marginTop, paddingRight, px, textAlign, width, wrap)
@@ -48,6 +45,7 @@ viewItems isLarge items =
                 em
                     (if isLarge then
                         0.8
+
                      else
                         1.1
                     )
@@ -92,6 +90,7 @@ viewItem isLarge item =
         style =
             if isLarge then
                 largeStyle
+
             else
                 smallStyle
     in

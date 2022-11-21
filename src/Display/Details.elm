@@ -1,12 +1,11 @@
-module Display.Details
-    exposing
-        ( DetailsAnimation(DetailsAnimationClose, DetailsAnimationNavigate, DetailsAnimationOpen)
-        , DetailsDisplay
-        , DetailsDoubleBufferState(DetailsDoubleBufferFirstSlotNew, DetailsDoubleBufferFirstSlotOld)
-        , DetailsNavigateDirection(DetailsNavigateLink, DetailsNavigateNext, DetailsNavigatePrevious)
-        , initDoubleBuffer
-        , swapDoubleBuffer
-        )
+module Display.Details exposing
+    ( DetailsAnimation(..)
+    , DetailsDisplay
+    , DetailsDoubleBufferState(..)
+    , DetailsNavigateDirection(..)
+    , initDoubleBuffer
+    , swapDoubleBuffer
+    )
 
 import ClickInfo exposing (ClickInfo)
 import Data.Details exposing (DetailsItemData)

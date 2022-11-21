@@ -1,7 +1,4 @@
-module View.Chart
-    exposing
-        ( viewChart
-        )
+module View.Chart exposing (viewChart)
 
 import Css exposing (Style, px)
 import CssShorthand exposing (animationCycle)

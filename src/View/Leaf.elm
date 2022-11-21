@@ -1,9 +1,8 @@
-module View.Leaf
-    exposing
-        ( leafPathData
-        , leafStalkPoint
-        , viewLeaf
-        )
+module View.Leaf exposing
+    ( leafPathData
+    , leafStalkPoint
+    , viewLeaf
+    )
 
 import Css exposing (Style, height, hidden, initial, num, opacity, px, visibility, vw, width)
 import Css.Media as Media
@@ -97,6 +96,7 @@ viewLeaf showUnderMediumWidth flipX flipY size =
         style =
             [ if showUnderMediumWidth then
                 noStyle
+
               else
                 visibility hidden
             , breakpointPortfolioMedium
@@ -132,6 +132,7 @@ viewLeaf showUnderMediumWidth flipX flipY size =
             [ viewLeafPath reverseAnimation
                 (if reverseAnimation then
                     leafDelayOffset
+
                  else
                     0
                 )
@@ -142,6 +143,7 @@ viewLeaf showUnderMediumWidth flipX flipY size =
             , viewLeafPath reverseAnimation
                 (if not reverseAnimation then
                     leafDelayOffset
+
                  else
                     0
                 )
@@ -166,6 +168,7 @@ viewLeafPath reverseAnimation delay parentSize size degrees ( x, y ) =
                     , "infinite"
                     , if reverseAnimation then
                         "alternate-reverse"
+
                       else
                         "alternate"
                     , "both"

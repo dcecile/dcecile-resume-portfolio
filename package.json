@@ -1,13 +1,15 @@
 {
   "dependencies": {
-    "create-elm-app": "^1.10.3",
-    "elm-format": "^0.7.0-exp",
-    "prettier": "^1.11.1",
-    "puppeteer": "^1.2.0",
-    "server-static": "^2.0.5"
+    "create-elm-app": "^5.22.0",
+    "elm": "0.19.1-5",
+    "elm-format": "0.8.0",
+    "elm-upgrade": "^0.19.8",
+    "postcss": "^8.1.0",
+    "prettier": "^2.7.1",
+    "puppeteer": "^19.2.2"
   },
   "devDependencies": {
-    "chokidar-cli": "^1.2.0"
+    "chokidar-cli": "^3.0.0"
   },
   "scripts": {
     "clean": "rm -rf elm-stuff/build-artifacts/0.18.0/dcecile/dcecile-resume-portfolio && rm -rf tests/elm-stuff/build-artifacts/0.18.0/user/project",

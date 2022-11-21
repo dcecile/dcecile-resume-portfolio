@@ -1,7 +1,4 @@
-module View.Section
-    exposing
-        ( viewSection
-        )
+module View.Section exposing (viewSection)
 
 import Css exposing (backgroundPosition2, bold, borderWidth, boxShadow5, center, em, flexBasis, fontSize, fontStyle, fontWeight, height, justifyContent, left, marginBottom, marginLeft, marginTop, num, opacity, paddingBottom, px, textAlign, top, zero)
 import CssShorthand exposing (borderBottomSolidColor, displayFlexColumn, displayFlexRow, marginRightLeft, zIndexBackground)

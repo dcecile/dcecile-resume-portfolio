@@ -1,7 +1,4 @@
-module View.Mindsets
-    exposing
-        ( viewMindsets
-        )
+module View.Mindsets exposing (viewMindsets)
 
 import Assets exposing (Assets)
 import Css exposing (Em, alignItems, backgroundColor, capitalize, center, em, flexWrap, height, justifyContent, marginBottom, minWidth, textTransform, width, wrap)

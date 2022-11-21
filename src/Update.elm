@@ -1,15 +1,14 @@
-module Update
-    exposing
-        ( findDetailsItem
-        , update
-        )
+module Update exposing
+    ( findDetailsItem
+    , update
+    )
 
 import ClickInfo exposing (ClickInfo)
 import Data.Details exposing (DetailsItemData)
-import Display.Details exposing (DetailsAnimation(DetailsAnimationClose, DetailsAnimationNavigate, DetailsAnimationOpen), DetailsDisplay, DetailsNavigateDirection, initDoubleBuffer, swapDoubleBuffer)
+import Display.Details exposing (DetailsAnimation(..), DetailsDisplay, DetailsNavigateDirection, initDoubleBuffer, swapDoubleBuffer)
 import ListEx
 import Model exposing (Model)
-import Msg exposing (Msg(DetailsClose, DetailsNavigate, DetailsOpen, HashChange, NoMsg, Print))
+import Msg exposing (Msg(..))
 import Print exposing (print)
 
 
@@ -132,6 +131,7 @@ hashChange hash model =
     in
     if newShowResumePreview /= model.display.showResumePreview then
         Just setModel
+
     else
         Nothing
 

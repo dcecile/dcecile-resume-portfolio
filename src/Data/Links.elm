@@ -1,9 +1,8 @@
-module Data.Links
-    exposing
-        ( LinksData
-        , LinksItemData
-        , initLinksData
-        )
+module Data.Links exposing
+    ( LinksData
+    , LinksItemData
+    , initLinksData
+    )
 
 import Icon exposing (IconBackground)
 

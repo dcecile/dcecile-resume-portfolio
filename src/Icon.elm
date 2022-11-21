@@ -1,11 +1,10 @@
-module Icon
-    exposing
-        ( IconBackground
-        , IconSource
-        , iconBackgroundImage
-        , iconImage
-        , iconSpan
-        )
+module Icon exposing
+    ( IconBackground
+    , IconSource
+    , iconBackgroundImage
+    , iconImage
+    , iconSpan
+    )
 
 import Css exposing (LengthOrAuto, Style, backgroundImage, backgroundOrigin, backgroundPosition, backgroundRepeat, backgroundSize, batch, center, contain, contentBox, display, height, inlineBlock, noRepeat, num, opacity, px, url, width)
 import CssShorthand exposing (batchMap, marginRightLeft)

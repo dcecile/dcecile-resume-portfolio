@@ -1,7 +1,4 @@
-module View.ResumePrint
-    exposing
-        ( viewResumePrint
-        )
+module View.ResumePrint exposing (viewResumePrint)
 
 import Assets exposing (Assets)
 import Css exposing (fontSize, minHeight, vh)

@@ -1,7 +1,4 @@
-module ClickInfo
-    exposing
-        ( ClickInfo
-        )
+module ClickInfo exposing (ClickInfo)
 
 
 type alias ClickInfo =

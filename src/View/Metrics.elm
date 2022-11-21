@@ -1,14 +1,13 @@
-module View.Metrics
-    exposing
-        ( printBorderWidth
-        , printLineHeight
-        , standardBorderRadius
-        , standardBorderWidth
-        , standardLineHeight
-        , standardPrintFontSize
-        , standardScreenFontSizeLarge
-        , standardScreenFontSizeSmall
-        )
+module View.Metrics exposing
+    ( printBorderWidth
+    , printLineHeight
+    , standardBorderRadius
+    , standardBorderWidth
+    , standardLineHeight
+    , standardPrintFontSize
+    , standardScreenFontSizeLarge
+    , standardScreenFontSizeSmall
+    )
 
 import Css exposing (Em, Pct, Pt, Px, em, num, pct, pt, px)
 

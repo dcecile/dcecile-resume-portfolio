@@ -1,7 +1,4 @@
-module View.GroupBox
-    exposing
-        ( border
-        )
+module View.GroupBox exposing (border)
 
 import Css exposing (Style, batch, borderRadius, borderWidth, px)
 import CssShorthand exposing (borderSolidColor)

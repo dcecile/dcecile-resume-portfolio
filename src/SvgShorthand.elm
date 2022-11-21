@@ -1,17 +1,16 @@
-module SvgShorthand
-    exposing
-        ( SvgTag
-        , fill
-        , flipAxes
-        , rotate
-        , scale
-        , stroke
-        , strokeWidth
-        , strokeWidthUnscaled
-        , transform
-        , translate
-        , viewBoxSquare
-        )
+module SvgShorthand exposing
+    ( SvgTag
+    , fill
+    , flipAxes
+    , rotate
+    , scale
+    , stroke
+    , strokeWidth
+    , strokeWidthUnscaled
+    , transform
+    , translate
+    , viewBoxSquare
+    )
 
 import Css exposing (ColorValue, ExplicitLength, Style, Value, property)
 import Html.Styled.Attributes exposing (attribute)
@@ -80,10 +79,12 @@ flipAxes flipX flipY =
     Transform "scale"
         [ if flipX then
             -1
+
           else
             1
         , if flipY then
             -1
+
           else
             1
         ]

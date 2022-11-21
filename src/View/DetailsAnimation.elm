@@ -1,14 +1,13 @@
-module View.DetailsAnimation
-    exposing
-        ( animateDetails
-        , animateDetailsItem
-        , animatePortfolio
-        )
+module View.DetailsAnimation exposing
+    ( animateDetails
+    , animateDetailsItem
+    , animatePortfolio
+    )
 
 import Css exposing (Style, batch)
 import CssShorthand exposing (animation, mediaNotPrint, noStyle, transformOrigin, willChangeTransform)
 import Display exposing (Display)
-import Display.Details exposing (DetailsAnimation(DetailsAnimationClose, DetailsAnimationNavigate, DetailsAnimationOpen), DetailsDisplay, DetailsNavigateDirection(DetailsNavigateLink, DetailsNavigateNext, DetailsNavigatePrevious))
+import Display.Details exposing (DetailsAnimation(..), DetailsDisplay, DetailsNavigateDirection(..))
 import View.Breakpoints exposing (breakpointDetailsMediumWidth)
 
 
@@ -142,6 +141,7 @@ animateDetailsItem isNew details =
         newOrOld =
             if isNew then
                 New
+
             else
                 Old
 

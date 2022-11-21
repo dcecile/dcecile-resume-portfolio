@@ -1,8 +1,7 @@
-module Model
-    exposing
-        ( Model
-        , init
-        )
+module Model exposing
+    ( Model
+    , init
+    )
 
 import Assets exposing (Assets, initAssets)
 import Data exposing (Data, initData)

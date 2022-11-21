@@ -1,7 +1,4 @@
-module View.Diamond
-    exposing
-        ( viewDiamond
-        )
+module View.Diamond exposing (viewDiamond)
 
 import Css exposing (Style, num, opacity, px)
 import CssShorthand exposing (animationCycle)

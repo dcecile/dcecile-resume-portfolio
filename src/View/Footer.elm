@@ -1,7 +1,4 @@
-module View.Footer
-    exposing
-        ( viewFooter
-        )
+module View.Footer exposing (viewFooter)
 
 import Assets exposing (Assets)
 import Css exposing (alignSelf, bold, borderWidth, center, color, em, fontSize, fontStyle, fontWeight, italic, lineHeight, marginBottom, marginTop, num, px, zero)

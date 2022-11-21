@@ -1,7 +1,4 @@
-module View.Fire
-    exposing
-        ( viewFire
-        )
+module View.Fire exposing (viewFire)
 
 import Css exposing (Style, px)
 import CssShorthand exposing (animationCycle)

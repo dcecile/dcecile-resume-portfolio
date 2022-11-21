@@ -1,7 +1,4 @@
-module View.MindsetsCircle
-    exposing
-        ( viewMindsetsCircle
-        )
+module View.MindsetsCircle exposing (viewMindsetsCircle)
 
 import Css exposing (Style, batch, px, transparent)
 import Msg exposing (Msg)

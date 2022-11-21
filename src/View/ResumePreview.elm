@@ -1,7 +1,4 @@
-module View.ResumePreview
-    exposing
-        ( viewResumePreview
-        )
+module View.ResumePreview exposing (viewResumePreview)
 
 import Assets exposing (Assets)
 import Css exposing (Em, alignItems, backgroundColor, borderBox, boxShadow5, boxSizing, center, em, flexEnd, flexStart, fontSize, height, hex, justifyContent, marginBottom, marginLeft, marginRight, marginTop, minHeight, px, vh, vw, width, zero)
@@ -13,7 +10,7 @@ import Html.Styled.Attributes exposing (downloadAs, href)
 import HtmlShorthand exposing (HtmlTag, hrefHash, onClickPreventDefault)
 import Icon exposing (IconBackground, IconSource, iconSpan)
 import LazyHtml exposing (LazyHtml, fromLazyHtml2, toLazyHtml)
-import Msg exposing (Msg(Print))
+import Msg exposing (Msg(..))
 import View.Breakpoints exposing (breakpointResumePreviewLarge, breakpointResumePreviewMedium, breakpointResumePreviewMediumLarge)
 import View.Button as Button
 import View.Colors exposing (white)
@@ -49,6 +46,7 @@ viewResumePreview assets data display =
             , displayNone
             , if display.showResumePreview then
                 mediaNotPrint [ displayFlexColumn ]
+
               else
                 noStyle
             ]

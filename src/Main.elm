@@ -1,7 +1,4 @@
-module Main
-    exposing
-        ( main
-        )
+module Main exposing (main)
 
 import Flags exposing (Flags)
 import Html exposing (programWithFlags)
@@ -16,7 +13,7 @@ main : Program Flags Model Msg
 main =
     programWithFlags
         { init = Model.init >> alsoViewHead
-        , update = uncurry update >> alsoViewHead |> curry
+        , update = (\( a, b ) -> update a b) >> alsoViewHead |> (\f a b -> f ( a, b ))
         , subscriptions = subscribe
         , view = view >> toUnstyled
         }

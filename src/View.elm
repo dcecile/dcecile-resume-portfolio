@@ -1,9 +1,8 @@
-module View
-    exposing
-        ( alsoViewHead
-        , subscribe
-        , view
-        )
+module View exposing
+    ( alsoViewHead
+    , subscribe
+    , view
+    )
 
 import Assets exposing (Assets)
 import Css exposing (hidden, overflow)
@@ -15,7 +14,7 @@ import Html.Styled exposing (Html, div, styled)
 import LazyHtml exposing (fromLazyHtml2)
 import MaybeEx
 import Model exposing (Model)
-import Msg exposing (Msg(HashChange))
+import Msg exposing (Msg(..))
 import Navigation exposing (onHashChange)
 import View.Details exposing (maybeSubscribeDetails, maybeViewDetails)
 import View.Portfolio exposing (viewPortfolio)
@@ -60,6 +59,7 @@ viewTitle : Data -> Display -> String
 viewTitle data display =
     if display.showResumePreview then
         viewResumeName data
+
     else
         data.basic.name ++ "’s portfolio homepage"
 
@@ -68,6 +68,7 @@ viewFavicon : Assets -> Display -> String
 viewFavicon assets display =
     if display.showResumePreview then
         assets.faviconSource.resume
+
     else
         assets.faviconSource.portfolio
 

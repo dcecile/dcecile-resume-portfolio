@@ -1,7 +1,4 @@
-module View.Wheel
-    exposing
-        ( viewWheel
-        )
+module View.Wheel exposing (viewWheel)
 
 import Css exposing (Style, px)
 import CssShorthand exposing (animationCycle)
@@ -122,7 +119,7 @@ viewItem rotateAnimationName translateAnimationName item degrees =
     let
         endTransform =
             [ transform
-                [ uncurry translate wheelCenter
+                [ (\( a, b ) -> translate a b) wheelCenter
                 , rotate degrees ( 0, 0 )
                 ]
             ]

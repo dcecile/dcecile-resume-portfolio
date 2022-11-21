@@ -1,8 +1,7 @@
-port module Navigation
-    exposing
-        ( initScroll
-        , onHashChange
-        )
+port module Navigation exposing
+    ( initScroll
+    , onHashChange
+    )
 
 
 port initScroll : () -> Cmd msg

@@ -1,15 +1,14 @@
-module View.Details
-    exposing
-        ( maybeSubscribeDetails
-        , maybeViewDetails
-        )
+module View.Details exposing
+    ( maybeSubscribeDetails
+    , maybeViewDetails
+    )
 
 import Assets exposing (Assets)
 import Css exposing (Style, alignItems, alignSelf, backgroundColor, bold, borderBox, borderRadius, borderWidth, bottom, boxShadow5, boxSizing, calc, capitalize, center, color, em, empty, fixed, flexBasis, flexEnd, flexGrow, flexShrink, flexWrap, fontSize, fontWeight, height, hidden, justifyContent, lastChild, left, lineHeight, marginBottom, marginLeft, marginRight, marginTop, maxHeight, maxWidth, minus, none, num, overflow, padding, paddingLeft, pct, position, px, right, spaceBetween, stretch, textDecoration, textTransform, top, underline, vh, vw, width, wrap, zero)
 import CssShorthand exposing (batchMap, borderRightLeftSolidColor, borderSolidColor, displayFlexColumn, displayFlexRow, displayFlexRowReverse, displayNone, marginRightLeft, marginTopBottom, mediaNotPrint, noStyle, paddingRightLeft, paddingTopBottom, textDecorationSkipInk, willChangeTransform, zIndexBackground, zIndexNormal, zIndexOverlay)
 import Data.Details exposing (DetailsItemData)
 import Display exposing (Display)
-import Display.Details exposing (DetailsAnimation(DetailsAnimationClose, DetailsAnimationNavigate), DetailsDisplay, DetailsDoubleBufferState(DetailsDoubleBufferFirstSlotNew, DetailsDoubleBufferFirstSlotOld), DetailsNavigateDirection(DetailsNavigateLink, DetailsNavigateNext, DetailsNavigatePrevious))
+import Display.Details exposing (DetailsAnimation(..), DetailsDisplay, DetailsDoubleBufferState(..), DetailsNavigateDirection(..))
 import Html.Styled exposing (Html, a, div, h1, li, p, span, styled, text, ul)
 import Html.Styled.Attributes exposing (href, title)
 import HtmlShorthand exposing (ariaLabel, onClickPreventDefault, styledSpanText, targetBlank)
@@ -17,7 +16,7 @@ import Icon exposing (IconBackground, IconSource, iconSpan)
 import Keyboard
 import MarkedString exposing (MarkedString, markedString)
 import MaybeEx
-import Msg exposing (Msg(DetailsClose, DetailsNavigate, NoMsg))
+import Msg exposing (Msg(..))
 import View.Breakpoints exposing (breakpointDetailsLarge, breakpointDetailsMediumHeight, breakpointDetailsMediumWidth, breakpointDetailsSmallWidth)
 import View.Button as Button
 import View.Colors exposing (black, blackLevel, extraPaleGreen, green, paleGreen, white)
@@ -89,6 +88,7 @@ viewDetailsItem isNew assets details item =
         style =
             [ if isNew then
                 zIndexOverlay
+
               else
                 zIndexNormal
             , displayFlexRow
@@ -268,6 +268,7 @@ viewHeader iconSource headerText capitalizeName =
             , fontSize <| em 1.6
             , if capitalizeName then
                 textTransform capitalize
+
               else
                 noStyle
             , marginTop zero
@@ -434,10 +435,13 @@ maybeSubscribeDetails display =
         handleKey item keyCode =
             if keyCode == escapeKeyCode then
                 Just DetailsClose
+
             else if keyCode == leftKeyCode then
                 Maybe.map (DetailsNavigate DetailsNavigatePrevious) item.previousName
+
             else if keyCode == rightKeyCode then
                 Maybe.map (DetailsNavigate DetailsNavigateNext) item.nextName
+
             else
                 Nothing
 

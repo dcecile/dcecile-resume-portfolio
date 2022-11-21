@@ -1,8 +1,7 @@
-module View.Links
-    exposing
-        ( linksCutoff
-        , viewLinks
-        )
+module View.Links exposing
+    ( linksCutoff
+    , viewLinks
+    )
 
 import Assets exposing (Assets)
 import Css exposing (Compatible, Em, Px, alignSelf, calc, center, em, flexWrap, fontSize, fontWeight, height, initial, justifyContent, marginBottom, marginTop, maxWidth, normal, padding, plus, px, width, wrap, zero)
@@ -41,7 +40,7 @@ linksCutoff : CalculatedLength
 linksCutoff =
     let
         add =
-            flip calc plus
+            \a -> calc a plus
 
         cutoffFactor =
             0.5

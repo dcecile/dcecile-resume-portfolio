@@ -1,7 +1,4 @@
-module View.Portfolio
-    exposing
-        ( viewPortfolio
-        )
+module View.Portfolio exposing (viewPortfolio)
 
 import Assets exposing (Assets)
 import Css exposing (alignItems, center, color, fontSize, lineHeight, num, stretch, textAlign)
@@ -35,6 +32,7 @@ viewPortfolio assets data display =
             , displayNone
             , if display.showResumePreview then
                 noStyle
+
               else
                 mediaNotPrint
                     [ displayFlexColumn

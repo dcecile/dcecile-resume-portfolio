@@ -1,8 +1,7 @@
-module Data.Education
-    exposing
-        ( EducationData
-        , initEducationData
-        )
+module Data.Education exposing
+    ( EducationData
+    , initEducationData
+    )
 
 
 type alias EducationData =

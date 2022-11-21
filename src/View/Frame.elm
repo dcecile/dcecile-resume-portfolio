@@ -1,7 +1,4 @@
-module View.Frame
-    exposing
-        ( viewFrame
-        )
+module View.Frame exposing (viewFrame)
 
 import Css exposing (height, justifyContent, marginBottom, spaceBetween, vh)
 import CssShorthand exposing (displayFlexColumn, displayFlexRow, rem_, zIndexBackground)

@@ -1,12 +1,11 @@
-module HtmlShorthand
-    exposing
-        ( HtmlTag
-        , ariaLabel
-        , hrefHash
-        , onClickPreventDefault
-        , styledSpanText
-        , targetBlank
-        )
+module HtmlShorthand exposing
+    ( HtmlTag
+    , ariaLabel
+    , hrefHash
+    , onClickPreventDefault
+    , styledSpanText
+    , targetBlank
+    )
 
 import Css exposing (Style)
 import Html.Styled exposing (Attribute, Html, span, styled, text)

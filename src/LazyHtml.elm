@@ -1,9 +1,8 @@
-module LazyHtml
-    exposing
-        ( LazyHtml
-        , fromLazyHtml2
-        , toLazyHtml
-        )
+module LazyHtml exposing
+    ( LazyHtml
+    , fromLazyHtml2
+    , toLazyHtml
+    )
 
 import Html as UnstyledHtml
 import Html.Styled exposing (Html, toUnstyled)

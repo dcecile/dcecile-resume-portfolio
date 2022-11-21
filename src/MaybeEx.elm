@@ -1,7 +1,4 @@
-module MaybeEx
-    exposing
-        ( toList
-        )
+module MaybeEx exposing (toList)
 
 
 toList : Maybe a -> List a

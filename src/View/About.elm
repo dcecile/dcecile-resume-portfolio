@@ -1,7 +1,4 @@
-module View.About
-    exposing
-        ( viewAbout
-        )
+module View.About exposing (viewAbout)
 
 import Css exposing (alignSelf, bold, center, em, fontSize, fontStyle, fontWeight, italic, marginBottom, maxWidth, zero)
 import CssShorthand exposing (marginRightLeft, marginTopBottom)

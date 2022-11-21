@@ -1,8 +1,7 @@
-module Data
-    exposing
-        ( Data
-        , initData
-        )
+module Data exposing
+    ( Data
+    , initData
+    )
 
 import Data.Basic exposing (BasicData, initBasicData)
 import Data.Education exposing (EducationData, initEducationData)

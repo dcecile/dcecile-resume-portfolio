@@ -1,7 +1,4 @@
-module View.Contents
-    exposing
-        ( viewContents
-        )
+module View.Contents exposing (viewContents)
 
 import Assets exposing (Assets)
 import Css exposing (alignItems, bold, borderWidth, boxShadow5, center, em, fontSize, fontWeight, justifyContent, lineHeight, marginBottom, marginRight, marginTop, minWidth, num, paddingBottom, paddingTop, px, zero)
@@ -111,6 +108,7 @@ viewLink assets data reverse sectionDataSelector =
             , breakpointPortfolioMedium
                 [ if reverse then
                     displayFlexRowReverse
+
                   else
                     displayFlexRow
                 ]

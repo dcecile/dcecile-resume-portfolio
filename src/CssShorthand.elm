@@ -1,39 +1,38 @@
-module CssShorthand
-    exposing
-        ( afterText
-        , animation
-        , animationCycle
-        , batchMap
-        , beforeText
-        , borderBottomSolidColor
-        , borderLeftSolidColor
-        , borderRightLeftSolidColor
-        , borderSolidColor
-        , borderTopBottomSolidColor
-        , displayFlexColumn
-        , displayFlexRow
-        , displayFlexRowReverse
-        , displayInitial
-        , displayNone
-        , filter
-        , marginRightLeft
-        , marginTopBottom
-        , mediaConditions
-        , mediaInverseConditions
-        , mediaNotPrint
-        , mediaPrint
-        , noStyle
-        , paddingRightLeft
-        , paddingTopBottom
-        , rem_
-        , textDecorationSkipInk
-        , transformOrigin
-        , willChangeTransform
-        , wordBreakBreakAll
-        , zIndexBackground
-        , zIndexNormal
-        , zIndexOverlay
-        )
+module CssShorthand exposing
+    ( afterText
+    , animation
+    , animationCycle
+    , batchMap
+    , beforeText
+    , borderBottomSolidColor
+    , borderLeftSolidColor
+    , borderRightLeftSolidColor
+    , borderSolidColor
+    , borderTopBottomSolidColor
+    , displayFlexColumn
+    , displayFlexRow
+    , displayFlexRowReverse
+    , displayInitial
+    , displayNone
+    , filter
+    , marginRightLeft
+    , marginTopBottom
+    , mediaConditions
+    , mediaInverseConditions
+    , mediaNotPrint
+    , mediaPrint
+    , noStyle
+    , paddingRightLeft
+    , paddingTopBottom
+    , rem_
+    , textDecorationSkipInk
+    , transformOrigin
+    , willChangeTransform
+    , wordBreakBreakAll
+    , zIndexBackground
+    , zIndexNormal
+    , zIndexOverlay
+    )
 
 import Css exposing (BorderStyle, Color, Length, LengthOrAuto, Rem, Style, TextDecorationStyle, after, batch, before, borderBottomStyle, borderColor, borderLeftStyle, borderRightStyle, borderStyle, borderTopStyle, column, display, displayFlex, flexDirection, initial, int, marginBottom, marginLeft, marginRight, marginTop, none, paddingBottom, paddingLeft, paddingRight, paddingTop, property, row, rowReverse, solid, visited, zIndex)
 import Css.Media as Media exposing (withMedia, withMediaQuery)
@@ -182,6 +181,7 @@ mediaCustomConditions positive negative =
         prefix mode expressions =
             if List.isEmpty expressions then
                 Nothing
+
             else
                 Just <| String.join " and " ([ mode ] ++ List.map convertExpression expressions)
 
