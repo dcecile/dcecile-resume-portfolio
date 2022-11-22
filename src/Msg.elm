@@ -5,7 +5,7 @@ module Msg exposing
 
 import ClickInfo exposing (ClickInfo)
 import Display.Details exposing (DetailsNavigateDirection)
-import Mouse exposing (Event)
+import Html.Events.Extra.Mouse exposing (Event)
 
 
 type Msg

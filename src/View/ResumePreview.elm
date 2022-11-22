@@ -6,7 +6,7 @@ import CssShorthand exposing (animation, displayFlexColumn, displayFlexRow, disp
 import Data exposing (Data)
 import Display exposing (Display)
 import Html.Styled exposing (Html, a, div, styled, text)
-import Html.Styled.Attributes exposing (downloadAs, href)
+import Html.Styled.Attributes exposing (download, href)
 import HtmlShorthand exposing (HtmlTag, hrefHash, onClickPreventDefault)
 import Icon exposing (IconBackground, IconSource, iconSpan)
 import LazyHtml exposing (LazyHtml, fromLazyHtml2, toLazyHtml)
@@ -58,7 +58,7 @@ viewResumePreview assets data display =
         ]
 
 
-viewResumePreviewStatic : Assets -> Data -> LazyHtml Msg
+viewResumePreviewStatic : Assets -> Data -> Html Msg
 viewResumePreviewStatic assets data =
     let
         style =
@@ -144,7 +144,7 @@ viewActions assets data =
         [ viewAction iconSource
             .download
             [ href "%PUBLIC_URL%/resume.pdf"
-            , downloadAs <| viewResumeName data
+            , download <| viewResumeName data
             ]
             [ text "Download my resume"
             ]

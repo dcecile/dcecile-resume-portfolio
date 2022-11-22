@@ -18,7 +18,7 @@ import HtmlShorthand exposing (styledSpanText)
 import Icon exposing (IconBackground, IconSource, iconImage)
 import MarkedString exposing (MarkedString, MarkedSubstring(..), markedString)
 import Msg exposing (Msg)
-import Regex exposing (HowMany(..), regex, replace)
+import Regex
 import View.Colors exposing (printBlack, printGreen, printPaleGreen, printPaleGreenComponents)
 import View.Metrics exposing (printBorderWidth, printLineHeight)
 
@@ -509,7 +509,7 @@ viewLink customStyle iconSource url shortURL iconBackground =
             ]
 
         trimProtocol =
-            replace All (regex "^(?:https://|mailto:)") (always "")
+            Regex.replace (Maybe.withDefault Regex.never (Regex.fromString "^(?:https://|mailto:)")) (always "")
 
         urlText =
             trimProtocol <| Maybe.withDefault url shortURL

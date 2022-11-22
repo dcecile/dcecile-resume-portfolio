@@ -1,7 +1,7 @@
 module Main exposing (main)
 
 import Flags exposing (Flags)
-import Html exposing (programWithFlags)
+import Browser exposing (element)
 import Html.Styled exposing (toUnstyled)
 import Model exposing (Model)
 import Msg exposing (Msg)
@@ -11,7 +11,7 @@ import View exposing (alsoViewHead, subscribe, view)
 
 main : Program Flags Model Msg
 main =
-    programWithFlags
+    element
         { init = Model.init >> alsoViewHead
         , update = (\( a, b ) -> update a b) >> alsoViewHead |> (\f a b -> f ( a, b ))
         , subscriptions = subscribe

@@ -4,7 +4,7 @@ module View.Links exposing
     )
 
 import Assets exposing (Assets)
-import Css exposing (Compatible, Em, Px, alignSelf, calc, center, em, flexWrap, fontSize, fontWeight, height, initial, justifyContent, marginBottom, marginTop, maxWidth, normal, padding, plus, px, width, wrap, zero)
+import Css exposing (CalculatedLength, Compatible, Em, Px, alignSelf, calc, center, em, flexWrap, fontSize, fontWeight, height, initial, justifyContent, marginBottom, marginTop, maxWidth, normal, padding, plus, px, width, wrap, zero)
 import CssShorthand exposing (batchMap, displayFlexColumn, displayFlexRow, marginRightLeft, marginTopBottom, paddingRightLeft, paddingTopBottom)
 import Data exposing (Data)
 import Data.Links exposing (LinksItemData)
@@ -18,22 +18,6 @@ import View.Button as Button
 import View.GroupBox as GroupBox
 import View.Metrics exposing (standardBorderWidth, standardLineHeight)
 
-
-type alias CalculatedLength =
-    { value : String
-    , length : Compatible
-    , lengthOrAuto : Compatible
-    , lengthOrNumber : Compatible
-    , lengthOrNone : Compatible
-    , lengthOrMinMaxDimension : Compatible
-    , lengthOrNoneOrMinMaxDimension : Compatible
-    , textIndent : Compatible
-    , flexBasis : Compatible
-    , lengthOrNumberOrAutoOrNoneOrContent : Compatible
-    , fontSize : Compatible
-    , lengthOrAutoOrCoverOrContain : Compatible
-    , calc : Compatible
-    }
 
 
 linksCutoff : CalculatedLength

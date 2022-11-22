@@ -163,8 +163,8 @@ viewLeafPath reverseAnimation delay parentSize size degrees ( x, y ) =
             , animation <|
                 String.join " "
                     [ "leafCycle"
-                    , toString leafCycle ++ "ms"
-                    , toString delay ++ "ms"
+                    , String.fromFloat leafCycle ++ "ms"
+                    , String.fromFloat delay ++ "ms"
                     , "infinite"
                     , if reverseAnimation then
                         "alternate-reverse"

@@ -429,17 +429,14 @@ viewNavigateLink name =
 maybeSubscribeDetails : Display -> Maybe (Sub Msg)
 maybeSubscribeDetails display =
     let
-        ( escapeKeyCode, leftKeyCode, rightKeyCode ) =
-            ( 27, 37, 39 )
-
-        handleKey item keyCode =
-            if keyCode == escapeKeyCode then
+        handleKey item key =
+            if key == Just Keyboard.Escape then
                 Just DetailsClose
 
-            else if keyCode == leftKeyCode then
+            else if key == Just Keyboard.ArrowLeft then
                 Maybe.map (DetailsNavigate DetailsNavigatePrevious) item.previousName
 
-            else if keyCode == rightKeyCode then
+            else if key == Just Keyboard.ArrowRight then
                 Maybe.map (DetailsNavigate DetailsNavigateNext) item.nextName
 
             else
@@ -447,7 +444,7 @@ maybeSubscribeDetails display =
 
         subscribe details =
             Keyboard.downs
-                (handleKey details.itemData >> Maybe.withDefault NoMsg)
+                (Keyboard.anyKeyOriginal >> handleKey details.itemData >> Maybe.withDefault NoMsg)
 
         maybeSubscribe details =
             case details.animation of
