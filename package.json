@@ -6,8 +6,7 @@
   "dependencies": {
     "create-elm-app": "^5.22.0",
     "elm": "0.19.1-5",
-    "elm-format": "0.8.0",
-    "elm-upgrade": "^0.19.8",
+    "elm-format": "^0.8.5",
     "postcss": "^8.1.0",
     "prettier": "^2.7.1",
     "puppeteer": "^19.2.2"
