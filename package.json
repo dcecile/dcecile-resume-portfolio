@@ -15,8 +15,7 @@
     "chokidar-cli": "^3.0.0"
   },
   "scripts": {
-    "clean": "rm -rf elm-stuff/build-artifacts/0.18.0/dcecile/dcecile-resume-portfolio && rm -rf tests/elm-stuff/build-artifacts/0.18.0/user/project",
-    "generate-pdf": "node generate-pdf.js",
+    "clean": "rm -rf elm-stuff",
     "make-src": "elm make src/Main.elm --output /dev/null",
     "make-tests": "cd ./tests && elm make *.elm --output /dev/null",
     "test": "elm-app test",

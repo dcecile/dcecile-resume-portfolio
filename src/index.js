@@ -3,7 +3,7 @@ import './Font.css'
 import './Print.css'
 import './Root.css'
 
-import { Main } from './Main.elm'
+import { Elm } from './Main.elm'
 
 import Favicon from './Favicon'
 import HeadPort from './HeadPort'
@@ -13,10 +13,13 @@ import Print from './Print'
 import RegisterServiceWorker from './RegisterServiceWorker'
 
 const node = document.getElementById('root')
-const app = Main.embed(node, {
-  faviconSource: Favicon,
-  hash: getHash(),
-  iconSource: Icon,
+const app = Elm.Main.init({
+  node,
+  flags: {
+    faviconSource: Favicon,
+    hash: getHash(),
+    iconSource: Icon,
+  },
 })
 
 HeadPort.subscribe(app)

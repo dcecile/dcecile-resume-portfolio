@@ -1,2 +1,2 @@
 #!/bin/sh
-ELM_DEBUGGER=false elm-app start
+NODE_OPTIONS=--openssl-legacy-provider ELM_DEBUGGER=false elm-app start
