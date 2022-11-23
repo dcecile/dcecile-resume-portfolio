@@ -1,7 +1,7 @@
 module Main exposing (main)
 
-import Flags exposing (Flags)
 import Browser exposing (element)
+import Flags exposing (Flags)
 import Html.Styled exposing (toUnstyled)
 import Model exposing (Model)
 import Msg exposing (Msg)

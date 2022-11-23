@@ -1,2 +1,2 @@
 #!/bin/sh
-yarn prettier-all --write
+pnpm run prettier-all --write

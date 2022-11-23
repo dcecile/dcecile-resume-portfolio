@@ -37,5 +37,5 @@ export default {
   stackOverflow,
   twitter,
   user,
-  xSquare
+  xSquare,
 }

@@ -19,7 +19,6 @@ import View.GroupBox as GroupBox
 import View.Metrics exposing (standardBorderWidth, standardLineHeight)
 
 
-
 linksCutoff : CalculatedLength
 linksCutoff =
     let

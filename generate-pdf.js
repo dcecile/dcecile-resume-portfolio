@@ -9,7 +9,7 @@ async function main() {
     app.listen(3001)
 
     const browser = await puppeteer.launch({
-      args: ['--no-sandbox', '--disable-setuid-sandbox']
+      args: ['--no-sandbox', '--disable-setuid-sandbox'],
     })
     const page = await browser.newPage()
     await page.goto('http://localhost:3001', { waitUntil: 'networkidle2' })

@@ -54,5 +54,5 @@ export default {
 
     previousHash = getHash()
     window.addEventListener('popstate', () => onHashChange(app))
-  }
+  },
 }

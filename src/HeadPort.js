@@ -18,6 +18,6 @@ function getFaviconElement() {
 export default {
   subscribe(app) {
     const faviconElement = getFaviconElement()
-    app.ports.sendHead.subscribe(head => receiveHead(faviconElement, head))
-  }
+    app.ports.sendHead.subscribe((head) => receiveHead(faviconElement, head))
+  },
 }

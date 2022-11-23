@@ -13,7 +13,8 @@ type alias LazyHtml msg =
 
 
 toLazyHtml : Html msg -> Html msg
-toLazyHtml html = html
+toLazyHtml html =
+    html
 
 
 fromLazyHtml2 : (a -> b -> Html msg) -> a -> b -> Html msg

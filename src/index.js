@@ -16,7 +16,7 @@ const node = document.getElementById('root')
 const app = Main.embed(node, {
   faviconSource: Favicon,
   hash: getHash(),
-  iconSource: Icon
+  iconSource: Icon,
 })
 
 HeadPort.subscribe(app)

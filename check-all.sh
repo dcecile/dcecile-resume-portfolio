@@ -1,7 +1,7 @@
 #!/bin/sh
 set -e
-yarn validate-format
-yarn clean
-yarn make-src
-yarn make-tests
-yarn test
+pnpm run validate-format
+pnpm run clean
+pnpm run make-src
+pnpm run make-tests
+pnpm run test

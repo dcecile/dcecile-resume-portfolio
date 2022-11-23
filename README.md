@@ -7,17 +7,18 @@ _An interactive and printable webpage made with Elm_
 
 1. Install [Git Large File Storage](https://git-lfs.github.com/) (used for
    binary assets)
-2. Install the [Yarn](https://yarnpkg.com/en/docs/install) package manager
-3. Run `yarn` to install all NPM dependencies
-4. [Set up your
+1. Install the [direnv](https://direnv.net/) (used to put Elm in `PATH`)
+1. Install the [PNPM](https://pnpm.io/) (used to install Elm)
+1. Run `pnpm install` to install all NPM dependencies
+1. [Set up your
    editor](https://github.com/avh4/elm-format#detailed-instructions) to
    automatically run `elm-format` on save
-5. Run `./start-dev.sh` to start the development server or run
+1. Run `./start-dev.sh` to start the development server or run
    `./start-test.sh` to start running tests
-6. Change a source file, and the app will reload automatically
-7. Run `./format-js.sh` to refromat JS code according to
+1. Change a source file, and the app will reload automatically
+1. Run `./format-js.sh` to refromat JS code according to
    [Prettier](https://prettier.io/) rules
-8. Run `./check-all.sh` to run all pre-commit checks (formatting,
+1. Run `./check-all.sh` to run all pre-commit checks (formatting,
    warnings, and tests)
 
 _Hint: to view the resume directly as a webpage (without printing), use
