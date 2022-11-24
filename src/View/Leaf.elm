@@ -4,7 +4,7 @@ module View.Leaf exposing
     , viewLeaf
     )
 
-import Css exposing (Style, height, hidden, initial, num, opacity, px, visibility, vw, width)
+import Css exposing (Style, height, hidden, initial, num, opacity, px, visibility, width)
 import Css.Media as Media
 import CssShorthand exposing (animation, batchMap, mediaConditions, mediaInverseConditions, noStyle, rem_)
 import Msg exposing (Msg)

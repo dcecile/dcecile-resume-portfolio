@@ -15,12 +15,18 @@
   "devDependencies": {
     "chokidar-cli": "^3.0.0"
   },
+  "pnpm": {
+    "overrides": {
+      "node-watch": "^0.6.4"
+    }
+  },
   "scripts": {
     "build": "pnpm build-app && pnpm build-pdf",
     "build-app": "NODE_OPTIONS=--openssl-legacy-provider elm-app build",
     "build-pdf": "node generate-pdf.js",
-    "check": "pnpm check-fmt && pnpm make && pnpm test",
+    "check": "pnpm check-fmt && pnpm check-lint && pnpm make && pnpm test",
     "check-fmt": "elm-format --validate src/ tests/ && pnpm prettier-all --list-different",
+    "check-lint": "elm-analyse",
     "clean": "rm -rf elm-stuff",
     "dev": "NODE_OPTIONS=--openssl-legacy-provider ELM_DEBUGGER=false elm-app start",
     "fmt": "elm-format --yes src/ tests/ && pnpm prettier-all --write",

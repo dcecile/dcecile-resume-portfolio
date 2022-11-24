@@ -2,7 +2,7 @@ module View.Mindsets exposing (viewMindsets)
 
 import Assets exposing (Assets)
 import Css exposing (Em, alignItems, backgroundColor, capitalize, center, em, flexWrap, height, justifyContent, marginBottom, minWidth, textTransform, width, wrap)
-import CssShorthand exposing (batchMap, displayFlexColumn, displayFlexRow, marginRightLeft, marginTopBottom)
+import CssShorthand exposing (batchMap, displayFlexColumn, displayFlexRow, marginRightLeft)
 import Data exposing (Data)
 import Data.Mindsets exposing (MindsetsData, MindsetsItemData)
 import Html.Styled exposing (Html, a, div, span, styled, text)

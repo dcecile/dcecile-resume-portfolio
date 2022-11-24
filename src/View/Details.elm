@@ -4,8 +4,8 @@ module View.Details exposing
     )
 
 import Assets exposing (Assets)
-import Css exposing (Style, alignItems, alignSelf, backgroundColor, bold, borderBox, borderRadius, borderWidth, bottom, boxShadow5, boxSizing, calc, capitalize, center, color, em, empty, fixed, flexBasis, flexEnd, flexGrow, flexShrink, flexWrap, fontSize, fontWeight, height, hidden, justifyContent, lastChild, left, lineHeight, marginBottom, marginLeft, marginRight, marginTop, maxHeight, maxWidth, minus, none, num, overflow, padding, paddingLeft, pct, position, px, right, spaceBetween, stretch, textDecoration, textTransform, top, underline, vh, vw, width, wrap, zero)
-import CssShorthand exposing (batchMap, borderRightLeftSolidColor, borderSolidColor, displayFlexColumn, displayFlexRow, displayFlexRowReverse, displayNone, marginRightLeft, marginTopBottom, mediaNotPrint, noStyle, paddingRightLeft, paddingTopBottom, textDecorationSkipInk, willChangeTransform, zIndexBackground, zIndexNormal, zIndexOverlay)
+import Css exposing (Style, alignItems, alignSelf, backgroundColor, bold, borderBox, borderRadius, borderWidth, bottom, boxSizing, calc, capitalize, center, color, em, empty, fixed, flexBasis, flexEnd, flexGrow, flexShrink, flexWrap, fontSize, fontWeight, height, hidden, justifyContent, lastChild, left, lineHeight, marginBottom, marginLeft, marginRight, marginTop, maxHeight, maxWidth, minus, none, num, overflow, padding, paddingLeft, pct, position, px, right, spaceBetween, stretch, textDecoration, textTransform, top, underline, vh, width, wrap, zero)
+import CssShorthand exposing (batchMap, borderSolidColor, displayFlexColumn, displayFlexRow, displayFlexRowReverse, displayNone, marginRightLeft, marginTopBottom, mediaNotPrint, noStyle, paddingRightLeft, paddingTopBottom, textDecorationSkipInk, willChangeTransform, zIndexBackground, zIndexNormal, zIndexOverlay)
 import Data.Details exposing (DetailsItemData)
 import Display exposing (Display)
 import Display.Details exposing (DetailsAnimation(..), DetailsDisplay, DetailsDoubleBufferState(..), DetailsNavigateDirection(..))
@@ -14,14 +14,14 @@ import Html.Styled.Attributes exposing (href, title)
 import HtmlShorthand exposing (ariaLabel, onClickPreventDefault, styledSpanText, targetBlank)
 import Icon exposing (IconBackground, IconSource, iconSpan)
 import Keyboard
-import MarkedString exposing (MarkedString, markedString)
+import MarkedString exposing (MarkedString)
 import MaybeEx
 import Msg exposing (Msg(..))
 import View.Breakpoints exposing (breakpointDetailsLarge, breakpointDetailsMediumHeight, breakpointDetailsMediumWidth, breakpointDetailsSmallWidth)
 import View.Button as Button
-import View.Colors exposing (black, blackLevel, extraPaleGreen, green, paleGreen, white)
+import View.Colors exposing (black, extraPaleGreen, green, paleGreen, white)
 import View.DetailsAnimation exposing (animateDetails, animateDetailsItem)
-import View.Metrics exposing (standardBorderRadius, standardBorderWidth, standardLineHeight, standardScreenFontSizeLarge, standardScreenFontSizeSmall)
+import View.Metrics exposing (standardBorderRadius, standardLineHeight, standardScreenFontSizeLarge, standardScreenFontSizeSmall)
 
 
 maybeViewDetails : Assets -> Display -> Maybe (Html Msg)

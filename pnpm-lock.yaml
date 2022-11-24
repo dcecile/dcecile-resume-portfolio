@@ -1,5 +1,8 @@
 lockfileVersion: 5.4
 
+overrides:
+  node-watch: ^0.6.4
+
 specifiers:
   chokidar-cli: ^3.0.0
   create-elm-app: ^5.22.0
@@ -3386,7 +3389,7 @@ packages:
       fs-extra: 2.0.0
       lodash: 4.17.21
       minimist: 1.2.0
-      node-watch: 0.5.5
+      node-watch: 0.6.4
       opn: 5.4.0
       os-homedir: 1.0.2
       request: 2.88.0
@@ -6006,8 +6009,9 @@ packages:
     resolution: {integrity: sha512-PiVXnNuFm5+iYkLBNeq5211hvO38y63T0i2KKh2KnUs3RpzJ+JtODFjkD8yjLwnDkTYF1eKXheUwdssR+NRZdg==}
     dev: false
 
-  /node-watch/0.5.5:
-    resolution: {integrity: sha512-z9xN2ibI6P0UylFadN7oMcIMsoTeCENC0rZyRM5MVK9AqzSPx+uGqKG6KMPeC/laOV4wOGZq/GH0PTstRNSqOA==}
+  /node-watch/0.6.4:
+    resolution: {integrity: sha512-cI6CHzivIFESe8djiK3Wh90CtWQBxLwMem8x8S+2GSvCvFgoMuOKVlfJtQ/2v3Afg3wOnHl/+tXotEs8z5vOrg==}
+    engines: {node: '>=6'}
     dev: false
 
   /normalize-package-data/2.5.0:

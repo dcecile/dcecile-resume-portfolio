@@ -5,7 +5,7 @@ module View.DetailsAnimation exposing
     )
 
 import Css exposing (Style, batch)
-import CssShorthand exposing (animation, mediaNotPrint, noStyle, transformOrigin, willChangeTransform)
+import CssShorthand exposing (animation, noStyle, transformOrigin)
 import Display exposing (Display)
 import Display.Details exposing (DetailsAnimation(..), DetailsDisplay, DetailsNavigateDirection(..))
 import View.Breakpoints exposing (breakpointDetailsMediumWidth)

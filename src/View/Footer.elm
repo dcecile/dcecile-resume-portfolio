@@ -1,8 +1,8 @@
 module View.Footer exposing (viewFooter)
 
 import Assets exposing (Assets)
-import Css exposing (alignSelf, bold, borderWidth, center, color, em, fontSize, fontStyle, fontWeight, italic, lineHeight, marginBottom, marginTop, num, px, zero)
-import CssShorthand exposing (borderBottomSolidColor, displayFlexColumn, displayInitial, displayNone, paddingRightLeft)
+import Css exposing (alignSelf, bold, borderWidth, center, color, em, fontSize, fontStyle, fontWeight, italic, marginBottom, marginTop, px, zero)
+import CssShorthand exposing (borderBottomSolidColor, displayFlexColumn, displayInitial, displayNone)
 import Data exposing (Data)
 import Html.Styled exposing (Html, a, br, footer, h2, p, styled, text)
 import Html.Styled.Attributes exposing (href, id)
@@ -11,7 +11,7 @@ import Msg exposing (Msg)
 import View.Breakpoints exposing (breakpointPortfolioMedium)
 import View.Button as Button
 import View.CallsToAction exposing (viewCallsToAction)
-import View.Colors exposing (black, green, paleGreen)
+import View.Colors exposing (black, paleGreen)
 import View.ElmLogo exposing (viewElmLogo)
 import View.Links exposing (viewLinks)
 

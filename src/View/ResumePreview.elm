@@ -9,7 +9,7 @@ import Html.Styled exposing (Html, a, div, styled, text)
 import Html.Styled.Attributes exposing (download, href)
 import HtmlShorthand exposing (HtmlTag, hrefHash, onClickPreventDefault)
 import Icon exposing (IconBackground, IconSource, iconSpan)
-import LazyHtml exposing (LazyHtml, fromLazyHtml2, toLazyHtml)
+import LazyHtml exposing (fromLazyHtml2, toLazyHtml)
 import Msg exposing (Msg(..))
 import View.Breakpoints exposing (breakpointResumePreviewLarge, breakpointResumePreviewMedium, breakpointResumePreviewMediumLarge)
 import View.Button as Button
@@ -30,11 +30,6 @@ pageHeightPt =
 
 ptToEm : Float -> Em
 ptToEm length =
-    em <| length / standardPrintFontSize.numericValue
-
-
-ptToVw : Float -> Em
-ptToVw length =
     em <| length / standardPrintFontSize.numericValue
 
 

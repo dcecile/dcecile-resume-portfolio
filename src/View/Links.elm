@@ -4,14 +4,14 @@ module View.Links exposing
     )
 
 import Assets exposing (Assets)
-import Css exposing (CalculatedLength, Compatible, Em, Px, alignSelf, calc, center, em, flexWrap, fontSize, fontWeight, height, initial, justifyContent, marginBottom, marginTop, maxWidth, normal, padding, plus, px, width, wrap, zero)
+import Css exposing (CalculatedLength, Em, Px, alignSelf, calc, center, em, flexWrap, fontSize, fontWeight, height, initial, justifyContent, marginBottom, marginTop, maxWidth, normal, padding, plus, px, width, wrap, zero)
 import CssShorthand exposing (batchMap, displayFlexColumn, displayFlexRow, marginRightLeft, marginTopBottom, paddingRightLeft, paddingTopBottom)
 import Data exposing (Data)
 import Data.Links exposing (LinksItemData)
 import Html.Styled exposing (Html, a, div, h2, nav, styled, text)
 import Html.Styled.Attributes exposing (href, title)
 import HtmlShorthand exposing (ariaLabel, targetBlank)
-import Icon exposing (IconBackground, IconSource, iconSpan)
+import Icon exposing (IconSource, iconSpan)
 import Msg exposing (Msg)
 import View.Breakpoints exposing (breakpointPortfolioMedium)
 import View.Button as Button

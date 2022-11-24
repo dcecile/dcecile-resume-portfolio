@@ -9,7 +9,7 @@ module View.Metrics exposing
     , standardScreenFontSizeSmall
     )
 
-import Css exposing (Em, Pct, Pt, Px, em, num, pct, pt, px)
+import Css exposing (Em, Pct, Pt, Px, em, pct, pt, px)
 
 
 standardBorderRadius : Px

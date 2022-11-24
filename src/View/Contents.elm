@@ -1,8 +1,8 @@
 module View.Contents exposing (viewContents)
 
 import Assets exposing (Assets)
-import Css exposing (alignItems, bold, borderWidth, boxShadow5, center, em, fontSize, fontWeight, justifyContent, lineHeight, marginBottom, marginRight, marginTop, minWidth, num, paddingBottom, paddingTop, px, zero)
-import CssShorthand exposing (borderTopBottomSolidColor, displayFlexColumn, displayFlexRow, displayFlexRowReverse, marginRightLeft, marginTopBottom, paddingRightLeft)
+import Css exposing (alignItems, bold, borderWidth, boxShadow5, center, em, fontSize, fontWeight, justifyContent, marginBottom, marginRight, marginTop, minWidth, paddingBottom, paddingTop, px, zero)
+import CssShorthand exposing (borderTopBottomSolidColor, displayFlexColumn, displayFlexRow, displayFlexRowReverse, marginRightLeft, marginTopBottom)
 import Data exposing (Data)
 import Data.Section exposing (SectionData)
 import Html.Styled exposing (Html, a, div, h2, nav, span, styled, text)

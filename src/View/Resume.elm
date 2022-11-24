@@ -5,8 +5,8 @@ module View.Resume exposing
 
 import Assets exposing (Assets)
 import Char
-import Css exposing (Em, Style, absolute, auto, batch, bold, borderRadius, borderWidth, center, color, em, flexBasis, flexEnd, flexGrow, flexShrink, flexWrap, fontSize, fontStyle, fontWeight, height, hidden, hsl, italic, justifyContent, letterSpacing, lineHeight, marginBottom, marginLeft, marginRight, marginTop, noWrap, none, normal, num, opacity, overflow, paddingBottom, paddingLeft, paddingTop, position, right, textAlign, textDecoration, whiteSpace, width, wrap, zero)
-import CssShorthand exposing (batchMap, beforeText, borderBottomSolidColor, borderLeftSolidColor, borderSolidColor, displayFlexColumn, displayFlexRow, marginRightLeft, marginTopBottom, noStyle, paddingRightLeft, paddingTopBottom, textDecorationSkipInk, wordBreakBreakAll)
+import Css exposing (Em, Style, absolute, batch, bold, borderRadius, borderWidth, center, color, em, flexBasis, flexEnd, flexGrow, flexShrink, fontSize, fontStyle, fontWeight, height, hidden, hsl, italic, justifyContent, letterSpacing, lineHeight, marginBottom, marginLeft, marginRight, marginTop, noWrap, normal, num, opacity, overflow, paddingBottom, paddingLeft, paddingTop, position, right, textAlign, whiteSpace, width, zero)
+import CssShorthand exposing (batchMap, beforeText, borderBottomSolidColor, borderLeftSolidColor, borderSolidColor, displayFlexColumn, displayFlexRow, marginRightLeft, marginTopBottom, paddingRightLeft, paddingTopBottom, textDecorationSkipInk, wordBreakBreakAll)
 import Data exposing (Data)
 import Data.Links exposing (LinksItemData)
 import Data.Projects exposing (ProjectsItemData)

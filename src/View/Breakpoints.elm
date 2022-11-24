@@ -13,7 +13,7 @@ module View.Breakpoints exposing
 
 import Css exposing (Style)
 import Css.Media as Media
-import CssShorthand exposing (batchMap, mediaConditions, mediaInverseConditions, rem_)
+import CssShorthand exposing (mediaConditions, mediaInverseConditions, rem_)
 
 
 breakpointDetailsSmallWidth : List Style -> Style

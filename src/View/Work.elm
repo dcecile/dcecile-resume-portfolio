@@ -1,8 +1,8 @@
 module View.Work exposing (viewWork)
 
 import Assets exposing (Assets)
-import Css exposing (Style, alignItems, batch, bold, center, color, em, flexWrap, fontSize, fontStyle, fontWeight, italic, justifyContent, left, marginBottom, marginTop, paddingRight, px, textAlign, width, wrap)
-import CssShorthand exposing (displayFlexColumn, displayFlexRow, marginRightLeft, noStyle, paddingRightLeft, paddingTopBottom)
+import Css exposing (Style, alignItems, batch, bold, center, color, em, flexWrap, fontSize, fontStyle, fontWeight, italic, justifyContent, marginBottom, marginTop, px, wrap)
+import CssShorthand exposing (displayFlexColumn, displayFlexRow, marginRightLeft, paddingRightLeft, paddingTopBottom)
 import Data exposing (Data)
 import Data.Work exposing (WorkItemData)
 import Html.Styled exposing (Html, a, div, styled, text)

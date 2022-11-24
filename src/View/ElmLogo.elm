@@ -3,7 +3,7 @@ module View.ElmLogo exposing (viewElmLogo)
 import Css exposing (em, marginBottom, marginLeft)
 import CssShorthand exposing (batchMap, filter)
 import Svg.Styled exposing (Svg, polygon, rect, styled, svg)
-import Svg.Styled.Attributes exposing (fill, height, points, transform, version, viewBox, width, x, y)
+import Svg.Styled.Attributes exposing (fill, height, points, transform, viewBox, width, x, y)
 
 
 viewElmLogo : Svg msg

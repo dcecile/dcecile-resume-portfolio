@@ -34,13 +34,15 @@ module CssShorthand exposing
     , zIndexOverlay
     )
 
-import Css exposing (BorderStyle, Color, Length, LengthOrAuto, Rem, Style, TextDecorationStyle, after, batch, before, borderBottomStyle, borderColor, borderLeftStyle, borderRightStyle, borderStyle, borderTopStyle, column, display, displayFlex, flexDirection, initial, int, marginBottom, marginLeft, marginRight, marginTop, none, paddingBottom, paddingLeft, paddingRight, paddingTop, property, row, rowReverse, solid, visited, zIndex)
+import Css exposing (BorderStyle, Color, Length, LengthOrAuto, Rem, Style, TextDecorationStyle, after, batch, before, borderBottomStyle, borderColor, borderLeftStyle, borderRightStyle, borderStyle, borderTopStyle, column, display, displayFlex, flexDirection, initial, int, marginBottom, marginLeft, marginRight, marginTop, none, paddingBottom, paddingLeft, paddingRight, paddingTop, property, row, rowReverse, solid, zIndex)
 import Css.Media as Media exposing (withMedia, withMediaQuery)
 import MaybeEx
 
 
 type alias MediaExpression =
-    { feature : String, value : Maybe String }
+    { feature : String
+    , value : Maybe String
+    }
 
 
 afterText : String -> List Style -> Style
