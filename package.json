@@ -6,6 +6,7 @@
   "dependencies": {
     "create-elm-app": "^5.22.0",
     "elm": "0.19.1-5",
+    "elm-analyse": "^0.16.5",
     "elm-format": "^0.8.5",
     "postcss": "^8.1.0",
     "prettier": "^2.7.1",
@@ -15,11 +16,17 @@
     "chokidar-cli": "^3.0.0"
   },
   "scripts": {
+    "build": "pnpm build-app && pnpm build-pdf",
+    "build-app": "NODE_OPTIONS=--openssl-legacy-provider elm-app build",
+    "build-pdf": "node generate-pdf.js",
+    "check": "pnpm check-fmt && pnpm make && pnpm test",
+    "check-fmt": "elm-format --validate src/ tests/ && pnpm prettier-all --list-different",
     "clean": "rm -rf elm-stuff",
-    "make-src": "elm make src/Main.elm --output /dev/null",
-    "make-tests": "cd ./tests && elm make *.elm --output /dev/null",
+    "dev": "NODE_OPTIONS=--openssl-legacy-provider ELM_DEBUGGER=false elm-app start",
+    "fmt": "elm-format --yes src/ tests/ && pnpm prettier-all --write",
+    "prettier-all": "prettier '**/*.{js,json}' '!**/build/**' '!**/elm-stuff/**'",
+    "make": "elm make src/Main.elm --output /dev/null",
     "test": "elm-app test",
-    "validate-format": "elm-format --validate src/ tests/ && pnpm run prettier-all --list-different",
-    "prettier-all": "prettier '**/*.js' '!**/build/**' '!**/elm-stuff/**'"
+    "watch": "chokidar src tests --command 'clear && pnpm run test' --ignore tests/elm-stuff --initial"
   }
 }
