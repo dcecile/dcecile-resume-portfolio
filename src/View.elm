@@ -23,8 +23,8 @@ import View.ResumePreview exposing (viewResumePreview)
 import View.ResumePrint exposing (viewResumePrint)
 
 
-view : Model -> Html Msg
-view { assets, data, display } =
+view : Data -> Model -> Html Msg
+view data { assets, display } =
     let
         style =
             [ overflow hidden
@@ -38,18 +38,18 @@ view { assets, data, display } =
         ]
 
 
-alsoViewHead : ( Model, Cmd Msg ) -> ( Model, Cmd Msg )
-alsoViewHead ( model, cmd ) =
+alsoViewHead : Data -> ( Model, Cmd Msg ) -> ( Model, Cmd Msg )
+alsoViewHead data ( model, cmd ) =
     ( model
     , Cmd.batch
         [ cmd
-        , sendHead (viewHead model)
+        , sendHead (viewHead data model)
         ]
     )
 
 
-viewHead : Model -> Head
-viewHead { assets, data, display } =
+viewHead : Data -> Model -> Head
+viewHead data { assets, display } =
     { title = viewTitle data display
     , favicon = viewFavicon assets display
     }
@@ -74,7 +74,7 @@ viewFavicon assets display =
 
 
 subscribe : Model -> Sub Msg
-subscribe { assets, data, display } =
+subscribe { display } =
     Sub.batch
         [ onHashChange HashChange
         , maybeSubscribeDetails display |> Maybe.withDefault Sub.none
