@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/precache-manifest.d1acd99d8f30528da2c044cb193065d4.js"
+  "/dcecile-resume-portfolio/precache-manifest.1bc4246a13c7fa6fad1f30dd0307fa43.js"
 );
 
 workbox.core.skipWaiting();
