@@ -42,26 +42,40 @@ jobs:
           curl -fsSL https://pnpm.js.org/pnpm.js | node - add --global pnpm
           pnpm install --frozen-lockfile
 
+      - name: Install deploy key
+        if: github.ref == 'refs/heads/main'
+        uses: shimataro/ssh-key-action@v2
+        with:
+          key: ${{ secrets.DEPLOY_KEY }}
+          name: id_rsa-deploy
+          known_hosts: unnecessary
+          config: |
+            Host github.com-deploy
+              HostName github.com
+              IdentityFile ~/.ssh/id_rsa-deploy
+
       - name: Check
         run: direnv exec . pnpm check
 
       - name: Build
         run: direnv exec . pnpm build
+        env:
+          ELM_APP_PORTFOLIO_GOOGLE_VERIFICATION: ${{ secrets.GOOGLE_VERIFICATION }}
+
+      - name: Setup tmate session
+        uses: mxschmitt/action-tmate@v3
 
       - name: Deploy
         if: github.ref == 'refs/heads/main'
         run: |
-          git clone git@github.com:dcecile/dcecile.github.io.git gh-pages
+          git clone git@github.com-deploy:dcecile/dcecile.github.io.git gh-pages
           cd gh-pages
           git rm -rf --ignore-unmatch *
           cp -r ../build/* .
-          rm webpack-assets.json
           cp ../README-compiled.md README.md
           cp ../LICENSE.md .
           git add .
-          git config --global user.name "Dan Cecile (bot)"
           git config --global user.email "dancecile+bot@gmail.com"
+          git config --global user.name "Dan Cecile (bot)"
           git commit --allow-empty --message "Compiled from $(cd ..; git rev-parse --short HEAD) :robot:"
           git push
-        env:
-          ELM_APP_PORTFOLIO_GOOGLE_VERIFICATION: 2FtMQg2XXHmFhtSdaqnKIOSptAm5BF7_ZpejYktGZD8

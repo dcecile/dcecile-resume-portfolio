@@ -44,10 +44,10 @@ can try using an automated script like the GitHub Action:
 
 > [.github/workflows/main.yaml](.github/workflows/main.yaml)
 
-Optional environment variables (set these before running `pnpm build`):
+This action uses the following secrets:
 
-- `ELM_APP_PORTFOLIO_GOOGLE_VERIFICATION` for Google Search Console
-  verification
+- `DEPLOY_KEY`: private [deploy key](https://docs.github.com/en/developers/overview/managing-deploy-keys) for the taget repo
+- `GOOGLE_VERIFICATION`: optional key for Google Search Console verification
 
 
 ## Credits
