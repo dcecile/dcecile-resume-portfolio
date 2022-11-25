@@ -9,7 +9,7 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Set up direnv
         if: github.ref == 'refs/heads/main'
@@ -27,12 +27,12 @@ jobs:
           direnv allow
 
       - name: Set up Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: 17
 
       - name: Cache .pnpm-store
-        uses: actions/cache@v1
+        uses: actions/cache@v3
         with:
           path: ~/.pnpm-store
           key: pnpm-${{ hashFiles('./pnpm-lock.yaml') }}
