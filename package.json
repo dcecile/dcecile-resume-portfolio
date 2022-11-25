@@ -24,7 +24,7 @@
   },
   "scripts": {
     "build": "pnpm build-app && pnpm build-pdf",
-    "build-app": "NODE_OPTIONS=--openssl-legacy-provider elm-app build",
+    "build-app": "rm -rf build/ && NODE_OPTIONS=--openssl-legacy-provider elm-app build && rm build/asset-manifest.json build/precache-manifest.*.js && cp public/service-worker.js build/",
     "build-pdf": "node build-pdf.js",
     "check": "pnpm check-fmt && pnpm check-lint && pnpm make && pnpm test",
     "check-fmt": "elm-format --validate src/ tests/ && pnpm prettier-all --list-different",
