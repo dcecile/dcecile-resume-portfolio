@@ -1,7 +1,4 @@
-module View.ResumePreview
-    exposing
-        ( viewResumePreview
-        )
+module View.ResumePreview exposing (viewResumePreview)
 
 import Assets exposing (Assets)
 import Css exposing (Em, alignItems, backgroundColor, borderBox, boxShadow5, boxSizing, center, em, flexEnd, flexStart, fontSize, height, hex, justifyContent, marginBottom, marginLeft, marginRight, marginTop, minHeight, px, vh, vw, width, zero)
@@ -9,11 +6,11 @@ import CssShorthand exposing (animation, displayFlexColumn, displayFlexRow, disp
 import Data exposing (Data)
 import Display exposing (Display)
 import Html.Styled exposing (Html, a, div, styled, text)
-import Html.Styled.Attributes exposing (downloadAs, href)
+import Html.Styled.Attributes exposing (download, href)
 import HtmlShorthand exposing (HtmlTag, hrefHash, onClickPreventDefault)
 import Icon exposing (IconBackground, IconSource, iconSpan)
-import LazyHtml exposing (LazyHtml, fromLazyHtml2, toLazyHtml)
-import Msg exposing (Msg(Print))
+import LazyHtml exposing (fromLazyHtml2, toLazyHtml)
+import Msg exposing (Msg(..))
 import View.Breakpoints exposing (breakpointResumePreviewLarge, breakpointResumePreviewMedium, breakpointResumePreviewMediumLarge)
 import View.Button as Button
 import View.Colors exposing (white)
@@ -36,11 +33,6 @@ ptToEm length =
     em <| length / standardPrintFontSize.numericValue
 
 
-ptToVw : Float -> Em
-ptToVw length =
-    em <| length / standardPrintFontSize.numericValue
-
-
 viewResumePreview : Assets -> Data -> Display -> Html Msg
 viewResumePreview assets data display =
     let
@@ -49,6 +41,7 @@ viewResumePreview assets data display =
             , displayNone
             , if display.showResumePreview then
                 mediaNotPrint [ displayFlexColumn ]
+
               else
                 noStyle
             ]
@@ -60,7 +53,7 @@ viewResumePreview assets data display =
         ]
 
 
-viewResumePreviewStatic : Assets -> Data -> LazyHtml Msg
+viewResumePreviewStatic : Assets -> Data -> Html Msg
 viewResumePreviewStatic assets data =
     let
         style =
@@ -146,7 +139,7 @@ viewActions assets data =
         [ viewAction iconSource
             .download
             [ href "%PUBLIC_URL%/resume.pdf"
-            , downloadAs <| viewResumeName data
+            , download <| viewResumeName data
             ]
             [ text "Download my resume"
             ]

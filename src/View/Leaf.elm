@@ -1,11 +1,10 @@
-module View.Leaf
-    exposing
-        ( leafPathData
-        , leafStalkPoint
-        , viewLeaf
-        )
+module View.Leaf exposing
+    ( leafPathData
+    , leafStalkPoint
+    , viewLeaf
+    )
 
-import Css exposing (Style, height, hidden, initial, num, opacity, px, visibility, vw, width)
+import Css exposing (Style, height, hidden, initial, num, opacity, px, visibility, width)
 import Css.Media as Media
 import CssShorthand exposing (animation, batchMap, mediaConditions, mediaInverseConditions, noStyle, rem_)
 import Msg exposing (Msg)
@@ -97,6 +96,7 @@ viewLeaf showUnderMediumWidth flipX flipY size =
         style =
             [ if showUnderMediumWidth then
                 noStyle
+
               else
                 visibility hidden
             , breakpointPortfolioMedium
@@ -132,6 +132,7 @@ viewLeaf showUnderMediumWidth flipX flipY size =
             [ viewLeafPath reverseAnimation
                 (if reverseAnimation then
                     leafDelayOffset
+
                  else
                     0
                 )
@@ -142,6 +143,7 @@ viewLeaf showUnderMediumWidth flipX flipY size =
             , viewLeafPath reverseAnimation
                 (if not reverseAnimation then
                     leafDelayOffset
+
                  else
                     0
                 )
@@ -161,11 +163,12 @@ viewLeafPath reverseAnimation delay parentSize size degrees ( x, y ) =
             , animation <|
                 String.join " "
                     [ "leafCycle"
-                    , toString leafCycle ++ "ms"
-                    , toString delay ++ "ms"
+                    , String.fromFloat leafCycle ++ "ms"
+                    , String.fromFloat delay ++ "ms"
                     , "infinite"
                     , if reverseAnimation then
                         "alternate-reverse"
+
                       else
                         "alternate"
                     , "both"

@@ -1,7 +1,4 @@
-module View.Projects
-    exposing
-        ( viewProjects
-        )
+module View.Projects exposing (viewProjects)
 
 import Assets exposing (Assets)
 import Css exposing (bold, center, color, em, flexWrap, fontSize, fontStyle, fontWeight, italic, justifyContent, left, marginBottom, marginTop, px, textAlign, width, wrap)

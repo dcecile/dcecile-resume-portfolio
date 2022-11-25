@@ -1,11 +1,10 @@
-module Data.Visibility
-    exposing
-        ( ResumeVariant(ElmResume, GeneralResume, GoResume)
-        , Visibility
-        , filterResumeVisible
-        , portfolioAndResume
-        , portfolioOnly
-        )
+module Data.Visibility exposing
+    ( ResumeVariant(..)
+    , Visibility
+    , filterResumeVisible
+    , portfolioAndResume
+    , portfolioOnly
+    )
 
 
 type alias Visibility =

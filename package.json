@@ -1,21 +1,40 @@
 {
+  "engines": {
+    "node": "^17.9.0",
+    "pnpm": "^7.17.0"
+  },
   "dependencies": {
-    "create-elm-app": "^1.10.3",
-    "elm-format": "^0.7.0-exp",
-    "prettier": "^1.11.1",
-    "puppeteer": "^1.2.0",
-    "server-static": "^2.0.5"
+    "create-elm-app": "^5.22.0",
+    "elm": "0.19.1-5",
+    "elm-analyse": "^0.16.5",
+    "elm-format": "^0.8.5",
+    "express": "^4.18.2",
+    "postcss": "^8.1.0",
+    "prettier": "^2.7.1",
+    "puppeteer": "^19.2.2",
+    "serve-static": "^1.15.0"
   },
   "devDependencies": {
-    "chokidar-cli": "^1.2.0"
+    "chokidar-cli": "^3.0.0"
+  },
+  "pnpm": {
+    "overrides": {
+      "node-watch": "^0.6.4"
+    }
   },
   "scripts": {
-    "clean": "rm -rf elm-stuff/build-artifacts/0.18.0/dcecile/dcecile-resume-portfolio && rm -rf tests/elm-stuff/build-artifacts/0.18.0/user/project",
-    "generate-pdf": "node generate-pdf.js",
-    "make-src": "elm-package install --yes && elm-make src/Main.elm --warn --output /dev/null",
-    "make-tests": "cd ./tests && elm-package install --yes && elm-make *.elm --warn --output /dev/null",
+    "build": "pnpm build-app && pnpm build-pdf",
+    "build-app": "NODE_OPTIONS=--openssl-legacy-provider elm-app build",
+    "build-pdf": "node build-pdf.js",
+    "check": "pnpm check-fmt && pnpm check-lint && pnpm make && pnpm test",
+    "check-fmt": "elm-format --validate src/ tests/ && pnpm prettier-all --list-different",
+    "check-lint": "elm-analyse",
+    "clean": "rm -rf elm-stuff",
+    "dev": "NODE_OPTIONS=--openssl-legacy-provider ELM_DEBUGGER=false elm-app start",
+    "fmt": "elm-format --yes src/ tests/ && pnpm prettier-all --write",
+    "prettier-all": "prettier '**/*.{js,json,yaml}' '!**/*-lock.yaml' '!**/build/**' '!**/elm-stuff/**'",
+    "make": "elm make src/Main.elm --output /dev/null",
     "test": "elm-app test",
-    "validate-format": "elm-format --validate src/ tests/ && yarn prettier-all --list-different",
-    "prettier-all": "prettier '**/*.js' '!**/build/**' '!**/elm-stuff/**'"
+    "watch": "chokidar src tests --command 'clear && pnpm run test' --ignore tests/elm-stuff --initial"
   }
 }

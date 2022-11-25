@@ -3,5 +3,5 @@ import resume from './Favicon/resume.png'
 
 export default {
   portfolio,
-  resume
+  resume,
 }

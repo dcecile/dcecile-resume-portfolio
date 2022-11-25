@@ -1,17 +1,16 @@
-module SvgShorthand
-    exposing
-        ( SvgTag
-        , fill
-        , flipAxes
-        , rotate
-        , scale
-        , stroke
-        , strokeWidth
-        , strokeWidthUnscaled
-        , transform
-        , translate
-        , viewBoxSquare
-        )
+module SvgShorthand exposing
+    ( SvgTag
+    , fill
+    , flipAxes
+    , rotate
+    , scale
+    , stroke
+    , strokeWidth
+    , strokeWidthUnscaled
+    , transform
+    , translate
+    , viewBoxSquare
+    )
 
 import Css exposing (ColorValue, ExplicitLength, Style, Value, property)
 import Html.Styled.Attributes exposing (attribute)
@@ -43,11 +42,11 @@ strokeWidth =
 
 
 strokeWidthUnscaled : ExplicitLength units -> Float -> Style
-strokeWidthUnscaled length scale =
+strokeWidthUnscaled length scaleBy =
     strokeWidth
         { length
             | value =
-                toString (length.numericValue / scale)
+                String.fromFloat (length.numericValue / scaleBy)
                     ++ length.unitLabel
         }
 
@@ -80,10 +79,12 @@ flipAxes flipX flipY =
     Transform "scale"
         [ if flipX then
             -1
+
           else
             1
         , if flipY then
             -1
+
           else
             1
         ]
@@ -99,7 +100,7 @@ transformToString { name, values } =
     String.concat
         [ name
         , "("
-        , values |> List.map toString |> String.join ","
+        , values |> List.map String.fromFloat |> String.join ","
         , ")"
         ]
 
@@ -107,7 +108,7 @@ transformToString { name, values } =
 viewBox : ( Float, Float ) -> ( Float, Float ) -> Attribute msg
 viewBox ( minX, minY ) ( width, height ) =
     [ minX, minY, width, height ]
-        |> List.map toString
+        |> List.map String.fromFloat
         |> String.join " "
         |> attribute "viewBox"
 

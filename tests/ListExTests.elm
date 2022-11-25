@@ -37,7 +37,7 @@ findTests =
                 ]
 
         condition input item =
-            item % 4 == input
+            modBy 4 item == input
     in
     [ testAll "positive"
         [ ( 1, one )

@@ -1,7 +1,4 @@
-module View.CallsToAction
-    exposing
-        ( viewCallsToAction
-        )
+module View.CallsToAction exposing (viewCallsToAction)
 
 import Assets exposing (Assets)
 import Css exposing (Style, alignItems, batch, center, em, firstOfType, flexBasis, flexEnd, flexGrow, justifyContent, marginLeft, marginRight, marginTop, num, px, stretch, zero)

@@ -1,10 +1,9 @@
-module Data.Basic
-    exposing
-        ( BasicData
-        , homepageURL
-        , initBasicData
-        , sourceURL
-        )
+module Data.Basic exposing
+    ( BasicData
+    , homepageURL
+    , initBasicData
+    , sourceURL
+    )
 
 
 type alias BasicData =

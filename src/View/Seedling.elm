@@ -1,7 +1,4 @@
-module View.Seedling
-    exposing
-        ( viewSeedling
-        )
+module View.Seedling exposing (viewSeedling)
 
 import Css exposing (Style, px)
 import CssShorthand exposing (animationCycle)
@@ -96,6 +93,7 @@ viewPlantLeaf flipX ( attachX, attachY ) leafScale degrees growFast =
                     [ "seedlingPlantLeaf"
                     , if growFast then
                         "Fast"
+
                       else
                         "Slow"
                     , "Cycle"

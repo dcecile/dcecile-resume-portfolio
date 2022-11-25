@@ -1,14 +1,13 @@
-module View.DetailsAnimation
-    exposing
-        ( animateDetails
-        , animateDetailsItem
-        , animatePortfolio
-        )
+module View.DetailsAnimation exposing
+    ( animateDetails
+    , animateDetailsItem
+    , animatePortfolio
+    )
 
 import Css exposing (Style, batch)
-import CssShorthand exposing (animation, mediaNotPrint, noStyle, transformOrigin, willChangeTransform)
+import CssShorthand exposing (animation, noStyle, transformOrigin)
 import Display exposing (Display)
-import Display.Details exposing (DetailsAnimation(DetailsAnimationClose, DetailsAnimationNavigate, DetailsAnimationOpen), DetailsDisplay, DetailsNavigateDirection(DetailsNavigateLink, DetailsNavigateNext, DetailsNavigatePrevious))
+import Display.Details exposing (DetailsAnimation(..), DetailsDisplay, DetailsNavigateDirection(..))
 import View.Breakpoints exposing (breakpointDetailsMediumWidth)
 
 
@@ -63,9 +62,9 @@ animateProtfolioAndDetails portfolioOrDetails details =
 
         originStyle ( x, y ) =
             transformOrigin <|
-                toString x
+                String.fromFloat x
                     ++ "px "
-                    ++ toString y
+                    ++ String.fromFloat y
                     ++ "px"
 
         origin =
@@ -142,6 +141,7 @@ animateDetailsItem isNew details =
         newOrOld =
             if isNew then
                 New
+
             else
                 Old
 
@@ -208,8 +208,8 @@ combineAnimations animationNames duration delay easing =
             (\animationName ->
                 String.join " "
                     [ animationName
-                    , toString duration ++ "ms"
-                    , toString delay ++ "ms"
+                    , String.fromFloat duration ++ "ms"
+                    , String.fromFloat delay ++ "ms"
                     , "both"
                     , easing
                     ]

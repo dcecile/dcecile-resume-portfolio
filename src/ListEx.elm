@@ -1,7 +1,4 @@
-module ListEx
-    exposing
-        ( find
-        )
+module ListEx exposing (find)
 
 
 find : (a -> Bool) -> List a -> Maybe a
@@ -10,6 +7,7 @@ find condition =
         (\item ->
             if condition item then
                 Just item
+
             else
                 Nothing
         )

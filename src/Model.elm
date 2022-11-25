@@ -1,11 +1,10 @@
-module Model
-    exposing
-        ( Model
-        , init
-        )
+module Model exposing
+    ( Model
+    , init
+    )
 
 import Assets exposing (Assets, initAssets)
-import Data exposing (Data, initData)
+import Data exposing (Data)
 import Display exposing (Display, initDisplay)
 import Flags exposing (Flags)
 import Msg exposing (Msg)
@@ -14,24 +13,18 @@ import Navigation exposing (initScroll)
 
 type alias Model =
     { assets : Assets
-    , data : Data
     , display : Display
     }
 
 
-init : Flags -> ( Model, Cmd Msg )
-init flags =
-    ( initModel flags, initCmd )
+init : Data -> Flags -> ( Model, Cmd Msg )
+init data flags =
+    ( initModel data flags, initCmd )
 
 
-initModel : Flags -> Model
-initModel flags =
-    let
-        data =
-            initData
-    in
+initModel : Data -> Flags -> Model
+initModel data flags =
     { assets = initAssets flags
-    , data = data
     , display = initDisplay flags data
     }
 

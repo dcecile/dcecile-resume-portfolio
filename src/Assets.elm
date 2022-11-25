@@ -1,8 +1,7 @@
-module Assets
-    exposing
-        ( Assets
-        , initAssets
-        )
+module Assets exposing
+    ( Assets
+    , initAssets
+    )
 
 import Favicon exposing (FaviconSource)
 import Flags exposing (Flags)

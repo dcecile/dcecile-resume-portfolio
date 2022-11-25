@@ -1,17 +1,16 @@
-module View.Button
-    exposing
-        ( border
-        , borderCenter
-        , borderShadow
-        , sizeLarge
-        , sizeMedium
-        , sizeSmall
-        , text
-        )
+module View.Button exposing
+    ( border
+    , borderCenter
+    , borderShadow
+    , sizeLarge
+    , sizeMedium
+    , sizeSmall
+    , text
+    )
 
 import Css exposing (Style, batch, borderRadius, borderWidth, boxShadow5, color, em, lineHeight, none, num, px, textDecoration, zero)
 import CssShorthand exposing (borderSolidColor, paddingRightLeft)
-import View.Colors exposing (black, green, paleGreen)
+import View.Colors exposing (black, paleGreen)
 import View.Metrics exposing (standardBorderRadius, standardBorderWidth)
 
 

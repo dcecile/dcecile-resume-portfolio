@@ -1,7 +1,4 @@
-module View.Intro
-    exposing
-        ( viewIntro
-        )
+module View.Intro exposing (viewIntro)
 
 import Assets exposing (Assets)
 import Css exposing (alignSelf, bold, calc, center, color, em, firstOfType, fontSize, fontStyle, fontWeight, italic, justifyContent, lastOfType, lineHeight, marginBottom, marginTop, maxWidth, minHeight, minus, normal, nthOfType, num, vh, zero)

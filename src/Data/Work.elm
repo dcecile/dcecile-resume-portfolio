@@ -1,9 +1,8 @@
-module Data.Work
-    exposing
-        ( WorkData
-        , WorkItemData
-        , initWorkData
-        )
+module Data.Work exposing
+    ( WorkData
+    , WorkItemData
+    , initWorkData
+    )
 
 import Data.Section exposing (SectionData)
 import MarkedString exposing (MarkedString, markedString)

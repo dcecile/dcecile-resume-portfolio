@@ -1,9 +1,8 @@
-module Data.Mindsets
-    exposing
-        ( MindsetsData
-        , MindsetsItemData
-        , initMindsetsData
-        )
+module Data.Mindsets exposing
+    ( MindsetsData
+    , MindsetsItemData
+    , initMindsetsData
+    )
 
 import Data.Section exposing (SectionData)
 import MarkedString exposing (MarkedString, markedString)

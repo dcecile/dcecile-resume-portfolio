@@ -1,18 +1,17 @@
-module View.Links
-    exposing
-        ( linksCutoff
-        , viewLinks
-        )
+module View.Links exposing
+    ( linksCutoff
+    , viewLinks
+    )
 
 import Assets exposing (Assets)
-import Css exposing (Compatible, Em, Px, alignSelf, calc, center, em, flexWrap, fontSize, fontWeight, height, initial, justifyContent, marginBottom, marginTop, maxWidth, normal, padding, plus, px, width, wrap, zero)
+import Css exposing (CalculatedLength, Em, Px, alignSelf, calc, center, em, flexWrap, fontSize, fontWeight, height, initial, justifyContent, marginBottom, marginTop, maxWidth, normal, padding, plus, px, width, wrap, zero)
 import CssShorthand exposing (batchMap, displayFlexColumn, displayFlexRow, marginRightLeft, marginTopBottom, paddingRightLeft, paddingTopBottom)
 import Data exposing (Data)
 import Data.Links exposing (LinksItemData)
 import Html.Styled exposing (Html, a, div, h2, nav, styled, text)
 import Html.Styled.Attributes exposing (href, title)
 import HtmlShorthand exposing (ariaLabel, targetBlank)
-import Icon exposing (IconBackground, IconSource, iconSpan)
+import Icon exposing (IconSource, iconSpan)
 import Msg exposing (Msg)
 import View.Breakpoints exposing (breakpointPortfolioMedium)
 import View.Button as Button
@@ -20,28 +19,11 @@ import View.GroupBox as GroupBox
 import View.Metrics exposing (standardBorderWidth, standardLineHeight)
 
 
-type alias CalculatedLength =
-    { value : String
-    , length : Compatible
-    , lengthOrAuto : Compatible
-    , lengthOrNumber : Compatible
-    , lengthOrNone : Compatible
-    , lengthOrMinMaxDimension : Compatible
-    , lengthOrNoneOrMinMaxDimension : Compatible
-    , textIndent : Compatible
-    , flexBasis : Compatible
-    , lengthOrNumberOrAutoOrNoneOrContent : Compatible
-    , fontSize : Compatible
-    , lengthOrAutoOrCoverOrContain : Compatible
-    , calc : Compatible
-    }
-
-
 linksCutoff : CalculatedLength
 linksCutoff =
     let
         add =
-            flip calc plus
+            \a -> calc a plus
 
         cutoffFactor =
             0.5

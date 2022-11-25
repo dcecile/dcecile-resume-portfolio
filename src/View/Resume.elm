@@ -1,13 +1,12 @@
-module View.Resume
-    exposing
-        ( viewResume
-        , viewResumeName
-        )
+module View.Resume exposing
+    ( viewResume
+    , viewResumeName
+    )
 
 import Assets exposing (Assets)
 import Char
-import Css exposing (Em, Style, absolute, auto, batch, bold, borderRadius, borderWidth, center, color, em, flexBasis, flexEnd, flexGrow, flexShrink, flexWrap, fontSize, fontStyle, fontWeight, height, hidden, hsl, italic, justifyContent, letterSpacing, lineHeight, marginBottom, marginLeft, marginRight, marginTop, noWrap, none, normal, num, opacity, overflow, paddingBottom, paddingLeft, paddingTop, position, right, textAlign, textDecoration, whiteSpace, width, wrap, zero)
-import CssShorthand exposing (batchMap, beforeText, borderBottomSolidColor, borderLeftSolidColor, borderSolidColor, displayFlexColumn, displayFlexRow, marginRightLeft, marginTopBottom, noStyle, paddingRightLeft, paddingTopBottom, textDecorationSkipInk, wordBreakBreakAll)
+import Css exposing (Em, Style, absolute, batch, bold, borderRadius, borderWidth, center, color, em, flexBasis, flexEnd, flexGrow, flexShrink, fontSize, fontStyle, fontWeight, height, hidden, hsl, italic, justifyContent, letterSpacing, lineHeight, marginBottom, marginLeft, marginRight, marginTop, noWrap, normal, num, opacity, overflow, paddingBottom, paddingLeft, paddingTop, position, right, textAlign, whiteSpace, width, zero)
+import CssShorthand exposing (batchMap, beforeText, borderBottomSolidColor, borderLeftSolidColor, borderSolidColor, displayFlexColumn, displayFlexRow, marginRightLeft, marginTopBottom, paddingRightLeft, paddingTopBottom, textDecorationSkipInk, wordBreakBreakAll)
 import Data exposing (Data)
 import Data.Links exposing (LinksItemData)
 import Data.Projects exposing (ProjectsItemData)
@@ -17,9 +16,9 @@ import Html.Styled exposing (Html, a, div, footer, h1, h2, h3, header, img, main
 import Html.Styled.Attributes exposing (href)
 import HtmlShorthand exposing (styledSpanText)
 import Icon exposing (IconBackground, IconSource, iconImage)
-import MarkedString exposing (MarkedString, MarkedSubstring(NormalSubstring, SpecialSubstring), markedString)
+import MarkedString exposing (MarkedString, MarkedSubstring(..), markedString)
 import Msg exposing (Msg)
-import Regex exposing (HowMany(All), regex, replace)
+import Regex
 import View.Colors exposing (printBlack, printGreen, printPaleGreen, printPaleGreenComponents)
 import View.Metrics exposing (printBorderWidth, printLineHeight)
 
@@ -390,7 +389,7 @@ viewWorkItem : IconSource -> Bool -> WorkItemData -> Html Msg
 viewWorkItem iconSource narrow item =
     (viewItem narrow << List.concat)
         [ viewWorkItemNameLocation iconSource item.name item.resumeLocation |> List.singleton
-        , item.resumeTitlePeriods |> List.map (uncurry viewWorkItemTitlePeriod)
+        , item.resumeTitlePeriods |> List.map (\( a, b ) -> viewWorkItemTitlePeriod a b)
         , item.resumePoints |> List.map viewWorkItemPoint
         ]
 
@@ -510,7 +509,7 @@ viewLink customStyle iconSource url shortURL iconBackground =
             ]
 
         trimProtocol =
-            replace All (regex "^(?:https://|mailto:)") (always "")
+            Regex.replace (Maybe.withDefault Regex.never (Regex.fromString "^(?:https://|mailto:)")) (always "")
 
         urlText =
             trimProtocol <| Maybe.withDefault url shortURL
@@ -561,6 +560,7 @@ viewItem narrow nodes =
                 em
                     (if narrow then
                         0.6
+
                      else
                         0.9
                     )

@@ -1,8 +1,7 @@
-module Data.Details
-    exposing
-        ( DetailsItemData
-        , allDetailsItems
-        )
+module Data.Details exposing
+    ( DetailsItemData
+    , allDetailsItems
+    )
 
 import Data exposing (Data)
 import MarkedString exposing (MarkedString)

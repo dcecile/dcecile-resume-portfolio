@@ -1,7 +1,4 @@
-module Favicon
-    exposing
-        ( FaviconSource
-        )
+module Favicon exposing (FaviconSource)
 
 
 type alias FaviconSource =

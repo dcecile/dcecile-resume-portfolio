@@ -1,20 +1,19 @@
-module View.Breakpoints
-    exposing
-        ( breakpointDetailsLarge
-        , breakpointDetailsMediumHeight
-        , breakpointDetailsMediumWidth
-        , breakpointDetailsSmallWidth
-        , breakpointPortfolioMedium
-        , breakpointPortfolioTall
-        , breakpointPortfolioTallRemLength
-        , breakpointResumePreviewLarge
-        , breakpointResumePreviewMedium
-        , breakpointResumePreviewMediumLarge
-        )
+module View.Breakpoints exposing
+    ( breakpointDetailsLarge
+    , breakpointDetailsMediumHeight
+    , breakpointDetailsMediumWidth
+    , breakpointDetailsSmallWidth
+    , breakpointPortfolioMedium
+    , breakpointPortfolioTall
+    , breakpointPortfolioTallRemLength
+    , breakpointResumePreviewLarge
+    , breakpointResumePreviewMedium
+    , breakpointResumePreviewMediumLarge
+    )
 
 import Css exposing (Style)
 import Css.Media as Media
-import CssShorthand exposing (batchMap, mediaConditions, mediaInverseConditions, rem_)
+import CssShorthand exposing (mediaConditions, mediaInverseConditions, rem_)
 
 
 breakpointDetailsSmallWidth : List Style -> Style

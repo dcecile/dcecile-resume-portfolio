@@ -1,5 +1,6 @@
 module TestEx exposing (testAll)
 
+import Debug
 import Expect exposing (Expectation)
 import Test exposing (Test, concat, test)
 
@@ -9,7 +10,7 @@ testAll name items expectation =
     let
         testOne item =
             test
-                (String.concat [ name, " (", toString item, ")" ])
+                (String.concat [ name, " (", Debug.toString item, ")" ])
                 (\() -> expectation item)
     in
     items

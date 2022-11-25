@@ -1,7 +1,4 @@
-module View.Castle
-    exposing
-        ( viewCastle
-        )
+module View.Castle exposing (viewCastle)
 
 import Css exposing (Style, px)
 import CssShorthand exposing (animationCycle)

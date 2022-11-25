@@ -1,7 +1,4 @@
-module Head
-    exposing
-        ( Head
-        )
+module Head exposing (Head)
 
 
 type alias Head =

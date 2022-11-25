@@ -1,24 +1,22 @@
-module LazyHtml
-    exposing
-        ( LazyHtml
-        , fromLazyHtml2
-        , toLazyHtml
-        )
+module LazyHtml exposing
+    ( LazyHtml
+    , fromLazyHtml2
+    , toLazyHtml
+    )
 
-import Html as UnstyledHtml
-import Html.Styled exposing (Html, toUnstyled)
-import Html.Styled.Lazy exposing (lazy, lazy2)
+import Html.Styled exposing (Html)
+import Html.Styled.Lazy exposing (lazy2)
 
 
 type alias LazyHtml msg =
-    UnstyledHtml.Html msg
+    Html msg
 
 
-toLazyHtml : Html msg -> LazyHtml msg
-toLazyHtml =
-    toUnstyled
+toLazyHtml : Html msg -> Html msg
+toLazyHtml html =
+    html
 
 
-fromLazyHtml2 : (a -> b -> LazyHtml msg) -> a -> b -> Html msg
+fromLazyHtml2 : (a -> b -> Html msg) -> a -> b -> Html msg
 fromLazyHtml2 =
     lazy2

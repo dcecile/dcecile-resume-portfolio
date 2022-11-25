@@ -1,8 +1,7 @@
-module ClickInfo
-    exposing
-        ( ClickInfo
-        )
+module ClickInfo exposing (ClickInfo)
 
 
 type alias ClickInfo =
-    { pagePos : ( Float, Float ), clientPos : ( Float, Float ) }
+    { pagePos : ( Float, Float )
+    , clientPos : ( Float, Float )
+    }

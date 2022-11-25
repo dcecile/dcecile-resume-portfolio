@@ -1,13 +1,10 @@
-module View.ResumePrint
-    exposing
-        ( viewResumePrint
-        )
+module View.ResumePrint exposing (viewResumePrint)
 
 import Assets exposing (Assets)
 import Css exposing (fontSize, minHeight, vh)
 import CssShorthand exposing (displayFlexColumn, displayNone, mediaPrint)
 import Data exposing (Data)
-import Html.Styled exposing (Html, div, styled)
+import Html.Styled exposing (div, styled)
 import LazyHtml exposing (LazyHtml, toLazyHtml)
 import Msg exposing (Msg)
 import View.Metrics exposing (standardPrintFontSize)

@@ -1,12 +1,11 @@
-module Msg
-    exposing
-        ( Msg(DetailsClose, DetailsNavigate, DetailsOpen, HashChange, NoMsg, Print)
-        , clickDetailsOpen
-        )
+module Msg exposing
+    ( Msg(..)
+    , clickDetailsOpen
+    )
 
 import ClickInfo exposing (ClickInfo)
 import Display.Details exposing (DetailsNavigateDirection)
-import Mouse exposing (Event)
+import Html.Events.Extra.Mouse exposing (Event)
 
 
 type Msg

@@ -1,7 +1,4 @@
-port module HeadPort
-    exposing
-        ( sendHead
-        )
+port module HeadPort exposing (sendHead)
 
 import Head exposing (Head)
 

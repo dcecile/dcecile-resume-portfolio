@@ -1,15 +1,14 @@
-module Icon
-    exposing
-        ( IconBackground
-        , IconSource
-        , iconBackgroundImage
-        , iconImage
-        , iconSpan
-        )
+module Icon exposing
+    ( IconBackground
+    , IconSource
+    , iconBackgroundImage
+    , iconImage
+    , iconSpan
+    )
 
-import Css exposing (LengthOrAuto, Style, backgroundImage, backgroundOrigin, backgroundPosition, backgroundRepeat, backgroundSize, batch, center, contain, contentBox, display, height, inlineBlock, noRepeat, num, opacity, px, url, width)
-import CssShorthand exposing (batchMap, marginRightLeft)
-import Html.Styled exposing (Attribute, Html, img, span, styled)
+import Css exposing (Style, backgroundImage, backgroundOrigin, backgroundPosition, backgroundRepeat, backgroundSize, batch, center, contain, contentBox, display, height, inlineBlock, noRepeat, num, opacity, px, url, width)
+import CssShorthand exposing (batchMap)
+import Html.Styled exposing (Attribute, Html, span, styled)
 import Html.Styled.Attributes exposing (src)
 import View.Colors exposing (blackLevel)
 

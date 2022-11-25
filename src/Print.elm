@@ -1,7 +1,4 @@
-port module Print
-    exposing
-        ( print
-        )
+port module Print exposing (print)
 
 
 port print : () -> Cmd msg

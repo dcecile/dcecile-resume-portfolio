@@ -1,8 +1,7 @@
-module Display
-    exposing
-        ( Display
-        , initDisplay
-        )
+module Display exposing
+    ( Display
+    , initDisplay
+    )
 
 import Data exposing (Data)
 import Data.Details exposing (DetailsItemData, allDetailsItems)

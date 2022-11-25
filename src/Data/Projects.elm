@@ -1,13 +1,12 @@
-module Data.Projects
-    exposing
-        ( ProjectsData
-        , ProjectsItemData
-        , initProjectsData
-        )
+module Data.Projects exposing
+    ( ProjectsData
+    , ProjectsItemData
+    , initProjectsData
+    )
 
 import Data.Basic exposing (homepageURL, sourceURL)
 import Data.Section exposing (SectionData)
-import Data.Visibility exposing (ResumeVariant(ElmResume, GeneralResume, GoResume), Visibility, portfolioAndResume, portfolioOnly)
+import Data.Visibility exposing (ResumeVariant(..), Visibility, portfolioAndResume, portfolioOnly)
 import MarkedString exposing (MarkedString, markedString)
 
 

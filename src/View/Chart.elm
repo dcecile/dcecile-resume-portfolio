@@ -1,13 +1,10 @@
-module View.Chart
-    exposing
-        ( viewChart
-        )
+module View.Chart exposing (viewChart)
 
 import Css exposing (Style, px)
 import CssShorthand exposing (animationCycle)
 import Msg exposing (Msg)
-import Svg.Styled exposing (Svg, circle, g, path, styled)
-import Svg.Styled.Attributes exposing (cx, cy, d, r)
+import Svg.Styled exposing (Svg, g, path, styled)
+import Svg.Styled.Attributes exposing (d)
 import SvgShorthand exposing (fill, rotate, strokeWidth, transform)
 import View.Colors exposing (paleGreen)
 

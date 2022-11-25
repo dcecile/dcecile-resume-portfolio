@@ -1,7 +1,4 @@
-module Data.Section
-    exposing
-        ( SectionData
-        )
+module Data.Section exposing (SectionData)
 
 import Icon exposing (IconBackground)
 

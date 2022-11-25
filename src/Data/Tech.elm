@@ -1,12 +1,11 @@
-module Data.Tech
-    exposing
-        ( TechData
-        , TechItemData
-        , initTechData
-        )
+module Data.Tech exposing
+    ( TechData
+    , TechItemData
+    , initTechData
+    )
 
 import Data.Section exposing (SectionData)
-import Data.Visibility exposing (ResumeVariant(ElmResume, GeneralResume, GoResume), Visibility, portfolioAndResume, portfolioOnly)
+import Data.Visibility exposing (ResumeVariant(..), Visibility, portfolioAndResume, portfolioOnly)
 import MarkedString exposing (MarkedString, markedString)
 
 

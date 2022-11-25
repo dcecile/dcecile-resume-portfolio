@@ -1,16 +1,15 @@
-module View.Colors
-    exposing
-        ( black
-        , blackLevel
-        , extraPaleGreen
-        , green
-        , paleGreen
-        , printBlack
-        , printGreen
-        , printPaleGreen
-        , printPaleGreenComponents
-        , white
-        )
+module View.Colors exposing
+    ( black
+    , blackLevel
+    , extraPaleGreen
+    , green
+    , paleGreen
+    , printBlack
+    , printGreen
+    , printPaleGreen
+    , printPaleGreenComponents
+    , white
+    )
 
 import Css exposing (Color, hex, hsl, rgb)
 
