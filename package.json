@@ -23,14 +23,14 @@
   "scripts": {
     "build": "pnpm build-app && pnpm build-pdf",
     "build-app": "NODE_OPTIONS=--openssl-legacy-provider elm-app build",
-    "build-pdf": "node generate-pdf.js",
+    "build-pdf": "node build-pdf.js",
     "check": "pnpm check-fmt && pnpm check-lint && pnpm make && pnpm test",
     "check-fmt": "elm-format --validate src/ tests/ && pnpm prettier-all --list-different",
     "check-lint": "elm-analyse",
     "clean": "rm -rf elm-stuff",
     "dev": "NODE_OPTIONS=--openssl-legacy-provider ELM_DEBUGGER=false elm-app start",
     "fmt": "elm-format --yes src/ tests/ && pnpm prettier-all --write",
-    "prettier-all": "prettier '**/*.{js,json}' '!**/build/**' '!**/elm-stuff/**'",
+    "prettier-all": "prettier '**/*.{js,json,yaml}' '!**/*-lock.yaml' '!**/build/**' '!**/elm-stuff/**'",
     "make": "elm make src/Main.elm --output /dev/null",
     "test": "elm-app test",
     "watch": "chokidar src tests --command 'clear && pnpm run test' --ignore tests/elm-stuff --initial"
