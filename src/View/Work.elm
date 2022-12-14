@@ -2,7 +2,7 @@ module View.Work exposing (viewWork)
 
 import Assets exposing (Assets)
 import Css exposing (Style, alignItems, batch, bold, center, color, em, flexWrap, fontSize, fontStyle, fontWeight, italic, justifyContent, marginBottom, marginTop, px, wrap)
-import CssShorthand exposing (displayFlexColumn, displayFlexRow, marginRightLeft, paddingRightLeft, paddingTopBottom)
+import CssShorthand exposing (displayFlexColumn, displayFlexRow, gap, marginRightLeft, paddingRightLeft, paddingTopBottom)
 import Data exposing (Data)
 import Data.Work exposing (WorkItemData)
 import Html.Styled exposing (Html, a, div, styled, text)
@@ -41,14 +41,8 @@ viewItems isLarge items =
                 , justifyContent center
                 ]
             , marginRightLeft <| em 0.5
-            , marginBottom <|
-                em
-                    (if isLarge then
-                        0.8
-
-                     else
-                        1.1
-                    )
+            , marginBottom <| em 1.2
+            , gap <| em 1.2
             ]
     in
     items
@@ -63,7 +57,6 @@ viewItem isLarge item =
             [ Button.border
             , Button.text
             , displayFlexColumn
-            , marginRightLeft <| px 14
             , paddingTopBottom <| em 0.8
             , fontSize <| em 0.85
             ]

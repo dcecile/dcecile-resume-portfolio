@@ -32,13 +32,36 @@ type alias WorkItemData =
 initWorkData : WorkData
 initWorkData =
     let
-        unitron =
+        meya =
+            WorkItemData
+                "Meya"
+                "Remote"
+                "4 years"
+                [ ( "Software Engineer", "2018–2022" )
+                ]
+                [ "Python / Django / TypeScript / React"
+                , "PostgreSQL / Redis / Kubernetes / GCP"
+                , "system architecture / product thinking / shipping"
+                ]
+                [ markedString "Built chatbot tech in `Python` and `TypeScript`"
+                , markedString "Designed and implemented event-oriented architecture with `Kubernetes` and `Redis`"
+                , markedString "Self-managed projects from brainstorming to coding to customer onboarding"
+                , markedString "Integrated Meya events with external services via `REST` APIs"
+                , markedString "Implemented features for mobile `Flutter` SDK"
+                , markedString "Created developer console with `React` and `GraphQL`"
+                , markedString "Launched new company website using `Next.js` and Prismic CRM"
+                ]
+                (markedString "TODO")
+                [ markedString "TODO"
+                ]
+
+        sonova =
             WorkItemData
                 "Sonova Group"
                 "Kitchener, Ontario"
-                "8 years (post-graduation)"
-                [ ( "Software Developer", "2009–2013" )
-                , ( "Senior Software Developer", "2013–2018" )
+                "8 years"
+                [ ( "Senior Software Developer", "2013–2018" )
+                , ( "Software Developer", "2009–2013" )
                 ]
                 [ "C# / WinForms / HTML / SQL"
                 , "data analysis / communication"
@@ -46,7 +69,7 @@ initWorkData =
                 ]
                 [ markedString "Coded manufacturing subsystems in `C#`"
                 , markedString "Built a hybrid `HTML / C#` desktop app"
-                , markedString "Investigated bugs using `SQL` and `Excel`"
+                , markedString "Investigated bugs using `SQL` and Excel"
                 , markedString "Negotiated and documented requirements"
                 , markedString "Coordinated team’s development cycles"
                 , markedString "Led key improvements in team processes"
@@ -64,16 +87,15 @@ initWorkData =
             WorkItemData
                 "NexJ Systems"
                 "Toronto, Ontario"
-                "8 months (co-op)"
-                [ ( "Developer", "winter co-op, 2008" )
-                , ( "Application Developer", "fall co-op, 2008" )
+                "8 months (internship)"
+                [ ( "Developer", "internship, 2008" )
                 ]
                 [ "Java / Scheme"
                 ]
                 [ markedString "Simplified WiX installer using `Java`"
                 , markedString "Wrote tests, fixed CRM bugs in `Scheme`"
                 ]
-                (markedString "My final two co-op terms were with teams at NexJ Systems, `making` customer relationship management software:")
+                (markedString "My final internship was with teams at NexJ Systems, `making` customer relationship management software:")
                 [ markedString "I used `Java` for `improving` an Ant + WiX installer build system"
                 , markedString "I investigated and fixed client-critical bugs in `Scheme`"
                 , markedString "I wrote business logic unit tests in `Scheme`"
@@ -83,15 +105,15 @@ initWorkData =
             WorkItemData
                 "Coreworx"
                 "Kitchener, Ontario"
-                "8 months (co-op)"
-                [ ( "Software Developer", "co-op, 2006/2007" )
+                "8 months (internship)"
+                [ ( "Software Developer", "internship, 2006–2007" )
                 ]
                 [ "C# / SQL"
                 ]
                 [ markedString "Developed DMS personalization in `C#`"
                 , markedString "Automated database migration via `SQL`"
                 ]
-                (markedString "I had two co-op terms with the team at Coreworx, `making` an ASP.NET document management system:")
+                (markedString "I interned with the team at Coreworx, `making` an ASP.NET document management system:")
                 [ markedString "I helped develop a personalization system in `C#`"
                 , markedString "I automated an Oracle database migration via `SQL`"
                 , markedString "I ran manual regression tests, `learning` the fundamentals of good `bug reporting`"
@@ -101,15 +123,15 @@ initWorkData =
             WorkItemData
                 "LSI Logic"
                 "Waterloo, Ontario"
-                "8 months (co-op)"
-                [ ( "Software Engineer", "co-op, 2005/2006" )
+                "8 months (internship)"
+                [ ( "Software Engineer", "internship, 2005–2006" )
                 ]
                 [ "C / C++"
                 ]
                 [ markedString "Fixed H.264 video decoder bugs in `C`"
                 , markedString "Created a DSP log analysis tool in `C++`"
                 ]
-                (markedString "My first co-op experience was with the team at LSI Logic, `making` H.264 video decoders and encoders:")
+                (markedString "My first internship was with the team at LSI Logic, `making` H.264 video decoders and encoders:")
                 [ markedString "I began by reading the H.264 spec, `learning` how video encoding works"
                 , markedString "I fixed video decoder bugs in `C`"
                 , markedString "I implemented video debugger features in `C`"
@@ -117,7 +139,8 @@ initWorkData =
                 ]
 
         portfolioLargeItems =
-            [ unitron
+            [ meya
+            , sonova
             ]
 
         portfolioSmallItems =
@@ -136,11 +159,9 @@ initWorkData =
     , portfolioLargeItems = portfolioLargeItems
     , portfolioSmallItems = portfolioSmallItems
     , resumeItems =
-        [ unitron
-        , nexj
-        , coreworx
-        , lsi
+        [ meya
+        , sonova
         ]
     , portfolioOutro =
-        Just "Want more details about my skills? Keep reading for my mindsets, tech skills, and side projects."
+        Just "Want more details about my skills? Keep reading for my mindsets, tech skills, and side projects…"
     }
