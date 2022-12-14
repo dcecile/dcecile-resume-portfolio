@@ -14,7 +14,6 @@ type alias WorkData =
         , portfolioLargeItems : List WorkItemData
         , portfolioSmallItems : List WorkItemData
         , resumeItems : List WorkItemData
-        , resumeVolunteerItems : List WorkItemData
         }
 
 
@@ -117,20 +116,6 @@ initWorkData =
                 , markedString "I created an internal tool for analyzing the logs of a digital-signal-processor pipeline simulation in `C++`"
                 ]
 
-        themusuem =
-            WorkItemData
-                "THEMUSEUM"
-                "Kitchener"
-                ""
-                [ ( "Makerspace Assistant", "2017–now" )
-                ]
-                []
-                [ markedString "Helping lead maker workshops"
-                , markedString "Teaching kids STEAM mindsets"
-                ]
-                []
-                []
-
         portfolioLargeItems =
             [ unitron
             ]
@@ -155,9 +140,6 @@ initWorkData =
         , nexj
         , coreworx
         , lsi
-        ]
-    , resumeVolunteerItems =
-        [ themusuem
         ]
     , portfolioOutro =
         Just "Want more details about my skills? Keep reading for my mindsets, tech skills, and side projects."

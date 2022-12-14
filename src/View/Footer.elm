@@ -13,7 +13,6 @@ import View.Button as Button
 import View.CallsToAction exposing (viewCallsToAction)
 import View.Colors exposing (black, paleGreen)
 import View.ElmLogo exposing (viewElmLogo)
-import View.Links exposing (viewLinks)
 
 
 viewFooter : Assets -> Data -> Html Msg
@@ -27,18 +26,13 @@ viewFooter assets data =
             , borderBottomSolidColor paleGreen
             , borderWidth <| px 6
             ]
-
-        callsToActionStyle =
-            [ marginBottom <| em 2.5
-            ]
     in
     styled footer
         style
         [ id "fin" ]
         [ viewHeader
         , viewButton
-        , viewCallsToAction callsToActionStyle assets data
-        , viewLinks assets data
+        , viewCallsToAction assets data
         , viewInfo basicData.sourceURL
         ]
 

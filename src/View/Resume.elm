@@ -19,7 +19,7 @@ import Icon exposing (IconBackground, IconSource, iconImage)
 import MarkedString exposing (MarkedString, MarkedSubstring(..), markedString)
 import Msg exposing (Msg)
 import Regex
-import View.Colors exposing (printBlack, printGreen, printPaleGreen, printPaleGreenComponents)
+import View.Colors exposing (printBlack, printGray, printGreen, printPaleGreen, printPaleGreenComponents)
 import View.Metrics exposing (printBorderWidth, printLineHeight)
 
 
@@ -71,8 +71,9 @@ viewHeader assets data =
         [ viewPrimary
             assets.iconSource
             basicData.name
+            basicData.pronouns
             basicData.homepageURL
-            basicData.resumeTagline
+            basicData.tagline
         , viewContact
             assets.iconSource
             basicData.emailAddress
@@ -81,8 +82,8 @@ viewHeader assets data =
         ]
 
 
-viewPrimary : IconSource -> String -> String -> String -> Html Msg
-viewPrimary iconSource name homepageURL tagline =
+viewPrimary : IconSource -> String -> String -> String -> String -> Html Msg
+viewPrimary iconSource name pronouns homepageURL tagline =
     let
         style =
             [ displayFlexColumn
@@ -92,14 +93,14 @@ viewPrimary iconSource name homepageURL tagline =
     styled div
         style
         []
-        [ viewName name
+        [ viewName name pronouns
         , viewTagline tagline
         , viewHomepage iconSource homepageURL
         ]
 
 
-viewName : String -> Html Msg
-viewName name =
+viewName : String -> String -> Html Msg
+viewName name pronouns =
     let
         style =
             [ marginTopBottom zero
@@ -107,11 +108,23 @@ viewName name =
             , fontSize <| em 3.6
             , fontWeight bold
             ]
+
+        pronounsStyle =
+            [ fontSize <| em 0.6
+            , fontWeight normal
+            , color printGray
+            ]
     in
     styled h1
         style
         []
-        [ text name ]
+        [ text name
+        , text " "
+        , styled span
+            pronounsStyle
+            []
+            [ text pronouns ]
+        ]
 
 
 viewTagline : String -> Html Msg
@@ -184,8 +197,7 @@ viewContactLocation : IconSource -> String -> Html Msg
 viewContactLocation iconSource location =
     let
         style =
-            [ fontStyle italic
-            ]
+            []
     in
     styled span
         style
@@ -226,7 +238,6 @@ viewInfo assets data =
         []
         [ viewTech data
         , viewProjects assets data
-        , viewWork assets data "Volunteering" .resumeVolunteerItems True
         , viewEducation data
         ]
 

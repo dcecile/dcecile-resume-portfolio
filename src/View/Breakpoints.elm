@@ -3,9 +3,8 @@ module View.Breakpoints exposing
     , breakpointDetailsMediumHeight
     , breakpointDetailsMediumWidth
     , breakpointDetailsSmallWidth
+    , breakpointPortfolioLarge
     , breakpointPortfolioMedium
-    , breakpointPortfolioTall
-    , breakpointPortfolioTallRemLength
     , breakpointResumePreviewLarge
     , breakpointResumePreviewMedium
     , breakpointResumePreviewMediumLarge
@@ -48,19 +47,14 @@ breakpointDetailsLarge =
 breakpointPortfolioMedium : List Style -> Style
 breakpointPortfolioMedium =
     mediaConditions
-        [ Media.minWidth <| rem_ 40
+        [ Media.minWidth <| rem_ 46
         ]
 
 
-breakpointPortfolioTallRemLength : Float
-breakpointPortfolioTallRemLength =
-    52
-
-
-breakpointPortfolioTall : List Style -> Style
-breakpointPortfolioTall =
+breakpointPortfolioLarge : List Style -> Style
+breakpointPortfolioLarge =
     mediaConditions
-        [ Media.minHeight <| rem_ breakpointPortfolioTallRemLength
+        [ Media.minWidth <| rem_ 73
         ]
 
 

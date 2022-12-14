@@ -1,30 +1,44 @@
 module View.Intro exposing (viewIntro)
 
 import Assets exposing (Assets)
-import Css exposing (alignSelf, bold, calc, center, color, em, firstOfType, fontSize, fontStyle, fontWeight, italic, justifyContent, lastOfType, lineHeight, marginBottom, marginTop, maxWidth, minHeight, minus, normal, nthOfType, num, vh, zero)
-import CssShorthand exposing (afterText, beforeText, displayFlexColumn, marginRightLeft, rem_)
+import Css exposing (alignItems, alignSelf, bold, center, color, em, fontSize, fontWeight, left, lineHeight, marginBottom, marginTop, maxWidth, normal, num, position, relative, textAlign, zero)
+import CssShorthand exposing (displayFlexColumn, marginTopBottom, paddingRightLeft)
 import Data exposing (Data)
-import Html.Styled exposing (Html, div, h1, header, main_, p, styled, text)
+import Html.Styled exposing (Html, div, h1, header, main_, p, span, styled, text)
 import Msg exposing (Msg)
-import View.Breakpoints exposing (breakpointPortfolioTall, breakpointPortfolioTallRemLength)
 import View.CallsToAction exposing (viewCallsToAction)
-import View.Colors exposing (paleGreen)
-import View.Links exposing (linksCutoff)
+import View.Colors exposing (gray, green)
+import View.Frame exposing (viewFrame)
 
 
 viewIntro : Assets -> Data -> Html Msg
 viewIntro assets data =
     let
+        style =
+            [ position relative
+            , displayFlexColumn
+            , alignItems center
+            ]
+    in
+    styled div
+        style
+        []
+        [ viewFrame
+        , viewIntroContent assets data
+        ]
+
+
+viewIntroContent : Assets -> Data -> Html Msg
+viewIntroContent assets data =
+    let
         basicData =
             data.basic
 
         style =
-            [ displayFlexColumn
-            , justifyContent center
-            , minHeight <| calc (vh 100) minus linksCutoff
-            , breakpointPortfolioTall
-                [ minHeight <| calc (rem_ breakpointPortfolioTallRemLength) minus linksCutoff
-                ]
+            [ position relative
+            , displayFlexColumn
+            , maxWidth <| em 35
+            , paddingRightLeft <| em 2
             ]
     in
     styled div
@@ -32,56 +46,65 @@ viewIntro assets data =
         []
         [ viewHeader
             basicData.name
-            basicData.portfolioTagline
+            basicData.pronouns
+            basicData.tagline
         , viewMain assets data
         ]
 
 
-viewHeader : String -> String -> Html Msg
-viewHeader name tagline =
+viewHeader : String -> String -> String -> Html Msg
+viewHeader name pronouns tagline =
     let
         style =
             [ displayFlexColumn
+            , textAlign left
+            , marginTop <| em 2.2
+            , marginBottom <| em 1.2
             ]
     in
     styled header
         style
         []
-        [ viewName name
+        [ viewName name pronouns
         , viewTagline tagline
         ]
 
 
-viewName : String -> Html Msg
-viewName name =
+viewName : String -> String -> Html Msg
+viewName name pronouns =
     let
         style =
-            [ marginTop <| em 0.7
-            , marginBottom zero
+            [ marginTopBottom zero
             , fontWeight bold
             , fontSize <| em 2.2
             , lineHeight <| num 1.4
+            ]
+
+        pronounsStyle =
+            [ color gray
+            , fontWeight normal
+            , fontSize <| em 0.7
             ]
     in
     styled h1
         style
         []
-        [ text name ]
+        [ text name
+        , text " "
+        , styled span
+            pronounsStyle
+            []
+            [ text pronouns
+            ]
+        ]
 
 
 viewTagline : String -> Html Msg
 viewTagline tagline =
     let
-        decorationStyle =
-            [ color paleGreen
-            ]
-
         style =
-            [ marginTop zero
-            , marginBottom <| em 1.4
-            , fontStyle italic
-            , beforeText "— " decorationStyle
-            , afterText " —" decorationStyle
+            [ marginTopBottom zero
+            , color green
             ]
     in
     styled p
@@ -98,16 +121,13 @@ viewMain assets data =
 
         style =
             [ displayFlexColumn
-            ]
-
-        callsToActionStyle =
-            [ marginBottom <| em 2
+            , maxWidth <| em 35
             ]
     in
     List.concat
         [ basicData.portfolioIntroPoints
             |> List.map viewPoint
-        , viewCallsToAction callsToActionStyle assets data
+        , viewCallsToAction assets data
             |> List.singleton
         ]
         |> styled main_ style []
@@ -118,13 +138,10 @@ viewPoint introPoint =
     let
         style =
             [ alignSelf center
+            , textAlign left
             , marginTop zero
-            , marginBottom <| em 0.6
-            , marginRightLeft <| em 1
-            , maxWidth <| em 20
-            , nthOfType "2n + 1" [ fontStyle italic ]
-            , firstOfType [ fontStyle normal, fontWeight bold ]
-            , lastOfType [ fontStyle normal, fontWeight bold ]
+            , marginBottom <| em 0.8
+            , fontSize <| em 0.85
             ]
     in
     styled p
