@@ -34,7 +34,7 @@ initWorkData =
     let
         unitron =
             WorkItemData
-                "Unitron"
+                "Sonova Group"
                 "Kitchener, Ontario"
                 "8 years (post-graduation)"
                 [ ( "Software Developer", "2009–2013" )
@@ -52,7 +52,7 @@ initWorkData =
                 , markedString "Led key improvements in team processes"
                 , markedString "Mentored team members"
                 ]
-                (markedString "I worked with my team at Unitron for 8 years, `making` hearing instrument manufacturing software.")
+                (markedString "I worked with my team at Sonova Group for 8 years, `making` hearing instrument manufacturing software.")
                 [ markedString "I used `C#` for software implementation and maintenance, and `SQL` + `Excel` for `analyzing` data"
                 , markedString "I mitigated bugs writing integration tests, actively listening to stakeholders, and thoroughly `learning` business/software systems"
                 , markedString "I built a hybrid `HTML` and `C#` desktop application to replace a paper-based inspection process"

@@ -5,11 +5,10 @@ module View.Resume exposing
 
 import Assets exposing (Assets)
 import Char
-import Css exposing (Em, Style, absolute, batch, bold, borderRadius, borderWidth, center, color, em, flexBasis, flexEnd, flexGrow, flexShrink, fontSize, fontStyle, fontWeight, height, hidden, hsl, italic, justifyContent, letterSpacing, lineHeight, marginBottom, marginLeft, marginRight, marginTop, noWrap, normal, num, opacity, overflow, paddingBottom, paddingLeft, paddingTop, position, right, textAlign, whiteSpace, width, zero)
+import Css exposing (Color, Em, Style, absolute, batch, bold, borderRadius, borderWidth, center, color, em, flexBasis, flexEnd, flexGrow, flexShrink, fontSize, fontStyle, fontWeight, height, hidden, hsl, italic, justifyContent, letterSpacing, lineHeight, marginBottom, marginLeft, marginRight, marginTop, noWrap, normal, num, opacity, overflow, paddingBottom, paddingLeft, paddingTop, position, right, textAlign, whiteSpace, width, zero)
 import CssShorthand exposing (batchMap, beforeText, borderBottomSolidColor, borderLeftSolidColor, borderSolidColor, displayFlexColumn, displayFlexRow, marginRightLeft, marginTopBottom, paddingRightLeft, paddingTopBottom, textDecorationSkipInk, wordBreakBreakAll)
 import Data exposing (Data)
 import Data.Links exposing (LinksItemData)
-import Data.Projects exposing (ProjectsItemData)
 import Data.Visibility exposing (ResumeVariant, filterResumeVisible)
 import Data.Work exposing (WorkData, WorkItemData)
 import Html.Styled exposing (Html, a, div, footer, h1, h2, h3, header, img, main_, nav, p, section, span, styled, text)
@@ -19,7 +18,7 @@ import Icon exposing (IconBackground, IconSource, iconImage)
 import MarkedString exposing (MarkedString, MarkedSubstring(..), markedString)
 import Msg exposing (Msg)
 import Regex
-import View.Colors exposing (printBlack, printGray, printGreen, printPaleGreen, printPaleGreenComponents)
+import View.Colors exposing (printBlack, printGreen, printPaleGreen, printPaleGreenComponents)
 import View.Metrics exposing (printBorderWidth, printLineHeight)
 
 
@@ -105,14 +104,14 @@ viewName name pronouns =
         style =
             [ marginTopBottom zero
             , lineHeight <| num 1.0
-            , fontSize <| em 3.6
+            , fontSize <| em 3.0
             , fontWeight bold
             ]
 
         pronounsStyle =
             [ fontSize <| em 0.6
             , fontWeight normal
-            , color printGray
+            , opacity <| num 0.5
             ]
     in
     styled h1
@@ -148,7 +147,7 @@ viewHomepage iconSource homepageURL =
     let
         style =
             [ marginTopBottom zero
-            , fontSize <| em 1.3
+            , fontSize <| em 1.0
             , fontStyle italic
             ]
 
@@ -218,13 +217,13 @@ viewMain assets data =
     styled main_
         style
         []
-        [ viewInfo assets data
+        [ viewInfo data
         , viewHistory assets data
         ]
 
 
-viewInfo : Assets -> Data -> Html Msg
-viewInfo assets data =
+viewInfo : Data -> Html Msg
+viewInfo data =
     let
         style =
             [ displayFlexColumn
@@ -236,53 +235,91 @@ viewInfo assets data =
     styled div
         style
         []
-        [ viewTech data
-        , viewProjects assets data
+        [ viewIntro data
+        , viewTechSkills data
+        , viewStartupSkills data
         , viewEducation data
         ]
 
 
-viewTech : Data -> Html Msg
-viewTech data =
-    viewSection "Tech skills"
-        [ viewItem True
-            [ viewTechLine data
+viewIntro : Data -> Html Msg
+viewIntro data =
+    let
+        sectionData =
+            data.basic
+
+        style =
+            [ marginBottom <| em 0.6
             ]
-        ]
+    in
+    styled section
+        style
+        []
+        [ text sectionData.resumeIntro ]
 
 
-viewTechLine : Data -> Html Msg
-viewTechLine data =
+viewTechSkills : Data -> Html Msg
+viewTechSkills data =
     let
         sectionData =
             data.tech
 
+        skills =
+            sectionData.items
+                |> filterResumeVisible resumeVariant .visibility
+                |> List.map (\item -> Maybe.withDefault item.name item.shortName)
+    in
+    viewSection sectionData.name
+        [ viewItem True
+            [ viewSkillsLine printGreen printPaleGreen skills
+            ]
+        ]
+
+
+viewStartupSkills : Data -> Html Msg
+viewStartupSkills data =
+    let
+        sectionData =
+            data.startup
+
+        skills =
+            sectionData.items
+    in
+    viewSection sectionData.name
+        [ viewItem True
+            [ viewSkillsLine printBlack printBlack skills
+            ]
+        ]
+
+
+viewSkillsLine : Color -> Color -> List String -> Html Msg
+viewSkillsLine textColor borderColor skills =
+    let
         style =
             [ marginTopBottom zero
             , marginRight <| em 0.2
             , lineHeight <| num 2.1
-            , color printGreen
+            , color textColor
             ]
     in
-    sectionData.items
-        |> filterResumeVisible resumeVariant .visibility
-        |> List.map (\item -> Maybe.withDefault item.name item.shortName)
-        |> List.map viewTechLineItem
+    skills
+        |> List.map (viewSkillsLineItem borderColor)
         |> List.intersperse (text " ")
         |> styled p style []
 
 
-viewTechLineItem : String -> Html Msg
-viewTechLineItem item =
+viewSkillsLineItem : Color -> String -> Html Msg
+viewSkillsLineItem borderColor item =
     let
         style =
             [ marginRight <| em 0.25
-            , borderSolidColor printPaleGreen
+            , borderSolidColor borderColor
             , borderWidth printBorderWidth
             , borderRadius <| em 0.3
             , paddingTop <| zero
             , paddingBottom <| em 0.1
             , paddingRightLeft <| em 0.4
+            , fontSize <| em 0.8
             , whiteSpace noWrap
             ]
     in
@@ -290,63 +327,6 @@ viewTechLineItem item =
         style
         []
         [ text item ]
-
-
-viewProjects : Assets -> Data -> Html Msg
-viewProjects assets data =
-    let
-        basicData =
-            data.basic
-
-        sectionData =
-            data.projects
-    in
-    (viewSection "Side projects" << List.concat)
-        [ sectionData.items
-            |> filterResumeVisible resumeVariant .visibility
-            |> List.map viewProjectsItem
-        , basicData.homepageURL
-            |> viewProjectsMore assets.iconSource
-            |> List.singleton
-        ]
-
-
-viewProjectsItem : ProjectsItemData -> Html Msg
-viewProjectsItem item =
-    viewItem True
-        [ viewItemLineFlex0
-            [ viewItemTitle item.name
-            , viewItemDots
-            , viewItemPeriod item.period
-            ]
-        , viewItemLine1 [ viewItemLineBulletStyle ] <|
-            viewMarkedString
-                [ NormalSubstring <| item.description ++ ": "
-                , SpecialSubstring item.tech
-                ]
-        ]
-
-
-viewProjectsMore : IconSource -> String -> Html Msg
-viewProjectsMore iconSource homepageURL =
-    let
-        style =
-            [ marginTop zero
-            , marginBottom <| em 0.6
-            , marginLeft <| em 0.8
-            , fontStyle italic
-            ]
-
-        linkStyle =
-            [ fontStyle normal
-            ]
-    in
-    styled p
-        style
-        []
-        [ text "…more at "
-        , viewLink linkStyle iconSource homepageURL Nothing .externalLink
-        ]
 
 
 viewEducation : Data -> Html Msg
@@ -487,7 +467,7 @@ viewSubheading subheading =
         style =
             [ marginTop zero
             , marginBottom <| em 0.05
-            , fontSize <| em 1.9
+            , fontSize <| em 1.8
             , fontWeight bold
             ]
     in
@@ -621,7 +601,6 @@ viewItemLine1 customStyle =
     let
         style =
             [ marginTopBottom zero
-            , marginLeft <| em 0.8
             , batch customStyle
             ]
     in
@@ -633,7 +612,7 @@ viewItemLine2 =
     let
         style =
             [ marginTopBottom zero
-            , marginLeft <| em 1.6
+            , marginLeft <| em 1.0
             , viewItemLineBulletStyle
             ]
     in
@@ -654,7 +633,7 @@ viewItemLineBulletStyle =
 viewItemName : String -> Html Msg
 viewItemName =
     styledSpanText
-        [ fontStyle italic
+        [ fontWeight bold
         ]
 
 
@@ -663,7 +642,7 @@ viewItemLocation iconSource location =
     let
         style =
             [ marginLeft <| em -0.4
-            , fontStyle italic
+            , opacity <| num 0.5
             ]
     in
     styled span
@@ -684,7 +663,7 @@ viewItemPeriod =
 viewItemTitle : String -> Html Msg
 viewItemTitle =
     styledSpanText
-        [ fontWeight bold
+        [ fontStyle italic
         ]
 
 

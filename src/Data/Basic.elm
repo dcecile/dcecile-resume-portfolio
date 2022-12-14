@@ -14,6 +14,7 @@ type alias BasicData =
     , homepageURL : String
     , tagline : String
     , portfolioIntroPoints : List String
+    , resumeIntro : String
     , sourceURL : String
     , sourceShortURL : Maybe String
     }
@@ -43,6 +44,8 @@ initBasicData =
         , "I look forward to the opportunity to learn, to improve my skills, and to bring positive customer impact. I am committed to mentoring and helping out wherever I can, so that as a team we can grow together and ship some great software."
         , "Outside of work, I find my bliss spending time with my family, lost in library book stacks, and skating the city on my rollerblades."
         ]
+    , resumeIntro =
+        "With 14+ years of experience making high quality software, you can count on me for tech expertise, best practices, and effective communication."
     , sourceURL = sourceURL
     , sourceShortURL = Just "https://git.io/dcecile-resume"
     }
