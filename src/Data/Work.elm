@@ -60,20 +60,15 @@ initWorkData =
                 "Sonova Group"
                 "Kitchener, Ontario"
                 "8 years"
-                [ ( "Senior Software Developer", "2013–2018" )
-                , ( "Software Developer", "2009–2013" )
+                [ ( "Software Developer", "2009–2018" )
                 ]
                 [ "C# / WinForms / HTML / SQL"
                 , "data analysis / communication"
                 , "coordination / leadership / mentoring"
                 ]
-                [ markedString "Coded manufacturing subsystems in `C#`"
-                , markedString "Built a hybrid `HTML / C#` desktop app"
-                , markedString "Investigated bugs using `SQL` and Excel"
-                , markedString "Negotiated and documented requirements"
-                , markedString "Coordinated team’s development cycles"
-                , markedString "Led key improvements in team processes"
-                , markedString "Mentored team members"
+                [ markedString "Coded manufacturing subsystems in `C#` and built a hybrid `HTML / C#` desktop app"
+                , markedString "Investigated bugs using `SQL` and Excel, and negotiated and documented requirements"
+                , markedString "Coordinated team’s development cycles, led key improvements in team processes, and mentored team members"
                 ]
                 (markedString "I worked with my team at Sonova Group for 8 years, `making` hearing instrument manufacturing software.")
                 [ markedString "I used `C#` for software implementation and maintenance, and `SQL` + `Excel` for `analyzing` data"

@@ -15,5 +15,5 @@ initEducationData : EducationData
 initEducationData =
     { name = "University of Waterloo"
     , period = "2004–2009"
-    , specialization = "Bachelor of Computer Science"
+    , specialization = "Bachelor of Computer Science (Co-op)"
     }
