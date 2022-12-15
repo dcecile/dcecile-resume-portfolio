@@ -24,13 +24,14 @@ initStartupData =
     , items =
         [ "active listening"
         , "bias to action"
+        , "continuous improvement"
         , "customer success"
-        , "incrementalism"
         , "learning on-the-fly"
         , "nondualism"
         , "ownership"
         , "product thinking"
         , "shipping"
+        , "tenacity"
         ]
     , portfolioOutro = Nothing
     }
