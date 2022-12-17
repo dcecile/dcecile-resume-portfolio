@@ -11,6 +11,7 @@ import MarkedString exposing (MarkedString, markedString)
 type alias BasicData =
     { name : String
     , pronouns : String
+    , meetingURL : String
     , emailAddress : String
     , currentLocation : String
     , homepageURL : String
@@ -36,6 +37,7 @@ initBasicData : BasicData
 initBasicData =
     { name = "Dan Cecile"
     , pronouns = "he/him"
+    , meetingURL = "https://calendly.com/dancecile/virtual-30"
     , emailAddress = "dancecile@gmail.com"
     , currentLocation = "Canada (remote, EST)"
     , homepageURL = homepageURL
