@@ -18,6 +18,7 @@ type alias BasicData =
     , tagline : String
     , portfolioIntroPoints : List String
     , resumeIntro : MarkedString
+    , quote : ( String, String )
     , sourceURL : String
     , sourceShortURL : Maybe String
     }
@@ -50,6 +51,7 @@ initBasicData =
         ]
     , resumeIntro =
         markedString "I have `14+ years of experience` making high quality software, with an emphasis on best practices and effective communication. I’m dedicated to the success of my team through learning, mentoring, and constant iteration."
+    , quote = ( "“To love the plateau is to love what is most essential and enduring in your life.”", "George Leonard (Mastery)" )
     , sourceURL = sourceURL
     , sourceShortURL = Just "https://git.io/dcecile-resume"
     }

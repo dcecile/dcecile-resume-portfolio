@@ -1,17 +1,17 @@
 module View.Footer exposing (viewFooter)
 
 import Assets exposing (Assets)
-import Css exposing (alignSelf, borderWidth, center, color, em, fontSize, fontStyle, italic, marginBottom, marginTop, px, zero)
+import Css exposing (alignSelf, borderWidth, center, color, em, fontSize, fontStyle, italic, marginBottom, marginTop, num, opacity, paddingLeft, px, zero)
 import CssShorthand exposing (borderBottomSolidColor, displayFlexColumn, displayInitial, displayNone, marginRightLeft)
 import Data exposing (Data)
-import Html.Styled exposing (Html, a, br, footer, p, styled, text)
+import Html.Styled exposing (Html, a, blockquote, br, cite, footer, p, styled, text)
 import Html.Styled.Attributes exposing (href, id)
 import HtmlShorthand exposing (targetBlank)
 import Msg exposing (Msg)
 import View.Breakpoints exposing (breakpointPortfolioMedium)
 import View.Button as Button
 import View.CallsToAction exposing (viewCallsToAction)
-import View.Colors exposing (black, paleGreen)
+import View.Colors exposing (black, green, paleGreen)
 import View.ElmLogo exposing (viewElmLogo)
 
 
@@ -33,6 +33,7 @@ viewFooter assets data =
         [ viewDescription
         , viewCallsToAction assets data
         , viewButton
+        , viewQuote basicData.quote
         , viewInfo basicData.sourceURL
         ]
 
@@ -74,6 +75,37 @@ viewButton =
         [ text "Go back to the top" ]
 
 
+viewQuote : ( String, String ) -> Html Msg
+viewQuote quote =
+    let
+        ( quoteText, quoteCite ) =
+            quote
+
+        style =
+            [ marginTop <| em 1.4
+            , marginBottom <| zero
+            , marginRightLeft <| em 1.0
+            , fontSize <| em 0.85
+            , fontStyle italic
+            , color green
+            ]
+
+        citeStyle =
+            [ paddingLeft <| em 0.6
+            ]
+    in
+    styled blockquote
+        style
+        []
+        [ text quoteText
+        , styled cite
+            citeStyle
+            []
+            [ text <| "— " ++ quoteCite
+            ]
+        ]
+
+
 viewInfo : String -> Html Msg
 viewInfo sourceURL =
     let
@@ -81,7 +113,7 @@ viewInfo sourceURL =
             [ marginTop <| em 0.5
             , marginBottom <| em 1.5
             , fontSize <| em 0.85
-            , fontStyle italic
+            , opacity <| num 0.5
             ]
 
         linkStyle =
@@ -91,7 +123,7 @@ viewInfo sourceURL =
     styled p
         style
         []
-        [ text "I made this website with "
+        [ text "This website was made with "
         , styled a
             linkStyle
             [ href "http://elm-lang.org/"
