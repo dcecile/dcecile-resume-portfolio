@@ -177,11 +177,25 @@ initTechData =
             ]
             portfolioOnly
         , TechItemData
+            "GraphQL"
+            Nothing
+            (markedString "TODO")
+            [ markedString "TODO"
+            ]
+            portfolioOnly
+        , TechItemData
             "Google App Engine"
             (Just "GAE")
             (markedString "I built my `Go` back-end for `Tiny Worker Bee` with Google App Engine, making use of the Datastore, Task Queue, and URL Fetch features.")
             []
             (portfolioAndResume [ GoResume ])
+        , TechItemData
+            "Google Cloud Platform"
+            (Just "GCP")
+            (markedString "TODO")
+            [ markedString "TODO"
+            ]
+            (portfolioAndResume [ GeneralResume ])
         , TechItemData
             "Go"
             Nothing
@@ -340,11 +354,25 @@ initTechData =
             ]
             portfolioOnly
         , TechItemData
+            "scale"
+            Nothing
+            (markedString "TODO")
+            [ markedString "TODO"
+            ]
+            (portfolioAndResume [ GeneralResume ])
+        , TechItemData
             "Scheme"
             Nothing
             (markedString "Scheme was my introduction to the `functional programming` concept of higher-order functions. I used it at `NexJ Systems` to fix bugs and write unit tests.")
             []
             portfolioOnly
+        , TechItemData
+            "security"
+            Nothing
+            (markedString "TODO")
+            [ markedString "TODO"
+            ]
+            (portfolioAndResume [ GeneralResume ])
         , TechItemData
             "SQL"
             Nothing
