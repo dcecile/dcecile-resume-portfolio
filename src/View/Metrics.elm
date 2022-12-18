@@ -39,7 +39,7 @@ standardScreenFontSizeLarge =
 
 standardPrintFontSize : Pt
 standardPrintFontSize =
-    pt 12
+    pt 11
 
 
 printLineHeight : Float

@@ -5,18 +5,22 @@ module Data.Basic exposing
     , sourceURL
     )
 
+import MarkedString exposing (MarkedString, markedString)
+
 
 type alias BasicData =
     { name : String
+    , pronouns : String
+    , meetingURL : String
     , emailAddress : String
     , currentLocation : String
     , homepageURL : String
-    , portfolioTagline : String
-    , resumeTagline : String
+    , tagline : String
     , portfolioIntroPoints : List String
+    , resumeIntro : MarkedString
+    , quote : ( String, String )
     , sourceURL : String
     , sourceShortURL : Maybe String
-    , about : String
     }
 
 
@@ -33,18 +37,21 @@ sourceURL =
 initBasicData : BasicData
 initBasicData =
     { name = "Dan Cecile"
+    , pronouns = "he/him"
+    , meetingURL = "https://calendly.com/dancecile/virtual-30"
     , emailAddress = "dancecile@gmail.com"
-    , currentLocation = "Kitchener, Ontario"
+    , currentLocation = "Canada (remote, EST)"
     , homepageURL = homepageURL
-    , portfolioTagline = "Software developer"
-    , resumeTagline = "Software developer, 10 years experience"
+    , tagline = "Senior Full-Stack Software Engineer"
     , portfolioIntroPoints =
-        [ "It’s in the work I do."
-        , "I start with listening and learning, I look for improvements, and I get things done."
-        , "I’m ready for my next challenge."
-        , "How can I help your team grow?"
+        [ "I have more than 14 years of experience making high quality software. This includes expertise in a wide variety of technologies, but I’m always open to learning new programming languages, frameworks, and services. And regardless of the tech stack, I maintain an emphasis on software engineering best practices and effective communication."
+        , "In my projects, I take ambiguous problem definitions, and work with stakeholders to develop innovative and practical solutions. It’s an iterative process that includes structured brainstorming, successive refinement, frequent releases, and regular check-ins. For quality control along the way, I take advantage of continuous integration, code reviews, unit tests, and static analysis. By the time I’m done, I am proud of my work and stakeholders are confident that the problem is solved."
+        , "I look forward to the opportunity to learn, to improve my skills, and to bring positive customer impact. I am committed to mentoring and helping out wherever I can, so that as a team we can grow together and ship some great software."
+        , "Outside of work, I find my bliss spending time with my family, lost in library book stacks, and skating the city on my rollerblades."
         ]
+    , resumeIntro =
+        markedString "I have `14+ years of experience` making high quality software, with an emphasis on best practices and effective communication. I’m dedicated to the success of my team through learning, mentoring, and constant iteration."
+    , quote = ( "“To love the plateau is to love what is most essential and enduring in your life.”", "George Leonard (Mastery)" )
     , sourceURL = sourceURL
     , sourceShortURL = Just "https://git.io/dcecile-resume"
-    , about = "I live in Kitchener, Ontario, where I love to take walks even in the Canadian winter. I’m a lifelong student of Japanese, Chinese, and t’ai chi ch’üan. The most magical place for me is a library stacked with awesome books."
     }
