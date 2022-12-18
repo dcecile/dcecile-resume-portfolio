@@ -29,7 +29,3 @@ viewElmLogo =
             , polygon [ fill "rgba(18, 147, 216, 0.75)", points "-130,-44 0,86  130,-44", transform "translate(256 -150) rotate(-270)" ] []
             ]
         ]
-
-
-
--- polygon fill="" points="" transform=""></polygon></g></svg>
