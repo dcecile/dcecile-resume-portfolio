@@ -8,15 +8,12 @@ import Display exposing (Display)
 import Html.Styled exposing (Html, div, styled)
 import LazyHtml exposing (LazyHtml, fromLazyHtml2, toLazyHtml)
 import Msg exposing (Msg)
-import View.About exposing (viewAbout)
 import View.Breakpoints exposing (breakpointPortfolioMedium)
 import View.Colors exposing (black)
 import View.Contents exposing (viewContents)
 import View.DetailsAnimation exposing (animatePortfolio)
 import View.Footer exposing (viewFooter)
-import View.Frame exposing (viewFrame)
 import View.Intro exposing (viewIntro)
-import View.Links exposing (viewLinks)
 import View.Metrics exposing (standardLineHeight, standardScreenFontSizeLarge, standardScreenFontSizeSmall)
 import View.Mindsets exposing (viewMindsets)
 import View.Projects exposing (viewProjects)
@@ -65,10 +62,7 @@ viewPortfolioStatic assets data =
     styled div
         style
         []
-        [ viewFrame
-        , viewIntro assets data
-        , viewLinks assets data
-        , viewAbout data
+        [ viewIntro assets data
         , viewContents assets data
         , viewWork assets data
         , viewMindsets assets data

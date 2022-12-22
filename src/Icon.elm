@@ -21,7 +21,6 @@ type alias IconSource =
     , download : String
     , externalLink : String
     , eye : String
-    , fiveHundredPx : String
     , github : String
     , heart : String
     , home : String
@@ -29,7 +28,6 @@ type alias IconSource =
     , mail : String
     , mapPin : String
     , printer : String
-    , stackOverflow : String
     , twitter : String
     , user : String
     , xSquare : String

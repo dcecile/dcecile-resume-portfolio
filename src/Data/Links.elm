@@ -38,33 +38,17 @@ initLinksData =
                 "https://www.linkedin.com/in/dancecile/"
                 (Just "https://linkedin.com/in/dancecile")
 
-        stackOverflow =
-            LinksItemData
-                "Stack Overflow"
-                .stackOverflow
-                "https://stackoverflow.com/users/207321/dan-cecile?tab=profile"
-                Nothing
-
         twitter =
             LinksItemData
                 "Twitter"
                 .twitter
                 "https://twitter.com/dancecile"
                 Nothing
-
-        fiveHundredPx =
-            LinksItemData
-                "500px"
-                .fiveHundredPx
-                "https://500px.com/dancecile"
-                Nothing
     in
     { portfolioItems =
         [ github
         , linkedin
-        , stackOverflow
         , twitter
-        , fiveHundredPx
         ]
     , resumeItems =
         [ linkedin
