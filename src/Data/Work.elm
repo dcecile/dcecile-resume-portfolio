@@ -19,9 +19,9 @@ type alias WorkData =
 
 type alias WorkItemData =
     { name : String
-    , resumeLocation : String
     , portfolioDuration : String
-    , resumeTitlePeriods : List ( String, String )
+    , resumeTitle : String
+    , resumePeriod : String
     , portfolioSkills : List String
     , resumePoints : List MarkedString
     , detailsIntro : MarkedString
@@ -35,10 +35,9 @@ initWorkData =
         meya =
             WorkItemData
                 "Meya"
-                "Remote"
                 "4 years"
-                [ ( "Software Engineer", "2018–2022" )
-                ]
+                "Software Engineer"
+                "2018–2022"
                 [ "Python / Django / TypeScript / React"
                 , "PostgreSQL / Redis / Kubernetes / GCP"
                 , "system architecture / product thinking / shipping"
@@ -58,16 +57,16 @@ initWorkData =
         sonova =
             WorkItemData
                 "Sonova Group"
-                "Kitchener, Ontario"
                 "8 years"
-                [ ( "Software Developer", "2009–2018" )
-                ]
+                "Software Developer, Senior Software Developer"
+                "2009–2018"
                 [ "C# / WinForms / HTML / SQL"
                 , "data analysis / communication"
                 , "coordination / leadership / mentoring"
                 ]
                 [ markedString "Coded manufacturing subsystems in `C#` and built a hybrid `HTML / C#` desktop app"
-                , markedString "Investigated bugs using `SQL` and Excel, and negotiated and documented requirements"
+                , markedString "Investigated bugs using `SQL` and Excel"
+                , markedString "Negotiated and documented requirements"
                 , markedString "Coordinated team’s development cycles, led key improvements in team processes, and mentored team members"
                 ]
                 (markedString "I worked with my team at Sonova Group for 8 years, `making` hearing instrument manufacturing software.")
@@ -81,10 +80,9 @@ initWorkData =
         nexj =
             WorkItemData
                 "NexJ Systems"
-                "Toronto, Ontario"
                 "8 months (internship)"
-                [ ( "Developer", "internship, 2008" )
-                ]
+                "Developer, Application Developer"
+                "internship, 2008"
                 [ "Java / Scheme"
                 ]
                 [ markedString "Simplified WiX installer using `Java`"
@@ -99,10 +97,9 @@ initWorkData =
         coreworx =
             WorkItemData
                 "Coreworx"
-                "Kitchener, Ontario"
                 "8 months (internship)"
-                [ ( "Software Developer", "internship, 2006–2007" )
-                ]
+                "Software Developer"
+                "internship, 2006–2007"
                 [ "C# / SQL"
                 ]
                 [ markedString "Developed DMS personalization in `C#`"
@@ -117,10 +114,9 @@ initWorkData =
         lsi =
             WorkItemData
                 "LSI Logic"
-                "Waterloo, Ontario"
                 "8 months (internship)"
-                [ ( "Software Engineer", "internship, 2005–2006" )
-                ]
+                "Software Engineer"
+                "internship, 2005–2006"
                 [ "C / C++"
                 ]
                 [ markedString "Fixed H.264 video decoder bugs in `C`"

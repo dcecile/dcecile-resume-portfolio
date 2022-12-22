@@ -78,7 +78,7 @@ initTechData =
             , markedString "At `Sonova Group`, I used C# together with `SQL` to create internal tools focused on `improving` development and QA processes"
             , markedString "At `Sonova Group`, I used C# `threads` and async/await to build `WinForms` apps that don’t freeze during extended network and CPU tasks"
             ]
-            portfolioOnly
+            (portfolioAndResume [ GeneralResume ])
         , TechItemData
             "continuous integration and deployment"
             (Just "CI/CD")

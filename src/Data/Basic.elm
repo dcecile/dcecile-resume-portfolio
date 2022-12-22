@@ -5,6 +5,8 @@ module Data.Basic exposing
     , sourceURL
     )
 
+import MarkedString exposing (MarkedString, markedString)
+
 
 type alias BasicData =
     { name : String
@@ -14,7 +16,7 @@ type alias BasicData =
     , homepageURL : String
     , tagline : String
     , portfolioIntroPoints : List String
-    , resumeIntro : String
+    , resumeIntro : MarkedString
     , sourceURL : String
     , sourceShortURL : Maybe String
     }
@@ -45,7 +47,7 @@ initBasicData =
         , "Outside of work, I find my bliss spending time with my family, lost in library book stacks, and skating the city on my rollerblades."
         ]
     , resumeIntro =
-        "With 14+ years of experience making high quality software, you can count on me for tech expertise, best practices, and effective communication."
+        markedString "With `14+ years of experience` making high quality software, you can count on me for tech expertise, best practices, and effective communication."
     , sourceURL = sourceURL
     , sourceShortURL = Just "https://git.io/dcecile-resume"
     }
