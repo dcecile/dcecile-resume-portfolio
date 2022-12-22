@@ -5,7 +5,7 @@ module View.Resume exposing
 
 import Assets exposing (Assets)
 import Char
-import Css exposing (Color, Em, Style, absolute, batch, bold, borderRadius, borderWidth, center, color, em, flexBasis, flexGrow, flexShrink, fontSize, fontStyle, fontWeight, height, hidden, hsl, italic, justifyContent, letterSpacing, lineHeight, marginBottom, marginLeft, marginRight, marginTop, noWrap, normal, num, opacity, overflow, paddingBottom, paddingLeft, paddingTop, position, right, textAlign, whiteSpace, width, zero)
+import Css exposing (Color, Em, Style, absolute, batch, bold, borderRadius, borderWidth, center, color, em, flexBasis, flexGrow, flexShrink, fontSize, fontStyle, fontWeight, height, hidden, hsl, italic, justifyContent, lastOfType, letterSpacing, lineHeight, marginBottom, marginLeft, marginRight, marginTop, noWrap, normal, num, opacity, overflow, paddingBottom, paddingLeft, paddingTop, position, right, textAlign, whiteSpace, width, zero)
 import CssShorthand exposing (batchMap, beforeText, borderBottomSolidColor, borderLeftSolidColor, borderSolidColor, displayFlexColumn, displayFlexRow, marginRightLeft, marginTopBottom, paddingRightLeft, paddingTopBottom, textDecorationSkipInk, wordBreakBreakAll)
 import Data exposing (Data)
 import Data.Links exposing (LinksItemData)
@@ -217,7 +217,7 @@ viewMain assets data =
         []
         [ viewIntro data
         , viewTechSkills data
-        , viewWork assets data .resumeItems False
+        , viewWork assets data .resumeItems
         , viewStartupSkills data
         , viewEducation data
         ]
@@ -251,7 +251,7 @@ viewTechSkills data =
                 |> List.map (\item -> Maybe.withDefault item.name item.shortName)
     in
     viewSection sectionData.name
-        [ viewItem True
+        [ viewItem
             [ viewSkillsLine printGreen printPaleGreen skills
             ]
         ]
@@ -267,7 +267,7 @@ viewStartupSkills data =
             sectionData.items
     in
     viewSection sectionData.name
-        [ viewItem True
+        [ viewItem
             [ viewSkillsLine printBlack printBlack skills
             ]
         ]
@@ -316,7 +316,7 @@ viewEducation data =
             data.education
     in
     viewSection "Education"
-        [ viewItem True
+        [ viewItem
             [ viewItemLineFlex0
                 [ styledSpanText [] <| sectionData.name ++ " / " ++ sectionData.specialization
                 , viewItemDots
@@ -326,20 +326,20 @@ viewEducation data =
         ]
 
 
-viewWork : Assets -> Data -> (WorkData -> List WorkItemData) -> Bool -> Html Msg
-viewWork assets data itemsSelector narrow =
+viewWork : Assets -> Data -> (WorkData -> List WorkItemData) -> Html Msg
+viewWork assets data itemsSelector =
     let
         sectionData =
             data.work
     in
     itemsSelector sectionData
-        |> List.map (viewWorkItem assets.iconSource narrow)
+        |> List.map (viewWorkItem assets.iconSource)
         |> viewSection sectionData.name
 
 
-viewWorkItem : IconSource -> Bool -> WorkItemData -> Html Msg
-viewWorkItem iconSource narrow item =
-    (viewItem narrow << List.concat)
+viewWorkItem : IconSource -> WorkItemData -> Html Msg
+viewWorkItem iconSource item =
+    (viewItem << List.concat)
         [ viewWorkItemNameLocation iconSource item.name item.resumeLocation |> List.singleton
         , item.resumeTitlePeriods |> List.map (\( a, b ) -> viewWorkItemTitlePeriod a b)
         , item.resumePoints |> List.map viewWorkItemPoint
@@ -376,7 +376,7 @@ viewSubheading subheading =
         style =
             [ marginTop zero
             , marginBottom <| em 0.05
-            , fontSize <| em 1.2
+            , fontSize <| em 1.1
             , fontWeight bold
             ]
     in
@@ -450,20 +450,16 @@ viewHorizontalRule spacing =
     styled div style [] []
 
 
-viewItem : Bool -> List (Html Msg) -> Html Msg
-viewItem narrow nodes =
+viewItem : List (Html Msg) -> Html Msg
+viewItem nodes =
     let
         style =
             [ displayFlexRow
             , marginTop zero
-            , marginBottom <|
-                em
-                    (if narrow then
-                        0.6
-
-                     else
-                        0.9
-                    )
+            , marginBottom <| em 0.4
+            , lastOfType
+                [ marginBottom <| em 0.9
+                ]
             ]
 
         innerStyle =
