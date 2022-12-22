@@ -6,12 +6,12 @@ module View.Leaf exposing
 
 import Css exposing (Style, height, hidden, initial, num, opacity, px, visibility, width)
 import Css.Media as Media
-import CssShorthand exposing (animation, batchMap, mediaConditions, mediaInverseConditions, noStyle, rem_)
+import CssShorthand exposing (animation, batchMap, mediaConditions, mediaInverseConditions, rem_)
 import Msg exposing (Msg)
 import Svg.Styled exposing (Svg, g, path, styled, svg)
 import Svg.Styled.Attributes exposing (d)
 import SvgShorthand exposing (fill, flipAxes, rotate, scale, stroke, strokeWidthUnscaled, transform, translate, viewBoxSquare)
-import View.Breakpoints exposing (breakpointPortfolioMedium)
+import View.Breakpoints exposing (breakpointPortfolioLarge, breakpointPortfolioMedium)
 import View.Colors exposing (extraPaleGreen, paleGreen)
 
 
@@ -90,17 +90,33 @@ breakpointMaxSize =
         ]
 
 
-viewLeaf : Bool -> Bool -> Bool -> Float -> Svg Msg
-viewLeaf showUnderMediumWidth flipX flipY size =
+type alias ViewLeafConfig =
+    { showUnderMediumWidth : Bool
+    , showUnderLargeWidth : Bool
+    , flipX : Bool
+    , flipY : Bool
+    , size : Float
+    }
+
+
+viewLeaf : ViewLeafConfig -> Svg Msg
+viewLeaf config =
     let
         style =
-            [ if showUnderMediumWidth then
-                noStyle
+            [ if config.showUnderMediumWidth then
+                visibility initial
 
               else
                 visibility hidden
-            , breakpointPortfolioMedium
+            , breakpointPortfolioLarge
                 [ visibility initial
+                ]
+            , breakpointPortfolioMedium
+                [ if config.showUnderLargeWidth then
+                    visibility initial
+
+                  else
+                    visibility hidden
                 ]
             , batchMap [ width, height ] (rem_ leafSizeMinSizeRem)
             , breakpointMinSize
@@ -115,7 +131,7 @@ viewLeaf showUnderMediumWidth flipX flipY size =
             ]
 
         reverseAnimation =
-            xor flipX flipY
+            xor config.flipX config.flipY
     in
     styled svg
         style
@@ -124,9 +140,9 @@ viewLeaf showUnderMediumWidth flipX flipY size =
         [ g
             [ transform
                 [ translate leafCenter leafCenter
-                , flipAxes flipX flipY
+                , flipAxes config.flipX config.flipY
                 , translate -leafCenter -leafCenter
-                , scale size
+                , scale config.size
                 ]
             ]
             [ viewLeafPath reverseAnimation
@@ -136,7 +152,7 @@ viewLeaf showUnderMediumWidth flipX flipY size =
                  else
                     0
                 )
-                size
+                config.size
                 0.5
                 -5
                 ( 30, 5 )
@@ -147,7 +163,7 @@ viewLeaf showUnderMediumWidth flipX flipY size =
                  else
                     0
                 )
-                size
+                config.size
                 0.4
                 20
                 ( 0, 30 )

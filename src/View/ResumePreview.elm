@@ -141,14 +141,14 @@ viewActions assets data =
             [ href "%PUBLIC_URL%/resume.pdf"
             , download <| viewResumeName data
             ]
-            [ text "Download my resume"
+            [ text "Download"
             ]
         , viewAction iconSource
             .printer
             [ hrefHash
             , onClickPreventDefault (always Print)
             ]
-            [ text "Print my resume"
+            [ text "Print"
             ]
         , viewAction iconSource
             .home

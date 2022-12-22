@@ -1,7 +1,7 @@
 module View.CallsToAction exposing (viewCallsToAction)
 
 import Assets exposing (Assets)
-import Css exposing (Style, alignItems, batch, center, em, firstOfType, flexBasis, flexEnd, flexGrow, justifyContent, marginLeft, marginRight, marginTop, num, px, stretch, zero)
+import Css exposing (Style, alignItems, center, em, firstOfType, flexBasis, flexEnd, flexGrow, justifyContent, marginLeft, marginRight, marginTop, num, px, stretch, zero)
 import CssShorthand exposing (displayFlexColumn, displayFlexRow, displayFlexRowReverse, marginRightLeft)
 import Data exposing (Data)
 import Html.Styled exposing (Html, a, div, styled, text)
@@ -11,10 +11,26 @@ import Icon exposing (IconBackground, IconSource, iconSpan)
 import Msg exposing (Msg)
 import View.Breakpoints exposing (breakpointPortfolioMedium)
 import View.Button as Button
+import View.Links exposing (viewLinks)
 
 
-viewCallsToAction : List Style -> Assets -> Data -> Html Msg
-viewCallsToAction customStyle assets data =
+viewCallsToAction : Assets -> Data -> Html Msg
+viewCallsToAction assets data =
+    let
+        style =
+            [ displayFlexColumn
+            ]
+    in
+    styled div
+        style
+        []
+        [ viewCallToActionExtra assets data
+        , viewLinks assets data
+        ]
+
+
+viewCallToActionExtra : Assets -> Data -> Html Msg
+viewCallToActionExtra assets data =
     let
         iconSource =
             assets.iconSource
@@ -30,7 +46,6 @@ viewCallsToAction customStyle assets data =
             , justifyContent stretch
             , alignItems center
             , marginTop <| em 1.2
-            , batch customStyle
             ]
     in
     styled div
