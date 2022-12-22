@@ -319,7 +319,6 @@ viewSkillsLineItem borderColor item =
             , paddingTop <| zero
             , paddingBottom <| em 0.1
             , paddingRightLeft <| em 0.4
-            , fontSize <| em 0.8
             , whiteSpace noWrap
             ]
     in
@@ -656,8 +655,7 @@ viewItemLocation iconSource location =
 viewItemPeriod : String -> Html Msg
 viewItemPeriod =
     styledSpanText
-        [ color printGreen
-        ]
+        []
 
 
 viewItemTitle : String -> Html Msg

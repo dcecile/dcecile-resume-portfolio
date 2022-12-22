@@ -15,6 +15,7 @@ module CssShorthand exposing
     , displayInitial
     , displayNone
     , filter
+    , gap
     , marginRightLeft
     , marginTopBottom
     , mediaConditions
@@ -135,6 +136,11 @@ displayInitial =
 filter : String -> Style
 filter =
     property "filter"
+
+
+gap : Length compatible units -> Style
+gap arg =
+    property "gap" arg.value
 
 
 paddingRightLeft : Length compatible units -> Style
