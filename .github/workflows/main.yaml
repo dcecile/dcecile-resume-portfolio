@@ -62,9 +62,6 @@ jobs:
         env:
           ELM_APP_PORTFOLIO_GOOGLE_VERIFICATION: ${{ secrets.GOOGLE_VERIFICATION }}
 
-      - name: Setup tmate session
-        uses: mxschmitt/action-tmate@v3
-
       - name: Deploy
         if: github.ref == 'refs/heads/main'
         run: |
