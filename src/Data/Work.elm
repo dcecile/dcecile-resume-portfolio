@@ -47,7 +47,7 @@ initWorkData =
                 , markedString "Drastically improved end-to-end platform latency through benchmarking and source-level profiling"
                 , markedString "Enabled surge scale-up using `Gatling` tests, custom work-limiting metrics, and `Kubernetes` HPA"
                 , markedString "Coded and maintained deep integrations with external services via `REST APIs` and `webhooks`"
-                , markedString "Created a developer `React` web console and `Click` CLI connected to `Nginx`, `Django`, `GraphQL`, and `Git`"
+                , markedString "Created a developer CLI (`Click`) and web console (`React`), connected to `Nginx`, `Django`, `GraphQL`, and `Git`"
                 , markedString "Launched two iterations of a new company website using `Next.js`, `Node.js`, and `Prismic CMS`"
                 , markedString "Directly supported customers via Slack chat, async video clips, log tracing, and pair programming"
                 , markedString "Managed own solo projects through brainstorming, design, coding, release, and customer onboarding"
