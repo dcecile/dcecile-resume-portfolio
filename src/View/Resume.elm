@@ -6,7 +6,7 @@ module View.Resume exposing
 import Assets exposing (Assets)
 import Char
 import Css exposing (Color, Em, Style, absolute, batch, bold, borderRadius, borderWidth, center, color, em, flexBasis, flexEnd, flexGrow, flexShrink, fontSize, fontStyle, fontWeight, height, hidden, hsl, italic, justifyContent, lastOfType, letterSpacing, lineHeight, marginBottom, marginLeft, marginRight, marginTop, noWrap, normal, num, opacity, overflow, paddingBottom, paddingLeft, paddingTop, position, right, textAlign, whiteSpace, width, zero)
-import CssShorthand exposing (batchMap, beforeText, borderBottomSolidColor, borderLeftSolidColor, borderSolidColor, displayFlexColumn, displayFlexRow, marginRightLeft, marginTopBottom, paddingRightLeft, paddingTopBottom, textDecorationSkipInk, wordBreakBreakAll)
+import CssShorthand exposing (batchMap, beforeText, borderBottomSolidColor, borderLeftSolidColor, borderSolidColor, displayFlexColumn, displayFlexRow, marginRightLeft, marginTopBottom, paddingRightLeft, textDecorationSkipInk, wordBreakBreakAll)
 import Data exposing (Data)
 import Data.Links exposing (LinksItemData)
 import Data.Visibility exposing (ResumeVariant, filterResumeVisible)
@@ -32,8 +32,9 @@ viewResume assets data =
     let
         style =
             [ displayFlexColumn
-            , paddingTopBottom <| em 3.2
-            , paddingRightLeft <| em 4.1
+            , paddingTop <| em 3.1
+            , paddingBottom <| em 2.2
+            , paddingRightLeft <| em 4.4
             , flexGrow <| num 1
             , lineHeight <| num printLineHeight
             , color printBlack
@@ -375,7 +376,6 @@ viewFooter assets data =
         style =
             [ displayFlexColumn
             , justifyContent flexEnd
-            , marginTop <| em 0.2
             , flexGrow <| num 1
             ]
     in
@@ -502,9 +502,9 @@ viewItem nodes =
         style =
             [ displayFlexRow
             , marginTop zero
-            , marginBottom <| em 0.4
+            , marginBottom <| em 0.5
             , lastOfType
-                [ marginBottom <| em 0.9
+                [ marginBottom <| em 0.7
                 ]
             ]
 

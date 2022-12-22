@@ -1,7 +1,7 @@
 module View.CallsToAction exposing (viewCallsToAction)
 
 import Assets exposing (Assets)
-import Css exposing (Style, alignItems, center, em, firstOfType, flexBasis, flexEnd, flexGrow, justifyContent, marginLeft, marginRight, marginTop, num, px, stretch, zero)
+import Css exposing (Style, alignItems, center, em, firstOfType, flexEnd, flexGrow, justifyContent, marginLeft, marginRight, marginTop, num, px, stretch, zero)
 import CssShorthand exposing (displayFlexColumn, displayFlexRow, displayFlexRowReverse, marginRightLeft)
 import Data exposing (Data)
 import Html.Styled exposing (Html, a, div, styled, text)
@@ -82,7 +82,6 @@ viewCallToAction iconSource displayStyle iconBackground attributes elements =
                 ]
             , breakpointPortfolioMedium
                 [ marginTop zero
-                , flexBasis <| em 0
                 , flexGrow <| num 1
                 ]
             ]

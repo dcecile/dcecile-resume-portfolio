@@ -22,7 +22,6 @@ viewLinks assets data =
             , justifyContent center
             , flexWrap wrap
             , marginTop <| em 1.2
-            , marginRightLeft <| em 2.0
             , marginBottom <| em 2.0
             ]
     in

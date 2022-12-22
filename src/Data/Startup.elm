@@ -23,10 +23,13 @@ initStartupData =
         "TODO"
     , items =
         [ "active listening"
+        , "async"
         , "bias to action"
         , "continuous improvement"
+        , "curiosity"
         , "customer success"
         , "learning on-the-fly"
+        , "mentoring"
         , "nondualism"
         , "ownership"
         , "product thinking"
