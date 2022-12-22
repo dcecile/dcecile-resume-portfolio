@@ -47,7 +47,7 @@ initWorkData =
                 , markedString "Drastically improved end-to-end platform latency through benchmarking and source-level profiling"
                 , markedString "Enabled surge scale-up using `Gatling` tests, custom work-limiting metrics, and `Kubernetes` HPA"
                 , markedString "Coded and maintained deep integrations with external services via `REST APIs` and `webhooks`"
-                , markedString "Created a developer `Ant Design / React` web console and `Click` CLI connected to `Nginx`, `GraphQL`, and `Git`"
+                , markedString "Created a developer `React` web console and `Click` CLI connected to `Nginx`, `Django`, `GraphQL`, and `Git`"
                 , markedString "Launched two iterations of a new company website using `Next.js`, `Node.js`, and `Prismic CMS`"
                 , markedString "Directly supported customers through Slack chat, async video clips, log tracing, and pair programming"
                 , markedString "Managed own solo projects through brainstorming, design, coding, release, and customer onboarding"
@@ -67,7 +67,7 @@ initWorkData =
                 , "coordination / leadership / mentoring"
                 ]
                 [ markedString "Collaborated closely with dev teams and production staff worldwide, building `C#` manufacturing subsystems designed to support the launch and service of our full range of hearing instruments"
-                , markedString "Retrofitted multiple desktop apps to support `i18n`, managed `l10n` processes and tools"
+                , markedString "Retrofitted multiple desktop apps to support `i18n`, managed `l10n` tools and processes for 8+ languages"
                 , markedString "Analyzed data with ad-hoc `SQL` queries to investigate bugs and business concerns"
                 , markedString "Presented technical summaries (with appropriate data visualization) to managers and other teams"
                 , markedString "Triaged tasks, coordinated iterations, improved processes, and mentored team members"
