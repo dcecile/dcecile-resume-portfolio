@@ -1,13 +1,13 @@
 module View.Intro exposing (viewIntro)
 
 import Assets exposing (Assets)
-import Css exposing (alignItems, alignSelf, bold, center, color, em, fontSize, fontWeight, left, lineHeight, marginBottom, marginTop, maxWidth, normal, num, position, relative, textAlign, zero)
+import Css exposing (alignItems, alignSelf, bold, center, color, em, fontSize, fontWeight, left, lineHeight, marginBottom, marginTop, maxWidth, normal, num, opacity, position, relative, textAlign, zero)
 import CssShorthand exposing (displayFlexColumn, marginTopBottom, paddingRightLeft)
 import Data exposing (Data)
 import Html.Styled exposing (Html, div, h1, header, main_, p, span, styled, text)
 import Msg exposing (Msg)
 import View.CallsToAction exposing (viewCallsToAction)
-import View.Colors exposing (gray, green)
+import View.Colors exposing (green)
 import View.Frame exposing (viewFrame)
 
 
@@ -81,7 +81,7 @@ viewName name pronouns =
             ]
 
         pronounsStyle =
-            [ color gray
+            [ opacity <| num 0.5
             , fontWeight normal
             , fontSize <| em 0.7
             ]

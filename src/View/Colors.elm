@@ -2,11 +2,9 @@ module View.Colors exposing
     ( black
     , blackLevel
     , extraPaleGreen
-    , gray
     , green
     , paleGreen
     , printBlack
-    , printGray
     , printGreen
     , printPaleGreen
     , printPaleGreenComponents
@@ -24,11 +22,6 @@ blackLevel =
 black : Color
 black =
     rgb blackLevel blackLevel blackLevel
-
-
-gray : Color
-gray =
-    hex "#404040"
 
 
 greenHue : Float
@@ -59,11 +52,6 @@ white =
 printBlack : Color
 printBlack =
     hex "#000000"
-
-
-printGray : Color
-printGray =
-    hex "#808080"
 
 
 printPaleGreenComponents : ( Float, Float, Float )
