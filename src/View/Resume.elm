@@ -5,17 +5,17 @@ module View.Resume exposing
 
 import Assets exposing (Assets)
 import Char
-import Css exposing (Color, Em, Style, absolute, batch, bold, borderRadius, borderWidth, center, color, em, flexBasis, flexEnd, flexGrow, flexShrink, fontSize, fontStyle, fontWeight, height, hidden, hsl, italic, justifyContent, letterSpacing, lineHeight, marginBottom, marginLeft, marginRight, marginTop, noWrap, normal, num, opacity, overflow, paddingBottom, paddingLeft, paddingTop, position, right, textAlign, whiteSpace, width, zero)
+import Css exposing (Color, Em, Style, absolute, batch, bold, borderRadius, borderWidth, center, color, em, flexBasis, flexGrow, flexShrink, fontSize, fontStyle, fontWeight, height, hidden, hsl, italic, justifyContent, letterSpacing, lineHeight, marginBottom, marginLeft, marginRight, marginTop, noWrap, normal, num, opacity, overflow, paddingBottom, paddingLeft, paddingTop, position, right, textAlign, whiteSpace, width, zero)
 import CssShorthand exposing (batchMap, beforeText, borderBottomSolidColor, borderLeftSolidColor, borderSolidColor, displayFlexColumn, displayFlexRow, marginRightLeft, marginTopBottom, paddingRightLeft, paddingTopBottom, textDecorationSkipInk, wordBreakBreakAll)
 import Data exposing (Data)
 import Data.Links exposing (LinksItemData)
 import Data.Visibility exposing (ResumeVariant, filterResumeVisible)
 import Data.Work exposing (WorkData, WorkItemData)
-import Html.Styled exposing (Html, a, div, footer, h1, h2, h3, header, img, main_, nav, p, section, span, styled, text)
+import Html.Styled exposing (Html, a, div, h1, h2, h3, header, img, main_, nav, p, section, span, styled, text)
 import Html.Styled.Attributes exposing (href)
 import HtmlShorthand exposing (styledSpanText)
 import Icon exposing (IconBackground, IconSource, iconImage)
-import MarkedString exposing (MarkedString, MarkedSubstring(..), markedString)
+import MarkedString exposing (MarkedString, MarkedSubstring(..))
 import Msg exposing (Msg)
 import Regex
 import View.Colors exposing (printBlack, printGreen, printPaleGreen, printPaleGreenComponents)
@@ -43,10 +43,8 @@ viewResume assets data =
         style
         []
         [ viewHeader assets data
-        , viewHorizontalRule <| em 0.8
+        , viewHorizontalRule <| em 0.6
         , viewMain assets data
-        , viewHorizontalRule <| em 0.2
-        , viewFooter assets data
         ]
 
 
@@ -104,7 +102,7 @@ viewName name pronouns =
         style =
             [ marginTopBottom zero
             , lineHeight <| num 1.0
-            , fontSize <| em 3.0
+            , fontSize <| em 2.4
             , fontWeight bold
             ]
 
@@ -132,7 +130,7 @@ viewTagline tagline =
         style =
             [ marginTop <| em 0.6
             , marginBottom <| em 0.1
-            , fontSize <| em 1.3
+            , fontSize <| em 1.0
             , color printGreen
             ]
     in
@@ -171,7 +169,7 @@ viewContact iconSource emailAddress links currentLocation =
             , justifyContent center
             , marginTop <| em 0.3
             , textAlign right
-            , lineHeight <| num 1.9
+            , lineHeight <| num 1.6
             ]
     in
     [ emailAddress |> viewContactEmail iconSource |> List.singleton
@@ -210,33 +208,16 @@ viewMain : Assets -> Data -> Html Msg
 viewMain assets data =
     let
         style =
-            [ displayFlexRow
+            [ displayFlexColumn
             , flexGrow <| num 1
             ]
     in
     styled main_
         style
         []
-        [ viewInfo data
-        , viewHistory assets data
-        ]
-
-
-viewInfo : Data -> Html Msg
-viewInfo data =
-    let
-        style =
-            [ displayFlexColumn
-            , flexBasis <| em 0
-            , flexGrow <| num 1
-            , marginRight <| em 1.8
-            ]
-    in
-    styled div
-        style
-        []
         [ viewIntro data
         , viewTechSkills data
+        , viewWork assets data .resumeItems False
         , viewStartupSkills data
         , viewEducation data
         ]
@@ -337,42 +318,23 @@ viewEducation data =
     viewSection "Education"
         [ viewItem True
             [ viewItemLineFlex0
-                [ viewItemName sectionData.name
+                [ styledSpanText [] <| sectionData.name ++ " / " ++ sectionData.specialization
                 , viewItemDots
                 , viewItemPeriod sectionData.period
                 ]
-            , viewItemLineFlex1
-                [ viewItemTitle sectionData.specialization
-                ]
             ]
         ]
 
 
-viewHistory : Assets -> Data -> Html Msg
-viewHistory assets data =
-    let
-        style =
-            [ displayFlexColumn
-            , flexBasis <| em 0
-            , flexGrow <| num 1.25
-            ]
-    in
-    styled div
-        style
-        []
-        [ viewWork assets data "Work history" .resumeItems False
-        ]
-
-
-viewWork : Assets -> Data -> String -> (WorkData -> List WorkItemData) -> Bool -> Html Msg
-viewWork assets data subheading itemsSelector narrow =
+viewWork : Assets -> Data -> (WorkData -> List WorkItemData) -> Bool -> Html Msg
+viewWork assets data itemsSelector narrow =
     let
         sectionData =
             data.work
     in
     itemsSelector sectionData
         |> List.map (viewWorkItem assets.iconSource narrow)
-        |> viewSection subheading
+        |> viewSection sectionData.name
 
 
 viewWorkItem : IconSource -> Bool -> WorkItemData -> Html Msg
@@ -408,65 +370,13 @@ viewWorkItemPoint point =
         viewMarkedString point
 
 
-viewFooter : Assets -> Data -> Html Msg
-viewFooter assets data =
-    let
-        basicData =
-            data.basic
-
-        style =
-            [ displayFlexColumn
-            , justifyContent flexEnd
-            , marginTop <| em 0.2
-            , flexGrow <| num 1
-            ]
-    in
-    styled footer
-        style
-        []
-        [ viewSource
-            assets.iconSource
-            basicData.sourceURL
-            basicData.sourceShortURL
-        ]
-
-
-viewSource : IconSource -> String -> Maybe String -> Html Msg
-viewSource iconSource sourceURL sourceShortURL =
-    let
-        style =
-            [ marginTopBottom zero
-            , textAlign center
-            , fontStyle italic
-            ]
-
-        linkStyle =
-            [ fontStyle normal
-            ]
-
-        highlightStyle =
-            [ color printGreen
-            ]
-    in
-    (styled p style [] << List.concat)
-        [ markedString "I made this resume with `Elm` and `CSS` — view source at "
-            |> MarkedString.transform text (styledSpanText highlightStyle)
-        , viewLink linkStyle iconSource sourceURL sourceShortURL .externalLink
-            |> List.singleton
-        ]
-
-
-
--- Elements
-
-
 viewSubheading : String -> Html Msg
 viewSubheading subheading =
     let
         style =
             [ marginTop zero
             , marginBottom <| em 0.05
-            , fontSize <| em 1.8
+            , fontSize <| em 1.2
             , fontWeight bold
             ]
     in
@@ -531,7 +441,7 @@ viewHorizontalRule : Em -> Html msg
 viewHorizontalRule spacing =
     let
         style =
-            [ marginRightLeft <| em 2
+            [ marginRightLeft <| em 0.6
             , batchMap [ marginBottom, paddingBottom ] spacing
             , borderBottomSolidColor printPaleGreen
             , borderWidth printBorderWidth
@@ -563,7 +473,7 @@ viewItem narrow nodes =
 
         verticalRuleStyle =
             [ marginTopBottom <| em 0.25
-            , marginLeft <| em 0.7
+            , marginLeft <| em 0.4
             , paddingLeft <| em 0.8
             , borderLeftSolidColor printPaleGreen
             , borderWidth printBorderWidth
