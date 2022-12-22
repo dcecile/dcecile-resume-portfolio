@@ -10,6 +10,7 @@ async function main() {
 
     const browser = await puppeteer.launch({
       args: [
+        '--font-render-hinting=none',
         '--no-sandbox',
         '--disable-setuid-sandbox',
         '--disable-blink-features=LayoutNGPrinting',
@@ -17,6 +18,7 @@ async function main() {
     })
     const page = await browser.newPage()
     await page.goto('http://localhost:3001', { waitUntil: 'networkidle2' })
+    await page.evaluateHandle('document.fonts.ready')
     await page.pdf({
       path: 'build/resume.pdf',
       width: '8.5in',

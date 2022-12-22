@@ -10,7 +10,6 @@ import HeadPort from './HeadPort'
 import Icon from './Icon'
 import Navigation, { getHash } from './Navigation'
 import Print from './Print'
-import RegisterServiceWorker from './RegisterServiceWorker'
 
 const node = document.getElementById('root')
 const app = Elm.Main.init({
@@ -26,4 +25,10 @@ HeadPort.subscribe(app)
 Navigation.subscribe(app)
 Print.subscribe(app)
 
-RegisterServiceWorker()
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.getRegistrations().then((registrations) => {
+    for (const registration of registrations) {
+      registration.unregister()
+    }
+  })
+}
