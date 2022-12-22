@@ -1,16 +1,18 @@
 module View.CallsToAction exposing (viewCallsToAction)
 
 import Assets exposing (Assets)
-import Css exposing (Style, alignItems, center, em, firstOfType, flexEnd, flexGrow, justifyContent, marginLeft, marginRight, marginTop, num, px, stretch, zero)
-import CssShorthand exposing (displayFlexColumn, displayFlexRow, displayFlexRowReverse, marginRightLeft)
+import Css exposing (Style, alignItems, alignSelf, backgroundColor, center, em, firstOfType, flexEnd, flexGrow, fontSize, fontWeight, justifyContent, marginLeft, marginRight, marginTop, normal, num, px, stretch, zero)
+import CssShorthand exposing (displayFlexColumn, displayFlexRow, displayFlexRowReverse, marginRightLeft, marginTopBottom, paddingRightLeft, paddingTopBottom)
 import Data exposing (Data)
-import Html.Styled exposing (Html, a, div, styled, text)
+import Html.Styled exposing (Html, a, div, h2, styled, text)
 import Html.Styled.Attributes exposing (href)
 import HtmlShorthand exposing (HtmlTag, targetBlank)
 import Icon exposing (IconBackground, IconSource, iconSpan)
 import Msg exposing (Msg)
 import View.Breakpoints exposing (breakpointPortfolioMedium)
 import View.Button as Button
+import View.Colors exposing (extraPaleGreen, white)
+import View.GroupBox as GroupBox
 import View.Links exposing (viewLinks)
 
 
@@ -24,8 +26,65 @@ viewCallsToAction assets data =
     styled div
         style
         []
-        [ viewCallToActionExtra assets data
+        [ viewMeeting data
+        , viewCallToActionExtra assets data
         , viewLinks assets data
+        ]
+
+
+viewMeeting : Data -> Html Msg
+viewMeeting data =
+    let
+        style =
+            [ GroupBox.border
+            , displayFlexColumn
+            , alignSelf center
+            , marginTop <| em 1.2
+            , paddingTopBottom <| em 1.2
+            , paddingRightLeft <| em 1.4
+            , backgroundColor extraPaleGreen
+            ]
+    in
+    styled div
+        style
+        []
+        [ viewMeetingDescription
+        , viewMeetingButton data
+        ]
+
+
+viewMeetingDescription : Html Msg
+viewMeetingDescription =
+    let
+        style =
+            [ marginTopBottom zero
+            , fontSize <| em 1
+            , fontWeight normal
+            ]
+    in
+    styled h2
+        style
+        []
+        [ text "Let’s chat." ]
+
+
+viewMeetingButton : Data -> Html Msg
+viewMeetingButton data =
+    let
+        meetingURL =
+            data.basic.meetingURL
+    in
+    styled a
+        [ Button.border
+        , Button.sizeLarge
+        , Button.text
+        , marginTop <| em 0.8
+        , backgroundColor white
+        ]
+        [ href meetingURL
+        , targetBlank
+        ]
+        [ text "Book a virtual meeting"
         ]
 
 
@@ -45,7 +104,7 @@ viewCallToActionExtra assets data =
                 ]
             , justifyContent stretch
             , alignItems center
-            , marginTop <| em 1.2
+            , marginTop <| em 1.4
             ]
     in
     styled div

@@ -8,7 +8,7 @@ module View.Button exposing
     , text
     )
 
-import Css exposing (Style, batch, borderRadius, borderWidth, boxShadow5, color, em, lineHeight, none, num, px, textDecoration, zero)
+import Css exposing (Style, batch, borderRadius, borderWidth, boxShadow5, color, em, lineHeight, noWrap, none, num, px, textDecoration, whiteSpace, zero)
 import CssShorthand exposing (borderSolidColor, paddingRightLeft)
 import View.Colors exposing (black, paleGreen)
 import View.Metrics exposing (standardBorderRadius, standardBorderWidth)
@@ -52,6 +52,7 @@ sizeSmall =
     batch
         [ paddingRightLeft <| em 0.5
         , lineHeight <| num 1.7
+        , whiteSpace noWrap
         ]
 
 
@@ -60,6 +61,7 @@ sizeMedium =
     batch
         [ paddingRightLeft <| em 0.8
         , lineHeight <| num 2.1
+        , whiteSpace noWrap
         ]
 
 
@@ -68,6 +70,7 @@ sizeLarge =
     batch
         [ paddingRightLeft <| em 1.1
         , lineHeight <| num 2.4
+        , whiteSpace noWrap
         ]
 
 

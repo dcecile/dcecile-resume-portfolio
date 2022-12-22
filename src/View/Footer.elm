@@ -1,10 +1,10 @@
 module View.Footer exposing (viewFooter)
 
 import Assets exposing (Assets)
-import Css exposing (alignSelf, bold, borderWidth, center, color, em, fontSize, fontStyle, fontWeight, italic, marginBottom, marginTop, px, zero)
-import CssShorthand exposing (borderBottomSolidColor, displayFlexColumn, displayInitial, displayNone)
+import Css exposing (alignSelf, borderWidth, center, color, em, fontSize, fontStyle, italic, marginBottom, marginTop, px, zero)
+import CssShorthand exposing (borderBottomSolidColor, displayFlexColumn, displayInitial, displayNone, marginRightLeft)
 import Data exposing (Data)
-import Html.Styled exposing (Html, a, br, footer, h2, p, styled, text)
+import Html.Styled exposing (Html, a, br, footer, p, styled, text)
 import Html.Styled.Attributes exposing (href, id)
 import HtmlShorthand exposing (targetBlank)
 import Msg exposing (Msg)
@@ -30,30 +30,26 @@ viewFooter assets data =
     styled footer
         style
         [ id "fin" ]
-        [ viewHeader
-        , viewButton
+        [ viewDescription
         , viewCallsToAction assets data
+        , viewButton
         , viewInfo basicData.sourceURL
         ]
 
 
-viewHeader : Html Msg
-viewHeader =
+viewDescription : Html Msg
+viewDescription =
     let
         style =
             [ marginTop <| em 3.0
-            , marginBottom <| em 0.8
-            , breakpointPortfolioMedium
-                [ marginBottom <| em 2.3
-                ]
-            , fontWeight bold
-            , fontSize <| em 1.0
+            , marginBottom <| zero
+            , marginRightLeft <| em 1.0
             ]
     in
-    styled h2
+    styled p
         style
         []
-        [ text "fin." ]
+        [ text "Thanks so much for taking the time to view my portfolio. Want to learn more?" ]
 
 
 viewButton : Html Msg
