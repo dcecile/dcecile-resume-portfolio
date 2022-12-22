@@ -39,7 +39,7 @@ initWorkData =
                 "Software Engineer"
                 "2018–2022"
                 [ "Python / Django / TypeScript / React"
-                , "PostgreSQL / Redis / Kubernetes / GCP"
+                , "Kubernetes / PostgreSQL / Redis / GCP"
                 , "system architecture / product thinking / shipping"
                 ]
                 [ markedString "Designed and implemented a new secure, scalable, event-oriented, multi-tenant architecture for our chatbot platform using `Python`, `NaCl`, `WebSockets`, `Redis Streams`, `PostgreSQL`, and `Kubernetes`"
