@@ -62,7 +62,7 @@ initWorkData =
 
         sonova =
             WorkItemData
-                "Sonova Group"
+                "Sonova"
                 "8 years"
                 "Software Developer, Senior Software Developer"
                 "2009–2018"
@@ -76,7 +76,7 @@ initWorkData =
                 , markedString "Presented technical summaries (with appropriate data visualization) to managers and other teams"
                 , markedString "Triaged tasks, coordinated iterations, improved processes, and mentored team members"
                 ]
-                (markedString "I worked with my team at Sonova Group for 8 years, `making` hearing instrument manufacturing software.")
+                (markedString "I worked with my team at Sonova for 8 years, `making` hearing instrument manufacturing software.")
                 [ markedString "I used `C#` for software implementation and maintenance, and `SQL` + `Excel` for `analyzing` data"
                 , markedString "I mitigated bugs writing integration tests, actively listening to stakeholders, and thoroughly `learning` business/software systems"
                 , markedString "I built a hybrid `HTML` and `C#` desktop application to replace a paper-based inspection process"

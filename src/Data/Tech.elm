@@ -46,8 +46,8 @@ initTechData =
             Nothing
             (markedString "Writing clear and informative bug reports is a key skill for any member of a software development team. It’s one that I’ve been practising since my second internship:")
             [ markedString "At `Coreworx`, during my time helping QA with testing, I learned the keys to effective bug reporting"
-            , markedString "At `Sonova Group`, I continued to work at `improving` my bug reporting as I logged bugs for software components maintained by other teams"
-            , markedString "At `Sonova Group`, I regularly triaged my team’s bugs, and spent time `teaching` others what to fix for unclear bug reports"
+            , markedString "At `Sonova`, I continued to work at `improving` my bug reporting as I logged bugs for software components maintained by other teams"
+            , markedString "At `Sonova`, I regularly triaged my team’s bugs, and spent time `teaching` others what to fix for unclear bug reports"
             ]
             portfolioOnly
         , TechItemData
@@ -74,24 +74,24 @@ initTechData =
             Nothing
             (markedString "By now, I’ve read and written more code in .NET’s C# than in any other programming language. I have a solid grasp of advanced features like LINQ, reflection, code generation, and generics. I know how to write good, maintainable C#.")
             [ markedString "At `Coreworx`, I first used C# to add features to an ASP.NET document management system"
-            , markedString "At `Sonova Group`, I used C# for 8 years as I implemented and maintained manufacturing subsystems"
-            , markedString "At `Sonova Group`, I used C# together with `SQL` to create internal tools focused on `improving` development and QA processes"
-            , markedString "At `Sonova Group`, I used C# `threads` and async/await to build `WinForms` apps that don’t freeze during extended network and CPU tasks"
+            , markedString "At `Sonova`, I used C# for 8 years as I implemented and maintained manufacturing subsystems"
+            , markedString "At `Sonova`, I used C# together with `SQL` to create internal tools focused on `improving` development and QA processes"
+            , markedString "At `Sonova`, I used C# `threads` and async/await to build `WinForms` apps that don’t freeze during extended network and CPU tasks"
             ]
             (portfolioAndResume [ GeneralResume ])
         , TechItemData
             "continuous integration and deployment"
             (Just "CI/CD")
             (markedString "I have a strong interest in build systems and continuous integration:")
-            [ markedString "Starting at `LSI Logic`, and continuing at `NexJ Systems` and `Sonova Group`, I’ve made build systems improvements for maintainability and productivity"
-            , markedString "At `Sonova Group`, I translated my build system experience into improvements and maintenance for our TeamCity continuous integration server"
-            , markedString "At `Sonova Group` I experienced the benefit of continuously-deployed ClickOnce internal tools—now I’m using Semaphore to continuously deploy `Forks in the Road` and `My Portfolio and Resume`"
+            [ markedString "Starting at `LSI Logic`, and continuing at `NexJ Systems` and `Sonova`, I’ve made build systems improvements for maintainability and productivity"
+            , markedString "At `Sonova`, I translated my build system experience into improvements and maintenance for our TeamCity continuous integration server"
+            , markedString "At `Sonova` I experienced the benefit of continuously-deployed ClickOnce internal tools—now I’m using Semaphore to continuously deploy `Forks in the Road` and `My Portfolio and Resume`"
             ]
             (portfolioAndResume [ GeneralResume ])
         , TechItemData
             "code review"
             Nothing
-            (markedString "With my team at `Sonova Group`, every change required the approval of two reviewers before being committed to `version control`:")
+            (markedString "With my team at `Sonova`, every change required the approval of two reviewers before being committed to `version control`:")
             [ markedString "This offered excellent opportunities for `learning` and `teaching` about code maintainability as well as specific software features, components, and technologies"
             , markedString "Diligently using code reviews was a key step in `improving` the quality of our software"
             , markedString "We found that the time spent on reviews was a net positive for our team’s productivity"
@@ -102,7 +102,7 @@ initTechData =
             "CSS"
             Nothing
             (markedString "These days, my primary tool for `visual design` is CSS, for making `HTML` web applications:")
-            [ markedString "At `Sonova Group`, I used CSS to implement a hybrid `HTML` desktop app according to initial mockups"
+            [ markedString "At `Sonova`, I used CSS to implement a hybrid `HTML` desktop app according to initial mockups"
             , markedString "In `PR Quest` and `Forks in the Road`, I’ve leveraged my `Qt` experience to set up CSS flexbox layouts"
             , markedString "In `/tmp/blog` and `PR Quest`, I use CSS3 media queries for `responsive design`"
             , markedString "With `Reactic-Tac-Toe` and `Forks in the Road`, I’m `learning` how to do `functional animation` with CSS3 transitions and animations"
@@ -136,7 +136,7 @@ initTechData =
             (Just "DSLs")
             (markedString "I have experience both using and creating DSLs:")
             [ markedString "At `NexJ Systems`, I used an in-house `Scheme` DSL with my work on the CRM user interface and business logic"
-            , markedString "At `Sonova Group`, I created a `C#` DSL for specifying related test plans—to improve maintainability and to track history in `version control`"
+            , markedString "At `Sonova`, I created a `C#` DSL for specifying related test plans—to improve maintainability and to track history in `version control`"
             , markedString "With `My Portfolio and Resume` and `Tacit`, I’m using `Elm` and `Scala` DSLs for writing `HTML` and `CSS` code"
             , markedString "With `Tacit`, I’m creating a small DSL for each transformation that the programming language compiler applies"
             ]
@@ -150,7 +150,7 @@ initTechData =
         , TechItemData
             "Excel"
             Nothing
-            (markedString "At `Sonova Group`, I used Excel together with `SQL` for `analyzing` data:")
+            (markedString "At `Sonova`, I used Excel together with `SQL` for `analyzing` data:")
             [ markedString "I used Excel pivot tables and pivot charts to explore trends and correlations"
             , markedString "I copied Excel table and chart summaries into emails—to help communicate the data to managers"
             , markedString "I linked Excel directly to `SQL` tables and views, to create live reports"
@@ -162,7 +162,7 @@ initTechData =
             (Just "FP")
             (markedString "I use this programming style because it helps me cleanly extract sub-problems:")
             [ markedString "At `NexJ Systems`, I had my first, basic introduction to functional programming as I used `Scheme` to fix bugs and write unit tests"
-            , markedString "At `Sonova Group`, functional programming made `test-driven development` easier to apply for a test run comparison `C#` GUI app"
+            , markedString "At `Sonova`, functional programming made `test-driven development` easier to apply for a test run comparison `C#` GUI app"
             , markedString "In `My Portfolio and Resume`, functional programming helps keep my `Elm` code well-organized, and makes refactoring a breeze"
             , markedString "In `Off-Grid Orcs`, functional programming helped prevent newly-implemented `Scala` features from breaking existing functionality"
             ]
@@ -212,7 +212,7 @@ initTechData =
             "HTML"
             Nothing
             (markedString "I’m `making` web applications with HTML, `CSS`, and `JavaScript`:")
-            [ markedString "At `Sonova Group`, as an experiment with a new GUI technology beyond `WinForms` and WPF, I created a hybrid HTML and `C#` desktop application for `Windows` (I built a custom IE + .NET WebBrowser control integration instead of using Chrome + Electron)"
+            [ markedString "At `Sonova`, as an experiment with a new GUI technology beyond `WinForms` and WPF, I created a hybrid HTML and `C#` desktop application for `Windows` (I built a custom IE + .NET WebBrowser control integration instead of using Chrome + Electron)"
             , markedString "With `Forks in the Road`, I’m making a `Rails` and `React` web app that helps users make decisions via probability-based value estimation"
             , markedString "With `PR Quest`, I used `Vue.js` (with an HTML5 History API router) to create a single-page application that can be navigated without page loads"
             , markedString "Other web apps I’ve made: `Forks in the Road`, `My Portfolio and Resume`, `Off-Grid Orcs`, `Reactic-Tac-Toe`, `Tacit`, `Tiny Worker Bee`, `/tmp/blog`"
@@ -221,7 +221,7 @@ initTechData =
         , TechItemData
             "internationalization & localization"
             (Just "i18n & l10n")
-            (markedString "On my team at `Sonova Group`, I was in charge of our translation processes:")
+            (markedString "On my team at `Sonova`, I was in charge of our translation processes:")
             [ markedString "I converted our primary `WinForms` software from hard-coded English to supporting Chinese and German, including on-the-fly language changes"
             , markedString "I added basic right-to-left language support to our secondary-market `WinForms` software"
             , markedString "I managed the localization of our software plus another team's software, `coordinating` translator activities for up to 14 languages"
@@ -241,7 +241,7 @@ initTechData =
             "JavaScript"
             Nothing
             (markedString "I use JavaScript for most of my front-end development (with language features like modules, await, and classes provided by Babel):")
-            [ markedString "At `Sonova Group`, I used JavaScript for the UI logic of a hybrid `HTML` and `C#` desktop app"
+            [ markedString "At `Sonova`, I used JavaScript for the UI logic of a hybrid `HTML` and `C#` desktop app"
             , markedString "In `Forks in the Road`, I’m using JavaScript with `React` for the front-end of my value estimation web app"
             , markedString "In `Tiny Worker Bee`, I used JavaScript with `Vue.js` for the front-end UI of my Twitter scheduling bot"
             , markedString "In `PR Quest`, I used JavaScript with `Vue.js` to build a static-content single page application"
@@ -341,7 +341,7 @@ initTechData =
         , TechItemData
             "Sass"
             Nothing
-            (markedString "After using LESS at `Sonova Group`, and Stylus with `PR Quest` and `Tiny Worker Bee`, I’ve started using this `CSS` language to get smooth integration with `Bootstrap`:")
+            (markedString "After using LESS at `Sonova`, and Stylus with `PR Quest` and `Tiny Worker Bee`, I’ve started using this `CSS` language to get smooth integration with `Bootstrap`:")
             [ markedString "For both `/tmp/blog` and `Forks in the Road`, I use Sass to take my application’s `CSS` classes—organized using Block Element Modifier—and extend them with `Bootstrap` styles"
             ]
             portfolioOnly
@@ -376,7 +376,7 @@ initTechData =
         , TechItemData
             "SQL"
             Nothing
-            (markedString "At `Sonova Group`, I used `SQL` for `analyzing` data and creating internal development/QA tools:")
+            (markedString "At `Sonova`, I used `SQL` for `analyzing` data and creating internal development/QA tools:")
             [ markedString "I used Excel together with ad hoc SQL queries to investigate bugs and communicate my findings"
             , markedString "I optimized my ad hoc SQL queries to run on large datasets that were initially impossible"
             , markedString "I created an SQL data warehouse with materialized views, for analyzing trends that spanned multiple upstream DBs"
@@ -388,8 +388,8 @@ initTechData =
             "SVG"
             Nothing
             (markedString "I use SVG in my `HTML` applications, and I know its capabilities (and limitations).")
-            [ markedString "At `Sonova Group`, I created an interactive SVG document (via the D3.js `JavaScript` library) for `teaching` our network topology of production/test servers and databases"
-            , markedString "At `Sonova Group`, I designed and used SVG icons for a hybrid `HTML` desktop app"
+            [ markedString "At `Sonova`, I created an interactive SVG document (via the D3.js `JavaScript` library) for `teaching` our network topology of production/test servers and databases"
+            , markedString "At `Sonova`, I designed and used SVG icons for a hybrid `HTML` desktop app"
             , markedString "For `Forks in the Road`, I began my `visual design` by creating SVG mockup in Inkscape"
             , markedString "For `My Portfolio and Resume`, I created SVG illustrations in `Elm`—animating them using `CSS`"
             ]
@@ -405,7 +405,7 @@ initTechData =
             "test-driven development"
             (Just "TDD")
             (markedString "I’ve done TDD and experienced its benefits. (I’m still working at using it more often.)")
-            [ markedString "At `Sonova Group` with `C#`, I followed test-driven development to build a test run comparison tool"
+            [ markedString "At `Sonova` with `C#`, I followed test-driven development to build a test run comparison tool"
             , markedString "In `Tacit` with `Scala`, I wrote my initial parser using TDD"
             , markedString "In `Forks in the Road` with `Ruby`, I used TDD to add back-end functionality"
             ]
@@ -414,9 +414,9 @@ initTechData =
             "technical requirements"
             Nothing
             (markedString "I’m comfortable using technical requirements documents as a communication medium:")
-            [ markedString "I’ve used official specs to write software for H.264 video encoding/decoding (at `LSI Logic`), ANSI hearing instrument testing (at `Sonova Group`), and XMPP messaging"
-            , markedString "At `Sonova Group`, I wrote clear technical requirements that included contextual information, discussed trade-offs of different solutions, and provided enough detail for correct implementation"
-            , markedString "At `Sonova Group`, I used the technical requirements I’d written negotiating features and implementation details, `making` the software, and introducing the changes to QA"
+            [ markedString "I’ve used official specs to write software for H.264 video encoding/decoding (at `LSI Logic`), ANSI hearing instrument testing (at `Sonova`), and XMPP messaging"
+            , markedString "At `Sonova`, I wrote clear technical requirements that included contextual information, discussed trade-offs of different solutions, and provided enough detail for correct implementation"
+            , markedString "At `Sonova`, I used the technical requirements I’d written negotiating features and implementation details, `making` the software, and introducing the changes to QA"
             , markedString "For `bitfontmake`, I wrote a technical specification to document my custom image-based font format"
             ]
             portfolioOnly
@@ -424,8 +424,8 @@ initTechData =
             "threads"
             Nothing
             (markedString "I know how to write correct multithreading code, and how to debug threading issues. Threads, mutexes, semaphores, condition variables, and barriers are all familiar tools for me.")
-            [ markedString "At `Sonova Group` with `C#` and `WinForms`, I used async/await to build `Windows` desktop applications that perform long-running tasks on background threads"
-            , markedString "At `Sonova Group` with `C#`, I used Parallel LINQ as well as the Task Parallel Library to automatically coordinate background threads"
+            [ markedString "At `Sonova` with `C#` and `WinForms`, I used async/await to build `Windows` desktop applications that perform long-running tasks on background threads"
+            , markedString "At `Sonova` with `C#`, I used Parallel LINQ as well as the Task Parallel Library to automatically coordinate background threads"
             , markedString "In `Yomikata` with `C++` and `Qt`, I used threads and processes to unpack and decode images in the background while keeping the UI responsive"
             ]
             portfolioOnly
@@ -468,7 +468,7 @@ initTechData =
         , TechItemData
             "Windows"
             Nothing
-            (markedString "I have lots of Windows experience, having used it at home and at work, including 8 years at `Sonova Group`:")
+            (markedString "I have lots of Windows experience, having used it at home and at work, including 8 years at `Sonova`:")
             [ markedString "I use PowerShell for advanced command-line tasks (e.g. for shell scripts and WMI queries)"
             , markedString "I troubleshoot Windows system problems (for myself, family, and teammates) using event logs, the device manager, Process Monitor, Process Explorer, Dependency Walker, ILSpy, Visual Studio’s debugger, and Google searches"
             , markedString "(I’m also comfortable using and troubleshooting `Linux`)"
@@ -477,7 +477,7 @@ initTechData =
         , TechItemData
             "WinForms"
             Nothing
-            (markedString "My team at `Sonova Group` worked primarily in `C#` creating WinForms desktop software for `Windows`. Using this technology,")
+            (markedString "My team at `Sonova` worked primarily in `C#` creating WinForms desktop software for `Windows`. Using this technology,")
             [ markedString "I created a user management module using DevExpress layouts and data-binding"
             , markedString "I built a test run comparison application, `improving` a process that previously included manual spreadsheet authoring"
             , markedString "I made an `SQL`-backed test run search and summary application, to help QA focus testing resources using production data"
