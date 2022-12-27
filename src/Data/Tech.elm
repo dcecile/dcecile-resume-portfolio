@@ -97,7 +97,7 @@ initTechData =
             , markedString "We found that the time spent on reviews was a net positive for our team’s productivity"
             , markedString "(We mainly used SmartBear’s Collaborator, and sometimes used GitHub)"
             ]
-            portfolioOnly
+            (portfolioAndResume [ GeneralResume ])
         , TechItemData
             "CSS"
             Nothing
@@ -277,7 +277,7 @@ initTechData =
             (markedString "TODO")
             [ markedString "TODO"
             ]
-            (portfolioAndResume [ GeneralResume ])
+            portfolioOnly
         , TechItemData
             "PostgreSQL"
             Nothing

@@ -32,9 +32,9 @@ viewResume assets data =
     let
         style =
             [ displayFlexColumn
-            , paddingTop <| em 3.1
-            , paddingBottom <| em 2.2
-            , paddingRightLeft <| em 4.4
+            , paddingTop <| em 2.8
+            , paddingBottom <| em 2.1
+            , paddingRightLeft <| em 3.8
             , flexGrow <| num 1
             , lineHeight <| num printLineHeight
             , color printBlack
@@ -148,7 +148,7 @@ viewHomepage iconSource homepageURL =
     let
         style =
             [ marginTopBottom zero
-            , fontSize <| em 1.0
+            , fontSize <| em 0.9
             , fontStyle italic
             ]
 
@@ -172,6 +172,7 @@ viewContact iconSource emailAddress links currentLocation =
             , justifyContent center
             , marginTop <| em 0.3
             , textAlign right
+            , fontSize <| em 0.9
             , lineHeight <| num 1.6
             ]
     in
@@ -502,9 +503,9 @@ viewItem nodes =
         style =
             [ displayFlexRow
             , marginTop zero
-            , marginBottom <| em 0.5
+            , marginBottom <| em 0.4
             , lastOfType
-                [ marginBottom <| em 0.7
+                [ marginBottom <| em 0.6
                 ]
             ]
 
