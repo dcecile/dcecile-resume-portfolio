@@ -5,8 +5,8 @@ module Data.Work exposing
     )
 
 import Data.Section exposing (SectionData)
-import MarkedString exposing (MarkedString, markedString)
 import Html.Styled exposing (mark)
+import MarkedString exposing (MarkedString, markedString)
 
 
 type alias WorkData =
@@ -43,12 +43,12 @@ initWorkData =
                 , "Kubernetes / PostgreSQL / Redis / GCP"
                 , "system architecture / product thinking / shipping"
                 ]
-                [ markedString "Designed and implemented a new secure, scalable, `event-oriented`, multi-tenant architecture for our chatbot platform using `Python`, `NaCl`, `WebSockets`, `Redis Streams`, `PostgreSQL`, and `Kubernetes`"
+                [ markedString "Designed and implemented a new secure, scalable, `event-oriented`, multi-tenant architecture for our chatbot platform built on `Python`, `NaCl`, `WebSockets`, `Redis Streams`, `PostgreSQL`, `Kubernetes`, and `GCP`"
                 , markedString "Enabled surge scale-up using `Gatling` tests, custom work-limiting metrics, and `Kubernetes` HPA"
                 , markedString "Created `React / TypeScript` and `Flutter` chat SDKs, including UX and API design for innovative new features"
-                , markedString "Drastically improved end-to-end platform latency through benchmarking and `source-level profiling`"
-                , markedString "Upgraded our `YAML / Jinja` workflow language, adding aliases, type checks, and tail calls for better DX"
-                , markedString "Coded `integrations` with other platforms via `REST APIs` and `webhooks`, unit tested with mocked payloads"
+                , markedString "Drastically reduced end-to-end platform latency through benchmarking and `source-level profiling`"
+                , markedString "Upgraded our `YAML / Jinja` workflow language, adding aliases, type checks, and tail calls for improved DX"
+                , markedString "Coded `integrations` using `REST APIs` and `webhooks` with mocked payload and event stream tests"
                 , markedString "Built a developer CLI (`Click`) and web console (`React`), connected to `Nginx`, `Django`, `GraphQL`, and `Git`"
                 , markedString "Launched a `React / Rappid` visual flow editor with templates, inline docs, and full programmability"
                 , markedString "Boosted performance and unlocked key log searches by compiling `Lucene` to windowed, index-aware `SQL`"
