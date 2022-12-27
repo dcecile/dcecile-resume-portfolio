@@ -5,7 +5,6 @@ module Data.Work exposing
     )
 
 import Data.Section exposing (SectionData)
-import Html.Styled exposing (mark)
 import MarkedString exposing (MarkedString, markedString)
 
 
