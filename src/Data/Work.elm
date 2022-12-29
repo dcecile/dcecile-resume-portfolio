@@ -79,9 +79,9 @@ initWorkData =
                 , markedString "Triaged tasks, coordinated iterations, prepared releases, built internal tools, and mentored team members"
                 ]
                 (markedString "I worked with my team at Sonova for 8 years, `making` hearing instrument manufacturing software.")
-                [ markedString "I used `C#` for software implementation and maintenance, and `SQL` + `Excel` for `analyzing` data"
+                [ markedString "I used `C#` for software implementation and maintenance, and `SQL` + Excel for `analyzing` data"
                 , markedString "I mitigated bugs writing integration tests, actively listening to stakeholders, and thoroughly `learning` business/software systems"
-                , markedString "I built a hybrid `HTML` and `C#` desktop application to replace a paper-based inspection process"
+                , markedString "I built a hybrid HTML and `C#` desktop application to replace a paper-based inspection process"
                 , markedString "I followed `test-driven development` to build a test run comparison tool that saved weeks of manual effort"
                 , markedString "Also: negotiating solutions, documenting `technical requirements`, `coordinating` development cycles, `improving` team processes, mentoring and `teaching` peers"
                 ]
@@ -94,15 +94,15 @@ initWorkData =
                 "internship, 2008"
                 [ "Java / Scheme"
                 ]
-                [ markedString "Wrote tests, fixed CRM bugs in `Scheme`"
+                [ markedString "Wrote tests, fixed CRM bugs in Scheme"
                 , markedString "Pair programmed to find and fix bugs"
-                , markedString "Simplified WiX installer using `Java`"
+                , markedString "Simplified WiX installer using Java"
                 , markedString "Tested Windows Installers"
                 ]
                 (markedString "My final internship was with teams at NexJ Systems, `making` customer relationship management software:")
-                [ markedString "I used `Java` for `improving` an Ant + WiX installer build system"
-                , markedString "I investigated and fixed client-critical bugs in `Scheme`"
-                , markedString "I wrote business logic unit tests in `Scheme`"
+                [ markedString "I used Java for `improving` an Ant + WiX installer build system"
+                , markedString "I investigated and fixed client-critical bugs in Scheme"
+                , markedString "I wrote business logic unit tests in Scheme"
                 ]
 
         coreworx =
@@ -132,15 +132,15 @@ initWorkData =
                 "internship, 2005–2006"
                 [ "C / C++"
                 ]
-                [ markedString "Created a DSP log analysis tool in `C++`"
+                [ markedString "Created a DSP log analysis tool in C++"
                 , markedString "Implemented 'video debugger' features in C"
-                , markedString "Fixed H.264 video decoder bugs in `C`"
+                , markedString "Fixed H.264 video decoder bugs in C"
                 ]
                 (markedString "My first internship was with the team at LSI Logic, `making` H.264 video decoders and encoders:")
                 [ markedString "I began by reading the H.264 spec, `learning` how video encoding works"
-                , markedString "I fixed video decoder bugs in `C`"
-                , markedString "I implemented video debugger features in `C`"
-                , markedString "I created an internal tool for analyzing the logs of a digital-signal-processor pipeline simulation in `C++`"
+                , markedString "I fixed video decoder bugs in C"
+                , markedString "I implemented video debugger features in C"
+                , markedString "I created an internal tool for analyzing the logs of a digital-signal-processor pipeline simulation in C++"
                 ]
 
         portfolioLargeItems =

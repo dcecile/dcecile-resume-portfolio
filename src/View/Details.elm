@@ -370,9 +370,6 @@ viewPoints points =
             [ displayFlexColumn
             , flexWrap wrap
             , marginTop <| em 0.6
-            , breakpointDetailsMediumHeight
-                [ marginTop <| em 1.0
-                ]
             , marginBottom zero
             , overflow hidden
             , paddingLeft zero
@@ -390,9 +387,6 @@ viewPoint =
         style =
             [ marginTop zero
             , marginBottom <| em 0.6
-            , breakpointDetailsMediumHeight
-                [ marginBottom <| em 1.0
-                ]
             , marginLeft <| em 1.6
             , width <| calc (pct 100) minus (em 1.6)
             , breakpointDetailsMediumHeight

@@ -35,8 +35,8 @@ initMindsetsData =
                 "making"
                 (markedString "The reason I’m a software developer is because I enjoy making ideas come alive as working software:")
                 [ markedString "At `Sonova`, I made manufacturing software in `C#`—by listening for details hidden behind rough wishes, then building solutions to fit the needs and the context"
-                , markedString "With `Off-Grid Orcs`, I created an `HTML` Canvas `Scala` game—from concept to release—during a 17-day game jam"
-                , markedString "With `Forks in the Road`, I’m making a `Rails` + `React` web app that helps users make decisions via probability-based value estimation"
+                , markedString "With `Off-Grid Orcs`, I created an HTML Canvas `Scala` game—from concept to release—during a 17-day game jam"
+                , markedString "With `Forks in the Road`, I’m making a Rails + `React` web app that helps users make decisions via probability-based value estimation"
                 , markedString "With `My Portfolio and Resume`, I turned my simple sketches into multi-element, animated `SVG` illustrations"
                 , markedString "I’m volunteering as a makerspace assistant, `teaching` kids how they can also be makers"
                 ]
@@ -46,9 +46,9 @@ initMindsetsData =
                 "learning"
                 (markedString "My curiosity and my passion for `improving` my work motivate me to always continue learning:")
                 [ markedString "At `Sonova`, I learned the keys to effective communication in a large, geographically-distributed organization"
-                , markedString "In `Forks in the Road`, I learned how to use JWT authentication for an API-only `Rails` app"
+                , markedString "In `Forks in the Road`, I learned how to use JWT authentication for an API-only Rails app"
                 , markedString "In `Off-Grid Orcs`, I learned how to apply a `functional programming` architecture to a real-time `Scala` strategy game"
-                , markedString "In `Yomikata`, I learned how to use multiple processes and `threads` in `C++`, to give a smooth user experience while loading images"
+                , markedString "In `Yomikata`, I learned how to use multiple processes and `threads` in C++, to give a smooth user experience while loading images"
                 ]
 
         teaching =
@@ -64,7 +64,7 @@ initMindsetsData =
         analyzing =
             MindsetsItemData
                 "analyzing"
-                (markedString "At `Sonova`, my team often encountered questions that could only be answered by analyzing production data. Using a combination of `SQL` and `Excel`,")
+                (markedString "At `Sonova`, my team often encountered questions that could only be answered by analyzing production data. Using a combination of `SQL` and Excel,")
                 [ markedString "I researched the value of maintaining software solutions vs. the cost of setting up manual workarounds"
                 , markedString "I investigated the hardware component causes of firmware bugs"
                 , markedString "I communicated my findings using easy-to-understand tables, charts, and summaries"
