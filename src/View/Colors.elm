@@ -7,7 +7,6 @@ module View.Colors exposing
     , printBlack
     , printGreen
     , printPaleGreen
-    , printPaleGreenComponents
     , white
     )
 
@@ -54,18 +53,9 @@ printBlack =
     hex "#000000"
 
 
-printPaleGreenComponents : ( Float, Float, Float )
-printPaleGreenComponents =
-    ( greenHue, 0.5, 0.82 )
-
-
 printPaleGreen : Color
 printPaleGreen =
-    let
-        ( h, s, l ) =
-            printPaleGreenComponents
-    in
-    hsl h s l
+    hsl greenHue 0.5 0.82
 
 
 printGreen : Color
