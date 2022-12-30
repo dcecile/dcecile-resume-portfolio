@@ -56,11 +56,12 @@ initWorkData =
                 , markedString "Managed own solo projects from brainstorming, design, coding, documentation, to release and onboarding"
                 ]
                 (markedString "I was a member of the team at Meya for more than 4 years, working on a chatbot platform that customers used to build and launch great customer support.")
-                [ markedString "I was a key contributor to the design and implementation of a new secure, scalable, event-oriented, multi-tenant architecture for our platform, using `Python`, NaCl, WebSockets, `Redis` Streams, `PostgreSQL`, and `Kubernetes`"
-                , markedString "I created and maintained our chat UI SDKs for web (`React`, `TypeScript`) and mobile (Flutter)"
-                , markedString "I built the parser, engine, and static checks for our server-programmable, custom YAML / Jinja workflow DSL"
-                , markedString "I directly supported customers via Slack chat, async video clips, log tracing, debugging, and pair programming"
-                , markedString "I managed my own solo projects all the way from brainstorming, design, coding, documentation, release, through to customer onboarding"
+                [ markedString "I co-designed a new architecture for our platform, with `scale`, `security`, and `event streams` at the core"
+                , markedString "I worked on implementing our back-end using `Python`, `WebSockets`, `Redis`, `PostgreSQL`, `Kubernetes`, and `Google Cloud Platform`"
+                , markedString "I created and maintained our chat UI SDKs for web (`React`, `TypeScript`) and mobile (`Flutter`)"
+                , markedString "Experience in `domain-specific languages`: I built the 2nd-generation parser, engine, and static checks for our custom workflow language"
+                , markedString "I helped improved our QC processes: `code review`, unit `testing`, `continuous integration and deployment`, staging releases, checklists, and monitoring"
+                , markedString "I directly supported customers via Slack chat, async video clips, `log tracing`, `debugging`, and `pair programming`"
                 ]
 
         sonova =
@@ -80,7 +81,7 @@ initWorkData =
                 ]
                 (markedString "I worked with my team at Sonova for 8 years, `making` hearing instrument manufacturing software.")
                 [ markedString "I used `C#` for software implementation and maintenance, and `SQL` + Excel for `analyzing` data"
-                , markedString "I mitigated bugs writing integration tests, actively listening to stakeholders, and thoroughly `learning` business/software systems"
+                , markedString "I mitigated bugs using integration tests, actively listening, and thoroughly `learning` business/software systems"
                 , markedString "I built a hybrid HTML and `C#` desktop application to replace a paper-based inspection process"
                 , markedString "I followed `test-driven development` to build a test run comparison tool that saved weeks of manual effort"
                 , markedString "Also: negotiating solutions, documenting `technical requirements`, `coordinating` development cycles, `improving` team processes, mentoring and `teaching` peers"
@@ -102,7 +103,7 @@ initWorkData =
                 (markedString "My final internship was with teams at NexJ Systems, `making` customer relationship management software:")
                 [ markedString "I used Java for `improving` an Ant + WiX installer build system"
                 , markedString "I investigated and fixed client-critical bugs in Scheme"
-                , markedString "I wrote business logic unit tests in Scheme"
+                , markedString "I did business logic unit `testing` in Scheme"
                 ]
 
         coreworx =

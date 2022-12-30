@@ -1,7 +1,7 @@
 module View.Tech exposing (viewTech)
 
 import Assets exposing (Assets)
-import Css exposing (alignItems, baseline, color, em, flexWrap, fontSize, fontStyle, italic, marginBottom, px, wrap)
+import Css exposing (alignItems, baseline, center, color, em, flexWrap, fontSize, fontStyle, italic, justifyContent, marginBottom, px, width, wrap)
 import CssShorthand exposing (displayFlexRow, marginRightLeft, marginTopBottom)
 import Data exposing (Data)
 import Data.Tech exposing (TechItemData)
@@ -38,7 +38,7 @@ viewItems items =
             , alignItems baseline
             , marginRightLeft <| em 0.4
             , breakpointPortfolioMedium
-                [ marginRightLeft <| em 3.8
+                [ marginRightLeft <| em 1.6
                 ]
             , marginBottom <| em 1.5
             , fontSize <| em 0.92
@@ -107,10 +107,8 @@ viewKey key =
     let
         style =
             [ displayFlexRow
-            , marginRightLeft <| px 4
-            , breakpointPortfolioMedium
-                [ marginRightLeft <| px 6
-                ]
+            , justifyContent center
+            , width <| em 1.2
             , color paleGreen
             , fontStyle italic
             ]

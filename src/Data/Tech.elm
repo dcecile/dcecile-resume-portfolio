@@ -34,10 +34,13 @@ initTechData =
         "I’m serious about learning new skills and improving my old ones. New skills bring new perspectives and open new doors. Through practice, old skills reveal the keys to mastery."
     , items =
         [ TechItemData
-            "AWS"
-            Nothing
-            (markedString "TODO")
-            [ markedString "TODO"
+            "Amazon Web Services"
+            (Just "AWS")
+            (markedString "At `Meya`, our `Python` chatbot platform was originally built for and hosted on AWS.")
+            [ markedString "I set up a CloudWatch monitoring dashboard, tied to alerts and including custom metrics"
+            , markedString "I helped debug and resolve issues related to DynamoDB and ElastiCache (`Redis`) load"
+            , markedString "I set up a new `Docker`-based, `Node.js` ECS service that used ALB sticky sessions"
+            , markedString "I tuned our EC2 autoscaling rules to optimize costs while maintaining platform stability and low latency"
             ]
             portfolioOnly
         , TechItemData
@@ -47,6 +50,7 @@ initTechData =
             [ markedString "At `Coreworx`, during my time helping QA with testing, I learned the keys to effective bug reporting"
             , markedString "At `Sonova`, I continued to work at `improving` my bug reporting as I logged bugs for software components maintained by other teams"
             , markedString "At `Sonova`, I regularly triaged my team’s bugs, and spent time `teaching` others what to fix for unclear bug reports"
+            , markedString "At `Meya`, I converted customer problem reports into clear and actionable bug reports for our team to resolve"
             ]
             portfolioOnly
         , TechItemData
@@ -62,32 +66,30 @@ initTechData =
         , TechItemData
             "continuous integration and deployment"
             (Just "CI/CD")
-            (markedString "I have a strong interest in build systems and continuous integration:")
-            [ markedString "Starting at `LSI Logic`, and continuing at `NexJ Systems` and `Sonova`, I’ve made build systems improvements for maintainability and productivity"
-            , markedString "At `Sonova`, I translated my build system experience into improvements and maintenance for our TeamCity continuous integration server"
-            , markedString "At `Sonova` I experienced the benefit of continuously-deployed ClickOnce internal tools—now I’m using Semaphore to continuously deploy `Forks in the Road` and `My Portfolio and Resume`"
+            (markedString "I have a strong interest in build systems and continuous integration/deployment:")
+            [ markedString "Starting at `LSI Logic`, and continuing at `NexJ Systems`, `Sonova`, and `Meya`, I’ve made build systems improvements for maintainability and productivity"
+            , markedString "At `Meya`, I set up continuous deployment that included `Kubernetes` rolling deployment upgrades, `React` builds, and `Google Cloud Platform` cloud storage uploads"
+            , markedString "For all my recent projects (incluing at `Meya` and in `Pentagram` and `My Portfolio and Resume`), I’m using GitHub Actions for CI/CD, taking advantage of PR status reporting, caching, and branch-conditional steps"
             ]
             (portfolioAndResume [ GeneralResume ])
         , TechItemData
             "code review"
             Nothing
-            (markedString "With my team at `Sonova`, every change required the approval of two reviewers before being committed to `version control`:")
-            [ markedString "This offered excellent opportunities for `learning` and `teaching` about code maintainability as well as specific software features, components, and technologies"
+            (markedString "With my teams at `Meya` and `Sonova`, every change required code review approval before merging in `version control`:")
+            [ markedString "This offers excellent opportunities for `learning` and `teaching` about code maintainability as well as specific software features, components, and technologies"
             , markedString "Diligently using code reviews was a key step in `improving` the quality of our software"
             , markedString "We found that the time spent on reviews was a net positive for our team’s productivity"
-            , markedString "(We mainly used SmartBear’s Collaborator, and sometimes used GitHub)"
             ]
             (portfolioAndResume [ GeneralResume ])
         , TechItemData
             "CSS"
             Nothing
             (markedString "These days, my primary tool for `visual design` is CSS, for making HTML web applications:")
-            [ markedString "At `Sonova`, I used CSS to implement a hybrid HTML desktop app according to initial mockups"
-            , markedString "In `Forks in the Road`, I’ve leveraged my Qt experience to set up CSS flexbox layouts"
-            , markedString "In `My Portfolio and Resume`, I use CSS3 media queries for `responsive design`"
+            [ markedString "At `Meya`, I used CSS with `React` to build our chat UI SDK, developer web console, and new company website"
+            , markedString "At `Sonova`, I used CSS to implement a hybrid HTML desktop app according to initial mockups"
+            , markedString "In `Forks in the Road`, I leveraged my Qt experience to set up CSS flexbox layouts"
+            , markedString "In `My Portfolio and Resume` and `Meya`, I used media queries for `responsive design`"
             , markedString "With `Forks in the Road`, I began `learning` how to do `functional animation` with CSS3 transitions and animations"
-            , markedString "I’m a fan of Block Element Modifier for organization"
-            , markedString "(I’ve also been using CSS via Sass, and via `domain-specific languages` in `Elm` and `Scala`)"
             ]
             (portfolioAndResume [ GeneralResume, ElmResume ])
         , TechItemData
@@ -103,29 +105,35 @@ initTechData =
         , TechItemData
             "debugging"
             Nothing
-            (markedString "TODO")
-            [ markedString "TODO"
+            (markedString "A core software developer skill, I approach debugging as an exiting puzzle to solve, no matter how challenging.")
+            [ markedString "At `Meya`, I debugged complex customer issues using `log tracing` and clearly communicated my findings, whether that included customer fixes, workarounds, or bugfixes on our side"
+            , markedString "At `Sonova`, I debugged manufacturing issues with the help of `data analysis` which resulted in manufacturing process and QC changes"
+            , markedString "At `LSI Logic`, I worked on a visual debugger capable of visually highlighting how a video was encoded"
             ]
             (portfolioAndResume [ GeneralResume ])
         , TechItemData
             "Django"
             Nothing
-            (markedString "TODO")
-            [ markedString "TODO"
+            (markedString "The SaaS business logic at `Meya` was all written in this `Python` web framework, so I am very comfortable with Django after `learning` and using it for more than 4 years.")
+            [ markedString "We used Celery for scheduling periodic and delayed tasks"
+            , markedString "We used Graphene-Django for serving `GraphQL` requests and Django REST framework for `REST` requests"
             ]
             (portfolioAndResume [ GeneralResume ])
         , TechItemData
             "Docker"
             Nothing
-            (markedString "TODO")
-            [ markedString "TODO"
+            (markedString "Although I have some experience running desktop VMs and EC2 VMs on `Amazon Web Services`, `Linux` Docker images have been great for `making` back-end software.")
+            [ markedString "At `Meya`, we used Docker heavily, with a couple services runing on `Amazon Web Services` ECS and our new platform running entirely on `Google Cloud Platform` Kubernetes"
+            , markedString "I architected and set up our Docker image build pipeline at `Meya` for running customer apps, using Kaniko inside of `Kubernetes`, dynamically generated Dockerfiles, and an init container that checks out code from `Git`"
+            , markedString "With `Fertile Earth`, I set up Docker images for running `Node.js`, Rust, and `Redis` services on Fly.io"
             ]
             portfolioOnly
         , TechItemData
             "domain-specific languages"
             (Just "DSLs")
             (markedString "I have experience both using and creating DSLs:")
-            [ markedString "At `NexJ Systems`, I used an in-house Scheme DSL with my work on the CRM user interface and business logic"
+            [ markedString "At `Meya`, wrote the parser and interpreter for our YAML / Jinja workflow language, including labeld jumps, tail calls, static checks, and encryption/decryption filters"
+            , markedString "At `NexJ Systems`, I used an in-house Scheme DSL with my work on the CRM user interface and business logic"
             , markedString "At `Sonova`, I created a `C#` DSL for specifying related test plans—to improve maintainability and to track history in `version control`"
             , markedString "With `My Portfolio and Resume` and `Fertile Earth`, I’m using `Elm` and `TypeScript` DSLs for writing HTML and `CSS` code"
             ]
@@ -139,22 +147,20 @@ initTechData =
         , TechItemData
             "event streams"
             Nothing
-            (markedString "TODO")
-            [ markedString "TODO"
-            ]
+            (markedString "Using an event-oriented architecture was key to `scale` and `security` of the `Meya` v2 platform I worked on. We used event streams to represent all runtime 'happenings', from user events to bot flow calls to log entries, and emergent benefits were excellent. `Redis` Streams also turned out to be a great match for `WebSockets` used for live client updates.")
+            []
             portfolioOnly
         , TechItemData
             "Flutter"
             Nothing
-            (markedString "TODO")
-            [ markedString "TODO"
-            ]
+            (markedString "Although the `Meya` web chat UI was written in `React`, we decided Flutter would be a better fit for our mobile UI. I handled some of the initial project setup (including `WebSockets`), and implemented multiple features in Flutter to maintain web/mobile parity.")
+            []
             portfolioOnly
         , TechItemData
             "functional programming"
             (Just "FP")
             (markedString "I use this programming style because it helps me cleanly extract sub-problems:")
-            [ markedString "At `NexJ Systems`, I had my first, basic introduction to functional programming as I used Scheme to fix bugs and write unit tests"
+            [ markedString "At `NexJ Systems`, I had my first, basic introduction to functional programming as I used Scheme for fixing bugs and unit `testing`"
             , markedString "At `Sonova`, functional programming made `test-driven development` easier to apply for a test run comparison `C#` GUI app"
             , markedString "In `My Portfolio and Resume`, functional programming helps keep my `Elm` code well-organized, and makes refactoring a breeze"
             , markedString "In `Off-Grid Orcs`, functional programming helped prevent newly-implemented `Scala` features from breaking existing functionality"
@@ -164,23 +170,22 @@ initTechData =
             "functional animation"
             Nothing
             (markedString "Functional animation helps me remove surprise from my UIs during state changes:")
-            [ markedString "In `Ultra Rainbow Bake Sale`, I used functional animation in `Lua` to give the game a more lively feel"
+            [ markedString "At `Meya`, I used Frame Motion animations in `React` to make the UI feel responsive as new conversational events happen"
+            , markedString "In `Ultra Rainbow Bake Sale`, I used functional animation in `Lua` to give the game a more lively feel"
             , markedString "In `Forks in the Road`, I use functional animation for all `React` page changes and form actions"
             ]
             portfolioOnly
         , TechItemData
             "Gatling"
             Nothing
-            (markedString "TODO")
-            [ markedString "TODO"
-            ]
+            (markedString "Our tool of choice at `Meya` for load testing was Gatling. We ran it from an isolated pod in our `Kubernetes` cluster, and it helped me test `scale`-up surge scenarios and memory leak fixes.")
+            []
             portfolioOnly
         , TechItemData
             "Git"
             Nothing
-            (markedString "TODO")
-            [ markedString "TODO"
-            ]
+            (markedString "The new de facto standard `version control` system, I use it for all my new projects. At `Meya`, we also used it to store customer code and sync between server, CLI (using pygit2 in `Python`), and web console (using isomorphic-git in `JavaScript`).")
+            []
             portfolioOnly
         , TechItemData
             "GraphQL"
@@ -383,12 +388,20 @@ initTechData =
         , TechItemData
             "test-driven development"
             (Just "TDD")
-            (markedString "I’ve done TDD and experienced its benefits. (I’m still working at using it more often.)")
-            [ markedString "At `Sonova` with `C#`, I followed test-driven development to build a test run comparison tool"
+            (markedString "I’ve done TDD and experienced its benefits for both `testing` and `making` software. (I’m still working at using it more often.)")
+            [ markedString "At `Meya` with `Python`, I used TDD when developing new `integration` elements, mocking out payloads and `event streams`"
+            , markedString "At `Sonova` with `C#`, I followed test-driven development to build a test run comparison tool"
             , markedString "In `Pentagram` with `Scala`, I wrote an initial parser using TDD"
             , markedString "In `Forks in the Road` with Ruby, I used TDD to add back-end functionality"
             ]
-            (portfolioAndResume [ GeneralResume, ElmResume, GoResume ])
+            portfolioOnly
+        , TechItemData
+            "testing"
+            Nothing
+            (markedString "In `making` software, you’re alternative between coding, `debugging`, and testing, so it’s worth it to hone your testing skills. That includes writing automated unit or integration tests, as well as manual testing. Good `bug reporting` is also key when a bug needs to be fixed later or by another team.")
+            [ markedString "TODO"
+            ]
+            (portfolioAndResume [ GeneralResume ])
         , TechItemData
             "technical requirements"
             Nothing

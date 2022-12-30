@@ -47,9 +47,9 @@ initProjectsData =
             "RPN programming language"
             Nothing
             (Just "https://github.com/pentagram-lang")
-            (markedString "I’m `making` a programming language, inspired by learning Haskell and finding out about concatenative languages. It’s still largely in the design phase, and I’ve gone through multiple major iterations and changes in my thinking.")
+            (markedString "I’m `making` a programming language, inspired by learning Haskell and finding out about concatenative languages. It’s still largely in the design phase, and I’ve gone through multiple evolutions in my approach.")
             [ markedString "The current interpreter is written in `Python`, using stages of `functional programming` transformations to get from input text to runnable code"
-            , markedString "My next milestone is to interpret in-language unit testing, so I can start writing a prelude that’s tested with `continuous integration and deployment`"
+            , markedString "My next milestone is to interpret in-language unit `testing`, so I can start writing a prelude that’s tested with `continuous integration and deployment`"
             ]
             (portfolioAndResume [ GoResume ])
         , ProjectsItemData
@@ -65,7 +65,7 @@ initProjectsData =
             , markedString "The back-end is split into `Node.js` app and Rust full-text search services"
             , markedString "All `TypeScript` code is executed as ES Modules, with hot reloading powered by esbuild"
             , markedString "The data layer uses CockroachDB (distributed, `PostgreSQL`-compatible), `Redis` (caching), and Tantivy (full-text search)"
-            , markedString "I’ve set up GitHub Actions `continuous integration and deployment` to release to Fly.io with each commit that passes unit testing"
+            , markedString "I’ve set up GitHub Actions `continuous integration and deployment` to release to Fly.io with each commit that passes unit `testing`"
             ]
             (portfolioAndResume [ GeneralResume, ElmResume ])
         , ProjectsItemData
@@ -80,7 +80,7 @@ initProjectsData =
             [ markedString "I used Ruby and Rails for the back-end (`PostgreSQL` database), with GitHub-based JWT authentication"
             , markedString "I used `React` and `JavaScript` for the front-end, with an emphasis on `functional programming`"
             , markedString "I used Sass to simplify `CSS` syntax, Bootstrap for base styling, and `functional animation` for every state change"
-            , markedString "I set up Semaphore `continuous integration and deployment` to release to Heroku with each commit that passes unit testing"
+            , markedString "I set up Semaphore `continuous integration and deployment` to release to Heroku with each commit that passes unit `testing`"
             ]
             (portfolioAndResume [ GeneralResume, ElmResume ])
         , ProjectsItemData
@@ -124,7 +124,7 @@ initProjectsData =
             (Just "https://github.com/dcecile/yomikata-qt")
             (markedString "From 2007 to 2009 I worked to create a Qt comics and manga reader using C++:")
             [ markedString "I used processes and `threads` to unpack and decode images in the background"
-            , markedString "I used unit tests to verify my page turning logic (complicated by the presence of spread pages)"
+            , markedString "I used unit `testing` to verify my page turning logic (complicated by the presence of spread pages)"
             , markedString "I used a full-screen `functional animation` during image loading to provide user feedback"
             ]
             portfolioOnly
@@ -155,7 +155,7 @@ initProjectsData =
             [ markedString "I use `CSS` (via an `Elm` DSL) for the `visual design`—screen, print, `responsive design`, and `functional animation`"
             , markedString "I use `Elm`’s `functional programming` architecture to transform immutable data during state changes and display it as HTML"
             , markedString "I use `Elm` to construct custom `SVG` illustrations, which I style and animate via `CSS`"
-            , markedString "I use GitHub Actions `continuous integration and deployment` for unit tests, style tests, and release to GitHub Pages"
+            , markedString "I use GitHub Actions `continuous integration and deployment` for unit `testing`, style tests, and release to GitHub Pages"
             ]
             (portfolioAndResume [ ElmResume ])
         ]
