@@ -37,7 +37,7 @@ initTechData =
             "Amazon Web Services"
             (Just "AWS")
             (markedString "At `Meya`, our `Python` chatbot platform was originally built for and hosted on AWS.")
-            [ markedString "I set up a CloudWatch monitoring dashboard, tied to alerts and including custom metrics"
+            [ markedString "I set up a CloudWatch `monitoring` dashboard, tied to alerts and including custom metrics"
             , markedString "I helped debug and resolve issues related to DynamoDB and ElastiCache (`Redis`) load"
             , markedString "I set up a new `Docker`-based, `Node.js` ECS service that used ALB sticky sessions"
             , markedString "I tuned our EC2 autoscaling rules to optimize costs while maintaining platform stability and low latency"
@@ -190,48 +190,53 @@ initTechData =
         , TechItemData
             "GraphQL"
             Nothing
-            (markedString "TODO")
-            [ markedString "TODO"
-            ]
+            (markedString "To improve the dev loop speed for our web console at `Meya`, we used a GraphQL API for all our data access. I worked with the Apollo `JavaScript` and sgqlc `Python` clients and the Graphene-`Django` and aiohttp-graphql `Python` servers.")
+            [ ]
             portfolioOnly
         , TechItemData
             "Google Cloud Platform"
             (Just "GCP")
-            (markedString "TODO")
-            [ markedString "TODO"
+            (markedString "In my work at `Meya`, I became very familiar with GCP, `learning` and using my different services:")
+            [ markedString "I deployed releases to Google `Kubernetes` Engine, `debugging` and `monitoring` as needed with the K9s terminal"
+            , markedString "I set up static hosting and secure user uploads using Google Cloud Storage"
+            , markedString "I investigated customer issues by `log tracing` in Cloud Logging, writing queries in GQL"
             ]
             (portfolioAndResume [ GeneralResume ])
         , TechItemData
             "integration"
             Nothing
-            (markedString "TODO")
-            [ markedString "TODO"
+            (markedString "Glue code, value add, whatever you call it, I have experience `making` high quality integrations:")
+            [ markedString "At `Meya` with `Python`, I integrated our `event streams` with other messaging and customer service platforms using `REST` APIs and webhooks"
+            , markedString "At `Sonova` with `C#`, our team was integrated libraries and applications from other teams to deploy to manufacturing environments for configuring and `testing` hearing instruments"
+            , markedString "WIth `Yomikata` with C++, I integrated the 7-Zip executable over ICP for working with archive files"
             ]
             portfolioOnly
         , TechItemData
             "internationalization & localization"
             (Just "i18n & l10n")
-            (markedString "On my team at `Sonova`, I was in charge of our translation processes:")
-            [ markedString "I converted our primary WinForms software from hard-coded English to supporting Chinese and German, including on-the-fly language changes"
-            , markedString "I added basic right-to-left language support to our secondary-market WinForms software"
-            , markedString "I managed the localization of our software plus another team's software, `coordinating` translator activities for up to 14 languages"
-            , markedString "I worked at continuously `improving` our translation workflow with process changes and `C#` tooling"
+            (markedString "I’m passionate about languages, so `learning` and diving into i18n & l10n has felt like a natural progression for my dev career:")
+            [ markedString "At `Meya`, I enabled customers to use gettext in `Python` and our custom YAML language to add translations to their apps hosted in our `Kubernetes` cluster"
+            , markedString "On my team at `Sonova`, I was in charge of our translation processes—this included converting our apps to support translations and managing all of our translation tools and processes, `coordinating` translator activities for up to 14 languages"
             ]
             portfolioOnly
         , TechItemData
             "JavaScript"
             Nothing
-            (markedString "I use JavaScript and `TypeScript` for most of my front-end development (with language features like modules, await, and classes provided by Babel):")
-            [ markedString "At `Sonova`, I used JavaScript for the UI logic of a hybrid HTML and `C#` desktop app"
-            , markedString "In `Forks in the Road`, I’m using JavaScript with `React` for the front-end of my value estimation web app"
-            , markedString "(I sometimes use `Elm` or `Scala` instead of JavaScript)"
+            (markedString "I use JavaScript and `TypeScript` for most of my front-end development (including modern language features like modules, await, and classes):")
+            [ markedString "At `Meya`, I used JavaScript to build the developer web console, including a visual flow editor powered by `SVG`"
+            , markedString "At `Sonova`, I used JavaScript for the UI logic of a hybrid HTML and `C#` desktop app"
+            , markedString "In `Forks in the Road`, I used JavaScript with `React` for the front-end of my value estimation web app"
             ]
             portfolioOnly
         , TechItemData
             "Kubernetes"
             Nothing
-            (markedString "TODO")
-            [ markedString "TODO"
+            (markedString "At `Meya`, Kubernetes was a perfect for the `scale` and `security` we needed to run customer apps.")
+            [ markedString "I set up a `Docker` image build pipeline using Kaniko jobs"
+            , markedString "I designed services and deployments that spanned our console, gateway, and customer app"
+            , markedString "I used init containers to pull dev app code from `Git` for faster live coding"
+            , markedString "I used RBAC and service accounts to follow the principle of least privilege, and enable access to `Google Cloud Platform` services"
+            , markedString "I did all my `debugging` using K9s and `Google Cloud Platform` `log tracing`"
             ]
             (portfolioAndResume [ GeneralResume ])
         , TechItemData
@@ -247,49 +252,51 @@ initTechData =
         , TechItemData
             "log tracing"
             Nothing
-            (markedString "TODO")
-            [ markedString "TODO"
+            (markedString "Depending on the problem, an interactive debugger might not be the right tool and you’ve gotta go to the logs:")
+            [ markedString "At `Meya`, I traced logs in `Google Cloud Platform`, piecing together timelines with the help of ad hoc `SQL` queries"
+            , markedString "At `Sonova`, I traced logs across multiple desktop PCs to solve production issues"
             ]
             portfolioOnly
         , TechItemData
             "Lua"
             Nothing
-            (markedString "I finally learned Lua and used it with LÖVE (a 2D game development library) to build a single-player, deck-building, baking game: `Ultra Rainbow Bake Sale`.")
+            (markedString "I finally learned Lua and used it with LÖVE (a 2D game development library) to build a single-player, deck-building, baking game: `Ultra Rainbow Bake Sale`. At `Meya`, I also used `Lua` in `Redis` to manipulate `event streams`, with unit `testing` driven from `Python`.")
             []
             portfolioOnly
         , TechItemData
             "monitoring"
             Nothing
-            (markedString "TODO")
-            [ markedString "TODO"
-            ]
+            (markedString "Sometimes to verify software quality, you need data and graphs to really understand a system. At `Meya`, I used monitoring in `Amazon Web Services` and `Google Cloud Platform` for our production systems to debug and fix production issues, and set up alerts to protect against future regressions.")
+            [ ]
             portfolioOnly
         , TechItemData
             "nginx"
             Nothing
-            (markedString "TODO")
-            [ markedString "TODO"
-            ]
+            (markedString "At `Meya`, we used nginx together with `Django`. I set up ngnix reverse proxies to `Git` and Pypi services, secured using developer auth tokens.")
+            [ ]
             portfolioOnly
         , TechItemData
             "Node.js"
             Nothing
-            (markedString "TODO")
-            [ markedString "TODO"
+            (markedString "Along with `Python` `Django` and aiohttp back-ends, I’m familiar with using `JavaScript` and `TypeScript` to write Node.js services.")
+            [ markedString "At `Meya`, I set up a Node.js `REST` endpoint to fetch data from our Prismic CMS for homepage content"
+            , markedString "At `Meya`, I implemented a `Docker` Node.js `integration` service to provide persistent access to a customer service platform"
+            , markedString "In `Fertile Earth`, the app back-end runs Node.js to allow sharing `TypeScript` code between client and server"
             ]
             portfolioOnly
         , TechItemData
             "pair programming"
             Nothing
-            (markedString "TODO")
-            [ markedString "TODO"
-            ]
+            (markedString "When working on especially complex or high-risk tasks, pair programming can be great productivity and QC tool. At `Meya` and `Sonova`, I also found it especially effective for `teaching` and mentoring.")
+            [ ]
             portfolioOnly
         , TechItemData
             "PostgreSQL"
             Nothing
-            (markedString "TODO")
-            [ markedString "TODO"
+            (markedString "Recently my `SQL` server of choice has been PostgreSQL, especially for its JSON support and concurrent index updates.")
+            [ markedString "At `Meya`, I regularly used ad hoc queries for investigating and `debugging` customer issues"
+            , markedString "At `Meya`, I built a custom AST transformer from Lucene syntax to windowed, index-aware PostgreSQL syntax (including deep JSON filters) in `Python`"
+            , markedString "With `Fertile Earth`, I connected to the distributed, PostgreSQL-compatible CockroachDB cloud service from `Node,js`"
             ]
             (portfolioAndResume [ GeneralResume ])
         , TechItemData
@@ -364,7 +371,7 @@ initTechData =
             [ markedString "I used Excel together with ad hoc SQL queries to investigate bugs and communicate my findings"
             , markedString "I optimized my ad hoc SQL queries to run on large datasets that were initially impossible"
             , markedString "I created an SQL data warehouse with materialized views, for analyzing trends that spanned multiple upstream DBs"
-            , markedString "I used `C#` and SQL via `continuous integration and deployment` for populating and monitoring the data warehouse"
+            , markedString "I used `C#` and SQL via `continuous integration and deployment` for populating and `monitoring` the data warehouse"
             , markedString "I used the SQL materialized views in internal development and QA tools, with `C#` and WinForms"
             ]
             portfolioOnly

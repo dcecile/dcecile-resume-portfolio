@@ -60,7 +60,7 @@ initWorkData =
                 , markedString "I worked on implementing our back-end using `Python`, `WebSockets`, `Redis`, `PostgreSQL`, `Kubernetes`, and `Google Cloud Platform`"
                 , markedString "I created and maintained our chat UI SDKs for web (`React`, `TypeScript`) and mobile (`Flutter`)"
                 , markedString "Experience in `domain-specific languages`: I built the 2nd-generation parser, engine, and static checks for our custom workflow language"
-                , markedString "I helped improved our QC processes: `code review`, unit `testing`, `continuous integration and deployment`, staging releases, checklists, and monitoring"
+                , markedString "I helped improved our QC processes: `code review`, unit `testing`, `continuous integration and deployment`, staging releases, checklists, and `monitoring`"
                 , markedString "I directly supported customers via Slack chat, async video clips, `log tracing`, `debugging`, and `pair programming`"
                 ]
 
@@ -76,12 +76,12 @@ initWorkData =
                 ]
                 [ markedString "Developed `C#` hearing instrument manufacturing software, with `code reviews`, `integration/unit tests`, and `CI`"
                 , markedString "Collaborated on `requirements`, `integrations`, and `debugging` with dev teams and production staff worldwide"
-                , markedString "Created and optimized ad-hoc data analysis `SQL` queries, to investigate bugs and business concerns"
+                , markedString "Created and optimized ad hoc data analysis `SQL` queries, to investigate bugs and business concerns"
                 , markedString "Triaged tasks, coordinated iterations, prepared releases, built internal tools, and mentored team members"
                 ]
                 (markedString "I worked with my team at Sonova for 8 years, `making` hearing instrument manufacturing software.")
                 [ markedString "I used `C#` for software implementation and maintenance, and `SQL` + Excel for `analyzing` data"
-                , markedString "I mitigated bugs using integration tests, actively listening, and thoroughly `learning` business/software systems"
+                , markedString "I mitigated bugs using integration `testing`, actively listening, and thoroughly `learning` business/software systems"
                 , markedString "I built a hybrid HTML and `C#` desktop application to replace a paper-based inspection process"
                 , markedString "I followed `test-driven development` to build a test run comparison tool that saved weeks of manual effort"
                 , markedString "Also: negotiating solutions, documenting `technical requirements`, `coordinating` development cycles, `improving` team processes, mentoring and `teaching` peers"
