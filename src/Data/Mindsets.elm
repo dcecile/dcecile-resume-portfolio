@@ -90,7 +90,7 @@ initMindsetsData =
                 "improving"
                 (markedString "When I work on a project, I always look for potential improvements that have good cost/benefit value:")
                 [ markedString "At `Meya`, I incorporated team feedback at all stages to improve my projects: from kickoff to demos, to `code review`"
-                , markedString "Also at `Meya`, I continually improved our internal developer tools and our `continuous integration and deployment` processes based"
+                , markedString "Also at `Meya`, I continually improved our internal developer tools and our `continuous integration & deployment` processes based"
                 , markedString "At `Sonova`, I listened for pain points in our daily work, and led improvements to development and QA team processes"
                 , markedString "In `Ultra Rainbow Bake Sale`, I listened to player feedback, and created dynamic hints to improve the experience for new players"
                 ]

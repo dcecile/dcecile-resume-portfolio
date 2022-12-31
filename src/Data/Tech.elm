@@ -64,7 +64,7 @@ initTechData =
             ]
             (portfolioAndResume [ GeneralResume ])
         , TechItemData
-            "continuous integration and deployment"
+            "continuous integration & deployment"
             (Just "CI/CD")
             (markedString "I have a strong interest in build systems and continuous integration/deployment:")
             [ markedString "Starting at `LSI Logic`, and continuing at `NexJ Systems`, `Sonova`, and `Meya`, I’ve made build systems improvements for maintainability and productivity"
@@ -375,7 +375,7 @@ initTechData =
             [ markedString "I used Excel together with ad hoc SQL queries to investigate bugs and communicate my findings"
             , markedString "I optimized my ad hoc SQL queries to run on large datasets that were initially impossible"
             , markedString "I created an SQL data warehouse with materialized views, for analyzing trends that spanned multiple upstream DBs"
-            , markedString "I used `C#` and SQL via `continuous integration and deployment` for populating and `monitoring` the data warehouse"
+            , markedString "I used `C#` and SQL via `continuous integration & deployment` for populating and `monitoring` the data warehouse"
             , markedString "I used the SQL materialized views in internal development and QA tools, with `C#` and WinForms"
             ]
             portfolioOnly

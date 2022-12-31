@@ -60,7 +60,7 @@ initWorkData =
                 , markedString "I worked on implementing our back-end using `Python`, `WebSockets`, `Redis`, `PostgreSQL`, `Kubernetes`, and `Google Cloud Platform`"
                 , markedString "I created and maintained our chat UI SDKs for web (`React`, `TypeScript`) and mobile (`Flutter`)"
                 , markedString "Experience in `domain-specific languages`: I built the 2nd-generation parser, engine, and static checks for our custom workflow language"
-                , markedString "I helped improved our QC processes: `code review`, unit `testing`, `continuous integration and deployment`, staging releases, checklists, and `monitoring`"
+                , markedString "I helped improved our QC processes: `code review`, unit `testing`, `continuous integration & deployment`, staging releases, checklists, and `monitoring`"
                 , markedString "I directly supported customers via Slack chat, async video clips, `log tracing`, `debugging`, and `pair programming`"
                 ]
 

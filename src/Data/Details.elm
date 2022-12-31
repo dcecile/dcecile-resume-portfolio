@@ -62,9 +62,12 @@ allDetailsItems data =
                 (always Nothing)
                 True
         , convert .tech .items <|
-            getDetails
-                (always Nothing)
-                True
+            \detailsNoun item ->
+                getDetails
+                    (always Nothing)
+                    (not <| List.member item.name [ "Node.js", "nginx" ])
+                    detailsNoun
+                    item
         , convert .projects .items <|
             getDetails
                 Just
