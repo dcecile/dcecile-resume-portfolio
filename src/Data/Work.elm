@@ -42,7 +42,7 @@ initWorkData =
                 , "Kubernetes / PostgreSQL / Redis / GCP"
                 , "system architecture / product thinking / shipping"
                 ]
-                [ markedString "Designed and implemented a new secure, scalable, `event-oriented`, multi-tenant architecture for our chatbot platform built on `Python`, `NaCl`, `WebSockets`, `Redis Streams`, `PostgreSQL`, `Kubernetes`, and `GCP`"
+                [ markedString "Collaboratively designed and implemented a new secure, scalable, `event-oriented`, multi-tenant architecture for our chatbot platform built on `Python`, `WebSockets`, `Redis Streams`, `PostgreSQL`, `Kubernetes`, and `GCP`"
                 , markedString "Enabled surge scale-up using `Gatling` tests, custom work-limiting metrics, and `Kubernetes` HPA"
                 , markedString "Created `React / TypeScript` and `Flutter` chat SDKs, including UX and API design for innovative new features"
                 , markedString "Drastically reduced end-to-end platform latency through benchmarking and `source-level profiling`"

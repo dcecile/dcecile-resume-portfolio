@@ -23,7 +23,7 @@ initStartupData =
     , items =
         [ "active listening"
         , "async"
-        , "bias to action"
+        , "collaboration"
         , "continuous improvement"
         , "curiosity"
         , "customer success"
