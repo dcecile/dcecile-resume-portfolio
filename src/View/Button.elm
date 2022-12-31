@@ -8,9 +8,10 @@ module View.Button exposing
     , text
     )
 
-import Css exposing (Style, batch, borderRadius, borderWidth, boxShadow5, color, em, lineHeight, noWrap, none, num, px, textDecoration, whiteSpace, zero)
+import Css exposing (Style, batch, borderRadius, borderWidth, boxShadow5, color, em, hover, lineHeight, noWrap, none, num, px, textDecoration, whiteSpace, zero)
+import Css.Transitions exposing (easeInOut, transition)
 import CssShorthand exposing (borderSolidColor, paddingRightLeft)
-import View.Colors exposing (black, paleGreen)
+import View.Colors exposing (black, darkGreen, extraDarkGreen, paleGreen)
 import View.Metrics exposing (standardBorderRadius, standardBorderWidth)
 
 
@@ -21,6 +22,14 @@ border =
         , borderWidth standardBorderWidth
         , borderRadius standardBorderRadius
         , borderShadow
+        , transition
+            [ Css.Transitions.borderColor3 200 0 easeInOut
+            , Css.Transitions.color3 400 0 easeInOut
+            ]
+        , hover
+            [ borderSolidColor darkGreen
+            , color extraDarkGreen
+            ]
         ]
 
 

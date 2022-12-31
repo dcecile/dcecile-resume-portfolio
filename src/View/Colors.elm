@@ -1,6 +1,8 @@
 module View.Colors exposing
     ( black
     , blackLevel
+    , darkGreen
+    , extraDarkGreen
     , extraPaleGreen
     , green
     , paleGreen
@@ -41,6 +43,16 @@ extraPaleGreen =
 paleGreen : Color
 paleGreen =
     hsl greenHue 0.62 0.79
+
+
+darkGreen : Color
+darkGreen =
+    hsl greenHue 0.82 0.28
+
+
+extraDarkGreen : Color
+extraDarkGreen =
+    hsl greenHue 0.62 0.15
 
 
 white : Color
