@@ -191,7 +191,7 @@ initTechData =
             "GraphQL"
             Nothing
             (markedString "To improve the dev loop speed for our web console at `Meya`, we used a GraphQL API for all our data access. I worked with the Apollo `JavaScript` and sgqlc `Python` clients and the Graphene-`Django` and aiohttp-graphql `Python` servers.")
-            [ ]
+            []
             portfolioOnly
         , TechItemData
             "Google Cloud Platform"
@@ -267,13 +267,13 @@ initTechData =
             "monitoring"
             Nothing
             (markedString "Sometimes to verify software quality, you need data and graphs to really understand a system. At `Meya`, I used monitoring in `Amazon Web Services` and `Google Cloud Platform` for our production systems to debug and fix production issues, and set up alerts to protect against future regressions.")
-            [ ]
+            []
             portfolioOnly
         , TechItemData
             "nginx"
             Nothing
             (markedString "At `Meya`, we used nginx together with `Django`. I set up ngnix reverse proxies to `Git` and Pypi services, secured using developer auth tokens.")
-            [ ]
+            []
             portfolioOnly
         , TechItemData
             "Node.js"
@@ -288,7 +288,7 @@ initTechData =
             "pair programming"
             Nothing
             (markedString "When working on especially complex or high-risk tasks, pair programming can be great productivity and QC tool. At `Meya` and `Sonova`, I also found it especially effective for `teaching` and mentoring.")
-            [ ]
+            []
             portfolioOnly
         , TechItemData
             "PostgreSQL"
@@ -296,36 +296,40 @@ initTechData =
             (markedString "Recently my `SQL` server of choice has been PostgreSQL, especially for its JSON support and concurrent index updates.")
             [ markedString "At `Meya`, I regularly used ad hoc queries for investigating and `debugging` customer issues"
             , markedString "At `Meya`, I built a custom AST transformer from Lucene syntax to windowed, index-aware PostgreSQL syntax (including deep JSON filters) in `Python`"
-            , markedString "With `Fertile Earth`, I connected to the distributed, PostgreSQL-compatible CockroachDB cloud service from `Node,js`"
+            , markedString "With `Fertile Earth`, I connected to the distributed, PostgreSQL-compatible CockroachDB cloud service from `Node.js`"
             ]
             (portfolioAndResume [ GeneralResume ])
         , TechItemData
             "profiling"
             Nothing
-            (markedString "TODO")
-            [ markedString "TODO"
+            (markedString "When working on `improving` performance, I use benchamrking together with profiling:")
+            [ markedString "At `Meya`, I used SnakeViz source-level profiling for `Python` to target improvements and greatly reduce platform latency"
+            , markedString "I also have experience using the Chrome Dev Tools profiler for both browser `JavaScript` and `Node.js`"
             ]
             portfolioOnly
         , TechItemData
             "Python"
             Nothing
-            (markedString "With `bitfontmake`, I’ve used Python to compile my TTF fonts from a custom pixel-based input format. I deployed this code to Heroku as a Flask application.")
-            []
+            (markedString "When it comes to `making` back-end software, Python is now one of my top languages. I’m a big fan of data classes, type annotations, and Black formatting.")
+            [ markedString "At `Meya`, I used Python on a daily basis, coding `Kubernetes` services and adding features to our `Django` / `GraphQL` backend"
+            , markedString "My latest iteration of `Pentagram` is written in Python, with type annotations checked using Mypy"
+            , markedString "With `bitfontmake`, I used Python with UFO to compile my TTF fonts from a custom pixel-based input format, deployed to Heroku as a Flask app"
+            ]
             (portfolioAndResume [ GeneralResume, GoResume ])
         , TechItemData
             "React"
             Nothing
-            (markedString "I’m `learning` React to get experience with today’s most popular front-end framework (according to The State of JavaScript 2017):")
-            [ markedString "With `Forks in the Road`, I’m using React to create the front-end of my value estimation web app"
+            (markedString "React has been a great tool for making interactive web apps, and I espcially like how functional components encourage `functional programming` best practices:")
+            [ markedString "At `Meya`, I used React together with a number of libraries to build our chat UI and developer console: Framer Motion, Apollo `GraphQL` client, Styled Components, and Ant Design"
+            , markedString "With `Forks in the Road`, I used React to create the front-end of my value estimation web app"
             , markedString "(I’ve also used Vue.js and `Elm` for creating HTML front-ends)"
             ]
             (portfolioAndResume [ GeneralResume, ElmResume, GoResume ])
         , TechItemData
             "Redis"
             Nothing
-            (markedString "TODO")
-            [ markedString "TODO"
-            ]
+            (markedString "The simplicity and power of Redis encouraged us to power `Meya`’s `event streams` with Redis Streams. I also leveraged built-in `Lua` scripting to implement new atomic operations.")
+            []
             (portfolioAndResume [ GeneralResume ])
         , TechItemData
             "responsive design"
@@ -338,9 +342,8 @@ initTechData =
         , TechItemData
             "REST"
             Nothing
-            (markedString "TODO")
-            [ markedString "TODO"
-            ]
+            (markedString "With `integration` work at `Meya`, I regularly wrote REST API client code, setting up `testing` using mocked payloads. I also implemented REST endpoints for integration webhooks and for compatibility with a legacy chat client.")
+            []
             portfolioOnly
         , TechItemData
             "Scala"
@@ -353,15 +356,16 @@ initTechData =
         , TechItemData
             "scale"
             Nothing
-            (markedString "TODO")
-            [ markedString "TODO"
+            (markedString "In my time at `Meya`, I’ve had the chance to code and manage software at scale.")
+            [ markedString "I partipated in desigining our new `Google Cloud Platform` architecture, and scaling it up as new customers came online"
+            , markedString "I set up and tuned `Kubernetes` scale-up using `Gatling` tests and horizontal pod autoscaling"
             ]
             (portfolioAndResume [ GeneralResume ])
         , TechItemData
             "security"
             Nothing
-            (markedString "TODO")
-            [ markedString "TODO"
+            (markedString "For most software, and especially web software, following best security practices is very important. This includes the proper use hashes and encryption.")
+            [ markedString "At `Meya`, I helped design our isolation model for running untrusted code in our `Kubernetes` cluster, and set up our sensitive data system using rotating encryption keys"
             ]
             (portfolioAndResume [ GeneralResume ])
         , TechItemData
@@ -388,9 +392,8 @@ initTechData =
         , TechItemData
             "system architecture"
             Nothing
-            (markedString "TODO")
-            [ markedString "TODO"
-            ]
+            (markedString "Good system architecture takes into account current best practices, along with a strong understanding of business and technical requirements. At `Meya`, only after deeply `learning` from our team and our work was I able to help design our new platform for extensibility, `scale`, and `security`.")
+            []
             (portfolioAndResume [ GeneralResume ])
         , TechItemData
             "test-driven development"
@@ -406,7 +409,9 @@ initTechData =
             "testing"
             Nothing
             (markedString "In `making` software, you’re alternative between coding, `debugging`, and testing, so it’s worth it to hone your testing skills. That includes writing automated unit or integration tests, as well as manual testing. Good `bug reporting` is also key when a bug needs to be fixed later or by another team.")
-            [ markedString "TODO"
+            [ markedString "At `Meya`, I prepared detailed plans for migrations and tested them first on dev and staging `Kubernetes` clusters"
+            , markedString "At `Meya`, I set up unit testing patterns to allow running our core `Python` code against mocked `event streams`"
+            , markedString "At `Sonova`, my team was responsible for writing software that tested hearing instrument functionality and performance"
             ]
             (portfolioAndResume [ GeneralResume ])
         , TechItemData
@@ -431,8 +436,9 @@ initTechData =
         , TechItemData
             "TypeScript"
             Nothing
-            (markedString "TODO")
-            [ markedString "TODO"
+            (markedString "`JavaScript` with type annotations, this language has been great for writing front-end software with extra peace-of-mind that refactorings and changes aren’t breaking old code.")
+            [ markedString "At `Meya`, I picked TypeScript for implementing our web chat SDK using `React` and `WebSockets`"
+            , markedString "In `Fertile Earth`, I used TypeScript for the full stack, with fast transpiling provided by esbuild"
             ]
             (portfolioAndResume [ GeneralResume ])
         , TechItemData
@@ -457,9 +463,8 @@ initTechData =
         , TechItemData
             "WebSockets"
             Nothing
-            (markedString "TODO")
-            [ markedString "TODO"
-            ]
+            (markedString "At `Meya`, I used WebSockets to to implement the `event streams` for our `React` and `Flutter` chat clients. This provided low-latency updates and worked without issues across all platforms.")
+            []
             portfolioOnly
         ]
     , portfolioOutro = Nothing
