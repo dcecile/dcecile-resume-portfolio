@@ -12,6 +12,7 @@ import MarkedString exposing (MarkedString, markedString)
 type alias TechData =
     SectionData
         { items : List TechItemData
+        , noCapitalizeNames : List String
         }
 
 
@@ -66,7 +67,7 @@ initTechData =
         , TechItemData
             "continuous integration & deployment"
             (Just "CI/CD")
-            (markedString "I have a strong interest in build systems and continuous integration/deployment:")
+            (markedString "I have a strong interest in build systems and continuous integration and deployment:")
             [ markedString "Starting at `LSI Logic`, and continuing at `NexJ Systems`, `Sonova`, and `Meya`, I’ve made build systems improvements for maintainability and productivity"
             , markedString "At `Meya`, I set up continuous deployment that included `Kubernetes` rolling deployment upgrades, `React` builds, and `Google Cloud Platform` cloud storage uploads"
             , markedString "For all my recent projects (incluing at `Meya` and in `Pentagram` and `My Portfolio and Resume`), I’m using GitHub Actions for CI/CD, taking advantage of PR status reporting, caching, and branch-conditional steps"
@@ -468,4 +469,5 @@ initTechData =
             portfolioOnly
         ]
     , portfolioOutro = Nothing
+    , noCapitalizeNames = [ "Node.js", "nginx" ]
     }

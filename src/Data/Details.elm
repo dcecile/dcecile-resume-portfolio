@@ -65,7 +65,7 @@ allDetailsItems data =
             \detailsNoun item ->
                 getDetails
                     (always Nothing)
-                    (not <| List.member item.name [ "Node.js", "nginx" ])
+                    (not <| List.member item.name data.tech.noCapitalizeNames)
                     detailsNoun
                     item
         , convert .projects .items <|
