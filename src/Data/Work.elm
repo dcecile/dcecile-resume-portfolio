@@ -48,7 +48,7 @@ initWorkData =
                 , markedString "Drastically reduced end-to-end platform latency through benchmarking and `source-level profiling`"
                 , markedString "Upgraded our `YAML / Jinja` workflow language, adding aliases, type checks, and tail calls for improved DX"
                 , markedString "Coded `integrations` using `REST APIs` and `webhooks` with mocked payload and event stream tests"
-                , markedString "Built a developer CLI (`Click`) and web console (`React`), connected to `Nginx`, `Django`, `GraphQL`, and `Git`"
+                , markedString "Built a developer CLI (`Click`) and web console (`React`), connected to `nginx`, `Django`, `GraphQL`, and `Git`"
                 , markedString "Launched a `React / Rappid` visual flow editor with templates, inline docs, and full programmability"
                 , markedString "Boosted performance and unlocked key log searches by compiling `Lucene` to windowed, index-aware `SQL`"
                 , markedString "Improved QC processes: `code reviews`, `unit tests`, `CI/CD`, staging releases, checklists, monitoring, and alerts"
