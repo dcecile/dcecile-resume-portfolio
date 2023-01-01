@@ -133,7 +133,7 @@ initTechData =
             "domain-specific languages"
             (Just "DSLs")
             (markedString "I have experience both using and creating DSLs:")
-            [ markedString "At `Meya`, wrote the parser and interpreter for our YAML / Jinja workflow language, including labeld jumps, tail calls, static checks, and encryption/decryption filters"
+            [ markedString "At `Meya`, I wrote the parser and interpreter for our YAML / Jinja workflow language, including labeled jumps, tail calls, static checks, and encryption/decryption filters"
             , markedString "At `NexJ Systems`, I used an in-house Scheme DSL with my work on the CRM user interface and business logic"
             , markedString "At `Sonova`, I created a `C#` DSL for specifying related test plans—to improve maintainability and to track history in `version control`"
             , markedString "With `My Portfolio and Resume` and `Fertile Earth`, I’m using `Elm` and `TypeScript` DSLs for writing HTML and `CSS` code"
@@ -179,7 +179,7 @@ initTechData =
         , TechItemData
             "Gatling"
             Nothing
-            (markedString "Our tool of choice at `Meya` for load testing was Gatling. We ran it from an isolated pod in our `Kubernetes` cluster, and it helped me test `scale`-up surge scenarios and memory leak fixes.")
+            (markedString "Our tool of choice at `Meya` for load `testing` was Gatling. We ran it from an isolated pod in our `Kubernetes` cluster, and it helped me test `scale`-up surge scenarios and memory leak fixes.")
             []
             portfolioOnly
         , TechItemData
@@ -357,7 +357,7 @@ initTechData =
         , TechItemData
             "scale"
             Nothing
-            (markedString "In my time at `Meya`, I’ve had the chance to code and manage software at scale.")
+            (markedString "In my time at `Meya`, I’ve had the chance to code and manage software at scale, serving a high number of concurrent sessions with low latency.")
             [ markedString "I partipated in desigining our new `Google Cloud Platform` architecture, and scaling it up as new customers came online"
             , markedString "I set up and tuned `Kubernetes` scale-up using `Gatling` tests and horizontal pod autoscaling"
             ]

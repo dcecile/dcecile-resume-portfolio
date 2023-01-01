@@ -1,7 +1,7 @@
 module View.Tech exposing (viewTech)
 
 import Assets exposing (Assets)
-import Css exposing (alignItems, baseline, center, color, em, flexWrap, fontSize, fontStyle, italic, justifyContent, marginBottom, px, width, wrap)
+import Css exposing (alignItems, baseline, center, color, em, flexShrink, flexWrap, fontSize, fontStyle, italic, justifyContent, marginBottom, px, width, wrap, zero)
 import CssShorthand exposing (displayFlexRow, marginRightLeft, marginTopBottom)
 import Data exposing (Data)
 import Data.Tech exposing (TechItemData)
@@ -109,6 +109,7 @@ viewKey key =
             [ displayFlexRow
             , justifyContent center
             , width <| em 1.2
+            , flexShrink <| zero
             , color paleGreen
             , fontStyle italic
             ]
