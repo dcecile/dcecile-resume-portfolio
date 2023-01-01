@@ -21,7 +21,7 @@ import View.Breakpoints exposing (breakpointDetailsLarge, breakpointDetailsMediu
 import View.Button as Button
 import View.Colors exposing (black, extraPaleGreen, green, paleGreen, white)
 import View.DetailsAnimation exposing (animateDetails, animateDetailsItem)
-import View.Metrics exposing (standardBorderRadius, standardLineHeight, standardScreenFontSizeLarge, standardScreenFontSizeSmall)
+import View.Metrics exposing (standardBorderRadius, standardBorderWidth, standardLineHeight, standardScreenFontSizeLarge, standardScreenFontSizeSmall)
 
 
 maybeViewDetails : Assets -> Display -> Maybe (Html Msg)
@@ -232,7 +232,10 @@ viewContent : Assets -> DetailsItemData -> Html Msg
 viewContent assets item =
     let
         style =
-            [ Button.border
+            [ borderSolidColor black
+            , borderWidth standardBorderWidth
+            , borderRadius standardBorderRadius
+            , Button.borderShadow
             , displayFlexColumn
             , alignSelf stretch
             , breakpointDetailsMediumHeight
@@ -370,9 +373,6 @@ viewPoints points =
             [ displayFlexColumn
             , flexWrap wrap
             , marginTop <| em 0.6
-            , breakpointDetailsMediumHeight
-                [ marginTop <| em 1.0
-                ]
             , marginBottom zero
             , overflow hidden
             , paddingLeft zero
@@ -390,9 +390,6 @@ viewPoint =
         style =
             [ marginTop zero
             , marginBottom <| em 0.6
-            , breakpointDetailsMediumHeight
-                [ marginBottom <| em 1.0
-                ]
             , marginLeft <| em 1.6
             , width <| calc (pct 100) minus (em 1.6)
             , breakpointDetailsMediumHeight

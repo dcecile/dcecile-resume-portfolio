@@ -19,12 +19,11 @@ initStartupData =
     , name = "Startup skills"
     , portfolioIconBackground = .box
     , detailsNoun = "skill"
-    , portfolioIntro =
-        "TODO"
+    , portfolioIntro = "..."
     , items =
         [ "active listening"
         , "async"
-        , "bias to action"
+        , "collaboration"
         , "continuous improvement"
         , "curiosity"
         , "customer success"

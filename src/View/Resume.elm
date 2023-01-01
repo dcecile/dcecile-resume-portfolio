@@ -5,7 +5,7 @@ module View.Resume exposing
 
 import Assets exposing (Assets)
 import Char
-import Css exposing (Color, Em, Style, absolute, batch, bold, borderRadius, borderWidth, center, color, em, flexBasis, flexEnd, flexGrow, flexShrink, fontSize, fontStyle, fontWeight, height, hidden, hsl, italic, justifyContent, lastOfType, letterSpacing, lineHeight, marginBottom, marginLeft, marginRight, marginTop, noWrap, normal, num, opacity, overflow, paddingBottom, paddingLeft, paddingTop, position, right, textAlign, whiteSpace, width, zero)
+import Css exposing (Color, Em, Style, absolute, alignItems, baseline, batch, bold, borderRadius, borderWidth, center, color, em, flexBasis, flexEnd, flexGrow, flexShrink, fontSize, fontStyle, fontWeight, height, hidden, italic, justifyContent, lastOfType, letterSpacing, lineHeight, marginBottom, marginLeft, marginRight, marginTop, noWrap, normal, num, opacity, overflow, paddingBottom, paddingLeft, paddingTop, position, right, textAlign, whiteSpace, width, zero)
 import CssShorthand exposing (batchMap, beforeText, borderBottomSolidColor, borderLeftSolidColor, borderSolidColor, displayFlexColumn, displayFlexRow, marginRightLeft, marginTopBottom, paddingRightLeft, textDecorationSkipInk, wordBreakBreakAll)
 import Data exposing (Data)
 import Data.Links exposing (LinksItemData)
@@ -18,7 +18,7 @@ import Icon exposing (IconBackground, IconSource, iconImage)
 import MarkedString exposing (MarkedString, MarkedSubstring(..), markedString)
 import Msg exposing (Msg)
 import Regex
-import View.Colors exposing (printBlack, printGreen, printPaleGreen, printPaleGreenComponents)
+import View.Colors exposing (printBlack, printGreen, printPaleGreen)
 import View.Metrics exposing (printBorderWidth, printLineHeight)
 
 
@@ -32,9 +32,9 @@ viewResume assets data =
     let
         style =
             [ displayFlexColumn
-            , paddingTop <| em 3.1
-            , paddingBottom <| em 2.2
-            , paddingRightLeft <| em 4.4
+            , paddingTop <| em 2.8
+            , paddingBottom <| em 2.1
+            , paddingRightLeft <| em 3.8
             , flexGrow <| num 1
             , lineHeight <| num printLineHeight
             , color printBlack
@@ -148,7 +148,7 @@ viewHomepage iconSource homepageURL =
     let
         style =
             [ marginTopBottom zero
-            , fontSize <| em 1.0
+            , fontSize <| em 0.9
             , fontStyle italic
             ]
 
@@ -172,6 +172,7 @@ viewContact iconSource emailAddress links currentLocation =
             , justifyContent center
             , marginTop <| em 0.3
             , textAlign right
+            , fontSize <| em 0.9
             , lineHeight <| num 1.6
             ]
     in
@@ -326,8 +327,6 @@ viewEducation data =
         [ viewItem
             [ viewItemLineFlex0
                 [ styledSpanText [] <| sectionData.name ++ " / " ++ sectionData.specialization
-                , viewItemDots
-                , viewItemPeriod sectionData.period
                 ]
             ]
         ]
@@ -502,9 +501,9 @@ viewItem nodes =
         style =
             [ displayFlexRow
             , marginTop zero
-            , marginBottom <| em 0.5
+            , marginBottom <| em 0.4
             , lastOfType
-                [ marginBottom <| em 0.7
+                [ marginBottom <| em 0.6
                 ]
             ]
 
@@ -534,6 +533,7 @@ viewItemLineFlex0 =
     let
         style =
             [ displayFlexRow
+            , alignItems baseline
             , marginTopBottom zero
             , fontSize <| em 1
             , fontWeight normal
@@ -575,33 +575,32 @@ viewItemName =
 viewItemPeriod : String -> Html Msg
 viewItemPeriod =
     styledSpanText
-        []
+        [ fontWeight bold
+        ]
 
 
 viewItemDots : Html Msg
 viewItemDots =
     let
-        ( hue, saturation, lightness ) =
-            printPaleGreenComponents
-
         style =
             [ overflow hidden
-            , opacity <| num (1 - lightness)
+            , opacity <| num 0.8
             , displayFlexRow
+            , alignItems baseline
             , flexBasis <| em 0
             , flexGrow <| num 1
             , height <| em (printLineHeight - 0.1)
             , wordBreakBreakAll
             , textAlign center
             , letterSpacing <| em 0.05
-            , color <| hsl hue saturation 0
+            , color <| printPaleGreen
             ]
     in
     styled span
         style
         []
         [ viewItemDotsMargin
-        , text <| String.repeat 30 ("." ++ String.fromChar (Char.fromCode 0x2009))
+        , text <| String.repeat 80 ("." ++ String.fromChar (Char.fromCode 0x2009))
         , viewItemDotsMargin
         ]
 

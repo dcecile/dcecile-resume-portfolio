@@ -1,13 +1,14 @@
 module View.Colors exposing
     ( black
     , blackLevel
+    , darkGreen
+    , extraDarkGreen
     , extraPaleGreen
     , green
     , paleGreen
     , printBlack
     , printGreen
     , printPaleGreen
-    , printPaleGreenComponents
     , white
     )
 
@@ -44,6 +45,16 @@ paleGreen =
     hsl greenHue 0.62 0.79
 
 
+darkGreen : Color
+darkGreen =
+    hsl greenHue 0.82 0.28
+
+
+extraDarkGreen : Color
+extraDarkGreen =
+    hsl greenHue 0.62 0.15
+
+
 white : Color
 white =
     hex "#ffffff"
@@ -54,18 +65,9 @@ printBlack =
     hex "#000000"
 
 
-printPaleGreenComponents : ( Float, Float, Float )
-printPaleGreenComponents =
-    ( greenHue, 0.5, 0.82 )
-
-
 printPaleGreen : Color
 printPaleGreen =
-    let
-        ( h, s, l ) =
-            printPaleGreenComponents
-    in
-    hsl h s l
+    hsl greenHue 0.5 0.82
 
 
 printGreen : Color
