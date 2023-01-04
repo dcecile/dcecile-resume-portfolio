@@ -15,7 +15,7 @@ import View.Breakpoints exposing (breakpointResumePreviewLarge, breakpointResume
 import View.Button as Button
 import View.Colors exposing (white)
 import View.Metrics exposing (standardPrintFontSize, standardScreenFontSizeLarge, standardScreenFontSizeSmall)
-import View.Resume exposing (viewResume, viewResumeName)
+import View.Resume exposing (viewResume, viewResumePrintName)
 
 
 pageWidthPt : Float
@@ -139,7 +139,7 @@ viewActions assets data =
         [ viewAction iconSource
             .download
             [ href "%PUBLIC_URL%/resume.pdf"
-            , download <| viewResumeName data
+            , download <| viewResumePrintName data
             ]
             [ text "Download"
             ]

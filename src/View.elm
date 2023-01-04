@@ -18,7 +18,7 @@ import Msg exposing (Msg(..))
 import Navigation exposing (onHashChange)
 import View.Details exposing (maybeSubscribeDetails, maybeViewDetails)
 import View.Portfolio exposing (viewPortfolio)
-import View.Resume exposing (viewResumeName)
+import View.Resume exposing (viewResumePageName)
 import View.ResumePreview exposing (viewResumePreview)
 import View.ResumePrint exposing (viewResumePrint)
 
@@ -58,7 +58,7 @@ viewHead data { assets, display } =
 viewTitle : Data -> Display -> String
 viewTitle data display =
     if display.showResumePreview then
-        viewResumeName data
+        viewResumePageName data
 
     else
         data.basic.name ++ "’s portfolio homepage"
