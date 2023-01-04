@@ -1,6 +1,7 @@
 module View.Resume exposing
     ( viewResume
-    , viewResumeName
+    , viewResumePageName
+    , viewResumePrintName
     )
 
 import Assets exposing (Assets)
@@ -625,6 +626,11 @@ viewMarkedString =
     MarkedString.transform text (styledSpanText highlightStyle)
 
 
-viewResumeName : Data -> String
-viewResumeName data =
+viewResumePageName : Data -> String
+viewResumePageName data =
     data.basic.name ++ "’s resume"
+
+
+viewResumePrintName : Data -> String
+viewResumePrintName data =
+    String.replace " " "_" data.basic.name ++ "_resume"
