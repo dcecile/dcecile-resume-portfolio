@@ -46,14 +46,14 @@ initWorkData =
                 , markedString "Enabled surge scale-up using `Gatling` tests, custom work-limiting metrics, and `Kubernetes` HPA"
                 , markedString "Created `React / TypeScript` and `Flutter` chat SDKs, including UX and API design for innovative new features"
                 , markedString "Drastically reduced end-to-end platform latency through benchmarking and `source-level profiling`"
-                , markedString "Upgraded our `YAML / Jinja` workflow language, adding aliases, type checks, and tail calls for improved DX"
+                , markedString "Upgraded the developer experience of our workflow language, adding aliases, `type checks`, and `tail calls`"
                 , markedString "Coded `integrations` using `REST APIs` and `webhooks` with mocked payload and event stream tests"
                 , markedString "Built a developer CLI (`Click`) and web console (`React`), connected to `nginx`, `Django`, `GraphQL`, and `Git`"
                 , markedString "Launched a `React / Rappid` visual flow editor with templates, inline docs, and full programmability"
                 , markedString "Boosted performance and unlocked key log searches by compiling `Lucene` to windowed, index-aware `SQL`"
                 , markedString "Improved QC processes: `code reviews`, `unit tests`, `CI/CD`, staging releases, checklists, monitoring, and alerts"
                 , markedString "Directly supported customers via Slack chat, async videos, `log tracing`, `debugging`, and `pair programming`"
-                , markedString "Managed own solo projects from brainstorming, design, coding, documentation, to release and onboarding"
+                , markedString "Self-managed solo projects from brainstorming, design, coding, documentation, to release and onboarding"
                 ]
                 (markedString "I was a member of the team at Meya for more than 4 years, working on a chatbot platform that customers used to build and launch great customer support.")
                 [ markedString "I co-designed a new architecture for our platform, with `scale`, `security`, and `event streams` at the core"
@@ -74,9 +74,9 @@ initWorkData =
                 , "data analysis / communication"
                 , "coordination / leadership / mentoring"
                 ]
-                [ markedString "Developed `C#` hearing instrument manufacturing software, with `code reviews`, `integration/unit tests`, and `CI`"
+                [ markedString "Developed `C#` hearing instrument manufacturing software with `code reviews`, `integration/unit tests`, and `CI`"
                 , markedString "Collaborated on `requirements`, `integrations`, and `debugging` with dev teams and production staff worldwide"
-                , markedString "Created and optimized ad hoc data analysis `SQL` queries, to investigate bugs and business concerns"
+                , markedString "Created and optimized ad hoc data analysis `SQL` queries to investigate bugs and business concerns"
                 , markedString "Triaged tasks, coordinated iterations, prepared releases, built internal tools, and mentored team members"
                 ]
                 (markedString "I worked with my team at Sonova for 8 years, `making` hearing instrument manufacturing software.")
